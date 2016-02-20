@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>黄成达的博客</title>
+  <title>Salvador</title>
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-02-20T01:27:56.000Z</updated>
+  <updated>2016-02-20T04:16:35.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,74 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo在github上构建免费的博客</title>
+    <link href="http://yoursite.com/2016/02/20/Hexo%E5%9C%A8github%E4%B8%8A%E6%9E%84%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2016/02/20/Hexo在github上构建免费的博客/</id>
+    <published>2016-02-20T04:07:20.000Z</published>
+    <updated>2016-02-20T04:16:35.000Z</updated>
+    
+    <content type="html">&lt;p&gt;很多次想搭建一个自己的博客，彻底从csdn上转移到自己的博客站点中，但是一直由于时间的原因耽搁了。之前也使用过Wordpress来搭建自己的博客，但是发现Wordpress使用起来不是太方便。后来再接触了markdown语法写文章后，喜欢上了markdown。再后来了解到了hexo，一个基于Node的博客框架，同样可以实现基于github的博客，而且更轻更快，更适合Node的开发程序员。&lt;/p&gt;
+&lt;h2 id=&quot;1-Hexo介绍&quot;&gt;&lt;a href=&quot;#1-Hexo介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Hexo介绍&quot;&gt;&lt;/a&gt;1.Hexo介绍&lt;/h2&gt;&lt;p&gt;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown&lt;/a&gt;（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;
+&lt;h2 id=&quot;2-Hexo安装&quot;&gt;&lt;a href=&quot;#2-Hexo安装&quot; class=&quot;headerlink&quot; title=&quot;2.Hexo安装&quot;&gt;&lt;/a&gt;2.Hexo安装&lt;/h2&gt;&lt;p&gt;安装 Hexo 相当简单。然而在安装前，您必须检查电脑中是否已安装下列应用程序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://nodejs.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Node.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://git-scm.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm install -g hexo-cli&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果您的电脑中尚未安装所需要的程序，请根据以下安装指示完成安装。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Mac用户在编译时可能会遇到问题，请先到 App Store 安装 Xcode，Xcode 完成后，启动并进入 Preferences -&amp;gt; Download -&amp;gt; Command Line Tools -&amp;gt; Install 安装命令行工具。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;安装-Git&quot;&gt;&lt;a href=&quot;#安装-Git&quot; class=&quot;headerlink&quot; title=&quot;安装 Git&quot;&gt;&lt;/a&gt;安装 Git&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Windows：下载并安装 &lt;a href=&quot;https://git-scm.com/download/win&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Mac：使用 &lt;a href=&quot;http://brew.sh/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Homebrew&lt;/a&gt;, &lt;a href=&quot;http://www.macports.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MacPorts&lt;/a&gt; 或下载 安装程序 安装。&lt;/li&gt;
+&lt;li&gt;Linux (Ubuntu, Debian)：sudo apt-get install git-core&lt;/li&gt;
+&lt;li&gt;Linux (Fedora, Red Hat, CentOS)：sudo yum install git-core&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;安装-Node-js&quot;&gt;&lt;a href=&quot;#安装-Node-js&quot; class=&quot;headerlink&quot; title=&quot;安装 Node.js&quot;&gt;&lt;/a&gt;安装 Node.js&lt;/h4&gt;&lt;p&gt;安装 Node.js 的最佳方式是使用&lt;a href=&quot;https://github.com/creationix/nvm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nvm&lt;/a&gt;&lt;br&gt;cURL:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Wget:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;安装完成后，重启终端并执行下列命令即可安装 Node.js。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nvm install 5.0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;或者您也可以下载 &lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;安装程序&lt;/a&gt; 来安装。&lt;/p&gt;
+&lt;h4 id=&quot;安装-Hexo&quot;&gt;&lt;a href=&quot;#安装-Hexo&quot; class=&quot;headerlink&quot; title=&quot;安装 Hexo&quot;&gt;&lt;/a&gt;安装 Hexo&lt;/h4&gt;&lt;p&gt;所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo,Hexo安装，要用全局安装，加-g参数。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm install -g hexo-cli&amp;#10;$ npm install -g hexo&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;查看hexo的版本&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo version&amp;#10;hexo-cli: 1.0.1&amp;#10;os: Darwin 15.3.0 darwin x64&amp;#10;http_parser: 2.5.0&amp;#10;node: 4.2.1&amp;#10;v8: 4.5.103.35&amp;#10;uv: 1.7.5&amp;#10;zlib: 1.2.8&amp;#10;ares: 1.10.1-DEV&amp;#10;icu: 56.1&amp;#10;modules: 46&amp;#10;openssl: 1.0.2d&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;3-Hexo创建项目&quot;&gt;&lt;a href=&quot;#3-Hexo创建项目&quot; class=&quot;headerlink&quot; title=&quot;3.Hexo创建项目&quot;&gt;&lt;/a&gt;3.Hexo创建项目&lt;/h2&gt;&lt;p&gt;我的系统环境：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mac OS X EI Capitan&lt;/li&gt;
+&lt;li&gt;node v4.2.1&lt;/li&gt;
+&lt;li&gt;npm 2.14.7&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装好后，我们就可以使用Hexo创建项目了。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;hexo init nodejs-hexo&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;我们看到当前在目录下，出现了一个文件夹，包括初始化的文件。&lt;/p&gt;
+&lt;p&gt;进入目录，并启动Hexo服务器。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# &amp;#36827;&amp;#20837;&amp;#30446;&amp;#24405;&amp;#10;$ cd nodejs-hexo&amp;#10;# &amp;#21551;&amp;#21160;hexo&amp;#26381;&amp;#21153;&amp;#22120;&amp;#10;$ hexo server&amp;#10;INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这时端口4000被打开了，我们能过浏览器打开地址，&lt;a href=&quot;http://0.0.0.0:4000/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://0.0.0.0:4000/&lt;/a&gt;&lt;br&gt;ps:Mac上的地址是&lt;a href=&quot;http://0.0.0.0:4000/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://0.0.0.0:4000/&lt;/a&gt;， windows上的地址是&lt;a href=&quot;http://localhost:4000/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:4000/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;4-Hexo结构解析&quot;&gt;&lt;a href=&quot;#4-Hexo结构解析&quot; class=&quot;headerlink&quot; title=&quot;4.Hexo结构解析&quot;&gt;&lt;/a&gt;4.Hexo结构解析&lt;/h2&gt;&lt;p&gt;接下来，我们需要对Hexo做全面的了解，才能做出个性化的博客。&lt;/p&gt;
+&lt;h4 id=&quot;4-1目录和文件&quot;&gt;&lt;a href=&quot;#4-1目录和文件&quot; class=&quot;headerlink&quot; title=&quot;4.1目录和文件&quot;&gt;&lt;/a&gt;4.1目录和文件&lt;/h4&gt;&lt;img src=&quot;/2016/02/20/Hexo在github上构建免费的博客/hexo-dict.png&quot; alt=&quot;This is an example image&quot; title=&quot;This is an example image&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;.deploy_git 发布到github上生成的静态文件夹&lt;/li&gt;
+&lt;li&gt;node_modules mode的modules&lt;/li&gt;
+&lt;li&gt;scaffolds 脚手架，也就是一个工具模板&lt;/li&gt;
+&lt;li&gt;scripts 写文件的js，扩展hexo的功能&lt;/li&gt;
+&lt;li&gt;source 存放博客正文内容&lt;/li&gt;
+&lt;li&gt;source/_drafts 草稿箱&lt;/li&gt;
+&lt;li&gt;source/_posts 文件箱&lt;/li&gt;
+&lt;li&gt;themes 存放皮肤的目录&lt;/li&gt;
+&lt;li&gt;themes/landscape 默认的皮肤&lt;/li&gt;
+&lt;li&gt;_config.yml 全局的配置文件&lt;/li&gt;
+&lt;li&gt;db.json 静态常量&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;很多次想搭建一个自己的博客，彻底从csdn上转移到自己的博客站点中，但是一直由于时间的原因耽搁了。之前也使用过Wordpress来搭建自己的博客，但是发现Wordpress使用起来不是太方便。后来再接触了markdown语法写文章后，喜欢上了markdown。再后来了解到了
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>CocoaPods安装和使用教程</title>
@@ -65,33 +133,6 @@
     
     
       <category term="iOS开发" scheme="http://yoursite.com/tags/iOS%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2016/02/19/hello-world/"/>
-    <id>http://yoursite.com/2016/02/19/hello-world/</id>
-    <published>2016-02-19T08:05:50.000Z</published>
-    <updated>2016-02-19T08:05:50.000Z</updated>
-    
-    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
     
   </entry>
   
