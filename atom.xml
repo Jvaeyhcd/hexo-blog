@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-02-20T08:05:21.000Z</updated>
+  <updated>2016-02-20T08:30:58.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo安装新主题apollo</title>
+    <link href="http://yoursite.com/2016/02/20/Hexo%E5%AE%89%E8%A3%85%E6%96%B0%E4%B8%BB%E9%A2%98apollo/"/>
+    <id>http://yoursite.com/2016/02/20/Hexo安装新主题apollo/</id>
+    <published>2016-02-20T08:15:35.000Z</published>
+    <updated>2016-02-20T08:30:58.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Hexo博客系统的流行原因，是因为他的个人性，而皮肤就是个人性的一种体现。Hexo换皮肤还是比较简单的,既可以自己根据默认的主题来修改，也可以到&lt;a href=&quot;https://hexo.io/themes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://hexo.io/themes/&lt;/a&gt;上去找主题。&lt;/p&gt;
+&lt;p&gt;下面简单描述一下我安装apollo主题的过程。&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;github上的文档给出了详细的安装命令&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;hexo init #blogname#&amp;#10;cd #blogname# &amp;#10;npm install&amp;#10;npm install --save hexo-renderer-jade hexo-generator-feed hexo-generator-sitemap hexo-browsersync hexo-generator-archive&amp;#10;git clone https://github.com/pinggod/hexo-theme-apollo.git themes/apollo&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;启用&quot;&gt;&lt;a href=&quot;#启用&quot; class=&quot;headerlink&quot; title=&quot;启用&quot;&gt;&lt;/a&gt;启用&lt;/h2&gt;&lt;p&gt;安装成功后就可以开始启用主题，主题的启用需要修改_config.yml 的 theme 配置项为 apollo：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# Extensions &amp;#25554;&amp;#20214;&amp;#21644;&amp;#30382;&amp;#32932;&amp;#10;## Plugins: https://hexo.io/plugins/&amp;#10;## Themes: https://hexo.io/themes/&amp;#10;# theme: landscape&amp;#10;theme: apollo&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;启动hexo后修改成功后的皮肤如图所示&lt;br&gt;&lt;img src=&quot;/2016/02/20/Hexo安装新主题apollo/apollo.png&quot; alt=&quot;hexo-theme-apollo&quot; title=&quot;hexo-theme-apollo&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hexo博客系统的流行原因，是因为他的个人性，而皮肤就是个人性的一种体现。Hexo换皮肤还是比较简单的,既可以自己根据默认的主题来修改，也可以到&lt;a href=&quot;https://hexo.io/themes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hexo在github上构建免费的博客</title>
