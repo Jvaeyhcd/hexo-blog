@@ -15,7 +15,7 @@
 <p>其中第一个就是我们需要的，把pod ‘AFNetworking’， ‘~&gt;2.5.3’<br>那一行复制到我们的Podfile文件中，保存修改。<br>然后在Terminal中执行 ：<br>pod install</p>
 <p>这样，AFNetworking就已经下载完成并且设置好了编译参数和依赖，以后使用的时候切记如下两点：<br>1.从此以后需要使用Cocoapods生成的 .xcworkspace文件来打开工程，而不是使用以前的.xcodeproj文件<br>2.每次更改了Podfile文件，都需要重新执行一次pod update命令</p>
 <p>ps:当执行pod install之后，除了Podfile，还会生成一个名为Podfile.lock的文件，它会锁定当前各依赖库的版本，之后即使多次执行pod install也不会更改版本，只有执行pod update才会改变Podfile.lock.在多人协作的时候，这样可以防止第三方库升级时候造成大家各自的第三方库版本不一致。所以在提交版本的时候不能把它落下，也不要添加到.gitignore中.</p>
-</div></article></div></section><footer><div class="paginator"><a href="/2016/02/20/Hexo在github上构建免费的博客/" class="prev">PRVE</a><a href="/2016/02/19/高效使用xcode/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'Jvaeyhcd';
+</div></article></div></section><footer><div class="paginator"><a href="/2016/02/20/Hexo在github上构建免费的博客/" class="prev">PRVE</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'Jvaeyhcd';
 var disqus_identifier = '2016/02/20/CocoaPods安装和使用教程/';
 var disqus_title = 'CocoaPods安装和使用教程';
 var disqus_url = 'http://jvaeyhcd.cc/2016/02/20/CocoaPods安装和使用教程/';
