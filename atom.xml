@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jvaeyhcd.cc/"/>
-  <updated>2016-02-24T02:25:24.000Z</updated>
+  <updated>2016-02-25T03:11:24.000Z</updated>
   <id>http://jvaeyhcd.cc/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jvaeyhcd.cc/2016/02/24/Block%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E9%81%BF%E5%85%8DCycle-Retain%E5%92%8CCrash/"/>
     <id>http://jvaeyhcd.cc/2016/02/24/Block正确使用避免Cycle-Retain和Crash/</id>
     <published>2016-02-24T01:28:26.000Z</published>
-    <updated>2016-02-24T02:25:24.000Z</updated>
+    <updated>2016-02-25T03:11:24.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;本文只介绍了MRC时的情况，有些细节不适用于ARC。比如MRC下&lt;strong&gt;block不会增加引用计数，但ARC会，ARC下必须用&lt;/strong&gt;weak指明不增加引用计数；ARC下block内存分配机制也与MRC不一样，所以文中的一些例子在ARC下测试结果可能与文中描述的不一样&lt;/p&gt;
@@ -34,6 +34,7 @@
 &lt;li&gt;一个包含Block执行时需要的所有外部变量值的数据结构。 Block将使用到的、作用域附近到的变量的值建立一份快照拷贝到栈上。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Block与函数另一个不同是，Block类似ObjC的对象，可以使用自动释放池管理内存（但Block并不完全等同于ObjC对象，后面将详细说明）。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h6&gt;Block基本语法&lt;/h6&gt;
 
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// &amp;#22768;&amp;#26126;&amp;#19968;&amp;#20010;Block&amp;#21464;&amp;#37327;&amp;#10;long (^sum) (int, int) = nil;&amp;#10;// sum&amp;#26159;&amp;#20010;Block&amp;#21464;&amp;#37327;&amp;#65292;&amp;#35813;Block&amp;#31867;&amp;#22411;&amp;#26377;&amp;#20004;&amp;#20010;int&amp;#22411;&amp;#21442;&amp;#25968;&amp;#65292;&amp;#36820;&amp;#22238;&amp;#31867;&amp;#22411;&amp;#26159;long&amp;#12290;&amp;#10;&amp;#10;// &amp;#23450;&amp;#20041;Block&amp;#24182;&amp;#36171;&amp;#32473;&amp;#21464;&amp;#37327;sum&amp;#10;sum = ^ long (int a, int b) &amp;#123;&amp;#10;  return a + b;&amp;#10;&amp;#125;;&amp;#10;&amp;#10;// &amp;#35843;&amp;#29992;Block&amp;#65306;&amp;#10;long s = sum(1, 2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -117,7 +118,17 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;本文只介绍了MRC时的情况，有些细节不适用于ARC。比如MRC下&lt;strong&gt;block不会增加引用计数，但ARC会，ARC下必须用&lt;/strong&gt;weak指明不增加引用计数；ARC下block内存分配机制也与MRC不一样，所以文中的一些例子在
+&lt;p&gt;本文只介绍了MRC时的情况，有些细节不适用于ARC。比如MRC下&lt;strong&gt;block不会增加引用计数，但ARC会，ARC下必须用&lt;/strong&gt;weak指明不增加引用计数；ARC下block内存分配机制也与MRC不一样，所以文中的一些例子在ARC下测试结果可能与文中描述的不一样&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h6&gt;Block简介&lt;/h6&gt;
+
+&lt;p&gt;Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-C在iOS中不支持GC机制，使用Block必须自己管理内存，而内存管理正是使用Block坑最多的地方，错误的内存管理 要么导致return cycle内存泄漏要么内存被提前释放导致crash。 Block的使用很像函数指针，不过与函数最大的不同是：Block可以访问函数以外、词法作用域以内的外部变量的值。换句话说，Block不仅 实现函数的功能，还能携带函数的执行环境。&lt;/p&gt;
+&lt;p&gt;可以这样理解，Block其实包含两个部分内容&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Block执行的代码，这是在编译的时候已经生成好的；&lt;/li&gt;
+&lt;li&gt;一个包含Block执行时需要的所有外部变量值的数据结构。 Block将使用到的、作用域附近到的变量的值建立一份快照拷贝到栈上。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Block与函数另一个不同是，Block类似ObjC的对象，可以使用自动释放池管理内存（但Block并不完全等同于ObjC对象，后面将详细说明）。&lt;/p&gt;
     
     </summary>
     
@@ -129,13 +140,16 @@
     <link href="http://jvaeyhcd.cc/2016/02/20/Github%E4%B8%8A%E4%BC%98%E7%A7%80%E7%9A%84Objective-C%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/"/>
     <id>http://jvaeyhcd.cc/2016/02/20/Github上优秀的Objective-C项目简介/</id>
     <published>2016-02-20T09:15:47.000Z</published>
-    <updated>2016-02-20T09:44:08.000Z</updated>
+    <updated>2016-02-25T03:11:40.000Z</updated>
     
     <content type="html">&lt;p&gt;主要对当前Github排名靠前的项目做一个简单的简介，方便自己快速了解 Objective-C的一些优秀的开源框架。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/AFNetworking/AFNetworking&quot; target=&quot;AFNetworking&quot;&gt;AFNetworking&lt;/a&gt;&lt;br&gt;作者是 NSHipster 的博主, iOS 开发界的大神级人物, 毕业于卡内基·梅隆大学, 开源了许多牛逼的项目, 这个便是其中之一, AFNetworking 采用 NSURLConnection + NSOperation, 主要方便与服务端 API 进行数据交换, 操作简单, 功能强大, 现在许多人都用它取代 ASIHTTPRequest&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/gavinkwoe/BeeFramework&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;BeeFramework&lt;/a&gt;&lt;br&gt;BeeFramework是一个iOS应用开发框架，由国内开发者郭虹宇创立并且在Github上开源。经过一年多的发展，BeeFramework在Github上，得到了广泛关注，有1000多的star数和400多的fork数&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/BradLarson/GPUImage&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPUImage&lt;/a&gt;&lt;br&gt;一款强大的图片滤镜工具, 支持自定义滤镜, 可用来实时处理图片和视频流, 作者是 SonoPlot 公司的 CTO, 在很小的时候便开始接触编程, 他在 SO 上面的回答也有很多值得阅读, GPUImage 这个项目从 2012 年开始, 使用 OpenGL 图形程序接口编写, 性能非常好, 现在很多 iOS 程序员都用它来实现 iOS 的模糊效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/rs/SDWebImage&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SDWebImage&lt;/a&gt;&lt;br&gt;作者 Olivier Poitrey 是 Dailymotion 的 CTO, 拥有多个不错的开源项目, 此项目常用于对从 Web 端接受到的图片进行缓存, 是 UIImageView 的扩展, 应用起来比较简单&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/RestKit/RestKit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;RestKit&lt;/a&gt;&lt;br&gt;主要用于 iOS 上网络通信, 允许与 RESTful Web 服务交互, 常用于处理 API, 解析 JSON, 映射响应对象等操作, 简单易用, 方便你把所有精力都放在对数据的操作上&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/ReactiveCocoa/ReactiveCocoa&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ReactiveCocoa&lt;/a&gt;&lt;br&gt;由 GitHub 工程师们开发的一个应用于 iOS 和 OS X 开发的函数响应式编程新框架, Matt 称其为 “An open source project that exemplifies this brave new era for Objective-C”, 也有人说它是 Cocoa 的未来,GitHub自家的函数式响应式编程范式的Objective-C实现，名字听着很高大上，学习曲线确实也比较陡，但是绝对会改变你对iOS编程的认知&lt;/li&gt;
@@ -201,7 +215,10 @@
     
       &lt;p&gt;主要对当前Github排名靠前的项目做一个简单的简介，方便自己快速了解 Objective-C的一些优秀的开源框架。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/AFNetworking/AFNetworking&quot; target=&quot;AF
+&lt;li&gt;&lt;a href=&quot;https://github.com/AFNetworking/AFNetworking&quot; target=&quot;AFNetworking&quot;&gt;AFNetworking&lt;/a&gt;&lt;br&gt;作者是 NSHipster 的博主, iOS 开发界的大神级人物, 毕业于卡内基·梅隆大学, 开源了许多牛逼的项目, 这个便是其中之一, AFNetworking 采用 NSURLConnection + NSOperation, 主要方便与服务端 API 进行数据交换, 操作简单, 功能强大, 现在许多人都用它取代 ASIHTTPRequest&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/gavinkwoe/BeeFramework&quot;&gt;BeeFramework&lt;/a&gt;&lt;br&gt;BeeFramework是一个iOS应用开发框架，由国内开发者郭虹宇创立并且在Github上开源。经过一年多的发展，BeeFramework在Github上，得到了广泛关注，有1000多的star数和400多的fork数&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/BradLarson/GPUImage&quot;&gt;GPUImage&lt;/a&gt;&lt;br&gt;一款强大的图片滤镜工具, 支持自定义滤镜, 可用来实时处理图片和视频流, 作者是 SonoPlot 公司的 CTO, 在很小的时候便开始接触编程, 他在 SO 上面的回答也有很多值得阅读, GPUImage 这个项目从 2012 年开始, 使用 OpenGL 图形程序接口编写, 性能非常好, 现在很多 iOS 程序员都用它来实现 iOS 的模糊效果&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -213,10 +230,11 @@
     <link href="http://jvaeyhcd.cc/2016/02/20/Hexo%E5%AE%89%E8%A3%85%E6%96%B0%E4%B8%BB%E9%A2%98apollo/"/>
     <id>http://jvaeyhcd.cc/2016/02/20/Hexo安装新主题apollo/</id>
     <published>2016-02-20T08:15:35.000Z</published>
-    <updated>2016-02-20T08:30:58.000Z</updated>
+    <updated>2016-02-25T03:11:54.000Z</updated>
     
     <content type="html">&lt;p&gt;Hexo博客系统的流行原因，是因为他的个人性，而皮肤就是个人性的一种体现。Hexo换皮肤还是比较简单的,既可以自己根据默认的主题来修改，也可以到&lt;a href=&quot;https://hexo.io/themes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://hexo.io/themes/&lt;/a&gt;上去找主题。&lt;/p&gt;
 &lt;p&gt;下面简单描述一下我安装apollo主题的过程。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;github上的文档给出了详细的安装命令&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;hexo init #blogname#&amp;#10;cd #blogname# &amp;#10;npm install&amp;#10;npm install --save hexo-renderer-jade hexo-generator-feed hexo-generator-sitemap hexo-browsersync hexo-generator-archive&amp;#10;git clone https://github.com/pinggod/hexo-theme-apollo.git themes/apollo&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h2 id=&quot;启用&quot;&gt;&lt;a href=&quot;#启用&quot; class=&quot;headerlink&quot; title=&quot;启用&quot;&gt;&lt;/a&gt;启用&lt;/h2&gt;&lt;p&gt;安装成功后就可以开始启用主题，主题的启用需要修改_config.yml 的 theme 配置项为 apollo：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# Extensions &amp;#25554;&amp;#20214;&amp;#21644;&amp;#30382;&amp;#32932;&amp;#10;## Plugins: https://hexo.io/plugins/&amp;#10;## Themes: https://hexo.io/themes/&amp;#10;# theme: landscape&amp;#10;theme: apollo&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;启动hexo后修改成功后的皮肤如图所示&lt;br&gt;&lt;img src=&quot;/2016/02/20/Hexo安装新主题apollo/apollo.png&quot; alt=&quot;hexo-theme-apollo&quot; title=&quot;hexo-theme-apollo&quot;&gt;&lt;/p&gt;
@@ -224,7 +242,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;Hexo博客系统的流行原因，是因为他的个人性，而皮肤就是个人性的一种体现。Hexo换皮肤还是比较简单的,既可以自己根据默认的主题来修改，也可以到&lt;a href=&quot;https://hexo.io/themes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;
+      &lt;p&gt;Hexo博客系统的流行原因，是因为他的个人性，而皮肤就是个人性的一种体现。Hexo换皮肤还是比较简单的,既可以自己根据默认的主题来修改，也可以到&lt;a href=&quot;https://hexo.io/themes/&quot;&gt;https://hexo.io/themes/&lt;/a&gt;上去找主题。&lt;/p&gt;
+&lt;p&gt;下面简单描述一下我安装apollo主题的过程。&lt;/p&gt;
     
     </summary>
     
@@ -236,10 +255,11 @@
     <link href="http://jvaeyhcd.cc/2016/02/20/Hexo%E5%9C%A8github%E4%B8%8A%E6%9E%84%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
     <id>http://jvaeyhcd.cc/2016/02/20/Hexo在github上构建免费的博客/</id>
     <published>2016-02-20T04:07:20.000Z</published>
-    <updated>2016-02-20T08:05:21.000Z</updated>
+    <updated>2016-02-25T03:11:47.000Z</updated>
     
     <content type="html">&lt;p&gt;很多次想搭建一个自己的博客，彻底从csdn上转移到自己的博客站点中，但是一直由于时间的原因耽搁了。之前也使用过Wordpress来搭建自己的博客，但是发现Wordpress使用起来不是太方便。后来再接触了markdown语法写文章后，喜欢上了markdown。再后来了解到了hexo，一个基于Node的博客框架，同样可以实现基于github的博客，而且更轻更快，更适合Node的开发程序员。&lt;/p&gt;
 &lt;h2 id=&quot;1-Hexo介绍&quot;&gt;&lt;a href=&quot;#1-Hexo介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Hexo介绍&quot;&gt;&lt;/a&gt;1.Hexo介绍&lt;/h2&gt;&lt;p&gt;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown&lt;/a&gt;（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;2-Hexo安装&quot;&gt;&lt;a href=&quot;#2-Hexo安装&quot; class=&quot;headerlink&quot; title=&quot;2.Hexo安装&quot;&gt;&lt;/a&gt;2.Hexo安装&lt;/h2&gt;&lt;p&gt;安装 Hexo 相当简单。然而在安装前，您必须检查电脑中是否已安装下列应用程序：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://nodejs.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Node.js&lt;/a&gt;&lt;/li&gt;
@@ -340,7 +360,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;很多次想搭建一个自己的博客，彻底从csdn上转移到自己的博客站点中，但是一直由于时间的原因耽搁了。之前也使用过Wordpress来搭建自己的博客，但是发现Wordpress使用起来不是太方便。后来再接触了markdown语法写文章后，喜欢上了markdown。再后来了解到了
+      &lt;p&gt;很多次想搭建一个自己的博客，彻底从csdn上转移到自己的博客站点中，但是一直由于时间的原因耽搁了。之前也使用过Wordpress来搭建自己的博客，但是发现Wordpress使用起来不是太方便。后来再接触了markdown语法写文章后，喜欢上了markdown。再后来了解到了hexo，一个基于Node的博客框架，同样可以实现基于github的博客，而且更轻更快，更适合Node的开发程序员。&lt;/p&gt;
+&lt;h2 id=&quot;1-Hexo介绍&quot;&gt;&lt;a href=&quot;#1-Hexo介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Hexo介绍&quot;&gt;&lt;/a&gt;1.Hexo介绍&lt;/h2&gt;&lt;p&gt;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;Markdown&lt;/a&gt;（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;
     
     </summary>
     
@@ -352,9 +373,10 @@
     <link href="http://jvaeyhcd.cc/2016/02/20/CocoaPods%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
     <id>http://jvaeyhcd.cc/2016/02/20/CocoaPods安装和使用教程/</id>
     <published>2016-02-20T01:14:02.000Z</published>
-    <updated>2016-02-20T01:27:56.000Z</updated>
+    <updated>2016-02-25T03:11:31.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;一、CocosPods是什么&quot;&gt;&lt;a href=&quot;#一、CocosPods是什么&quot; class=&quot;headerlink&quot; title=&quot;一、CocosPods是什么&quot;&gt;&lt;/a&gt;一、CocosPods是什么&lt;/h2&gt;&lt;p&gt;CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。&lt;br&gt;在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要&lt;br&gt;1.把开源库的源代码复制到项目中&lt;br&gt;2.添加一些依赖框架和动态库&lt;br&gt;3.设置-ObjC，-fno-objc-arc等参数&lt;br&gt;4.管理他们的更新&lt;br&gt;在使用CocoaPods后，我们只需要把用到的开源库放到一个名为Podfile的文件中，然后执行pod install.Cocoapods就会自动将这些第三方开源库的源码下载下来，并且为我们的工程设置好响应的系统依赖和编译参数。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;二、CocoaPods的原理&quot;&gt;&lt;a href=&quot;#二、CocoaPods的原理&quot; class=&quot;headerlink&quot; title=&quot;二、CocoaPods的原理&quot;&gt;&lt;/a&gt;二、CocoaPods的原理&lt;/h2&gt;&lt;p&gt;CocoaPods的原理是将所有的依赖库都放到另一个名为Pods的项目中，然后让主项目依赖Pods项目，这样，源码管理工作都从主项目移到了Pods项目中。Pods项目最终会编译成一个名为libPods.a的文件，主项目只需要依赖这个.a文件即可。&lt;/p&gt;
 &lt;h2 id=&quot;三、CocoaPods的安装&quot;&gt;&lt;a href=&quot;#三、CocoaPods的安装&quot; class=&quot;headerlink&quot; title=&quot;三、CocoaPods的安装&quot;&gt;&lt;/a&gt;三、CocoaPods的安装&lt;/h2&gt;&lt;p&gt;CocoaPods可以方便地通过Mac自带的RubyGems安装。&lt;br&gt;打开Terminal，然后键入以下命令：&lt;br&gt;$ sudo gem install cocoapods&lt;/p&gt;
 &lt;p&gt;执行完这句如果报告以下错误：&lt;br&gt;ERROR: Could not find a valid gem ‘cocoapods’ (&amp;gt;= 0), here is why:&lt;br&gt;Unable to download data from &lt;a href=&quot;https://rubygems.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://rubygems.org/&lt;/a&gt; - Errno::ETIMEDOUT: Operation timed out - connect(2) (&lt;a href=&quot;https://rubygems.org/latest_specs.4.8.gz&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://rubygems.org/latest_specs.4.8.gz&lt;/a&gt;)&lt;br&gt;ERROR: Possible alternatives: cocoapods&lt;/p&gt;
@@ -375,7 +397,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;一、CocosPods是什么&quot;&gt;&lt;a href=&quot;#一、CocosPods是什么&quot; class=&quot;headerlink&quot; title=&quot;一、CocosPods是什么&quot;&gt;&lt;/a&gt;一、CocosPods是什么&lt;/h2&gt;&lt;p&gt;CocoaPods是iOS项目的依赖管理工具
+      &lt;h2 id=&quot;一、CocosPods是什么&quot;&gt;&lt;a href=&quot;#一、CocosPods是什么&quot; class=&quot;headerlink&quot; title=&quot;一、CocosPods是什么&quot;&gt;&lt;/a&gt;一、CocosPods是什么&lt;/h2&gt;&lt;p&gt;CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。&lt;br&gt;在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要&lt;br&gt;1.把开源库的源代码复制到项目中&lt;br&gt;2.添加一些依赖框架和动态库&lt;br&gt;3.设置-ObjC，-fno-objc-arc等参数&lt;br&gt;4.管理他们的更新&lt;br&gt;在使用CocoaPods后，我们只需要把用到的开源库放到一个名为Podfile的文件中，然后执行pod install.Cocoapods就会自动将这些第三方开源库的源码下载下来，并且为我们的工程设置好响应的系统依赖和编译参数。&lt;/p&gt;
     
     </summary>
     

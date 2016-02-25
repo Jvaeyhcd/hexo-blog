@@ -10,6 +10,7 @@
 <li>一个包含Block执行时需要的所有外部变量值的数据结构。 Block将使用到的、作用域附近到的变量的值建立一份快照拷贝到栈上。</li>
 </ul>
 <p>Block与函数另一个不同是，Block类似ObjC的对象，可以使用自动释放池管理内存（但Block并不完全等同于ObjC对象，后面将详细说明）。</p>
+<a id="more"></a>
 <h6>Block基本语法</h6>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#22768;&#26126;&#19968;&#20010;Block&#21464;&#37327;&#10;long (^sum) (int, int) = nil;&#10;// sum&#26159;&#20010;Block&#21464;&#37327;&#65292;&#35813;Block&#31867;&#22411;&#26377;&#20004;&#20010;int&#22411;&#21442;&#25968;&#65292;&#36820;&#22238;&#31867;&#22411;&#26159;long&#12290;&#10;&#10;// &#23450;&#20041;Block&#24182;&#36171;&#32473;&#21464;&#37327;sum&#10;sum = ^ long (int a, int b) &#123;&#10;  return a + b;&#10;&#125;;&#10;&#10;// &#35843;&#29992;Block&#65306;&#10;long s = sum(1, 2);</span><br></pre></td></tr></table></figure>
