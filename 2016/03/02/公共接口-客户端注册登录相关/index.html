@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 公共接口-客户端注册登录相关 · Jvaeyhcd's Blog</title><meta name="description" content="公共接口-客户端注册登录相关 - Jvaeyhcd"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/javeyhcd" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/Jvaeyhcd" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">公共接口-客户端注册登录相关</h1><div class="post-time">Mar 2, 2016</div><div class="post-content"><p>注册登录，获取个人信息，修改密码，修改头像</p>
+<p><strong>原型图地址</strong>：<a href="https://modao.cc/app/Oi1xxx1cunL76qacPCKr" target="_blank" rel="external">https://modao.cc/app/Oi1xxx1cunL76qacPCKr</a></p>
+<p><strong>服务器地址</strong>：192.168.0.162<br><strong>URL</strong>：<a href="http://192.168.0.162:8080/shangpin" target="_blank" rel="external">http://192.168.0.162:8080/shangpin</a><br><strong>返回状态码说明</strong>：<br>接口相关表：<br>t_doctor_authentication_apply  </p>
+<a id="more"></a>
+<h2 id="用户相关接口"><a href="#用户相关接口" class="headerlink" title="用户相关接口"></a>用户相关接口</h2><table><br>    <tr><br>        <th>接口名称</th><br>        <th>接口地址</th><br>        <th>参数说明</th><br>        <th>返回说明</th><br>        <th>备注</th><br>    </tr><br>    <tr><br>        <td>医生(用户)注册接口 - 获取短信验证码</td><br>        <td>/common/account/getValidateCode.do</td><br>        <td><br>                   “mobile”:”手机号码”<br><br>                   “userType”: 用户类型<br>        </td><br>        <td>{<br><br>                     “code”:”10000”,<br><br>                     “message”:”操作成功”,<br><br>                     “result”:<br>                        {“validateCode”:”88888888”}<br><br>                  }<br>       </td><br>        <td></td><br>    </tr><br>    <tr><br>        <td>医生(用户)注册接口 - 下一步</td><br>        <td>/common/account/registNextStep.do</td><br>        <td><br>                   “mobile”:”手机号码”<br><br>           “userType”:”用户类型”<br><br>            “validateCode”:”短信验证码”<br><br><br>        </td><br>        <td>{“message”:”操作成功”,”code”:”10000”}</td><br>        <td>邀请码可为空，前端最好验证输入的短信验证码与第一步返回的是否一致,并验证两次密码是否一致</td><br>    </tr><br>    <tr><br>        <td>医生(用户)注册接口 - 完成注册</td><br>        <td>URL/common/account/register.do</td><br>        <td> “mobile”:”手机号码”<br><br>            “password”:”密码”<br><br>                  “actualName”:”真实姓名”<br><br>                 “gender”:”真实姓名”<br><br>                  “birthday”:”生日”<br><br>                  “userType”:”用户类型”<br><br>                   “inviteCode”: 邀请码 (选填)<br>        </td><br>        <td><br>          {“message”:”操作成功”,<br><br>            “code”:”10000”}<br><br>        </td><br>        <td>userType：1，代表用户，2代表医生<br><br>                容联对应的friendlyName的格式如：手机号+用户类型，比如 用户 13600000000，对应的容联云账号为136000000001<br>      </td><br>    </tr><br>     <tr><br>        <td>医生(用户)登陆接口</td><br>        <td>URL/common/account/login.do</td><br>        <td> “mobile”:”电话号码”<br><br>                 “password”:”密码”<br><br>                  “userType”:”用户类型”<br>        </td><br>        <td><br>          {“message”:”操作成功”,<br><br>            “code”:”10000”<br><br>            “result”: { “baseUser”: 用户基础信息，”user”: 用户基本信息；”doctor”: 医生信息}<br>          }<br><br>        </td><br>        <td>userType：1，代表用户，2代表医生 <br>  tokenId: 用户sessionID,每次登录会换</td><br>    </tr><br>    <tr><br>         <td>医生(用户)获取个人信息接口</td><br>        <td>URL/common/account/getUserDetail.do</td><br>        <td> “baseId”:”用户基础ID”<br><br>                 “tokenId”:”用户tokenID”<br><br>        </td><br>        <td><br>          {“message”:”操作成功”,<br><br>            “code”:”10000”<br><br>            “result”: { “baseUser”: 用户基础信息，”user”: 用户基本信息；”doctor”: 医生信息}<br>          }<br><br>        </td><br>        <td>userType：1，代表用户，2代表医生 <br>  tokenId: 用户sessionID,每次登录会换</td><br>    </tr><br>    <tr><br>        <td>忘记密码获取验证码</td><br>        <td>/common/account/forgetPsw.do</td><br>        <td>“mobile”:”手机号”<br><br>                 “userType”:”用户类型”<br></td><br>        <td><br>            {“message”:”操作成功”,<br><br>            “code”:”10000”<br><br>          }<br><br>        </td><br>        <td></td><br>    </tr><br>    <tr><br>        <td>忘记密码之修改密码</td><br>        <td>common/account/forgetResetPsw.do</td><br>        <td>“mobile”:”手机号”<br><br>                 “userType”:”用户类型”<br><br>                 “password”: 用户密码<br><br>                 “validateCode”: 验证码<br><br>        </td><br>        <td><br>   {“message”:”操作成功”,<br><br>            “code”:”10000”<br><br>          }<br><br>      </td><br>        <td></td><br>    </tr><br><tr><br>        <td>用户添加反馈</td><br>        <td>URL/common/my/addSuggest.do</td><br>        <td>baseId:用户Id<br>tokenId：用户token</td> content： 反馈内容<br>        <td>“code”:”10000”<br>“message”:”success”<br></td><br>        <td></td><br>    </tr><br>    <tr><br>        <td></td><br>        <td></td><br>        <td></td><br>        <td></td><br>        <td></td><br>    </tr><br></table>
+
+<h3 id="修改交易密码"><a href="#修改交易密码" class="headerlink" title="修改交易密码"></a>修改交易密码</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/common/my/updatePassword</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">修改交易、登录密码</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">baseId</td>
+<td style="text-align:center">用户基本ID</td>
+</tr>
+<tr>
+<td style="text-align:center">tokenId</td>
+<td style="text-align:center">Access Token</td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">密码类型，1=登录密码，2=交易密码</td>
+</tr>
+<tr>
+<td style="text-align:center">password</td>
+<td style="text-align:center">新密码</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;code&#34;: &#34;10000&#34;,&#10;  &#34;message&#34;: &#34;success&#34;,&#10;  &#34;result&#34;: &#34;&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/03/02/医护版API接口汇总/" class="next">NEXT</a></div><div data-thread-key="2016/03/02/公共接口-客户端注册登录相关/" data-title="公共接口-客户端注册登录相关" data-url="http://jvaeyhcd.cc/2016/03/02/公共接口-客户端注册登录相关/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"jvaeyhcd"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2015 - 2016 <a href="http://jvaeyhcd.cc">Jvaeyhcd</a>, unless otherwise noted.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?a36e15d9e2adec9a21fcdd9f686b1ed2";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>

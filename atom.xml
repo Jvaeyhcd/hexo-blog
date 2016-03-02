@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jvaeyhcd.cc/"/>
-  <updated>2016-03-02T07:05:21.000Z</updated>
+  <updated>2016-03-02T10:07:15.000Z</updated>
   <id>http://jvaeyhcd.cc/</id>
   
   <author>
@@ -14,6 +14,92 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>公共接口-客户端注册登录相关</title>
+    <link href="http://jvaeyhcd.cc/2016/03/02/%E5%85%AC%E5%85%B1%E6%8E%A5%E5%8F%A3-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%E7%9B%B8%E5%85%B3/"/>
+    <id>http://jvaeyhcd.cc/2016/03/02/公共接口-客户端注册登录相关/</id>
+    <published>2016-03-02T10:06:38.000Z</published>
+    <updated>2016-03-02T10:07:15.000Z</updated>
+    
+    <content type="html">&lt;p&gt;注册登录，获取个人信息，修改密码，修改头像&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原型图地址&lt;/strong&gt;：&lt;a href=&quot;https://modao.cc/app/Oi1xxx1cunL76qacPCKr&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://modao.cc/app/Oi1xxx1cunL76qacPCKr&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;服务器地址&lt;/strong&gt;：192.168.0.162&lt;br&gt;&lt;strong&gt;URL&lt;/strong&gt;：&lt;a href=&quot;http://192.168.0.162:8080/shangpin&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://192.168.0.162:8080/shangpin&lt;/a&gt;&lt;br&gt;&lt;strong&gt;返回状态码说明&lt;/strong&gt;：&lt;br&gt;接口相关表：&lt;br&gt;t_doctor_authentication_apply  &lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;用户相关接口&quot;&gt;&lt;a href=&quot;#用户相关接口&quot; class=&quot;headerlink&quot; title=&quot;用户相关接口&quot;&gt;&lt;/a&gt;用户相关接口&lt;/h2&gt;&lt;table&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;th&gt;接口名称&lt;/th&gt;&lt;br&gt;        &lt;th&gt;接口地址&lt;/th&gt;&lt;br&gt;        &lt;th&gt;参数说明&lt;/th&gt;&lt;br&gt;        &lt;th&gt;返回说明&lt;/th&gt;&lt;br&gt;        &lt;th&gt;备注&lt;/th&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;医生(用户)注册接口 - 获取短信验证码&lt;/td&gt;&lt;br&gt;        &lt;td&gt;/common/account/getValidateCode.do&lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;br&gt;                   “mobile”:”手机号码”&lt;br&gt;&lt;br&gt;                   “userType”: 用户类型&lt;br&gt;        &lt;/td&gt;&lt;br&gt;        &lt;td&gt;{&lt;br&gt;&lt;br&gt;                     “code”:”10000”,&lt;br&gt;&lt;br&gt;                     “message”:”操作成功”,&lt;br&gt;&lt;br&gt;                     “result”:&lt;br&gt;                        {“validateCode”:”88888888”}&lt;br&gt;&lt;br&gt;                  }&lt;br&gt;       &lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;医生(用户)注册接口 - 下一步&lt;/td&gt;&lt;br&gt;        &lt;td&gt;/common/account/registNextStep.do&lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;br&gt;                   “mobile”:”手机号码”&lt;br&gt;&lt;br&gt;           “userType”:”用户类型”&lt;br&gt;&lt;br&gt;            “validateCode”:”短信验证码”&lt;br&gt;&lt;br&gt;&lt;br&gt;        &lt;/td&gt;&lt;br&gt;        &lt;td&gt;{“message”:”操作成功”,”code”:”10000”}&lt;/td&gt;&lt;br&gt;        &lt;td&gt;邀请码可为空，前端最好验证输入的短信验证码与第一步返回的是否一致,并验证两次密码是否一致&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;医生(用户)注册接口 - 完成注册&lt;/td&gt;&lt;br&gt;        &lt;td&gt;URL/common/account/register.do&lt;/td&gt;&lt;br&gt;        &lt;td&gt; “mobile”:”手机号码”&lt;br&gt;&lt;br&gt;            “password”:”密码”&lt;br&gt;&lt;br&gt;                  “actualName”:”真实姓名”&lt;br&gt;&lt;br&gt;                 “gender”:”真实姓名”&lt;br&gt;&lt;br&gt;                  “birthday”:”生日”&lt;br&gt;&lt;br&gt;                  “userType”:”用户类型”&lt;br&gt;&lt;br&gt;                   “inviteCode”: 邀请码 (选填)&lt;br&gt;        &lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;br&gt;          {“message”:”操作成功”,&lt;br&gt;&lt;br&gt;            “code”:”10000”}&lt;br&gt;&lt;br&gt;        &lt;/td&gt;&lt;br&gt;        &lt;td&gt;userType：1，代表用户，2代表医生&lt;br&gt;&lt;br&gt;                容联对应的friendlyName的格式如：手机号+用户类型，比如 用户 13600000000，对应的容联云账号为136000000001&lt;br&gt;      &lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;     &lt;tr&gt;&lt;br&gt;        &lt;td&gt;医生(用户)登陆接口&lt;/td&gt;&lt;br&gt;        &lt;td&gt;URL/common/account/login.do&lt;/td&gt;&lt;br&gt;        &lt;td&gt; “mobile”:”电话号码”&lt;br&gt;&lt;br&gt;                 “password”:”密码”&lt;br&gt;&lt;br&gt;                  “userType”:”用户类型”&lt;br&gt;        &lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;br&gt;          {“message”:”操作成功”,&lt;br&gt;&lt;br&gt;            “code”:”10000”&lt;br&gt;&lt;br&gt;            “result”: { “baseUser”: 用户基础信息，”user”: 用户基本信息；”doctor”: 医生信息}&lt;br&gt;          }&lt;br&gt;&lt;br&gt;        &lt;/td&gt;&lt;br&gt;        &lt;td&gt;userType：1，代表用户，2代表医生 &lt;br&gt;  tokenId: 用户sessionID,每次登录会换&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;         &lt;td&gt;医生(用户)获取个人信息接口&lt;/td&gt;&lt;br&gt;        &lt;td&gt;URL/common/account/getUserDetail.do&lt;/td&gt;&lt;br&gt;        &lt;td&gt; “baseId”:”用户基础ID”&lt;br&gt;&lt;br&gt;                 “tokenId”:”用户tokenID”&lt;br&gt;&lt;br&gt;        &lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;br&gt;          {“message”:”操作成功”,&lt;br&gt;&lt;br&gt;            “code”:”10000”&lt;br&gt;&lt;br&gt;            “result”: { “baseUser”: 用户基础信息，”user”: 用户基本信息；”doctor”: 医生信息}&lt;br&gt;          }&lt;br&gt;&lt;br&gt;        &lt;/td&gt;&lt;br&gt;        &lt;td&gt;userType：1，代表用户，2代表医生 &lt;br&gt;  tokenId: 用户sessionID,每次登录会换&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;忘记密码获取验证码&lt;/td&gt;&lt;br&gt;        &lt;td&gt;/common/account/forgetPsw.do&lt;/td&gt;&lt;br&gt;        &lt;td&gt;“mobile”:”手机号”&lt;br&gt;&lt;br&gt;                 “userType”:”用户类型”&lt;br&gt;&lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;br&gt;            {“message”:”操作成功”,&lt;br&gt;&lt;br&gt;            “code”:”10000”&lt;br&gt;&lt;br&gt;          }&lt;br&gt;&lt;br&gt;        &lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;忘记密码之修改密码&lt;/td&gt;&lt;br&gt;        &lt;td&gt;common/account/forgetResetPsw.do&lt;/td&gt;&lt;br&gt;        &lt;td&gt;“mobile”:”手机号”&lt;br&gt;&lt;br&gt;                 “userType”:”用户类型”&lt;br&gt;&lt;br&gt;                 “password”: 用户密码&lt;br&gt;&lt;br&gt;                 “validateCode”: 验证码&lt;br&gt;&lt;br&gt;        &lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;br&gt;   {“message”:”操作成功”,&lt;br&gt;&lt;br&gt;            “code”:”10000”&lt;br&gt;&lt;br&gt;          }&lt;br&gt;&lt;br&gt;      &lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;&lt;tr&gt;&lt;br&gt;        &lt;td&gt;用户添加反馈&lt;/td&gt;&lt;br&gt;        &lt;td&gt;URL/common/my/addSuggest.do&lt;/td&gt;&lt;br&gt;        &lt;td&gt;baseId:用户Id&lt;br&gt;tokenId：用户token&lt;/td&gt; content： 反馈内容&lt;br&gt;        &lt;td&gt;“code”:”10000”&lt;br&gt;“message”:”success”&lt;br&gt;&lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;&lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;/td&gt;&lt;br&gt;        &lt;td&gt;&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;&lt;/table&gt;
+
+&lt;h3 id=&quot;修改交易密码&quot;&gt;&lt;a href=&quot;#修改交易密码&quot; class=&quot;headerlink&quot; title=&quot;修改交易密码&quot;&gt;&lt;/a&gt;修改交易密码&lt;/h3&gt;&lt;p&gt;接口说明：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;接口地址&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;http请求方式&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;/common/my/updatePassword&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;POST&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;修改交易、登录密码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;输入参数：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;参数&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;baseId&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;用户基本ID&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;tokenId&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Access Token&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;type&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;密码类型，1=登录密码，2=交易密码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;password&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;新密码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;返回JSON示例：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#10;  &amp;#34;code&amp;#34;: &amp;#34;10000&amp;#34;,&amp;#10;  &amp;#34;message&amp;#34;: &amp;#34;success&amp;#34;,&amp;#10;  &amp;#34;result&amp;#34;: &amp;#34;&amp;#34;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;返回参数说明：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;参数&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;注册登录，获取个人信息，修改密码，修改头像&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原型图地址&lt;/strong&gt;：&lt;a href=&quot;https://modao.cc/app/Oi1xxx1cunL76qacPCKr&quot;&gt;https://modao.cc/app/Oi1xxx1cunL76qacPCKr&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;服务器地址&lt;/strong&gt;：192.168.0.162&lt;br&gt;&lt;strong&gt;URL&lt;/strong&gt;：&lt;a href=&quot;http://192.168.0.162:8080/shangpin&quot;&gt;http://192.168.0.162:8080/shangpin&lt;/a&gt;&lt;br&gt;&lt;strong&gt;返回状态码说明&lt;/strong&gt;：&lt;br&gt;接口相关表：&lt;br&gt;t_doctor_authentication_apply  &lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>医护版API接口汇总</title>
