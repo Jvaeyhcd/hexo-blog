@@ -1,0 +1,1326 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 医护版API接口汇总 · Jvaeyhcd's Blog</title><meta name="description" content="医护版API接口汇总 - Jvaeyhcd"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/javeyhcd" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/Jvaeyhcd" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">医护版API接口汇总</h1><div class="post-time">Mar 2, 2016</div><div class="post-content"><h1 id="医护版API"><a href="#医护版API" class="headerlink" title="医护版API"></a>医护版API</h1><p>服务器地址：192.168.0.162<br>URL：<a href="http://192.168.0.162:8080/shangpin" target="_blank" rel="external">http://192.168.0.162:8080/shangpin</a><br>返回状态码说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34;status&#34;: &#123;&#10;    &#34;code&#34;: 200, &#10;     &#34;message&#34;: &#34;&#25104;&#21151;&#34;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h1><h2 id="首页-主页"><a href="#首页-主页" class="headerlink" title="首页-主页"></a>首页-主页</h2><h3 id="获取最新问诊"><a href="#获取最新问诊" class="headerlink" title="获取最新问诊"></a>获取最新问诊</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/home/getLatestInquiry</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">首页获取最新问诊</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#10;  &#123;&#10;    &#34;name&#34;: &#34;&#22995;&#21517;&#34;,&#10;    &#34;content&#34;: &#34;&#38382;&#39064;&#34;,&#10;    &#34;time&#34;: &#34;&#38382;&#35786;&#26102;&#38388;&#34;,&#10;    &#34;type&#34;: 1&#10;  &#125;&#10;]</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">问诊类型，1=图文，2=电话，3=视频</td>
+</tr>
+</tbody>
+</table>
+<h3 id="获取问诊中心列表"><a href="#获取问诊中心列表" class="headerlink" title="获取问诊中心列表"></a>获取问诊中心列表</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/home/getInquiryList</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">获取问诊中心列表</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">page</td>
+<td style="text-align:center">第几页</td>
+</tr>
+<tr>
+<td style="text-align:center">count</td>
+<td style="text-align:center">每页数量</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#10;  &#123;&#10;    &#34;name&#34;: &#34;&#22995;&#21517;&#34;,&#10;    &#34;headUrl&#34;: &#34;http://xxxx&#34;,&#10;    &#34;content&#34;: &#34;&#38382;&#39064;&#34;,&#10;    &#34;time&#34;: &#34;&#38382;&#35786;&#26102;&#38388;&#34;,&#10;    &#34;gender&#34;: &#34;M&#34;,&#10;    &#34;age&#34;: 28&#10;  &#125;&#10;]</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h1 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h1><h2 id="服务-首页"><a href="#服务-首页" class="headerlink" title="服务-首页"></a>服务-首页</h2><h3 id="获取服务首页信息"><a href="#获取服务首页信息" class="headerlink" title="获取服务首页信息"></a>获取服务首页信息</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/getMyServiceInfo</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">获取服务首页信息</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;headUrl&#34;: &#34;&#34;,&#10;  &#34;fansCount&#34;: &#34;&#34;,&#10;  &#34;hospital&#34;: &#34;&#25152;&#23646;&#21307;&#38498;&#34;,&#10;  &#34;serviceCount&#34;: &#34;&#25152;&#23646;&#31185;&#23460;&#34;,&#10;  &#34;volunteer&#34;: 1,&#10;  &#34;register&#34;: 1,&#10;  &#34;serviceItem&#34;: &#123;&#10;    &#34;text&#34;: 1,&#10;    &#34;voice&#34;: 0,&#10;    &#34;video&#34;: 1&#10;  &#125;,&#10;  &#34;privateDoctor&#34;: &#123;&#10;    &#34;status&#34;: 1,&#10;    &#34;text&#34;: 1,&#10;    &#34;voice&#34;: 0,&#10;    &#34;video&#34;: 1,&#10;    &#34;visit&#34;: 1,&#10;    &#34;course&#34;: 1,&#10;    &#34;monthly&#34;: 0&#10;  &#125;,&#10;  &#34;billInfo&#34;: &#123;&#10;    &#34;currentTitle&#34;: &#34;&#34;,&#10;    &#34;currentIncome&#34;: &#34;&#34;,&#10;    &#34;currentSettle&#34;: &#34;&#34;,&#10;    &#34;lastTitle&#34;: &#34;&#34;,&#10;    &#34;lastIncome&#34;: &#34;&#34;,&#10;    &#34;lastSettle&#34;: &#34;&#34;&#10;  &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h2 id="服务-患者管理"><a href="#服务-患者管理" class="headerlink" title="服务-患者管理"></a>服务-患者管理</h2><h3 id="获取我的粉丝列表"><a href="#获取我的粉丝列表" class="headerlink" title="获取我的粉丝列表"></a>获取我的粉丝列表</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/getMyFansList</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">page</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">count</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;pagenation&#34;: &#123;&#10;    &#34;page&#34;: 1,&#10;    &#34;count&#34;: 10,&#10;    &#34;total&#34;: 323&#10;  &#125;,&#10;  &#34;fansList&#34;: [&#10;    &#123;&#10;      &#34;id&#34;: &#34;1&#34;,&#10;      &#34;name&#34;: &#34;&#23435;&#32418;&#26757;&#34;,&#10;      &#34;headUrl&#34;: &#34;http://xxxxx&#34;&#10;    &#125;&#10;  ]&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="获取咨询人数列表"><a href="#获取咨询人数列表" class="headerlink" title="获取咨询人数列表"></a>获取咨询人数列表</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/getMyInquiryList</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">page</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">count</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;pagenation&#34;: &#123;&#10;    &#34;page&#34;: 1,&#10;    &#34;count&#34;: 10,&#10;    &#34;total&#34;: 323&#10;  &#125;,&#10;  &#34;fansList&#34;: [&#10;    &#123;&#10;      &#34;id&#34;: &#34;1&#34;,&#10;      &#34;title&#34;: &#34;&#23435;&#32418;&#26757;&#36141;&#20080;&#20102;&#8220;&#22270;&#25991;&#21672;&#35810;&#8221;&#26381;&#21153;&#34;,&#10;      &#34;headUrl&#34;: &#34;http://xxxxx&#34;,&#10;      &#34;createTime&#34;: &#34;&#36141;&#20080;&#26102;&#38388;&#34;&#10;    &#125;&#10;  ]&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="获得患者列表"><a href="#获得患者列表" class="headerlink" title="获得患者列表"></a>获得患者列表</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/getMyPatientList</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">page</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">count</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;pagenation&#34;: &#123;&#10;    &#34;page&#34;: 1,&#10;    &#34;count&#34;: 10,&#10;    &#34;total&#34;: 323&#10;  &#125;,&#10;  &#34;fansList&#34;: [&#10;    &#123;&#10;      &#34;id&#34;: &#34;1&#34;,&#10;      &#34;name&#34;: &#34;&#23435;&#32418;&#26757;&#34;,&#10;      &#34;headUrl&#34;: &#34;http://xxxxx&#34;,&#10;      &#34;gender&#34;: &#34;M&#34;,&#10;      &#34;age&#34;: 30,&#10;      &#34;lastTime&#34;: &#34;&#26368;&#21518;&#26381;&#21153;&#26102;&#38388;&#34;&#10;    &#125;&#10;  ]&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="获得患者用户主页"><a href="#获得患者用户主页" class="headerlink" title="获得患者用户主页"></a>获得患者用户主页</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/getPatientHome</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;id&#34;: 1,&#10;  &#34;name&#34;: &#34;&#22995;&#21517;&#34;,&#10;  &#34;gender&#34;: &#34;&#24615;&#21035;&#34;,&#10;  &#34;fansCount&#34;: 200,&#10;  &#34;isRealNameCertificated&#34;: 1,&#10;  &#34;age&#34;: &#34;&#34;,&#10;  &#34;height&#34;: &#34;&#34;,&#10;  &#34;weight&#34;: &#34;&#34;,&#10;  &#34;bloodGroup&#34;: &#34;&#34;,&#10;  &#34;hasDiabetes&#34;: 1,&#10;  &#34;hasHeartDisease&#34;: 1,&#10;  &#34;hasHyperglycemia&#34;: 1,&#10;  &#34;hasHyperlipemia&#34;: 1,&#10;  &#34;hasHypertension&#34;: 1,&#10;  &#34;anaphylactogen&#34;: &#34;&#34;,&#10;  &#34;memo&#34;: &#34;&#22791;&#27880;&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="获得患者咨询历史"><a href="#获得患者咨询历史" class="headerlink" title="获得患者咨询历史"></a>获得患者咨询历史</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/getPatientInquiryHistory</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;pagenation&#34;: &#123;&#10;    &#34;page&#34;: 1,&#10;    &#34;count&#34;: 10,&#10;    &#34;total&#34;: 323&#10;  &#125;,&#10;  &#34;fansList&#34;: [&#10;    &#123;&#10;      &#34;id&#34;: &#34;1&#34;,&#10;      &#34;title&#34;: &#34;&#23435;&#32418;&#26757;&#36141;&#20080;&#20102;&#8220;&#22270;&#25991;&#21672;&#35810;&#8221;&#26381;&#21153;&#34;,&#10;      &#34;headUrl&#34;: &#34;http://xxxxx&#34;,&#10;      &#34;createTime&#34;: &#34;&#36141;&#20080;&#26102;&#38388;&#34;&#10;    &#125;&#10;  ]&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="获得患者健康数据"><a href="#获得患者健康数据" class="headerlink" title="获得患者健康数据"></a>获得患者健康数据</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/getPatientHealthData</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">类型，1=检查数据，2=病例数据</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;pagenation&#34;: &#123;&#10;    &#34;page&#34;: 1,&#10;    &#34;count&#34;: 10,&#10;    &#34;total&#34;: 323&#10;  &#125;,&#10;  &#34;dataList&#34;: [&#10;    &#123;&#10;      &#34;title&#34;: &#34;&#26631;&#39064;&#34;,&#10;      &#34;content&#34;: &#34;&#20869;&#23481;&#34;,&#10;      &#34;createTime&#34;: &#34;2016-02-26 18:30&#34;,&#10;      &#34;imageList&#34;: [&#10;        &#34;http://xxx&#34;,&#10;        &#34;http://xxx&#34;&#10;      ]&#10;    &#125;&#10;  ]&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="修改患者的备注"><a href="#修改患者的备注" class="headerlink" title="修改患者的备注"></a>修改患者的备注</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/updatePatientRemark</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;code&#34;: &#34;10000&#34;,&#10;  &#34;message&#34;: &#34;success&#34;,&#10;  &#34;result&#34;: &#34;&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h2 id="服务-订单处理"><a href="#服务-订单处理" class="headerlink" title="服务-订单处理"></a>服务-订单处理</h2><h3 id="获取咨询订单列表"><a href="#获取咨询订单列表" class="headerlink" title="获取咨询订单列表"></a>获取咨询订单列表</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/getOrderList</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">服务类型,1=图文，2=电话，3=视频，4=义诊，5=挂号，6=私人医生图文，7=私人医生电话，8=私人医生视频，9=私人医生上门诊断，10=私人医生疗程服务，11=私人医生包月服务，100=私人医生服务</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;pagenation&#34;: &#123;&#10;    &#34;page&#34;: 1,&#10;    &#34;count&#34;: 10,&#10;    &#34;total&#34;: 323&#10;  &#125;,&#10;  &#34;orderList&#34;: [&#10;    &#123;&#10;      &#34;orderId&#34;: 1,&#10;      &#34;name&#34;: &#34;&#22995;&#21517;&#34;,&#10;      &#34;headUrl&#34;: &#34;http://xxx&#34;,&#10;      &#34;gender&#34;: &#34;M&#34;,&#10;      &#34;age&#34;: 30,&#10;      &#34;bookingTime&#34;: &#34;&#39044;&#32422;&#26102;&#38388;&#34;,&#10;      &#34;status&#34;: 2&#10;    &#125;&#10;  ]&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">status</td>
+<td style="text-align:center">订单状态，1=待支付，2=已支付，3=已完成，4=已取消</td>
+</tr>
+</tbody>
+</table>
+<h3 id="获取订单详情"><a href="#获取订单详情" class="headerlink" title="获取订单详情"></a>获取订单详情</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/getOrderDetail</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h2 id="服务-1"><a href="#服务-1" class="headerlink" title="服务"></a>服务</h2><h3 id="服务设置"><a href="#服务设置" class="headerlink" title="服务设置"></a>服务设置</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/updateBasicConfig</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">设置类型，1=图文，2=电话，3=视频，4=义诊，5=挂号，6=私人医生图文，7=私人医生电话，8=私人医生视频，9=私人医生上门诊断，10=私人医生疗程服务，11=私人医生包月服务，100=私人医生服务</td>
+</tr>
+<tr>
+<td style="text-align:center">state</td>
+<td style="text-align:center">服务开关状态，0=关闭，1=开启</td>
+</tr>
+<tr>
+<td style="text-align:center">price</td>
+<td style="text-align:center">价格</td>
+</tr>
+<tr>
+<td style="text-align:center">time</td>
+<td style="text-align:center">服务时间数组</td>
+</tr>
+<tr>
+<td style="text-align:center">volunteerCount</td>
+<td style="text-align:center">每天义诊次数，仅限type=4时</td>
+</tr>
+<tr>
+<td style="text-align:center">serviceArea</td>
+<td style="text-align:center">私人医生上门服务区域范围</td>
+</tr>
+<tr>
+<td style="text-align:center">serviceIntroduction</td>
+<td style="text-align:center">私人医生上门服务介绍</td>
+</tr>
+<tr>
+<td style="text-align:center">serviceTime</td>
+<td style="text-align:center">私人医生上门服务时间说明</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;code&#34;: &#34;10000&#34;,&#10;  &#34;message&#34;: &#34;success&#34;,&#10;  &#34;result&#34;: &#34;&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="获取我的疗程-包月服务类型列表"><a href="#获取我的疗程-包月服务类型列表" class="headerlink" title="获取我的疗程/包月服务类型列表"></a>获取我的疗程/包月服务类型列表</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/getMyServiceList</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">服务类型，1=疗程服务，2=包月服务</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;pagenation&#34;: &#123;&#10;    &#34;page&#34;: 1,&#10;    &#34;count&#34;: 10,&#10;    &#34;total&#34;: 323&#10;  &#125;,&#10;  &#34;serviceList&#34;: [&#10;    &#123;&#10;      &#34;id&#34;: 1,&#10;      &#34;name&#34;: &#34;&#21517;&#31216;&#34;,&#10;      &#34;price&#34;: 120,&#10;      &#34;time&#34;: 5,&#10;      &#34;orderCount&#34;: 11&#10;    &#125;&#10;  ]&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="获取我的疗程-包月服务详情"><a href="#获取我的疗程-包月服务详情" class="headerlink" title="获取我的疗程/包月服务详情"></a>获取我的疗程/包月服务详情</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/getMyCourseDetail</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">serviceId</td>
+<td style="text-align:center">服务ID</td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">服务类型，1=疗程服务，2=包月服务</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;id&#34;: 1,&#10;  &#34;name&#34;: &#34;&#21517;&#31216;&#34;,&#10;  &#34;price&#34;: 120,&#10;  &#34;time&#34;: 5,&#10;  &#34;introduction&#34;: &#34;&#26381;&#21153;&#20171;&#32461;&#34;,&#10;  &#34;area&#34;: &#34;&#26381;&#21153;&#21306;&#22495;&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="删除我的疗程-包月服务"><a href="#删除我的疗程-包月服务" class="headerlink" title="删除我的疗程/包月服务"></a>删除我的疗程/包月服务</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/deleteMyServiceType</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">serviceId</td>
+<td style="text-align:center">服务ID</td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">服务类型，1=疗程服务，2=包月服务</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;code&#34;: &#34;10000&#34;,&#10;  &#34;message&#34;: &#34;success&#34;,&#10;  &#34;result&#34;: &#34;&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="新建我的疗程-包月服务"><a href="#新建我的疗程-包月服务" class="headerlink" title="新建我的疗程/包月服务"></a>新建我的疗程/包月服务</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/service/addMyServiceType</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">类型，1=疗程服务，2=包月服务</td>
+</tr>
+<tr>
+<td style="text-align:center">name</td>
+<td style="text-align:center">服务名称</td>
+</tr>
+<tr>
+<td style="text-align:center">price</td>
+<td style="text-align:center">服务价格</td>
+</tr>
+<tr>
+<td style="text-align:center">time</td>
+<td style="text-align:center">服务时间</td>
+</tr>
+<tr>
+<td style="text-align:center">introduction</td>
+<td style="text-align:center">服务介绍</td>
+</tr>
+<tr>
+<td style="text-align:center">area</td>
+<td style="text-align:center">服务范围</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;code&#34;: &#34;10000&#34;,&#10;  &#34;message&#34;: &#34;success&#34;,&#10;  &#34;result&#34;: &#34;&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h2 id="服务-其他服务"><a href="#服务-其他服务" class="headerlink" title="服务-其他服务"></a>服务-其他服务</h2><h3 id="获取主页预览"><a href="#获取主页预览" class="headerlink" title="获取主页预览"></a>获取主页预览</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h1 id="我的"><a href="#我的" class="headerlink" title="我的"></a>我的</h1><h2 id="我的-主页"><a href="#我的-主页" class="headerlink" title="我的-主页"></a>我的-主页</h2><h3 id="获取“我的”主页信息"><a href="#获取“我的”主页信息" class="headerlink" title="获取“我的”主页信息"></a>获取“我的”主页信息</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h2 id="我的-个人资料"><a href="#我的-个人资料" class="headerlink" title="我的-个人资料"></a>我的-个人资料</h2><h3 id="修改个人资料"><a href="#修改个人资料" class="headerlink" title="修改个人资料"></a>修改个人资料</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h2 id="我的-上品认证"><a href="#我的-上品认证" class="headerlink" title="我的-上品认证"></a>我的-上品认证</h2><h4 id="提交医护认证信息"><a href="#提交医护认证信息" class="headerlink" title="提交医护认证信息"></a>提交医护认证信息</h4><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/my/submitDoctorCertification</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">提交医护资格认证信息</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">doctorName</td>
+<td style="text-align:center">医生姓名</td>
+</tr>
+<tr>
+<td style="text-align:center">hospital</td>
+<td style="text-align:center">所属医院</td>
+</tr>
+<tr>
+<td style="text-align:center">department</td>
+<td style="text-align:center">所属科室</td>
+</tr>
+<tr>
+<td style="text-align:center">positionTitle</td>
+<td style="text-align:center">职称</td>
+</tr>
+<tr>
+<td style="text-align:center">departmentPhone</td>
+<td style="text-align:center">科室电话</td>
+</tr>
+<tr>
+<td style="text-align:center">introduction</td>
+<td style="text-align:center">个人介绍</td>
+</tr>
+<tr>
+<td style="text-align:center">photo</td>
+<td style="text-align:center">证件照片</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;code&#34;: &#34;10000&#34;,&#10;  &#34;message&#34;: &#34;success&#34;,&#10;  &#34;result&#34;: &#34;&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h4 id="获取医护认证信息"><a href="#获取医护认证信息" class="headerlink" title="获取医护认证信息"></a>获取医护认证信息</h4><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/my/getDoctorCertification</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">id</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;id&#34;: 1,&#10;  &#34;doctorName&#34;: &#34;&#21307;&#29983;&#22995;&#21517;&#34;,&#10;  &#34;hospital&#34;: &#34;&#25152;&#23646;&#21307;&#38498;&#34;,&#10;  &#34;department&#34;: &#34;&#25152;&#23646;&#31185;&#23460;&#34;,&#10;  &#34;positionTitle&#34;: &#34;&#32844;&#31216;&#34;,&#10;  &#34;departmentPhone&#34;: &#34;&#31185;&#23460;&#30005;&#35805;&#34;,&#10;  &#34;introduction&#34;: &#34;&#20010;&#20154;&#20171;&#32461;&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<h2 id="我的-用户评价"><a href="#我的-用户评价" class="headerlink" title="我的-用户评价"></a>我的-用户评价</h2><h3 id="获取评价列表"><a href="#获取评价列表" class="headerlink" title="获取评价列表"></a>获取评价列表</h3><p>接口说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">接口地址</th>
+<th style="text-align:center">http请求方式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/doctor/my/getMyCommentList</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+<p>输入参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">token</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">page</td>
+</tr>
+<tr>
+<td style="text-align:center">count</td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">评价类型，1=不满意，2=满意</td>
+</tr>
+</tbody>
+</table>
+<p>返回JSON示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;pagenation&#34;: &#123;&#10;    &#34;page&#34;: 1,&#10;    &#34;count&#34;: 10,&#10;    &#34;total&#34;: 323&#10;  &#125;,&#10;  &#34;commentList&#34;: [&#10;    &#123;&#10;      &#34;username&#34;: &#34;138****6058&#34;,&#10;      &#34;time&#34;: &#34;2015-12-29 12:00&#34;,&#10;      &#34;title&#34;: &#34;&#38750;&#24120;&#22909;&#65292;&#35874;&#35874;&#34;,&#10;      &#34;serviceName&#34;: &#34;&#22270;&#25991;&#38382;&#35786;&#34;,&#10;      &#34;content&#34;: &#34;&#20869;&#23481;&#34;,&#10;      &#34;rating&#34;: 1&#10;    &#125;&#10;  ]&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回参数说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">parameter</td>
+<td style="text-align:center">comment</td>
+</tr>
+</tbody>
+</table>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/03/02/用户版接口汇总/" class="next">NEXT</a></div><div data-thread-key="2016/03/02/医护版API接口汇总/" data-title="医护版API接口汇总" data-url="http://jvaeyhcd.cc/2016/03/02/医护版API接口汇总/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"jvaeyhcd"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2015 - 2016 <a href="http://jvaeyhcd.cc">Jvaeyhcd</a>, unless otherwise noted.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?a36e15d9e2adec9a21fcdd9f686b1ed2";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>
