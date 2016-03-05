@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> App Store上线完整流程 · Jvaeyhcd's Blog</title><meta name="description" content="App Store上线完整流程 - Jvaeyhcd"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/javeyhcd" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/Jvaeyhcd" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">App Store上线完整流程</h1><div class="post-time">Mar 5, 2016</div><div class="post-content"><p>经过多年的iOS开发，到现在一共上线了6款App到App Store。从iOS6到iOS9，每一次苹果系统的更新，App Store的上线流程都会有点相应的改变。对于上线App到App Store的这个流程现在已经是得心应手，现在利用周末这个闲暇的时间纪录一下完整的上传App到App Store的流程。</p>
+<h2 id="预先准备"><a href="#预先准备" class="headerlink" title="预先准备"></a>预先准备</h2><p>在你开始将程序提交到App Store之前，您需要有一个开发者帐号、一个App ID、一个有效的证书以及一个有效的Provisioning Profiles。</p>
+<h6 id="Step-1-申请开发者帐号"><a href="#Step-1-申请开发者帐号" class="headerlink" title="Step 1:申请开发者帐号"></a>Step 1:申请开发者帐号</h6><p>如果您现在已有开发者帐号，那么恭喜您，您可以直接跳过此步骤直接进入下一步骤。苹果开发者帐号分为三种：个人开发者帐号、公司帐号、企业帐号。</p>
+<p><strong>个人帐号（Individual）:</strong></p>
+<ul>
+<li>费用：99美元一年</li>
+<li>App Store上架：是</li>
+<li>最大uuid支持数：100</li>
+<li>协作人数：1人（开发者自己）</li>
+</ul>
+<p>说明：“个人”开发者可以申请升级“公司”，可以通过拨打苹果公司客服电话（400 6701 855）来咨询和办理。</p>
+<p><strong> 公司帐号（Company）: </strong></p>
+<ul>
+<li>费用：99美元一年</li>
+<li>App Store上架：是</li>
+<li>最大uuid支持数：100</li>
+<li>协作人数：多人</li>
+</ul>
+<p>说明：允许多个开发者进行协作开发，比个人多一些帐号管理的设置，可设置多个Apple ID，分4种管理级别的权限。申请时需要填写公司的邓白氏编码（DUNS Number）。</p>
+<p><strong> 企业帐号（Enterprise）: </strong></p>
+<ul>
+<li>费用：299美元一年</li>
+<li>App Store上架：否</li>
+<li>最大uuid支持数：不限制</li>
+<li>协作人数：多人</li>
+</ul>
+<p>说明：需要注意的是，企业账号开发的应用不能上线App Store，适合那些不希望公开发布应用的企业。同样，申请时也需要公司的邓白氏编码（DUNS Number）。</p>
+<h6 id="Step-2-App-ID（应用ID）"><a href="#Step-2-App-ID（应用ID）" class="headerlink" title="Step 2:App ID（应用ID）"></a>Step 2:App ID（应用ID）</h6><p>App ID是识别不同应用程序的唯一标示符。每个app都需要一个App ID或者app标识。目前有两种类型的App标识：一个是精确的App ID（explicit App ID），一个是通配符App ID（wildcard App ID）。使用通配符的App ID可以用来构建和安装多个程序。尽管通配符App ID非常方便，但是一个精确的App ID也是需要的，尤其是当App使用iCloud 或者使用其他iOS功能的时候，比如Game Center、Push Notifications或者IAP。</p>
+<h6 id="Step-3-Distribution-Certificate-发布证书"><a href="#Step-3-Distribution-Certificate-发布证书" class="headerlink" title="Step 3:Distribution Certificate(发布证书)"></a>Step 3:Distribution Certificate(发布证书)</h6><p>iOS应用都有一个安全证书用于验证开发者身份和签名。为了可以向App Store提交app，你需要创建一个iOS provisioning profile 。首先需要创建一个distribution certificate（发布证书），过程类似于创建一个development certificate（开发证书）。如果你已经在实体设备上测试你的App，那么你对创建development certificate就已经很熟悉了。</p>
+<h6 id="Step-4-Provisioning-Profile-配置文件"><a href="#Step-4-Provisioning-Profile-配置文件" class="headerlink" title="Step 4:Provisioning Profile(配置文件)"></a>Step 4:Provisioning Profile(配置文件)</h6><p>一旦你创建了App ID和distribution certificate，你可以创建一个iOS provisioning profile以方便在App Store中销售你的App。Provisioning Profile主要分为开发配置文件和发布配置文件，发布配置文件中又分App Store配置文件和Ad Hoc配置文件。App Store类型的Provisioning Profile顾名思义是用于发布到App Store的配置文件。Ad Hoc的Provisioning Profile配置文件是用于发布应用内的测试包的，在应用还没有上线的时候需要发ipa给客户安装的时候需要用到，只需要获取到客户手机的UDID然后生成相应的Ad Hoc类型的Provisioning Profile文件然后打包发布即可。</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/03/05/RESideMenu在所有界面都会侧滑的问题解决办法/" class="next">NEXT</a></div><div data-thread-key="2016/03/05/App-Store上线完整流程/" data-title="App Store上线完整流程" data-url="http://jvaeyhcd.cc/2016/03/05/App-Store上线完整流程/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"jvaeyhcd"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2015 - 2016 <a href="http://jvaeyhcd.cc">Jvaeyhcd</a>, unless otherwise noted.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?a36e15d9e2adec9a21fcdd9f686b1ed2";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>
