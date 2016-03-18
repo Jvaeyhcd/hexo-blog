@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jvaeyhcd.cc/"/>
-  <updated>2016-03-07T06:18:15.000Z</updated>
+  <updated>2016-03-18T08:08:24.000Z</updated>
   <id>http://jvaeyhcd.cc/</id>
   
   <author>
@@ -16,13 +16,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>iOS几种不同传值方式</title>
+    <link href="http://jvaeyhcd.cc/2016/03/17/iOS%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E4%BC%A0%E5%80%BC%E6%96%B9%E5%BC%8F/"/>
+    <id>http://jvaeyhcd.cc/2016/03/17/iOS几种不同传值方式/</id>
+    <published>2016-03-17T07:17:32.000Z</published>
+    <updated>2016-03-18T08:08:24.000Z</updated>
+    
+    <content type="html">&lt;p&gt;关于iOS的传值方式我所知道的一共有一下6种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;属性传值&lt;/li&gt;
+&lt;li&gt;通知传值&lt;/li&gt;
+&lt;li&gt;代理传值&lt;/li&gt;
+&lt;li&gt;block传值&lt;/li&gt;
+&lt;li&gt;单例传值&lt;/li&gt;
+&lt;li&gt;NSUserDefault保存数据传值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上六种方式都可以实现iOS不同对象之间的传值，但是针对不同的情况，我们会采取不同的传值方式。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于iOS的传值方式我所知道的一共有一下6种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;属性传值&lt;/li&gt;
+&lt;li&gt;通知传值&lt;/li&gt;
+&lt;li&gt;代理传值&lt;/li&gt;
+&lt;li&gt;block传值&lt;/li&gt;
+&lt;li&gt;单例传值&lt;/li&gt;
+&lt;li&gt;NSUserDefault保存数据传值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上六种方式都可以实现iOS不同对象之间的传值，但是针对不同的情况，我们会采取不同的传值方式。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>App Store上线完整流程</title>
     <link href="http://jvaeyhcd.cc/2016/03/05/App-Store%E4%B8%8A%E7%BA%BF%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B/"/>
     <id>http://jvaeyhcd.cc/2016/03/05/App-Store上线完整流程/</id>
     <published>2016-03-05T09:25:33.000Z</published>
-    <updated>2016-03-07T06:18:15.000Z</updated>
+    <updated>2016-03-18T08:00:18.000Z</updated>
     
-    <content type="html">&lt;p&gt;经过多年的iOS开发，到现在一共上线了6款App到App Store。从iOS6到iOS9，每一次苹果系统的更新，App Store的上线流程都会有点相应的改变。对于上线App到App Store的这个流程现在已经是得心应手，现在利用周末这个闲暇的时间纪录一下完整的上传App到App Store的流程。&lt;/p&gt;
+    <content type="html">&lt;p&gt;经过一年的iOS开发，到现在一共上线了6款App到App Store。从iOS6到iOS9，每一次苹果系统的更新，App Store的上线流程都会有点相应的改变。对于上线App到App Store的这个流程现在已经是得心应手，现在利用周末这个闲暇的时间纪录一下完整的上传App到App Store的流程。&lt;/p&gt;
 &lt;h2 id=&quot;预先准备&quot;&gt;&lt;a href=&quot;#预先准备&quot; class=&quot;headerlink&quot; title=&quot;预先准备&quot;&gt;&lt;/a&gt;预先准备&lt;/h2&gt;&lt;p&gt;在你开始将程序提交到App Store之前，您需要有一个开发者帐号、一个App ID、一个有效的证书以及一个有效的Provisioning Profiles。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h6 id=&quot;Step-1-申请开发者帐号&quot;&gt;&lt;a href=&quot;#Step-1-申请开发者帐号&quot; class=&quot;headerlink&quot; title=&quot;Step 1:申请开发者帐号&quot;&gt;&lt;/a&gt;Step 1:申请开发者帐号&lt;/h6&gt;&lt;p&gt;如果您现在已有开发者帐号，那么恭喜您，您可以直接跳过此步骤直接进入下一步骤。苹果开发者帐号分为三种：个人开发者帐号、公司帐号、企业帐号。&lt;/p&gt;
@@ -74,7 +111,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;经过多年的iOS开发，到现在一共上线了6款App到App Store。从iOS6到iOS9，每一次苹果系统的更新，App Store的上线流程都会有点相应的改变。对于上线App到App Store的这个流程现在已经是得心应手，现在利用周末这个闲暇的时间纪录一下完整的上传App到App Store的流程。&lt;/p&gt;
+      &lt;p&gt;经过一年的iOS开发，到现在一共上线了6款App到App Store。从iOS6到iOS9，每一次苹果系统的更新，App Store的上线流程都会有点相应的改变。对于上线App到App Store的这个流程现在已经是得心应手，现在利用周末这个闲暇的时间纪录一下完整的上传App到App Store的流程。&lt;/p&gt;
 &lt;h2 id=&quot;预先准备&quot;&gt;&lt;a href=&quot;#预先准备&quot; class=&quot;headerlink&quot; title=&quot;预先准备&quot;&gt;&lt;/a&gt;预先准备&lt;/h2&gt;&lt;p&gt;在你开始将程序提交到App Store之前，您需要有一个开发者帐号、一个App ID、一个有效的证书以及一个有效的Provisioning Profiles。&lt;/p&gt;
     
     </summary>
