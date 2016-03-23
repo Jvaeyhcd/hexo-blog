@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Objective-C常用关键字的使用与区别 · Jvaeyhcd's Blog</title><meta name="description" content="Objective-C常用关键字的使用与区别 - Jvaeyhcd"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/javeyhcd" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/Jvaeyhcd" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Objective-C常用关键字的使用与区别</h1><div class="post-time">Mar 23, 2016</div><div class="post-content"><p>虽然接触iOS已经很久了，但是对于Objective-C中常见的关键字还经常处于傻傻分不清楚的状态。遇到最多的情况就是在申明一个属性的时候，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@propperty (?,?) ?*!;&#10;...............&#10;............&#10;.........&#10;......</span><br></pre></td></tr></table></figure></p>
+<p>就是这里，每次在这里的时候都不知道，怎么去申明他的关键字。这个看起来简单（弄明白了确实也是很简单的），但是如果没有系统的去区分这些关键字很容易混淆。<br>所以今天通过自己的一些积累以及在网上总结的一些资料，给自己总结一下，主要作为自己对iOS学习的一个小小的总结。</p>
+<p>OC中常见的关键字有copy,assign,strong,retain,weak,readonly,nonatomic,atomic。<br>这篇文章主要从这几个关键字的含义和简单的使用以及iOS开发中使用的时候的一些区别来进行总结。（看似简单但却非常重要）</p>
+<a id="more"></a>
+<h6 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h6><ul>
+<li><p><strong>copy</strong> 创建一个索引计数为1的对象,释放掉原来的对象。复制内容（深复制），如果调用copy的是数组，则为指针复制（浅复制），仅仅复制子元素的指针。copy常常用来修饰NSString，NSMutableArray和Block。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property  (nonatomic,copy) NSString  *title;&#10;@property (nonatomic, copy) NSMutableArray *myArray;&#10;@property (nonatomic, copy) void(^myBlock)();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>assign</strong> 简单的赋值，不会更改索引计数，主要是对基本数据类型使用。eg：（NSInteger，CGFloat和C语言的int,float, double,char等）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, assign) int n;&#10;@property (nonatomic, assign) BOOL isOK;&#10;@property (nonatomic, assign) CGFloat width;&#10;@property (nonatomic, assign) CGPoint height;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>retain</strong><br>释放旧的对象，将旧对象的值赋予输入对象并将输入对象的索引计数＋1，主要应用与NSObject与其子类中。 retain是指针复制（浅复制），引用计数加1，而不会导致内容被复制。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property  (nonatomic, retain) UIColor *myColor;&#10;&#10;- (void)setName:(NSString *)newName &#123;&#10;    [newName retain];&#10;    [name release];  &#10;    name = newName;  &#10;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>strong</strong><br>相当于retain，strong在ARC环境下为默认属性类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic,readwrite,strong) NSString *title;&#10;@property (strong, nonatomic) UIViewController *viewController;&#10;@property (nonatomic,  strong) id childObject;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>weak</strong><br>取代之前的assign，对象销毁之后会自动置为nil，防止野指针。<br>assign不能自动置为nil，需要手动置为nil。<br>delegate基本总是使用weak，以防止循环引用。特殊情况是，如果希望在dealloc中调用delegate的某些方法进行释放，此时如果使用weak将引起异常，因为此时已经是nil了，那么采用assign更为合适。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property  (weak, nonatomic) IBOutlet UIButton *myButton;//&#22788;&#20110;&#26368;&#39030;&#23618;&#30340;IBOutlet&#24212;&#35813;&#20026;strong&#10;@property (nonatomic, weak) id parentObject;&#10;@property(nonatomic, readwrite, weak) id  &#60;MyDelegate&#62; delegate;&#10;@property (nonatomic, weak) NSObject &#60;SomeDelegate&#62; *delegate;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>readonly</strong><br>此标记说明属性是只读的，默认的标记是读写，如果你指定了只读，在@implementation中只需要一个读取器。或者如果你使用@synthesize关键字，也是有读取器方法被解析。而且如果你试图使用点操作符为属性赋值，你将得到一个编译错误。</p>
+</li>
+<li><p><strong>readwrite</strong><br>此标记说明属性会被当成读写的，这也是默认属性。设置器和读取器都需要在@implementation中实现。如果使用@synthesize关键字，读取器和设置器都会被解析。</p>
+</li>
+</ul>
+<h6 id="使用区别"><a href="#使用区别" class="headerlink" title="使用区别"></a>使用区别</h6><ul>
+<li><strong>copy和retain</strong></li>
+</ul>
+<ol>
+<li>copy其实是建立了一个相同的对象，而retain不是；</li>
+<li>copy是内容拷贝，retain是指针拷贝；</li>
+<li>copy是内容的拷贝 ,对于像NSString的确是这样，但是如果copy的是一个NSArray呢?这时只是copy了指向array中相对应元素的指针.这便是所谓的”浅复制”.</li>
+<li>copy的情况：NSString *newPt = [pt copy];<br>此时会在堆上重新开辟一段内存存放@”abc” 比如0X1122 内容为@”abc 同时会在栈上为newPt分配空间 比如地址：0Xaacc 内容为0X1122 因此retainCount增加1供newPt来管理0X1122这段内存；</li>
+</ol>
+<ul>
+<li><strong>assign与retain</strong></li>
+</ul>
+<ol>
+<li>assign: 简单赋值，不更改索引计数；</li>
+<li>assign的情况：NSString *newPt = [pt assing];<br>此时newPt和pt完全相同 地址都是0Xaaaa 内容为0X1111 即newPt只是pt的别名，对任何一个操作就等于对另一个操作， 因此retainCount不需要增加；</li>
+<li>assign就是直接赋值；</li>
+<li>retain使用了引用计数，retain引起引用计数加1, release引起引用计数减1，当引用计数为0时，dealloc函数被调用，内存被回收；</li>
+<li>retain的情况：NSString *newPt = [pt retain];<br>此时newPt的地址不再为0Xaaaa，可能为0Xaabb 但是内容依然为0X1111。 因此newPt 和 pt 都可以管理”abc”所在的内存，因此 retainCount需要增加1；</li>
+</ol>
+<ul>
+<li><strong>readonly与readwrite</strong></li>
+</ul>
+<ol>
+<li>readonly：只产生简单的getter,没有setter。</li>
+<li>readwrite：同时产生setter\getter方法</li>
+</ol>
+<ul>
+<li><strong>nonatomic与atomic</strong></li>
+</ul>
+<ol>
+<li>nonatomic非原子性访问，对属性赋值的时候不加锁，多线程并发访问会提高性能。如果不加此属性，则默认是两个访问方法都为原子型事务访问；</li>
+<li>成员变量的@property属性时，默认为atomic，提供多线程安全。在多线程环境下，原子操作是必要的，否则有可能引起错误的结果<br>weak and strong property (强引用和弱引用的区别)</li>
+<li>比如setter函数里面改变两个成员变量，如果你用nonatomic的话，getter可能会取到只更改了其中一个变量时候的状态，这样取到的东西会有问题，就是不完整的。当然如果不需要多线程支持的话，用nonatomic就够了，因为不涉及到线程锁的操作，所以它执行率相对快些。</li>
+<li>atomic的意思就是setter/getter这个函数，是一个原语操作。如果有多个线程同时调用setter的话，不会出现某一个线程执行完setter全部语句之前，另一个线程开始执行setter情况，相当于函数头尾加了锁一样，可以保证数据的完整性。nonatomic不保证setter/getter的原语行，所以你可能会取到不完整的东西。因此，在多线程的环境下原子操作是非常必要的，否则有可能会引起错误的结果。</li>
+</ol>
+<ul>
+<li><strong>weak与strong</strong></li>
+</ul>
+<ol>
+<li>weak 和 strong 属性只有在你打开ARC时才会被要求使用，这时你是不能使用retain release autorelease 操作的，因为ARC会自动为你做好这些操作，但是你需要在对象属性上使用weak 和strong,其中strong就相当于retain属性，而weak相当于assign。</li>
+<li>只有一种情况你需要使用weak（默认是strong），就是为了避免retain cycles（就是父类中含有子类{父类retain了子类}，子类中又调用了父类{子类又retain了父类}，这样都无法release）</li>
+<li>声明为weak的指针，指针指向的地址一旦被释放，这些指针都将被赋值为nil。这样的好处能有效的防止野指针。</li>
+</ol>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/03/17/iOS几种不同传值方式/" class="next">NEXT</a></div><div data-thread-key="2016/03/23/Objective-C常用关键字的使用与区别/" data-title="Objective-C常用关键字的使用与区别" data-url="http://jvaeyhcd.cc/2016/03/23/Objective-C常用关键字的使用与区别/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"jvaeyhcd"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2016 <a href="http://jvaeyhcd.cc">Jvaeyhcd</a>, unless otherwise noted.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?a36e15d9e2adec9a21fcdd9f686b1ed2";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>
