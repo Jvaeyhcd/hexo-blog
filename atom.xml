@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jvaeyhcd.cc/"/>
-  <updated>2016-03-23T03:55:43.000Z</updated>
+  <updated>2016-03-26T08:51:41.000Z</updated>
   <id>http://jvaeyhcd.cc/</id>
   
   <author>
@@ -14,6 +14,66 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS UIWebView简单使用</title>
+    <link href="http://jvaeyhcd.cc/2016/03/26/iOS-UIWebView%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+    <id>http://jvaeyhcd.cc/2016/03/26/iOS-UIWebView简单使用/</id>
+    <published>2016-03-26T07:44:12.000Z</published>
+    <updated>2016-03-26T08:51:41.000Z</updated>
+    
+    <content type="html">&lt;p&gt;UIVebView可以帮你在App中创建一个网页浏览器，来加载一些网页展示页面。现在我们可能会看到很多的app中或多或多或少都有嵌入一些h5的页面，对于一些复杂的页面有h5来展示时一种不错的办法。&lt;/p&gt;
+&lt;p&gt;下面我想简单记录一下UIWebView的简单使用。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建UIWebView&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CGRect bouds = [[UIScreen manScreen]applicationFrame];  &amp;#10;UIWebView* webView = [[UIWebView alloc]initWithFrame:bounds];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;设置相关属性&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;webView.scalespageToFit = YES;&amp;#9;    //&amp;#33258;&amp;#21160;&amp;#23545;&amp;#39029;&amp;#38754;&amp;#36827;&amp;#34892;&amp;#32553;&amp;#25918;&amp;#20197;&amp;#36866;&amp;#24212;&amp;#23631;&amp;#24149;  &amp;#10;webView.detectsPhoneNumbers = YES;  //&amp;#33258;&amp;#21160;&amp;#26816;&amp;#27979;&amp;#32593;&amp;#39029;&amp;#19978;&amp;#30340;&amp;#30005;&amp;#35805;&amp;#21495;&amp;#30721;&amp;#65292;&amp;#21333;&amp;#20987;&amp;#21487;&amp;#20197;&amp;#25320;&amp;#25171;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;显示UIWebView到UIViewController上&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[self.view addSubview:webView];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;加载内容&lt;/p&gt;
+&lt;p&gt; 加载一个完整的网页的内容&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSURL* url = [NSURL URLWithString:@&amp;#34;http://www.youku.com&amp;#34;];//&amp;#21019;&amp;#24314;URL  &amp;#10;NSURLRequest* request = [NSURLRequest requestWithURL:url]; //&amp;#21019;&amp;#24314;NSURLRequest  &amp;#10;[webView loadRequest:request];                             //&amp;#21152;&amp;#36733;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 加载本地网页资源&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSURL* url = [NSURL   fileURLWithPath:filePath];          //&amp;#21019;&amp;#24314;URL  &amp;#10;NSURLRequest* request = [NSURLRequest requestWithURL:url];//&amp;#21019;&amp;#24314;NSURLRequest  &amp;#10;[webView loadRequest:request];                            //&amp;#21152;&amp;#36733;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 加载带标签的htmlString，你可以提供一个基础URL,来指导UIWebView对象如何跟随链加载远程资源&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[self.webContentView loadHTMLString:@&amp;#34;&amp;#60;a&amp;#62;hahhaha&amp;#60;/a&amp;#62;&amp;#34; baseURL:nil];//&amp;#26174;&amp;#31034;&amp;#24102;&amp;#26631;&amp;#31614;&amp;#30340;&amp;#23383;&amp;#31526;&amp;#20018;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;导航&lt;/p&gt;
+&lt;p&gt; UIWebView内部会管理浏览器的导航动作，通过goForward和goBack方法你可以控制前进与后退动作&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[webView goBack];          //&amp;#21518;&amp;#36864;&amp;#10;[webView goForward];       //&amp;#21069;&amp;#36827;&amp;#10;[webView reload];          //&amp;#37325;&amp;#36733;  &amp;#10;[webView stopLoading];     //&amp;#21462;&amp;#28040;&amp;#36733;&amp;#20837;&amp;#20869;&amp;#23481;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;UIWebViewDelegate委托代理&lt;/p&gt;
+&lt;p&gt; UIWebViewDelegate的一组代理方法在特定时间会得到通知，要使用这些方法必须先设定webView的委托&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;webView.delegate = self;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 具体的一些委托方法有&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/**&amp;#10; *  &amp;#24403;&amp;#32593;&amp;#39029;&amp;#35270;&amp;#22270;&amp;#34987;&amp;#25351;&amp;#31034;&amp;#36733;&amp;#20837;&amp;#20869;&amp;#23481;&amp;#32780;&amp;#24471;&amp;#21040;&amp;#36890;&amp;#30693;&amp;#12290;&amp;#24212;&amp;#24403;&amp;#36820;&amp;#22238;YES&amp;#65292;&amp;#36825;&amp;#26679;&amp;#20250;&amp;#36827;&amp;#34892;&amp;#21152;&amp;#36733;&amp;#10; *  &amp;#36890;&amp;#36807;&amp;#23548;&amp;#33322;&amp;#31867;&amp;#22411;&amp;#21442;&amp;#25968;&amp;#21487;&amp;#20197;&amp;#24471;&amp;#21040;&amp;#35831;&amp;#27714;&amp;#21457;&amp;#36215;&amp;#30340;&amp;#21407;&amp;#22240;&amp;#65292;&amp;#21487;&amp;#20197;&amp;#26159;&amp;#20197;&amp;#19979;&amp;#20219;&amp;#24847;&amp;#20540;&amp;#65306;&amp;#10; *  UIWebViewNavigationTypeLinkClicked&amp;#10; *  UIWebViewNavigationTypeFormSubmitted&amp;#10; *  UIWebViewNavigationTypeBackForward&amp;#10; *  UIWebViewNavigationTypeReload&amp;#10; *  UIWebViewNavigationTypeFormResubmitted&amp;#10; *  UIWebViewNavigationTypeOther&amp;#10; */&amp;#10;-(BOOL)webView:(UIWebView*)webView &amp;#10;shouldStartLoadWithRequest:(NSURLRequest*) reuqest &amp;#10;navigationType:(UIWebViewNavigationType)navigationType;  &amp;#10;&amp;#10;//&amp;#24403;&amp;#32593;&amp;#39029;&amp;#35270;&amp;#22270;&amp;#24050;&amp;#32463;&amp;#24320;&amp;#22987;&amp;#21152;&amp;#36733;&amp;#19968;&amp;#20010;&amp;#35831;&amp;#27714;&amp;#21518;&amp;#65292;&amp;#24471;&amp;#21040;&amp;#36890;&amp;#30693;&amp;#12290;&amp;#10;-(void)webViewDidStartLoad:(UIWebView*)webView;&amp;#10;&amp;#10;//&amp;#24403;&amp;#32593;&amp;#39029;&amp;#35270;&amp;#22270;&amp;#32467;&amp;#26463;&amp;#21152;&amp;#36733;&amp;#19968;&amp;#20010;&amp;#35831;&amp;#27714;&amp;#20043;&amp;#21518;&amp;#65292;&amp;#24471;&amp;#21040;&amp;#36890;&amp;#30693;&amp;#12290; &amp;#10;-(void)webViewDidFinishLoad:(UIWebView*)webView;&amp;#10;&amp;#10;//&amp;#24403;&amp;#22312;&amp;#35831;&amp;#27714;&amp;#21152;&amp;#36733;&amp;#20013;&amp;#21457;&amp;#29983;&amp;#38169;&amp;#35823;&amp;#26102;&amp;#65292;&amp;#24471;&amp;#21040;&amp;#36890;&amp;#30693;&amp;#12290;&amp;#20250;&amp;#25552;&amp;#20379;&amp;#19968;&amp;#20010;NSSError&amp;#23545;&amp;#35937;&amp;#65292;&amp;#20197;&amp;#26631;&amp;#35782;&amp;#25152;&amp;#21457;&amp;#29983;&amp;#38169;&amp;#35823;&amp;#31867;&amp;#22411;&amp;#12290;&amp;#10;-(void)webView:(UIWebView*)webView  DidFailLoadWithError:(NSError*)error;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;UIVebView可以帮你在App中创建一个网页浏览器，来加载一些网页展示页面。现在我们可能会看到很多的app中或多或多或少都有嵌入一些h5的页面，对于一些复杂的页面有h5来展示时一种不错的办法。&lt;/p&gt;
+&lt;p&gt;下面我想简单记录一下UIWebView的简单使用。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建UIWebView&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CGRect bouds = [[UIScreen manScreen]applicationFrame];  &amp;#10;UIWebView* webView = [[UIWebView alloc]initWithFrame:bounds];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;设置相关属性&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;webView.scalespageToFit = YES;&amp;#9;    //&amp;#33258;&amp;#21160;&amp;#23545;&amp;#39029;&amp;#38754;&amp;#36827;&amp;#34892;&amp;#32553;&amp;#25918;&amp;#20197;&amp;#36866;&amp;#24212;&amp;#23631;&amp;#24149;  &amp;#10;webView.detectsPhoneNumbers = YES;  //&amp;#33258;&amp;#21160;&amp;#26816;&amp;#27979;&amp;#32593;&amp;#39029;&amp;#19978;&amp;#30340;&amp;#30005;&amp;#35805;&amp;#21495;&amp;#30721;&amp;#65292;&amp;#21333;&amp;#20987;&amp;#21487;&amp;#20197;&amp;#25320;&amp;#25171;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Objective-C常用关键字的使用与区别</title>

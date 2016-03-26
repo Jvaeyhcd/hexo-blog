@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> iOS UIWebView简单使用 · Jvaeyhcd's Blog</title><meta name="description" content="iOS UIWebView简单使用 - Jvaeyhcd"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/javeyhcd" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/Jvaeyhcd" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">iOS UIWebView简单使用</h1><div class="post-time">Mar 26, 2016</div><div class="post-content"><p>UIVebView可以帮你在App中创建一个网页浏览器，来加载一些网页展示页面。现在我们可能会看到很多的app中或多或多或少都有嵌入一些h5的页面，对于一些复杂的页面有h5来展示时一种不错的办法。</p>
+<p>下面我想简单记录一下UIWebView的简单使用。</p>
+<ol>
+<li><p>创建UIWebView</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CGRect bouds = [[UIScreen manScreen]applicationFrame];  &#10;UIWebView* webView = [[UIWebView alloc]initWithFrame:bounds];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置相关属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webView.scalespageToFit = YES;&#9;    //&#33258;&#21160;&#23545;&#39029;&#38754;&#36827;&#34892;&#32553;&#25918;&#20197;&#36866;&#24212;&#23631;&#24149;  &#10;webView.detectsPhoneNumbers = YES;  //&#33258;&#21160;&#26816;&#27979;&#32593;&#39029;&#19978;&#30340;&#30005;&#35805;&#21495;&#30721;&#65292;&#21333;&#20987;&#21487;&#20197;&#25320;&#25171;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>显示UIWebView到UIViewController上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.view addSubview:webView];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载内容</p>
+<p> 加载一个完整的网页的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSURL* url = [NSURL URLWithString:@&#34;http://www.youku.com&#34;];//&#21019;&#24314;URL  &#10;NSURLRequest* request = [NSURLRequest requestWithURL:url]; //&#21019;&#24314;NSURLRequest  &#10;[webView loadRequest:request];                             //&#21152;&#36733;</span><br></pre></td></tr></table></figure>
+<p> 加载本地网页资源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSURL* url = [NSURL   fileURLWithPath:filePath];          //&#21019;&#24314;URL  &#10;NSURLRequest* request = [NSURLRequest requestWithURL:url];//&#21019;&#24314;NSURLRequest  &#10;[webView loadRequest:request];                            //&#21152;&#36733;</span><br></pre></td></tr></table></figure>
+<p> 加载带标签的htmlString，你可以提供一个基础URL,来指导UIWebView对象如何跟随链加载远程资源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.webContentView loadHTMLString:@&#34;&#60;a&#62;hahhaha&#60;/a&#62;&#34; baseURL:nil];//&#26174;&#31034;&#24102;&#26631;&#31614;&#30340;&#23383;&#31526;&#20018;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导航</p>
+<p> UIWebView内部会管理浏览器的导航动作，通过goForward和goBack方法你可以控制前进与后退动作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[webView goBack];          //&#21518;&#36864;&#10;[webView goForward];       //&#21069;&#36827;&#10;[webView reload];          //&#37325;&#36733;  &#10;[webView stopLoading];     //&#21462;&#28040;&#36733;&#20837;&#20869;&#23481;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>UIWebViewDelegate委托代理</p>
+<p> UIWebViewDelegate的一组代理方法在特定时间会得到通知，要使用这些方法必须先设定webView的委托</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webView.delegate = self;</span><br></pre></td></tr></table></figure>
+<p> 具体的一些委托方法有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/**&#10; *  &#24403;&#32593;&#39029;&#35270;&#22270;&#34987;&#25351;&#31034;&#36733;&#20837;&#20869;&#23481;&#32780;&#24471;&#21040;&#36890;&#30693;&#12290;&#24212;&#24403;&#36820;&#22238;YES&#65292;&#36825;&#26679;&#20250;&#36827;&#34892;&#21152;&#36733;&#10; *  &#36890;&#36807;&#23548;&#33322;&#31867;&#22411;&#21442;&#25968;&#21487;&#20197;&#24471;&#21040;&#35831;&#27714;&#21457;&#36215;&#30340;&#21407;&#22240;&#65292;&#21487;&#20197;&#26159;&#20197;&#19979;&#20219;&#24847;&#20540;&#65306;&#10; *  UIWebViewNavigationTypeLinkClicked&#10; *  UIWebViewNavigationTypeFormSubmitted&#10; *  UIWebViewNavigationTypeBackForward&#10; *  UIWebViewNavigationTypeReload&#10; *  UIWebViewNavigationTypeFormResubmitted&#10; *  UIWebViewNavigationTypeOther&#10; */&#10;-(BOOL)webView:(UIWebView*)webView &#10;shouldStartLoadWithRequest:(NSURLRequest*) reuqest &#10;navigationType:(UIWebViewNavigationType)navigationType;  &#10;&#10;//&#24403;&#32593;&#39029;&#35270;&#22270;&#24050;&#32463;&#24320;&#22987;&#21152;&#36733;&#19968;&#20010;&#35831;&#27714;&#21518;&#65292;&#24471;&#21040;&#36890;&#30693;&#12290;&#10;-(void)webViewDidStartLoad:(UIWebView*)webView;&#10;&#10;//&#24403;&#32593;&#39029;&#35270;&#22270;&#32467;&#26463;&#21152;&#36733;&#19968;&#20010;&#35831;&#27714;&#20043;&#21518;&#65292;&#24471;&#21040;&#36890;&#30693;&#12290; &#10;-(void)webViewDidFinishLoad:(UIWebView*)webView;&#10;&#10;//&#24403;&#22312;&#35831;&#27714;&#21152;&#36733;&#20013;&#21457;&#29983;&#38169;&#35823;&#26102;&#65292;&#24471;&#21040;&#36890;&#30693;&#12290;&#20250;&#25552;&#20379;&#19968;&#20010;NSSError&#23545;&#35937;&#65292;&#20197;&#26631;&#35782;&#25152;&#21457;&#29983;&#38169;&#35823;&#31867;&#22411;&#12290;&#10;-(void)webView:(UIWebView*)webView  DidFailLoadWithError:(NSError*)error;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/03/23/Objective-C常用关键字的使用与区别/" class="next">NEXT</a></div><div data-thread-key="2016/03/26/iOS-UIWebView简单使用/" data-title="iOS UIWebView简单使用" data-url="http://jvaeyhcd.cc/2016/03/26/iOS-UIWebView简单使用/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"jvaeyhcd"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2016 <a href="http://jvaeyhcd.cc">Jvaeyhcd</a>, unless otherwise noted.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?a36e15d9e2adec9a21fcdd9f686b1ed2";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>
