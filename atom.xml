@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-03-31T03:00:25.000Z</updated>
+  <updated>2016-04-01T08:16:33.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -20,14 +20,32 @@
     <link href="http://www.jvaeyhcd.cc/2016/03/30/%E5%85%B3%E4%BA%8EiOS%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B0%8F%E8%AE%B0/"/>
     <id>http://www.jvaeyhcd.cc/2016/03/30/关于iOS多线程小记/</id>
     <published>2016-03-30T03:42:06.000Z</published>
-    <updated>2016-03-31T03:00:25.000Z</updated>
+    <updated>2016-04-01T08:16:33.000Z</updated>
     
-    <content type="html">&lt;p&gt;这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;</content>
+    <content type="html">&lt;p&gt;这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。当然也会给出几种简单的代码案例，再试实际使用中去感受它们的区别。&lt;/p&gt;
+&lt;h6 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h6&gt;&lt;p&gt;在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进程间不能共享内存，但线程间共享内存非常容易。&lt;/li&gt;
+&lt;li&gt;系统创建进程需要为该进程重新分配系统资源，但创建线程的代价要小得多，因此使用多线程来实现任务并发比多进程效率高得多。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;在实际开发过程中多线程是非常有用的，假如用户点击界面上某个按钮的时候，该按钮需要执行的任务需要耗时很长，如果我们直接在UI线程中完成这个任务，在该任务执行完成返回之前，UI线程被该任务阻塞，将无法再相应用户的其它操作。在这段时间内用户对界面上的任何操作将不会被相应（除非按Home键返回），这并不是我们希望看到的结果。一般这个时候我们能够想到的办法就是将耗时的操作放到非UI线程（开启一个线程）中完成，这样UI线程就不会被阻塞，应用也就不会失去相应。&lt;/p&gt;
+&lt;p&gt;iOS系统大致提供了如下3种实现多线程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;NSThread&lt;/li&gt;
+&lt;li&gt;NSOperation和NSOperationQueue&lt;/li&gt;
+&lt;li&gt;GCD(Grand Central Dispatch)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
     
     <summary type="html">
     
-      &lt;p&gt;这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。&lt;/p&gt;
+      &lt;p&gt;这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。当然也会给出几种简单的代码案例，再试实际使用中去感受它们的区别。&lt;/p&gt;
+&lt;h6 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h6&gt;&lt;p&gt;在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进程间不能共享内存，但线程间共享内存非常容易。&lt;/li&gt;
+&lt;li&gt;系统创建进程需要为该进程重新分配系统资源，但创建线程的代价要小得多，因此使用多线程来实现任务并发比多进程效率高得多。&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -471,7 +489,7 @@
     <link href="http://www.jvaeyhcd.cc/2016/02/20/Github%E4%B8%8A%E4%BC%98%E7%A7%80%E7%9A%84Objective-C%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/"/>
     <id>http://www.jvaeyhcd.cc/2016/02/20/Github上优秀的Objective-C项目简介/</id>
     <published>2016-02-20T09:15:47.000Z</published>
-    <updated>2016-03-05T07:07:47.000Z</updated>
+    <updated>2016-04-01T08:26:26.000Z</updated>
     
     <content type="html">&lt;p&gt;主要对当前Github排名靠前的项目做一个简单的简介，方便自己快速了解 Objective-C的一些优秀的开源框架。&lt;/p&gt;
 &lt;ul&gt;
@@ -532,6 +550,7 @@
 &lt;li&gt;&lt;a href=&quot;https://github.com/dennisreimann/ioctocat&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ioctocat&lt;/a&gt;&lt;br&gt;github的iOS客户端，目前开源代码是V1版本，V2版本在appstore上可以下载&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/ChatSecure/ChatSecure-iOS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ChatSecure&lt;/a&gt;&lt;br&gt;使用XMPP协议的IM开源软件，很强大，在appstore上可以下载&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/forkingdog/FDFullscreenPopGesture&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;FDFullscreenPopGesture&lt;/a&gt;&lt;br&gt;一个丝滑的全屏滑动返回手势,相关博客文章点击&lt;a href=&quot;http://blog.sunnyxx.com/2015/06/07/fullscreen-pop-gesture/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/Jvaeyhcd/TKSubmitTransition&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TKSubmitTransition&lt;/a&gt;&lt;br&gt;非常漂亮的一个登录转场动画&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&quot;Xcode插件&quot;&gt;&lt;a href=&quot;#Xcode插件&quot; class=&quot;headerlink&quot; title=&quot;Xcode插件&quot;&gt;&lt;/a&gt;Xcode插件&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/kattrali/cocoapods-xcode-plugin&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cocoapods-xcode-plugin&lt;/a&gt;&lt;br&gt;Dependency management helper for your CocoaPods, right in Xcode.&lt;br&gt;用于在Xcode中管理CocoaPods依赖库。&lt;br&gt;&lt;img src=&quot;http://wangzz.github.io/images/article1/plugin_cocoapods_menu.png&quot; alt=&quot;&amp;quot;&amp;quot;&quot;&gt;&lt;/li&gt;
