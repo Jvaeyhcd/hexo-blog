@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-04-01T08:16:33.000Z</updated>
+  <updated>2016-04-05T02:09:19.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于UItableView的复用</title>
+    <link href="http://www.jvaeyhcd.cc/2016/04/05/%E5%85%B3%E4%BA%8EUItableView%E7%9A%84%E5%A4%8D%E7%94%A8/"/>
+    <id>http://www.jvaeyhcd.cc/2016/04/05/关于UItableView的复用/</id>
+    <published>2016-04-05T01:26:44.000Z</published>
+    <updated>2016-04-05T02:09:19.000Z</updated>
+    
+    <content type="html">&lt;p&gt;UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。&lt;/p&gt;
+&lt;h6 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h6&gt;&lt;p&gt;为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;关于UItableView的复用机制大概是这样的：假设一个UItableView要加载10000条数据，但是一个屏幕最大只能展示3条数据（这里屏幕最多能展示的数据条数是根据UItableViewCell的高度来定的）。然后当你向上滑动，想要查看更多的内容，那么肯定需要一个cell放在已经存在的内容下边。这个时候并不会重新去创建一个UItableViewCell放在下面，而是根据cellIdetifier去内存池中拿到与之对应的UItableViewCell。&lt;/p&gt;
+&lt;h6 id=&quot;复用方式&quot;&gt;&lt;a href=&quot;#复用方式&quot; class=&quot;headerlink&quot; title=&quot;复用方式&quot;&gt;&lt;/a&gt;复用方式&lt;/h6&gt;&lt;p&gt;UItableView的复用方式有如下四种方式实现&lt;/p&gt;
+&lt;p&gt;方式一:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &amp;#10;if (!cell) &amp;#123;&amp;#10;&amp;#9;cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier]; &amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;方式二:UItableViewCell是xib写的&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;XXXTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &amp;#10;if (nil == cell) &amp;#123;  &amp;#10;    cell = [[[NSBundle mainBundle]loadNibNamed:@&amp;#34;XXXTableViewCell&amp;#34; owner:self options:nil]lastObject];  &amp;#10;    cell.selectionStyle=UITableViewCellSelectionStyleNone;  &amp;#10;    [tableView registerNib:[UINib nibWithNibName:@&amp;#34;XXXTableViewCell&amp;#34; bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellIdentifier];&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;方式三:在xib中identifier属性必须写上cellIdentifier ,对应代码中的cellIdentifier&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;XXTableViewCell *cell;  &amp;#10;cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &amp;#10;if (nil == cell) &amp;#123;  &amp;#10;    cell= [[[NSBundle mainBundle] loadNibNamed:@&amp;#34;XXTableViewCell&amp;#34; owner:nil options:nil] lastObject];  &amp;#10;&amp;#125;  &amp;#10;return cell;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;方式四：先register cell，然后复用&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#pragma mark - &amp;#21021;&amp;#22987;&amp;#21270;&amp;#25511;&amp;#20214;&amp;#10;&amp;#10;- (UITableView *)tableView&amp;#10;&amp;#123;&amp;#10;    if (!_tableView) &amp;#123;&amp;#10;        _tableView = [[UITableView alloc]initWithFrame:self.frame style:UITableViewStylePlain];&amp;#10;        _tableView.backgroundColor = kMainBgColor;&amp;#10;        _tableView.dataSource = self;&amp;#10;        _tableView.delegate = self;&amp;#10;        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;&amp;#10;        [_tableView registerClass:[XXXCell_iPhone class] forCellReuseIdentifier:kCellIdentifier_XXXCell];&amp;#10;        _tableView.tableFooterView = self.loadingFooterView;&amp;#10;    &amp;#125;&amp;#10;    return _tableView;&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath&amp;#10;&amp;#123;&amp;#10;&amp;#9;//&amp;#22797;&amp;#29992;&amp;#10;    XXXCell_iPhone *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_XXXCell forIndexPath:indexPath];&amp;#10;    cell.type = self.type;&amp;#10;    [cell setExpressOrder:[_list safeObjectAtIndex:indexPath.row] needTopView:indexPath.row == 0];&amp;#10;    return cell;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h6 id=&quot;常见问题&quot;&gt;&lt;a href=&quot;#常见问题&quot; class=&quot;headerlink&quot; title=&quot;常见问题&quot;&gt;&lt;/a&gt;常见问题&lt;/h6&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。&lt;/p&gt;
+&lt;h6 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h6&gt;&lt;p&gt;为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>关于iOS多线程小记</title>
