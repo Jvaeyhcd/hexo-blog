@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-04-05T02:09:19.000Z</updated>
+  <updated>2016-04-06T05:27:06.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS中造成dealloc不调用的原因</title>
+    <link href="http://www.jvaeyhcd.cc/2016/04/06/iOS%E4%B8%AD%E9%80%A0%E6%88%90dealloc%E4%B8%8D%E8%B0%83%E7%94%A8%E7%9A%84%E5%8E%9F%E5%9B%A0/"/>
+    <id>http://www.jvaeyhcd.cc/2016/04/06/iOS中造成dealloc不调用的原因/</id>
+    <published>2016-04-06T04:18:32.000Z</published>
+    <updated>2016-04-06T05:27:06.000Z</updated>
+    
+    <content type="html">&lt;h6 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h6&gt;&lt;p&gt;最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (void)dealloc &amp;#123;&amp;#10;    [_mapView release];&amp;#10;    [super dealloc];&amp;#10;&amp;#125;&amp;#10;&amp;#10;//&amp;#24182;&amp;#19988;&amp;#22312;&amp;#30028;&amp;#38754;&amp;#23558;&amp;#35201;&amp;#26174;&amp;#31034;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#35774;&amp;#32622;&amp;#20195;&amp;#29702;&amp;#65292;&amp;#23558;&amp;#35201;&amp;#28040;&amp;#22833;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#21462;&amp;#28040;&amp;#20195;&amp;#29702;&amp;#10;- (void)viewWillAppear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = self;&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (void)viewWillDisappear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = nil;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;以上给出的方法确实是对的，可以解决反复切换地图页面和地图上一级页面内存暴增造成的闪退问题。但是这里要说的不是这个问题，而是一个新的问题，我在dealloc中打了断点，但是dealloc根本就没有执行，所以mapView也就根本就没有释放，内存还是一样在暴增。为什么ViewController已经被pop了，而ViewController的dealloc方法却没有被调用？（按理说ViewController被pop的时候它的dealloc的方法应该被调用才对）。&lt;/p&gt;
+&lt;h6 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h6&gt;&lt;p&gt;通过Google搜索终于在晚上找到了答案（大家就不要用百度，想要快速准确的找到自己想要的答案推荐大家用google）。造成ViewController不释放的原因可能有很多。遇到dealloc不调用的时候只需要检查您的ViewController中是否存在以下几个问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;b&gt;ViewController中存在NSTimer&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt; 如果你的ViewController中有NSTimer，那么你就要注意了，因为当你调用&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[NSTimer scheduledTimerWithTimeInterval:1.0 &amp;#10;                                 target:self &amp;#10;                               selector:@selector(updateTime:) &amp;#10;                               userInfo:nil &amp;#10;                                repeats:YES];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 时，这个&lt;a style=&quot;color: #FF00EE&quot;&gt;target:self&lt;/a&gt;就增加了ViewController的return count，如果你不将这个timer invalidate，将别想调用dealloc。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;b&gt;ViewController中有关的代理&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt; 一个比较隐秘的因素，你去找找与这个类有关的代理，有没有强引用属性？比如一个代理的delegate应该是 assign 的现在是retain，(╯‵□′)╯︵┻━┻，就是这个，它会影响你不让你调用dealloc，不信，就试试吧。（这个我还没有遇到过）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;b&gt;ViewController中有Block&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt; 这个就是我我上面不进入dealloc的真正原因，Block体内使用实例变量也会造成循环引用，使得拥有这个实例的对象不能释放。&lt;br&gt; 例如你这个类叫OneViewController,有个属性是NSString *name; 如果你在block体中使用了self.name，那样子的话这个类就没法释放。&lt;br&gt; 要解决这个问题，MRC下只需&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;__block Viewcontroller *weakSelf = self;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; ARC下将&lt;strong&gt;block 换为 &lt;/strong&gt;weak&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;目前我所知道的就以上三种情况，如果有什么错误的地方或者还存在的一些情况，欢迎大家来补充。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h6 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h6&gt;&lt;p&gt;最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (void)dealloc &amp;#123;&amp;#10;    [_mapView release];&amp;#10;    [super dealloc];&amp;#10;&amp;#125;&amp;#10;&amp;#10;//&amp;#24182;&amp;#19988;&amp;#22312;&amp;#30028;&amp;#38754;&amp;#23558;&amp;#35201;&amp;#26174;&amp;#31034;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#35774;&amp;#32622;&amp;#20195;&amp;#29702;&amp;#65292;&amp;#23558;&amp;#35201;&amp;#28040;&amp;#22833;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#21462;&amp;#28040;&amp;#20195;&amp;#29702;&amp;#10;- (void)viewWillAppear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = self;&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (void)viewWillDisappear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = nil;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>关于UItableView的复用</title>
