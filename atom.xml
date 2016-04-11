@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-04-06T05:27:06.000Z</updated>
+  <updated>2016-04-11T08:45:54.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -14,6 +14,116 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Swift开源项目汇总</title>
+    <link href="http://www.jvaeyhcd.cc/2016/04/11/Swift%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E6%B1%87%E6%80%BB/"/>
+    <id>http://www.jvaeyhcd.cc/2016/04/11/Swift开源项目汇总/</id>
+    <published>2016-04-11T07:06:52.000Z</published>
+    <updated>2016-04-11T08:45:54.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;拥有着苹果先天生态优势的Swift自发布以来，各种优秀的开源项目便层出不穷。我站在个人的角度，将Swift开源项目做了一个甄别、筛选，从工具、存储、网络、界面、框架到Demo以及完整应用等，满满的干货。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;虽然现在对Swift还停留在入门水平，但是还是觉得有必要去网上收集一些优秀的Swift开源项目。&lt;/p&gt;
+&lt;h6 id=&quot;界面类&quot;&gt;&lt;a href=&quot;#界面类&quot; class=&quot;headerlink&quot; title=&quot;界面类&quot;&gt;&lt;/a&gt;界面类&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/raulriera/TextFieldEffects&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TextFieldEffects&lt;/a&gt;&lt;br&gt;你不觉得标准的UITextField有一点无聊吗？我也是——所以对TextFieldEffects说hello吧！&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/FahimF/FloatLabelFields&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;FloatLabelFields&lt;/a&gt;&lt;br&gt;带浮动标签的输入框&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/MortimerGoro/MGSwipeTableCell&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MGSwipeTableCell&lt;/a&gt;&lt;br&gt;另一个UI组件，在很多app里都常见，苹果应该考虑在iOS标准库里加入类似的东西。可滑动的table cell，这是这个pod最好的描述。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/lexrus/LTMorphingLabel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LTMorphingLabel&lt;/a&gt;&lt;br&gt;有超赞特效效果的Label&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&quot;工具类&quot;&gt;&lt;a href=&quot;#工具类&quot; class=&quot;headerlink&quot; title=&quot;工具类&quot;&gt;&lt;/a&gt;工具类&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/nickoneill/PermissionScope&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PermissionScope&lt;/a&gt;&lt;br&gt;有用的库，通过在询问用户之前提示用户需要系统许可带来更好的用户体验。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Quick/Quick&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Quick&lt;/a&gt;&lt;br&gt;Swift里的单元测试。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/saturngod/IAPHelper&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;IAPHelper&lt;/a&gt;&lt;br&gt;app内购带给我们很多陈词滥调的代码，用这个库就不需要了，把最有关交易金钱的普遍的任务从iOS用户到你的（或者你的公司的）钱包简单包装起来。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/SwiftyJSON/SwiftyJSON&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SwiftyJSON&lt;/a&gt;&lt;br&gt;GitHub上最为开发者认可的JSON解析类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ankurp/Dollar&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dollar&lt;/a&gt;&lt;br&gt;Swift版Lo-Dash(或underscore)函数式工具库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/DaveWoodCom/XCGLogger&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;XCGLogger&lt;/a&gt;&lt;br&gt;功能完整的日志管理类库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/mattt/Surge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Surge&lt;/a&gt;&lt;br&gt;基于苹果Accelerate高性能计算框架封装库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/duemunk/Async&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Async&lt;/a&gt;&lt;br&gt;简洁的后台执行代码封装库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ArtSabintsev/Siren&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Siren&lt;/a&gt;&lt;br&gt;当应用更新时，通知用户并提供App Store链接&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Thomvis/BrightFutures&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;BrightFutures&lt;/a&gt;&lt;br&gt;漫长或复杂计算由独立线程异步来完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/tadija/AEXML&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AEXML&lt;/a&gt;&lt;br&gt;简单又易于的XML解析类及示例&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&quot;存储类&quot;&gt;&lt;a href=&quot;#存储类&quot; class=&quot;headerlink&quot; title=&quot;存储类&quot;&gt;&lt;/a&gt;存储类&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/stephencelis/SQLite.swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SQLite.swift&lt;/a&gt;&lt;br&gt;swift版本简单、轻量，使用上最SQL的SQLite封装库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&quot;网络类&quot;&gt;&lt;a href=&quot;#网络类&quot; class=&quot;headerlink&quot; title=&quot;网络类&quot;&gt;&lt;/a&gt;网络类&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/Alamofire/Alamofire&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Alamofire&lt;/a&gt;&lt;br&gt;AFNetworking网络基础库Swift语言版&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&quot;图片类&quot;&gt;&lt;a href=&quot;#图片类&quot; class=&quot;headerlink&quot; title=&quot;图片类&quot;&gt;&lt;/a&gt;图片类&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/kaishin/ImageScout&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ImageScout&lt;/a&gt;&lt;br&gt;最小网络代价获得图片大小及类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/indragiek/DominantColor&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DominantColor&lt;/a&gt;&lt;br&gt;提取图片主色示例项目&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/gavinbunney/Toucan&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Toucan&lt;/a&gt;&lt;br&gt;小而美的图片变换及处理类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/kaishin/gifu&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;gifu&lt;/a&gt;&lt;br&gt;高性能GIF显示类库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Haneke/HanekeSwift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HanekeSwift&lt;/a&gt;&lt;br&gt;轻量带缓存高性能图片加载组件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&quot;框架类&quot;&gt;&lt;a href=&quot;#框架类&quot; class=&quot;headerlink&quot; title=&quot;框架类&quot;&gt;&lt;/a&gt;框架类&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ReactiveCocoa/ReactiveCocoa&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ReactiveCocoa&lt;/a&gt;&lt;br&gt;ReactiveCocoa带给我们一种完全不同的编程方式/结构，基于值的信号和流。这是完全的头脑风暴，首先你需要忘记你曾经学习的来理解它是如何工作的。这不是一个简单的任务，但是是有回报的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/MengTo/Spring&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Spring&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/robb/Cartography&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Cartography&lt;/a&gt;&lt;br&gt;基于代码级的自动布局封装框架&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/mutualmobile/MMWormhole&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MMWormhole&lt;/a&gt;&lt;br&gt;iOS扩展与宿主应用的通讯框架&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&quot;示例项目&quot;&gt;&lt;a href=&quot;#示例项目&quot; class=&quot;headerlink&quot; title=&quot;示例项目&quot;&gt;&lt;/a&gt;示例项目&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ochococo/Design-Patterns-In-Swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Design-Patterns-In-Swift&lt;/a&gt;&lt;br&gt;如何使用常用设计模式及示例&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/robb/hamburger-button&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hamburger-button&lt;/a&gt;&lt;br&gt;无论设计还是代码，都进行了精雕细琢&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&quot;完整项目&quot;&gt;&lt;a href=&quot;#完整项目&quot; class=&quot;headerlink&quot; title=&quot;完整项目&quot;&gt;&lt;/a&gt;完整项目&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/tnantoka/edhita&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;edhita&lt;/a&gt;&lt;br&gt;支持Markdown, HTML预览的文本编辑器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/mozilla/firefox-ios&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;firefox-ios&lt;/a&gt;&lt;br&gt;来自Mozilla开发团队大型纯Swift项目&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/JakeLin/SwiftWeather&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SwiftWeather&lt;/a&gt;&lt;br&gt;清新淡雅持续改进天气预报项目&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;拥有着苹果先天生态优势的Swift自发布以来，各种优秀的开源项目便层出不穷。我站在个人的角度，将Swift开源项目做了一个甄别、筛选，从工具、存储、网络、界面、框架到Demo以及完整应用等，满满的干货。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;虽然现在对Swift还停留在入门水平，但是还是觉得有必要去网上收集一些优秀的Swift开源项目。&lt;/p&gt;
+&lt;h6 id=&quot;界面类&quot;&gt;&lt;a href=&quot;#界面类&quot; class=&quot;headerlink&quot; title=&quot;界面类&quot;&gt;&lt;/a&gt;界面类&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/raulriera/TextFieldEffects&quot;&gt;TextFieldEffects&lt;/a&gt;&lt;br&gt;你不觉得标准的UITextField有一点无聊吗？我也是——所以对TextFieldEffects说hello吧！&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/FahimF/FloatLabelFields&quot;&gt;FloatLabelFields&lt;/a&gt;&lt;br&gt;带浮动标签的输入框&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>iOS中造成dealloc不调用的原因</title>
@@ -555,7 +665,7 @@
     <link href="http://www.jvaeyhcd.cc/2016/02/20/Github%E4%B8%8A%E4%BC%98%E7%A7%80%E7%9A%84Objective-C%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/"/>
     <id>http://www.jvaeyhcd.cc/2016/02/20/Github上优秀的Objective-C项目简介/</id>
     <published>2016-02-20T09:15:47.000Z</published>
-    <updated>2016-04-01T08:26:26.000Z</updated>
+    <updated>2016-04-11T07:12:41.000Z</updated>
     
     <content type="html">&lt;p&gt;主要对当前Github排名靠前的项目做一个简单的简介，方便自己快速了解 Objective-C的一些优秀的开源框架。&lt;/p&gt;
 &lt;ul&gt;
@@ -617,6 +727,7 @@
 &lt;li&gt;&lt;a href=&quot;https://github.com/ChatSecure/ChatSecure-iOS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ChatSecure&lt;/a&gt;&lt;br&gt;使用XMPP协议的IM开源软件，很强大，在appstore上可以下载&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/forkingdog/FDFullscreenPopGesture&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;FDFullscreenPopGesture&lt;/a&gt;&lt;br&gt;一个丝滑的全屏滑动返回手势,相关博客文章点击&lt;a href=&quot;http://blog.sunnyxx.com/2015/06/07/fullscreen-pop-gesture/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/Jvaeyhcd/TKSubmitTransition&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TKSubmitTransition&lt;/a&gt;&lt;br&gt;非常漂亮的一个登录转场动画&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/dzenbot/DZNEmptyDataSet&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DZNEmptyDataSet&lt;/a&gt;&lt;br&gt;非常方便的对一些没有数据的UITableView或者UIScrollView加上提示图片和文字。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&quot;Xcode插件&quot;&gt;&lt;a href=&quot;#Xcode插件&quot; class=&quot;headerlink&quot; title=&quot;Xcode插件&quot;&gt;&lt;/a&gt;Xcode插件&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/kattrali/cocoapods-xcode-plugin&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cocoapods-xcode-plugin&lt;/a&gt;&lt;br&gt;Dependency management helper for your CocoaPods, right in Xcode.&lt;br&gt;用于在Xcode中管理CocoaPods依赖库。&lt;br&gt;&lt;img src=&quot;http://wangzz.github.io/images/article1/plugin_cocoapods_menu.png&quot; alt=&quot;&amp;quot;&amp;quot;&quot;&gt;&lt;/li&gt;
