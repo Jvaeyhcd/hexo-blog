@@ -302,7 +302,7 @@
       
         
           <h2 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h2><p>刚开始还是好好的，突然就出现了标题的提示错误，首先签名是正确的，App ID也没有被占用的，但是在导出ipa的时候一直出现“Failed to locate or generate matchin signing assets”的提示信息。我也是醉得不行，有时能成功，有时不行，不知道苹果在搞什么鬼（不管他在搞什么，出现问题，还是不要一味的去抱怨，找解决办法才是真的）。</p>
-<img src="/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/problem.png" alt="problem" title="problem">
+<img src="/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/problem.png" alt="问题详情" title="问题详情">
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/#more" rel="contents">
               阅读全文 &raquo;
@@ -409,7 +409,7 @@
 <p>拥有着苹果先天生态优势的Swift自发布以来，各种优秀的开源项目便层出不穷。我站在个人的角度，将Swift开源项目做了一个甄别、筛选，从工具、存储、网络、界面、框架到Demo以及完整应用等，满满的干货。</p>
 </blockquote>
 <p>虽然现在对Swift还停留在入门水平，但是还是觉得有必要去网上收集一些优秀的Swift开源项目。</p>
-<h6 id="界面类"><a href="#界面类" class="headerlink" title="界面类"></a>界面类</h6><ul>
+<h2 id="界面类"><a href="#界面类" class="headerlink" title="界面类"></a>界面类</h2><ul>
 <li><p><a href="https://github.com/raulriera/TextFieldEffects">TextFieldEffects</a><br>你不觉得标准的UITextField有一点无聊吗？我也是——所以对TextFieldEffects说hello吧！</p>
 </li>
 <li><p><a href="https://github.com/FahimF/FloatLabelFields">FloatLabelFields</a><br>带浮动标签的输入框</p>
@@ -517,7 +517,7 @@
 
       
         
-          <h6 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h6><p>最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)dealloc &#123;&#10;    [_mapView release];&#10;    [super dealloc];&#10;&#125;&#10;&#10;//&#24182;&#19988;&#22312;&#30028;&#38754;&#23558;&#35201;&#26174;&#31034;&#30340;&#26102;&#20505;&#35774;&#32622;&#20195;&#29702;&#65292;&#23558;&#35201;&#28040;&#22833;&#30340;&#26102;&#20505;&#21462;&#28040;&#20195;&#29702;&#10;- (void)viewWillAppear:(BOOL)animated &#123;&#10;    _mapView.delegate = self;&#10;&#125;&#10;&#10;- (void)viewWillDisappear:(BOOL)animated &#123;&#10;    _mapView.delegate = nil;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)dealloc &#123;&#10;    [_mapView release];&#10;    [super dealloc];&#10;&#125;&#10;&#10;//&#24182;&#19988;&#22312;&#30028;&#38754;&#23558;&#35201;&#26174;&#31034;&#30340;&#26102;&#20505;&#35774;&#32622;&#20195;&#29702;&#65292;&#23558;&#35201;&#28040;&#22833;&#30340;&#26102;&#20505;&#21462;&#28040;&#20195;&#29702;&#10;- (void)viewWillAppear:(BOOL)animated &#123;&#10;    _mapView.delegate = self;&#10;&#125;&#10;&#10;- (void)viewWillDisappear:(BOOL)animated &#123;&#10;    _mapView.delegate = nil;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/06/iOS中造成dealloc不调用的原因/#more" rel="contents">
               阅读全文 &raquo;
@@ -640,7 +640,7 @@
       
         
           <p>UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。</p>
-<h6 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h6><p>为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/05/关于UItableView的复用/#more" rel="contents">
               阅读全文 &raquo;
@@ -763,7 +763,7 @@
       
         
           <p>这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。当然也会给出几种简单的代码案例，再试实际使用中去感受它们的区别。</p>
-<h6 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h6><p>在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：</p>
 <ul>
 <li>进程间不能共享内存，但线程间共享内存非常容易。</li>
 <li>系统创建进程需要为该进程重新分配系统资源，但创建线程的代价要小得多，因此使用多线程来实现任务并发比多进程效率高得多。</li>
@@ -870,7 +870,7 @@
 
       
         
-          <p>最新在使用FFmpeg的时候遇到了如下的报错信息，但是现在一直都还未找到解决办法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Undefined symbols for architecture arm64:&#10;  &#34;_avcodec_close&#34;, referenced from:&#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&#10;  &#34;_av_init_packet&#34;, referenced from:&#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&#38;, int&#38;) in H264Decoder.o&#10;  &#34;_av_malloc&#34;, referenced from:&#10;      CH264Decoder::CreateYUVTab_16() in H264Decoder.o&#10;  &#34;_av_free&#34;, referenced from:&#10;      CH264Decoder::DeleteYUVTab() in H264Decoder.o&#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&#10;  &#34;_av_register_all&#34;, referenced from:&#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&#10;  &#34;_avcodec_find_decoder&#34;, referenced from:&#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&#10;  &#34;_avcodec_decode_video2&#34;, referenced from:&#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&#38;, int&#38;) in H264Decoder.o&#10;  &#34;_avcodec_open2&#34;, referenced from:&#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&#10;  &#34;_avcodec_alloc_context3&#34;, referenced from:&#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&#10;  &#34;_avcodec_alloc_frame&#34;, referenced from:&#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&#10;ld: symbol(s) not found for architecture arm64&#10;clang: error: linker command failed with exit code 1 (use -v to see invocation)</span><br></pre></td></tr></table></figure></p>
+          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>最新在使用FFmpeg的时候遇到了如下的报错信息，但是现在一直都还未找到解决办法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Undefined symbols for architecture arm64:&#10;  &#34;_avcodec_close&#34;, referenced from:&#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&#10;  &#34;_av_init_packet&#34;, referenced from:&#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&#38;, int&#38;) in H264Decoder.o&#10;  &#34;_av_malloc&#34;, referenced from:&#10;      CH264Decoder::CreateYUVTab_16() in H264Decoder.o&#10;  &#34;_av_free&#34;, referenced from:&#10;      CH264Decoder::DeleteYUVTab() in H264Decoder.o&#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&#10;  &#34;_av_register_all&#34;, referenced from:&#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&#10;  &#34;_avcodec_find_decoder&#34;, referenced from:&#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&#10;  &#34;_avcodec_decode_video2&#34;, referenced from:&#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&#38;, int&#38;) in H264Decoder.o&#10;  &#34;_avcodec_open2&#34;, referenced from:&#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&#10;  &#34;_avcodec_alloc_context3&#34;, referenced from:&#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&#10;  &#34;_avcodec_alloc_frame&#34;, referenced from:&#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&#10;ld: symbol(s) not found for architecture arm64&#10;clang: error: linker command failed with exit code 1 (use -v to see invocation)</span><br></pre></td></tr></table></figure></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/03/28/iOS上完美编译FFmpeg/#more" rel="contents">
               阅读全文 &raquo;

@@ -90,7 +90,7 @@
 <meta property="og:site_name" content="Jvaeyhcd's Note">
 <meta property="og:description" content="UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。
 概述为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话">
-<meta property="og:updated_time" content="2016-04-27T07:08:09.000Z">
+<meta property="og:updated_time" content="2016-04-27T11:00:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于UItableView的复用">
 <meta name="twitter:description" content="UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。
@@ -319,15 +319,15 @@
 
       
         <p>UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。</p>
-<h6 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h6><p>为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。</p>
 <a id="more"></a>
 <p>关于UItableView的复用机制大概是这样的：假设一个UItableView要加载10000条数据，但是一个屏幕最大只能展示3条数据（这里屏幕最多能展示的数据条数是根据UItableViewCell的高度来定的）。然后当你向上滑动，想要查看更多的内容，那么肯定需要一个cell放在已经存在的内容下边。这个时候并不会重新去创建一个UItableViewCell放在下面，而是根据cellIdetifier去内存池中拿到与之对应的UItableViewCell。</p>
-<h6 id="复用方式"><a href="#复用方式" class="headerlink" title="复用方式"></a>复用方式</h6><p>UItableView的复用方式有如下四种方式实现</p>
+<h2 id="复用方式"><a href="#复用方式" class="headerlink" title="复用方式"></a>复用方式</h2><p>UItableView的复用方式有如下四种方式实现</p>
 <p>方式一:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &#10;if (!cell) &#123;&#10;&#9;cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier]; &#10;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>方式二:UItableViewCell是xib写的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XXXTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &#10;if (nil == cell) &#123;  &#10;    cell = [[[NSBundle mainBundle]loadNibNamed:@&#34;XXXTableViewCell&#34; owner:self options:nil]lastObject];  &#10;    cell.selectionStyle=UITableViewCellSelectionStyleNone;  &#10;    [tableView registerNib:[UINib nibWithNibName:@&#34;XXXTableViewCell&#34; bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellIdentifier];&#10;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>方式三:在xib中identifier属性必须写上cellIdentifier ,对应代码中的cellIdentifier<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XXTableViewCell *cell;  &#10;cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &#10;if (nil == cell) &#123;  &#10;    cell= [[[NSBundle mainBundle] loadNibNamed:@&#34;XXTableViewCell&#34; owner:nil options:nil] lastObject];  &#10;&#125;  &#10;return cell;</span><br></pre></td></tr></table></figure></p>
 <p>方式四：先register cell，然后复用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - &#21021;&#22987;&#21270;&#25511;&#20214;&#10;&#10;- (UITableView *)tableView&#10;&#123;&#10;    if (!_tableView) &#123;&#10;        _tableView = [[UITableView alloc]initWithFrame:self.frame style:UITableViewStylePlain];&#10;        _tableView.backgroundColor = kMainBgColor;&#10;        _tableView.dataSource = self;&#10;        _tableView.delegate = self;&#10;        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;&#10;        [_tableView registerClass:[XXXCell_iPhone class] forCellReuseIdentifier:kCellIdentifier_XXXCell];&#10;        _tableView.tableFooterView = self.loadingFooterView;&#10;    &#125;&#10;    return _tableView;&#10;&#125;&#10;&#10;- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath&#10;&#123;&#10;&#9;//&#22797;&#29992;&#10;    XXXCell_iPhone *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_XXXCell forIndexPath:indexPath];&#10;    cell.type = self.type;&#10;    [cell setExpressOrder:[_list safeObjectAtIndex:indexPath.row] needTopView:indexPath.row == 0];&#10;    return cell;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<h6 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h6>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2>
       
     </div>
     
@@ -554,7 +554,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#复用方式"><span class="nav-number">2.</span> <span class="nav-text">复用方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#常见问题"><span class="nav-number">3.</span> <span class="nav-text">常见问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复用方式"><span class="nav-number">2.</span> <span class="nav-text">复用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">3.</span> <span class="nav-text">常见问题</span></a></li></ol></div>
             
           </div>
         </section>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-04-27T07:27:57.000Z</updated>
+  <updated>2016-04-27T11:33:01.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://www.jvaeyhcd.cc/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/"/>
     <id>http://www.jvaeyhcd.cc/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/</id>
     <published>2016-04-18T08:58:38.000Z</published>
-    <updated>2016-04-27T07:27:57.000Z</updated>
+    <updated>2016-04-27T11:33:01.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;发现问题&quot;&gt;&lt;a href=&quot;#发现问题&quot; class=&quot;headerlink&quot; title=&quot;发现问题&quot;&gt;&lt;/a&gt;发现问题&lt;/h2&gt;&lt;p&gt;刚开始还是好好的，突然就出现了标题的提示错误，首先签名是正确的，App ID也没有被占用的，但是在导出ipa的时候一直出现“Failed to locate or generate matchin signing assets”的提示信息。我也是醉得不行，有时能成功，有时不行，不知道苹果在搞什么鬼（不管他在搞什么，出现问题，还是不要一味的去抱怨，找解决办法才是真的）。&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/problem.png&quot; alt=&quot;problem&quot; title=&quot;problem&quot;&gt;
+&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/problem.png&quot; alt=&quot;问题详情&quot; title=&quot;问题详情&quot;&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;如何解决&quot;&gt;&lt;a href=&quot;#如何解决&quot; class=&quot;headerlink&quot; title=&quot;如何解决&quot;&gt;&lt;/a&gt;如何解决&lt;/h2&gt;&lt;p&gt;还是Google大法好，一下就找到了解决办法。&lt;/p&gt;
 &lt;p&gt;以下是我在网上找到了解决办法的详细步骤：&lt;/p&gt;
@@ -31,17 +31,17 @@
 &lt;li&gt;&lt;p&gt;首先创建一个文件夹，名字就叫Payload，&lt;a style=&quot;color:#4cc190&quot;&gt;一定要是Payload&lt;/a&gt;（如果你不信，可以换一个名字试试）。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;然后在Organizer中然后把 archive 出来的那个在 finder 打开。&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/export.png&quot; alt=&quot;export&quot; title=&quot;export&quot;&gt;
+&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/export.png&quot; alt=&quot;Organizer中显示&quot; title=&quot;Organizer中显示&quot;&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;然后点击显示包内容。&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/show_in_finder.png&quot; alt=&quot;show in finder&quot; title=&quot;show in finder&quot;&gt;
+&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/show_in_finder.png&quot; alt=&quot;在Finder中显示&quot; title=&quot;在Finder中显示&quot;&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;把app 和 dsym 那两个文件拷贝到 Payload文件夹中。&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/product.png&quot; alt=&quot;product&quot; title=&quot;product&quot;&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/dSYMs.png&quot; alt=&quot;dSYMs&quot; title=&quot;dSYMs&quot;&gt;
+&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/product.png&quot; alt=&quot;product文件目录&quot; title=&quot;product文件目录&quot;&gt;
+&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/dSYMs.png&quot; alt=&quot;dSYMs文件目录&quot; title=&quot;dSYMs文件目录&quot;&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;然后对Payload压缩&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/zip.png&quot; alt=&quot;zip&quot; title=&quot;zip&quot;&gt;
+&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/zip.png&quot; alt=&quot;Payload压缩&quot; title=&quot;Payload压缩&quot;&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;最后将Playload.zip的后缀名改成ipa即可。&lt;/p&gt;
 &lt;/li&gt;
@@ -52,7 +52,7 @@
     <summary type="html">
     
       &lt;h2 id=&quot;发现问题&quot;&gt;&lt;a href=&quot;#发现问题&quot; class=&quot;headerlink&quot; title=&quot;发现问题&quot;&gt;&lt;/a&gt;发现问题&lt;/h2&gt;&lt;p&gt;刚开始还是好好的，突然就出现了标题的提示错误，首先签名是正确的，App ID也没有被占用的，但是在导出ipa的时候一直出现“Failed to locate or generate matchin signing assets”的提示信息。我也是醉得不行，有时能成功，有时不行，不知道苹果在搞什么鬼（不管他在搞什么，出现问题，还是不要一味的去抱怨，找解决办法才是真的）。&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/problem.png&quot; alt=&quot;problem&quot; title=&quot;problem&quot;&gt;
+&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/problem.png&quot; alt=&quot;问题详情&quot; title=&quot;问题详情&quot;&gt;
     
     </summary>
     
@@ -64,13 +64,13 @@
     <link href="http://www.jvaeyhcd.cc/2016/04/11/Swift%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E6%B1%87%E6%80%BB/"/>
     <id>http://www.jvaeyhcd.cc/2016/04/11/Swift开源项目汇总/</id>
     <published>2016-04-11T07:06:52.000Z</published>
-    <updated>2016-04-27T07:06:25.000Z</updated>
+    <updated>2016-04-27T10:57:44.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;拥有着苹果先天生态优势的Swift自发布以来，各种优秀的开源项目便层出不穷。我站在个人的角度，将Swift开源项目做了一个甄别、筛选，从工具、存储、网络、界面、框架到Demo以及完整应用等，满满的干货。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;虽然现在对Swift还停留在入门水平，但是还是觉得有必要去网上收集一些优秀的Swift开源项目。&lt;/p&gt;
-&lt;h6 id=&quot;界面类&quot;&gt;&lt;a href=&quot;#界面类&quot; class=&quot;headerlink&quot; title=&quot;界面类&quot;&gt;&lt;/a&gt;界面类&lt;/h6&gt;&lt;ul&gt;
+&lt;h2 id=&quot;界面类&quot;&gt;&lt;a href=&quot;#界面类&quot; class=&quot;headerlink&quot; title=&quot;界面类&quot;&gt;&lt;/a&gt;界面类&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/raulriera/TextFieldEffects&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TextFieldEffects&lt;/a&gt;&lt;br&gt;你不觉得标准的UITextField有一点无聊吗？我也是——所以对TextFieldEffects说hello吧！&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/FahimF/FloatLabelFields&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;FloatLabelFields&lt;/a&gt;&lt;br&gt;带浮动标签的输入框&lt;/p&gt;
@@ -83,7 +83,7 @@
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/lexrus/LTMorphingLabel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LTMorphingLabel&lt;/a&gt;&lt;br&gt;有超赞特效效果的Label&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&quot;工具类&quot;&gt;&lt;a href=&quot;#工具类&quot; class=&quot;headerlink&quot; title=&quot;工具类&quot;&gt;&lt;/a&gt;工具类&lt;/h6&gt;&lt;ul&gt;
+&lt;h2 id=&quot;工具类&quot;&gt;&lt;a href=&quot;#工具类&quot; class=&quot;headerlink&quot; title=&quot;工具类&quot;&gt;&lt;/a&gt;工具类&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/nickoneill/PermissionScope&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PermissionScope&lt;/a&gt;&lt;br&gt;有用的库，通过在询问用户之前提示用户需要系统许可带来更好的用户体验。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Quick/Quick&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Quick&lt;/a&gt;&lt;br&gt;Swift里的单元测试。&lt;/p&gt;
@@ -107,13 +107,13 @@
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/tadija/AEXML&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AEXML&lt;/a&gt;&lt;br&gt;简单又易于的XML解析类及示例&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&quot;存储类&quot;&gt;&lt;a href=&quot;#存储类&quot; class=&quot;headerlink&quot; title=&quot;存储类&quot;&gt;&lt;/a&gt;存储类&lt;/h6&gt;&lt;ul&gt;
+&lt;h2 id=&quot;存储类&quot;&gt;&lt;a href=&quot;#存储类&quot; class=&quot;headerlink&quot; title=&quot;存储类&quot;&gt;&lt;/a&gt;存储类&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/stephencelis/SQLite.swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SQLite.swift&lt;/a&gt;&lt;br&gt;swift版本简单、轻量，使用上最SQL的SQLite封装库&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&quot;网络类&quot;&gt;&lt;a href=&quot;#网络类&quot; class=&quot;headerlink&quot; title=&quot;网络类&quot;&gt;&lt;/a&gt;网络类&lt;/h6&gt;&lt;ul&gt;
+&lt;h2 id=&quot;网络类&quot;&gt;&lt;a href=&quot;#网络类&quot; class=&quot;headerlink&quot; title=&quot;网络类&quot;&gt;&lt;/a&gt;网络类&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/Alamofire/Alamofire&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Alamofire&lt;/a&gt;&lt;br&gt;AFNetworking网络基础库Swift语言版&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&quot;图片类&quot;&gt;&lt;a href=&quot;#图片类&quot; class=&quot;headerlink&quot; title=&quot;图片类&quot;&gt;&lt;/a&gt;图片类&lt;/h6&gt;&lt;ul&gt;
+&lt;h2 id=&quot;图片类&quot;&gt;&lt;a href=&quot;#图片类&quot; class=&quot;headerlink&quot; title=&quot;图片类&quot;&gt;&lt;/a&gt;图片类&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/kaishin/ImageScout&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ImageScout&lt;/a&gt;&lt;br&gt;最小网络代价获得图片大小及类型&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/indragiek/DominantColor&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DominantColor&lt;/a&gt;&lt;br&gt;提取图片主色示例项目&lt;/p&gt;
@@ -125,7 +125,7 @@
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Haneke/HanekeSwift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HanekeSwift&lt;/a&gt;&lt;br&gt;轻量带缓存高性能图片加载组件&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&quot;框架类&quot;&gt;&lt;a href=&quot;#框架类&quot; class=&quot;headerlink&quot; title=&quot;框架类&quot;&gt;&lt;/a&gt;框架类&lt;/h6&gt;&lt;ul&gt;
+&lt;h2 id=&quot;框架类&quot;&gt;&lt;a href=&quot;#框架类&quot; class=&quot;headerlink&quot; title=&quot;框架类&quot;&gt;&lt;/a&gt;框架类&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ReactiveCocoa/ReactiveCocoa&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ReactiveCocoa&lt;/a&gt;&lt;br&gt;ReactiveCocoa带给我们一种完全不同的编程方式/结构，基于值的信号和流。这是完全的头脑风暴，首先你需要忘记你曾经学习的来理解它是如何工作的。这不是一个简单的任务，但是是有回报的。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/MengTo/Spring&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Spring&lt;/a&gt;&lt;/p&gt;
@@ -135,13 +135,13 @@
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/mutualmobile/MMWormhole&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MMWormhole&lt;/a&gt;&lt;br&gt;iOS扩展与宿主应用的通讯框架&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&quot;示例项目&quot;&gt;&lt;a href=&quot;#示例项目&quot; class=&quot;headerlink&quot; title=&quot;示例项目&quot;&gt;&lt;/a&gt;示例项目&lt;/h6&gt;&lt;ul&gt;
+&lt;h2 id=&quot;示例项目&quot;&gt;&lt;a href=&quot;#示例项目&quot; class=&quot;headerlink&quot; title=&quot;示例项目&quot;&gt;&lt;/a&gt;示例项目&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ochococo/Design-Patterns-In-Swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Design-Patterns-In-Swift&lt;/a&gt;&lt;br&gt;如何使用常用设计模式及示例&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/robb/hamburger-button&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hamburger-button&lt;/a&gt;&lt;br&gt;无论设计还是代码，都进行了精雕细琢&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&quot;完整项目&quot;&gt;&lt;a href=&quot;#完整项目&quot; class=&quot;headerlink&quot; title=&quot;完整项目&quot;&gt;&lt;/a&gt;完整项目&lt;/h6&gt;&lt;ul&gt;
+&lt;h2 id=&quot;完整项目&quot;&gt;&lt;a href=&quot;#完整项目&quot; class=&quot;headerlink&quot; title=&quot;完整项目&quot;&gt;&lt;/a&gt;完整项目&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/tnantoka/edhita&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;edhita&lt;/a&gt;&lt;br&gt;支持Markdown, HTML预览的文本编辑器&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/mozilla/firefox-ios&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;firefox-ios&lt;/a&gt;&lt;br&gt;来自Mozilla开发团队大型纯Swift项目&lt;/p&gt;
@@ -157,7 +157,7 @@
 &lt;p&gt;拥有着苹果先天生态优势的Swift自发布以来，各种优秀的开源项目便层出不穷。我站在个人的角度，将Swift开源项目做了一个甄别、筛选，从工具、存储、网络、界面、框架到Demo以及完整应用等，满满的干货。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;虽然现在对Swift还停留在入门水平，但是还是觉得有必要去网上收集一些优秀的Swift开源项目。&lt;/p&gt;
-&lt;h6 id=&quot;界面类&quot;&gt;&lt;a href=&quot;#界面类&quot; class=&quot;headerlink&quot; title=&quot;界面类&quot;&gt;&lt;/a&gt;界面类&lt;/h6&gt;&lt;ul&gt;
+&lt;h2 id=&quot;界面类&quot;&gt;&lt;a href=&quot;#界面类&quot; class=&quot;headerlink&quot; title=&quot;界面类&quot;&gt;&lt;/a&gt;界面类&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/raulriera/TextFieldEffects&quot;&gt;TextFieldEffects&lt;/a&gt;&lt;br&gt;你不觉得标准的UITextField有一点无聊吗？我也是——所以对TextFieldEffects说hello吧！&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/FahimF/FloatLabelFields&quot;&gt;FloatLabelFields&lt;/a&gt;&lt;br&gt;带浮动标签的输入框&lt;/p&gt;
@@ -178,12 +178,12 @@
     <link href="http://www.jvaeyhcd.cc/2016/04/06/iOS%E4%B8%AD%E9%80%A0%E6%88%90dealloc%E4%B8%8D%E8%B0%83%E7%94%A8%E7%9A%84%E5%8E%9F%E5%9B%A0/"/>
     <id>http://www.jvaeyhcd.cc/2016/04/06/iOS中造成dealloc不调用的原因/</id>
     <published>2016-04-06T04:18:32.000Z</published>
-    <updated>2016-04-06T05:27:06.000Z</updated>
+    <updated>2016-04-27T10:58:58.000Z</updated>
     
-    <content type="html">&lt;h6 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h6&gt;&lt;p&gt;最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (void)dealloc &amp;#123;&amp;#10;    [_mapView release];&amp;#10;    [super dealloc];&amp;#10;&amp;#125;&amp;#10;&amp;#10;//&amp;#24182;&amp;#19988;&amp;#22312;&amp;#30028;&amp;#38754;&amp;#23558;&amp;#35201;&amp;#26174;&amp;#31034;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#35774;&amp;#32622;&amp;#20195;&amp;#29702;&amp;#65292;&amp;#23558;&amp;#35201;&amp;#28040;&amp;#22833;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#21462;&amp;#28040;&amp;#20195;&amp;#29702;&amp;#10;- (void)viewWillAppear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = self;&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (void)viewWillDisappear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = nil;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (void)dealloc &amp;#123;&amp;#10;    [_mapView release];&amp;#10;    [super dealloc];&amp;#10;&amp;#125;&amp;#10;&amp;#10;//&amp;#24182;&amp;#19988;&amp;#22312;&amp;#30028;&amp;#38754;&amp;#23558;&amp;#35201;&amp;#26174;&amp;#31034;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#35774;&amp;#32622;&amp;#20195;&amp;#29702;&amp;#65292;&amp;#23558;&amp;#35201;&amp;#28040;&amp;#22833;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#21462;&amp;#28040;&amp;#20195;&amp;#29702;&amp;#10;- (void)viewWillAppear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = self;&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (void)viewWillDisappear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = nil;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;以上给出的方法确实是对的，可以解决反复切换地图页面和地图上一级页面内存暴增造成的闪退问题。但是这里要说的不是这个问题，而是一个新的问题，我在dealloc中打了断点，但是dealloc根本就没有执行，所以mapView也就根本就没有释放，内存还是一样在暴增。为什么ViewController已经被pop了，而ViewController的dealloc方法却没有被调用？（按理说ViewController被pop的时候它的dealloc的方法应该被调用才对）。&lt;/p&gt;
-&lt;h6 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h6&gt;&lt;p&gt;通过Google搜索终于在晚上找到了答案（大家就不要用百度，想要快速准确的找到自己想要的答案推荐大家用google）。造成ViewController不释放的原因可能有很多。遇到dealloc不调用的时候只需要检查您的ViewController中是否存在以下几个问题：&lt;/p&gt;
+&lt;h2 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h2&gt;&lt;p&gt;通过Google搜索终于在晚上找到了答案（大家就不要用百度，想要快速准确的找到自己想要的答案推荐大家用google）。造成ViewController不释放的原因可能有很多。遇到dealloc不调用的时候只需要检查您的ViewController中是否存在以下几个问题：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;&lt;b&gt;ViewController中存在NSTimer&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt; 如果你的ViewController中有NSTimer，那么你就要注意了，因为当你调用&lt;/p&gt;
@@ -204,7 +204,7 @@
     
     <summary type="html">
     
-      &lt;h6 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h6&gt;&lt;p&gt;最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (void)dealloc &amp;#123;&amp;#10;    [_mapView release];&amp;#10;    [super dealloc];&amp;#10;&amp;#125;&amp;#10;&amp;#10;//&amp;#24182;&amp;#19988;&amp;#22312;&amp;#30028;&amp;#38754;&amp;#23558;&amp;#35201;&amp;#26174;&amp;#31034;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#35774;&amp;#32622;&amp;#20195;&amp;#29702;&amp;#65292;&amp;#23558;&amp;#35201;&amp;#28040;&amp;#22833;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#21462;&amp;#28040;&amp;#20195;&amp;#29702;&amp;#10;- (void)viewWillAppear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = self;&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (void)viewWillDisappear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = nil;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (void)dealloc &amp;#123;&amp;#10;    [_mapView release];&amp;#10;    [super dealloc];&amp;#10;&amp;#125;&amp;#10;&amp;#10;//&amp;#24182;&amp;#19988;&amp;#22312;&amp;#30028;&amp;#38754;&amp;#23558;&amp;#35201;&amp;#26174;&amp;#31034;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#35774;&amp;#32622;&amp;#20195;&amp;#29702;&amp;#65292;&amp;#23558;&amp;#35201;&amp;#28040;&amp;#22833;&amp;#30340;&amp;#26102;&amp;#20505;&amp;#21462;&amp;#28040;&amp;#20195;&amp;#29702;&amp;#10;- (void)viewWillAppear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = self;&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (void)viewWillDisappear:(BOOL)animated &amp;#123;&amp;#10;    _mapView.delegate = nil;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
     
     </summary>
     
@@ -216,23 +216,23 @@
     <link href="http://www.jvaeyhcd.cc/2016/04/05/%E5%85%B3%E4%BA%8EUItableView%E7%9A%84%E5%A4%8D%E7%94%A8/"/>
     <id>http://www.jvaeyhcd.cc/2016/04/05/关于UItableView的复用/</id>
     <published>2016-04-05T01:26:44.000Z</published>
-    <updated>2016-04-27T07:08:09.000Z</updated>
+    <updated>2016-04-27T11:00:19.000Z</updated>
     
     <content type="html">&lt;p&gt;UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。&lt;/p&gt;
-&lt;h6 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h6&gt;&lt;p&gt;为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。&lt;/p&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;关于UItableView的复用机制大概是这样的：假设一个UItableView要加载10000条数据，但是一个屏幕最大只能展示3条数据（这里屏幕最多能展示的数据条数是根据UItableViewCell的高度来定的）。然后当你向上滑动，想要查看更多的内容，那么肯定需要一个cell放在已经存在的内容下边。这个时候并不会重新去创建一个UItableViewCell放在下面，而是根据cellIdetifier去内存池中拿到与之对应的UItableViewCell。&lt;/p&gt;
-&lt;h6 id=&quot;复用方式&quot;&gt;&lt;a href=&quot;#复用方式&quot; class=&quot;headerlink&quot; title=&quot;复用方式&quot;&gt;&lt;/a&gt;复用方式&lt;/h6&gt;&lt;p&gt;UItableView的复用方式有如下四种方式实现&lt;/p&gt;
+&lt;h2 id=&quot;复用方式&quot;&gt;&lt;a href=&quot;#复用方式&quot; class=&quot;headerlink&quot; title=&quot;复用方式&quot;&gt;&lt;/a&gt;复用方式&lt;/h2&gt;&lt;p&gt;UItableView的复用方式有如下四种方式实现&lt;/p&gt;
 &lt;p&gt;方式一:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &amp;#10;if (!cell) &amp;#123;&amp;#10;&amp;#9;cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier]; &amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;方式二:UItableViewCell是xib写的&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;XXXTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &amp;#10;if (nil == cell) &amp;#123;  &amp;#10;    cell = [[[NSBundle mainBundle]loadNibNamed:@&amp;#34;XXXTableViewCell&amp;#34; owner:self options:nil]lastObject];  &amp;#10;    cell.selectionStyle=UITableViewCellSelectionStyleNone;  &amp;#10;    [tableView registerNib:[UINib nibWithNibName:@&amp;#34;XXXTableViewCell&amp;#34; bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellIdentifier];&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;方式三:在xib中identifier属性必须写上cellIdentifier ,对应代码中的cellIdentifier&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;XXTableViewCell *cell;  &amp;#10;cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &amp;#10;if (nil == cell) &amp;#123;  &amp;#10;    cell= [[[NSBundle mainBundle] loadNibNamed:@&amp;#34;XXTableViewCell&amp;#34; owner:nil options:nil] lastObject];  &amp;#10;&amp;#125;  &amp;#10;return cell;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;方式四：先register cell，然后复用&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#pragma mark - &amp;#21021;&amp;#22987;&amp;#21270;&amp;#25511;&amp;#20214;&amp;#10;&amp;#10;- (UITableView *)tableView&amp;#10;&amp;#123;&amp;#10;    if (!_tableView) &amp;#123;&amp;#10;        _tableView = [[UITableView alloc]initWithFrame:self.frame style:UITableViewStylePlain];&amp;#10;        _tableView.backgroundColor = kMainBgColor;&amp;#10;        _tableView.dataSource = self;&amp;#10;        _tableView.delegate = self;&amp;#10;        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;&amp;#10;        [_tableView registerClass:[XXXCell_iPhone class] forCellReuseIdentifier:kCellIdentifier_XXXCell];&amp;#10;        _tableView.tableFooterView = self.loadingFooterView;&amp;#10;    &amp;#125;&amp;#10;    return _tableView;&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath&amp;#10;&amp;#123;&amp;#10;&amp;#9;//&amp;#22797;&amp;#29992;&amp;#10;    XXXCell_iPhone *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_XXXCell forIndexPath:indexPath];&amp;#10;    cell.type = self.type;&amp;#10;    [cell setExpressOrder:[_list safeObjectAtIndex:indexPath.row] needTopView:indexPath.row == 0];&amp;#10;    return cell;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h6 id=&quot;常见问题&quot;&gt;&lt;a href=&quot;#常见问题&quot; class=&quot;headerlink&quot; title=&quot;常见问题&quot;&gt;&lt;/a&gt;常见问题&lt;/h6&gt;</content>
+&lt;h2 id=&quot;常见问题&quot;&gt;&lt;a href=&quot;#常见问题&quot; class=&quot;headerlink&quot; title=&quot;常见问题&quot;&gt;&lt;/a&gt;常见问题&lt;/h2&gt;</content>
     
     <summary type="html">
     
       &lt;p&gt;UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。&lt;/p&gt;
-&lt;h6 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h6&gt;&lt;p&gt;为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。&lt;/p&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。&lt;/p&gt;
     
     </summary>
     
@@ -250,10 +250,10 @@
     <link href="http://www.jvaeyhcd.cc/2016/03/30/%E5%85%B3%E4%BA%8EiOS%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B0%8F%E8%AE%B0/"/>
     <id>http://www.jvaeyhcd.cc/2016/03/30/关于iOS多线程小记/</id>
     <published>2016-03-30T03:42:06.000Z</published>
-    <updated>2016-04-27T07:08:15.000Z</updated>
+    <updated>2016-04-27T11:12:17.000Z</updated>
     
     <content type="html">&lt;p&gt;这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。当然也会给出几种简单的代码案例，再试实际使用中去感受它们的区别。&lt;/p&gt;
-&lt;h6 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h6&gt;&lt;p&gt;在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：&lt;/p&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;进程间不能共享内存，但线程间共享内存非常容易。&lt;/li&gt;
 &lt;li&gt;系统创建进程需要为该进程重新分配系统资源，但创建线程的代价要小得多，因此使用多线程来实现任务并发比多进程效率高得多。&lt;/li&gt;
@@ -271,7 +271,7 @@
     <summary type="html">
     
       &lt;p&gt;这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。当然也会给出几种简单的代码案例，再试实际使用中去感受它们的区别。&lt;/p&gt;
-&lt;h6 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h6&gt;&lt;p&gt;在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：&lt;/p&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;进程间不能共享内存，但线程间共享内存非常容易。&lt;/li&gt;
 &lt;li&gt;系统创建进程需要为该进程重新分配系统资源，但创建线程的代价要小得多，因此使用多线程来实现任务并发比多进程效率高得多。&lt;/li&gt;
@@ -293,16 +293,16 @@
     <link href="http://www.jvaeyhcd.cc/2016/03/28/iOS%E4%B8%8A%E5%AE%8C%E7%BE%8E%E7%BC%96%E8%AF%91FFmpeg/"/>
     <id>http://www.jvaeyhcd.cc/2016/03/28/iOS上完美编译FFmpeg/</id>
     <published>2016-03-28T13:50:00.000Z</published>
-    <updated>2016-03-28T14:13:16.000Z</updated>
+    <updated>2016-04-27T11:01:55.000Z</updated>
     
-    <content type="html">&lt;p&gt;最新在使用FFmpeg的时候遇到了如下的报错信息，但是现在一直都还未找到解决办法。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Undefined symbols for architecture arm64:&amp;#10;  &amp;#34;_avcodec_close&amp;#34;, referenced from:&amp;#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_av_init_packet&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&amp;#38;, int&amp;#38;) in H264Decoder.o&amp;#10;  &amp;#34;_av_malloc&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CreateYUVTab_16() in H264Decoder.o&amp;#10;  &amp;#34;_av_free&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DeleteYUVTab() in H264Decoder.o&amp;#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_av_register_all&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_find_decoder&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_decode_video2&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&amp;#38;, int&amp;#38;) in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_open2&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_alloc_context3&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_alloc_frame&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;ld: symbol(s) not found for architecture arm64&amp;#10;clang: error: linker command failed with exit code 1 (use -v to see invocation)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;最新在使用FFmpeg的时候遇到了如下的报错信息，但是现在一直都还未找到解决办法。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Undefined symbols for architecture arm64:&amp;#10;  &amp;#34;_avcodec_close&amp;#34;, referenced from:&amp;#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_av_init_packet&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&amp;#38;, int&amp;#38;) in H264Decoder.o&amp;#10;  &amp;#34;_av_malloc&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CreateYUVTab_16() in H264Decoder.o&amp;#10;  &amp;#34;_av_free&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DeleteYUVTab() in H264Decoder.o&amp;#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_av_register_all&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_find_decoder&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_decode_video2&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&amp;#38;, int&amp;#38;) in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_open2&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_alloc_context3&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_alloc_frame&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;ld: symbol(s) not found for architecture arm64&amp;#10;clang: error: linker command failed with exit code 1 (use -v to see invocation)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;解决办法，直接上图&lt;/p&gt;
+&lt;h2 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h2&gt;&lt;p&gt;解决办法，直接上图&lt;/p&gt;
 &lt;img src=&quot;/2016/03/28/iOS上完美编译FFmpeg/1.png&quot; alt=&quot;解决办法&quot; title=&quot;解决办法&quot;&gt;</content>
     
     <summary type="html">
     
-      &lt;p&gt;最新在使用FFmpeg的时候遇到了如下的报错信息，但是现在一直都还未找到解决办法。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Undefined symbols for architecture arm64:&amp;#10;  &amp;#34;_avcodec_close&amp;#34;, referenced from:&amp;#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_av_init_packet&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&amp;#38;, int&amp;#38;) in H264Decoder.o&amp;#10;  &amp;#34;_av_malloc&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CreateYUVTab_16() in H264Decoder.o&amp;#10;  &amp;#34;_av_free&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DeleteYUVTab() in H264Decoder.o&amp;#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_av_register_all&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_find_decoder&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_decode_video2&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&amp;#38;, int&amp;#38;) in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_open2&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_alloc_context3&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_alloc_frame&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;ld: symbol(s) not found for architecture arm64&amp;#10;clang: error: linker command failed with exit code 1 (use -v to see invocation)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;最新在使用FFmpeg的时候遇到了如下的报错信息，但是现在一直都还未找到解决办法。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Undefined symbols for architecture arm64:&amp;#10;  &amp;#34;_avcodec_close&amp;#34;, referenced from:&amp;#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_av_init_packet&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&amp;#38;, int&amp;#38;) in H264Decoder.o&amp;#10;  &amp;#34;_av_malloc&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CreateYUVTab_16() in H264Decoder.o&amp;#10;  &amp;#34;_av_free&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DeleteYUVTab() in H264Decoder.o&amp;#10;      CH264Decoder::~CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_av_register_all&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_find_decoder&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_decode_video2&amp;#34;, referenced from:&amp;#10;      CH264Decoder::DecoderFrame(unsigned char*, int, int&amp;#38;, int&amp;#38;) in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_open2&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_alloc_context3&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;  &amp;#34;_avcodec_alloc_frame&amp;#34;, referenced from:&amp;#10;      CH264Decoder::CH264Decoder() in H264Decoder.o&amp;#10;ld: symbol(s) not found for architecture arm64&amp;#10;clang: error: linker command failed with exit code 1 (use -v to see invocation)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
     
     </summary>
     
@@ -374,13 +374,13 @@
     <link href="http://www.jvaeyhcd.cc/2016/03/23/Objective-C%E5%B8%B8%E7%94%A8%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8C%BA%E5%88%AB/"/>
     <id>http://www.jvaeyhcd.cc/2016/03/23/Objective-C常用关键字的使用与区别/</id>
     <published>2016-03-23T02:17:12.000Z</published>
-    <updated>2016-03-23T03:55:43.000Z</updated>
+    <updated>2016-04-27T10:58:15.000Z</updated>
     
     <content type="html">&lt;p&gt;虽然接触iOS已经很久了，但是对于Objective-C中常见的关键字还经常处于傻傻分不清楚的状态。遇到最多的情况就是在申明一个属性的时候，比如：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@propperty (?,?) ?*!;&amp;#10;...............&amp;#10;............&amp;#10;.........&amp;#10;......&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;就是这里，每次在这里的时候都不知道，怎么去申明他的关键字。这个看起来简单（弄明白了确实也是很简单的），但是如果没有系统的去区分这些关键字很容易混淆。&lt;br&gt;所以今天通过自己的一些积累以及在网上总结的一些资料，给自己总结一下，主要作为自己对iOS学习的一个小小的总结。&lt;/p&gt;
 &lt;p&gt;OC中常见的关键字有copy,assign,strong,retain,weak,readonly,nonatomic,atomic。&lt;br&gt;这篇文章主要从这几个关键字的含义和简单的使用以及iOS开发中使用的时候的一些区别来进行总结。（看似简单但却非常重要）&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h6 id=&quot;含义&quot;&gt;&lt;a href=&quot;#含义&quot; class=&quot;headerlink&quot; title=&quot;含义&quot;&gt;&lt;/a&gt;含义&lt;/h6&gt;&lt;ul&gt;
+&lt;h2 id=&quot;含义&quot;&gt;&lt;a href=&quot;#含义&quot; class=&quot;headerlink&quot; title=&quot;含义&quot;&gt;&lt;/a&gt;含义&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;copy&lt;/strong&gt; 创建一个索引计数为1的对象,释放掉原来的对象。复制内容（深复制），如果调用copy的是数组，则为指针复制（浅复制），仅仅复制子元素的指针。copy常常用来修饰NSString，NSMutableArray和Block。&lt;/p&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@property  (nonatomic,copy) NSString  *title;&amp;#10;@property (nonatomic, copy) NSMutableArray *myArray;&amp;#10;@property (nonatomic, copy) void(^myBlock)();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
@@ -401,7 +401,7 @@
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;readwrite&lt;/strong&gt;&lt;br&gt;此标记说明属性会被当成读写的，这也是默认属性。设置器和读取器都需要在@implementation中实现。如果使用@synthesize关键字，读取器和设置器都会被解析。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&quot;使用区别&quot;&gt;&lt;a href=&quot;#使用区别&quot; class=&quot;headerlink&quot; title=&quot;使用区别&quot;&gt;&lt;/a&gt;使用区别&lt;/h6&gt;&lt;ul&gt;
+&lt;h2 id=&quot;使用区别&quot;&gt;&lt;a href=&quot;#使用区别&quot; class=&quot;headerlink&quot; title=&quot;使用区别&quot;&gt;&lt;/a&gt;使用区别&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;copy和retain&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ol&gt;
@@ -462,7 +462,7 @@
     <link href="http://www.jvaeyhcd.cc/2016/03/17/iOS%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E4%BC%A0%E5%80%BC%E6%96%B9%E5%BC%8F/"/>
     <id>http://www.jvaeyhcd.cc/2016/03/17/iOS几种不同传值方式/</id>
     <published>2016-03-17T07:17:32.000Z</published>
-    <updated>2016-04-27T07:05:43.000Z</updated>
+    <updated>2016-04-27T10:58:45.000Z</updated>
     
     <content type="html">&lt;p&gt;关于iOS的传值方式我所知道的一共有一下6种方式：&lt;/p&gt;
 &lt;ul&gt;
@@ -475,11 +475,11 @@
 &lt;/ul&gt;
 &lt;p&gt;以上六种方式都可以实现iOS不同对象之间的传值，但是针对不同的情况，我们会采取不同的传值方式。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h6 id=&quot;属性传值&quot;&gt;&lt;a href=&quot;#属性传值&quot; class=&quot;headerlink&quot; title=&quot;属性传值&quot;&gt;&lt;/a&gt;属性传值&lt;/h6&gt;&lt;p&gt;属性传值一般常用在页面中，从一个页面传值到另一个页面。例如从A页面跳转到B页面，如果需要将A页面中的某个值传递到B页面中，这个时候用到最简单的传值方式就是属性传值。&lt;/p&gt;
+&lt;h2 id=&quot;属性传值&quot;&gt;&lt;a href=&quot;#属性传值&quot; class=&quot;headerlink&quot; title=&quot;属性传值&quot;&gt;&lt;/a&gt;属性传值&lt;/h2&gt;&lt;p&gt;属性传值一般常用在页面中，从一个页面传值到另一个页面。例如从A页面跳转到B页面，如果需要将A页面中的某个值传递到B页面中，这个时候用到最简单的传值方式就是属性传值。&lt;/p&gt;
 &lt;p&gt;下面是一个简单例子实现将AViewController中UItextFiled中的值传到BViewController中Label中。&lt;br&gt;AViewController.m中的代码如下：&lt;br&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;#34;AViewController.h&amp;#34;&amp;#10;#import &amp;#34;BViewController.h&amp;#34;&amp;#10;&amp;#10;@interface AViewController ()&amp;#10;&amp;#10;//&amp;#23450;&amp;#20041;&amp;#36755;&amp;#20837;&amp;#26694;&amp;#10;@property (nonatomic, strong) UITextField *textField;&amp;#10;&amp;#10;@end&amp;#10;&amp;#10;@implementation AViewController&amp;#10;&amp;#10;- (void)viewDidLoad &amp;#123;&amp;#10;    [super viewDidLoad];&amp;#10;    // Do any additional setup after loading the view.&amp;#10;    &amp;#10;    [self.view addSubview:self.textField];&amp;#10;    //&amp;#23450;&amp;#20041;&amp;#28857;&amp;#20987;&amp;#36339;&amp;#36716;&amp;#30340;&amp;#25353;&amp;#38062;&amp;#10;    UIButton *pushBtn = [[UIButton alloc]initWithFrame:CGRectMake(20, 150, 100, 30)];&amp;#10;    pushBtn.titleLabel.font = [UIFont systemFontOfSize:12];&amp;#10;    [pushBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];&amp;#10;    [pushBtn setTitle:@&amp;#34;push&amp;#26174;&amp;#31034;&amp;#34; forState:UIControlStateNormal];&amp;#10;    [pushBtn setBackgroundColor:[UIColor yellowColor]];&amp;#10;    [pushBtn addTarget:self action:@selector(pushAction) forControlEvents:UIControlEventTouchUpInside];&amp;#10;    [self.view addSubview:pushBtn];&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (void)pushAction &amp;#123;&amp;#10;    //&amp;#23450;&amp;#20041;&amp;#36339;&amp;#36716;&amp;#39029;&amp;#38754;&amp;#65292;&amp;#24182;&amp;#32473;B&amp;#39029;&amp;#38754;str&amp;#36171;&amp;#20540;&amp;#10;    BViewController *vc = [[BViewController alloc]init];&amp;#10;    vc.str = self.textField.text;&amp;#10;    [self.navigationController pushViewController:vc animated:YES];&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (void)didReceiveMemoryWarning &amp;#123;&amp;#10;    [super didReceiveMemoryWarning];&amp;#10;    // Dispose of any resources that can be recreated.&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (UITextField *)textField &amp;#123;&amp;#10;    if (!_textField) &amp;#123;&amp;#10;        _textField = [[UITextField alloc]initWithFrame:CGRectMake(20, 100, 280, 30)];&amp;#10;        _textField.borderStyle = UITextBorderStyleRoundedRect;&amp;#10;    &amp;#125;&amp;#10;    return _textField;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;BViewController.h文件中，声明被赋值的属性&lt;br&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;#60;UIKit/UIKit.h&amp;#62;&amp;#10;&amp;#10;@interface BViewController : UIViewController&amp;#10;&amp;#10;@property (nonatomic, copy) NSString *str;&amp;#10;&amp;#10;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;BViewController.m中显示AViewController传递过来的属性值&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;#34;BViewController.h&amp;#34;&amp;#10;&amp;#10;@interface BViewController ()&amp;#10;&amp;#10;@end&amp;#10;&amp;#10;@implementation BViewController&amp;#10;&amp;#10;- (void)viewDidLoad &amp;#123;&amp;#10;    [super viewDidLoad];&amp;#10;    // Do any additional setup after loading the view.&amp;#10;    self.view.backgroundColor = [UIColor whiteColor];&amp;#10;    &amp;#10;    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 100, 100, 20)];&amp;#10;    label.font = [UIFont systemFontOfSize:14];&amp;#10;    label.textColor = [UIColor blackColor];&amp;#10;    //&amp;#26174;&amp;#31034;AViewController&amp;#20256;&amp;#36882;&amp;#36807;&amp;#26469;&amp;#30340;&amp;#20540;&amp;#10;    label.text = self.str;&amp;#10;    [self.view addSubview:label];&amp;#10;&amp;#125;&amp;#10;&amp;#10;- (void)didReceiveMemoryWarning &amp;#123;&amp;#10;    [super didReceiveMemoryWarning];&amp;#10;    // Dispose of any resources that can be recreated.&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h6 id=&quot;代理传值&quot;&gt;&lt;a href=&quot;#代理传值&quot; class=&quot;headerlink&quot; title=&quot;代理传值&quot;&gt;&lt;/a&gt;代理传值&lt;/h6&gt;</content>
+&lt;h2 id=&quot;代理传值&quot;&gt;&lt;a href=&quot;#代理传值&quot; class=&quot;headerlink&quot; title=&quot;代理传值&quot;&gt;&lt;/a&gt;代理传值&lt;/h2&gt;</content>
     
     <summary type="html">
     
@@ -508,12 +508,12 @@
     <link href="http://www.jvaeyhcd.cc/2016/03/05/App-Store%E4%B8%8A%E7%BA%BF%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B/"/>
     <id>http://www.jvaeyhcd.cc/2016/03/05/App-Store上线完整流程/</id>
     <published>2016-03-05T09:25:33.000Z</published>
-    <updated>2016-04-27T07:08:45.000Z</updated>
+    <updated>2016-04-27T11:24:40.000Z</updated>
     
     <content type="html">&lt;p&gt;经过一年的iOS开发，到现在一共上线了6款App到App Store。从iOS6到iOS9，每一次苹果系统的更新，App Store的上线流程都会有点相应的改变。对于上线App到App Store的这个流程现在已经是得心应手，现在利用周末这个闲暇的时间纪录一下完整的上传App到App Store的流程。&lt;/p&gt;
 &lt;h2 id=&quot;预先准备&quot;&gt;&lt;a href=&quot;#预先准备&quot; class=&quot;headerlink&quot; title=&quot;预先准备&quot;&gt;&lt;/a&gt;预先准备&lt;/h2&gt;&lt;p&gt;在你开始将程序提交到App Store之前，您需要有一个开发者帐号、一个App ID、一个有效的证书以及一个有效的Provisioning Profiles。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h6 id=&quot;Step-1-申请开发者帐号&quot;&gt;&lt;a href=&quot;#Step-1-申请开发者帐号&quot; class=&quot;headerlink&quot; title=&quot;Step 1:申请开发者帐号&quot;&gt;&lt;/a&gt;Step 1:申请开发者帐号&lt;/h6&gt;&lt;p&gt;如果您现在已有开发者帐号，那么恭喜您，您可以直接跳过此步骤直接进入下一步骤。苹果开发者帐号分为三种：个人开发者帐号、公司帐号、企业帐号。&lt;/p&gt;
+&lt;h3 id=&quot;Step-1-申请开发者帐号&quot;&gt;&lt;a href=&quot;#Step-1-申请开发者帐号&quot; class=&quot;headerlink&quot; title=&quot;Step 1:申请开发者帐号&quot;&gt;&lt;/a&gt;Step 1:申请开发者帐号&lt;/h3&gt;&lt;p&gt;如果您现在已有开发者帐号，那么恭喜您，您可以直接跳过此步骤直接进入下一步骤。苹果开发者帐号分为三种：个人开发者帐号、公司帐号、企业帐号。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;个人帐号（Individual）:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;费用：99美元一年&lt;/li&gt;
@@ -538,26 +538,27 @@
 &lt;li&gt;协作人数：多人&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;说明：需要注意的是，企业账号开发的应用不能上线App Store，适合那些不希望公开发布应用的企业。同样，申请时也需要公司的邓白氏编码（DUNS Number）。&lt;/p&gt;
-&lt;h6 id=&quot;Step-2-App-ID（应用ID）&quot;&gt;&lt;a href=&quot;#Step-2-App-ID（应用ID）&quot; class=&quot;headerlink&quot; title=&quot;Step 2:App ID（应用ID）&quot;&gt;&lt;/a&gt;Step 2:App ID（应用ID）&lt;/h6&gt;&lt;p&gt;App ID是识别不同应用程序的唯一标示符。每个app都需要一个App ID或者app标识。目前有两种类型的App标识：一个是精确的App ID（explicit App ID），一个是通配符App ID（wildcard App ID）。使用通配符的App ID可以用来构建和安装多个程序。尽管通配符App ID非常方便，但是一个精确的App ID也是需要的，尤其是当App使用iCloud 或者使用其他iOS功能的时候，比如Game Center、Push Notifications或者IAP。如果你已经申请开发者帐号，接下你需要登录&lt;a href=&quot;https://developer.apple.com/membercenter/。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.apple.com/membercenter/。&lt;/a&gt;&lt;br&gt;登录成功后界面如下：&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/developer_center.png&quot; alt=&quot;hexo-theme-apollo&quot; title=&quot;hexo-theme-apollo&quot;&gt;&lt;br&gt;点击“Certificates,Identifiers&amp;amp;Profiles”进入到&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/Identifiers.png&quot; alt=&quot;Identifiers&quot; title=&quot;Identifiers&quot;&gt;&lt;br&gt;选择Identifiers，然后点击“＋”注册你自己的应用的App Id&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_app_id.png&quot; alt=&quot;create_app_id&quot; title=&quot;create_app_id&quot;&gt;&lt;br&gt;以上两项设置好后，点击下一步，然后注册即可，这样一个App Id就创建好了。接下来需要设置开发证书。&lt;/p&gt;
-&lt;h6 id=&quot;Step-3-Distribution-Certificate-发布证书&quot;&gt;&lt;a href=&quot;#Step-3-Distribution-Certificate-发布证书&quot; class=&quot;headerlink&quot; title=&quot;Step 3:Distribution Certificate(发布证书)&quot;&gt;&lt;/a&gt;Step 3:Distribution Certificate(发布证书)&lt;/h6&gt;&lt;p&gt;iOS应用都有一个安全证书用于验证开发者身份和签名。为了可以向App Store提交app，你需要创建一个iOS provisioning profile 。首先需要创建一个distribution certificate（发布证书），过程类似于创建一个development certificate（开发证书）。如果你已经在实体设备上测试你的App，那么你对创建development certificate就已经很熟悉了。&lt;/p&gt;
+&lt;h3 id=&quot;Step-2-App-ID（应用ID）&quot;&gt;&lt;a href=&quot;#Step-2-App-ID（应用ID）&quot; class=&quot;headerlink&quot; title=&quot;Step 2:App ID（应用ID）&quot;&gt;&lt;/a&gt;Step 2:App ID（应用ID）&lt;/h3&gt;&lt;p&gt;App ID是识别不同应用程序的唯一标示符。每个app都需要一个App ID或者app标识。目前有两种类型的App标识：一个是精确的App ID（explicit App ID），一个是通配符App ID（wildcard App ID）。使用通配符的App ID可以用来构建和安装多个程序。尽管通配符App ID非常方便，但是一个精确的App ID也是需要的，尤其是当App使用iCloud 或者使用其他iOS功能的时候，比如Game Center、Push Notifications或者IAP。如果你已经申请开发者帐号，接下你需要登录&lt;a href=&quot;https://developer.apple.com/membercenter/。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.apple.com/membercenter/。&lt;/a&gt;&lt;br&gt;登录成功后界面如下：&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/developer_center.png&quot; alt=&quot;Developer页面&quot; title=&quot;Developer页面&quot;&gt;&lt;br&gt;点击“Certificates,Identifiers&amp;amp;Profiles”进入到&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/Identifiers.png&quot; alt=&quot;Identifiers&quot; title=&quot;Identifiers&quot;&gt;&lt;br&gt;选择Identifiers，然后点击“＋”注册你自己的应用的App Id&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_app_id.png&quot; alt=&quot;创建App ID&quot; title=&quot;创建App ID&quot;&gt;&lt;br&gt;以上两项设置好后，点击下一步，然后注册即可，这样一个App Id就创建好了。接下来需要设置开发证书。&lt;/p&gt;
+&lt;h3 id=&quot;Step-3-Distribution-Certificate-发布证书&quot;&gt;&lt;a href=&quot;#Step-3-Distribution-Certificate-发布证书&quot; class=&quot;headerlink&quot; title=&quot;Step 3:Distribution Certificate(发布证书)&quot;&gt;&lt;/a&gt;Step 3:Distribution Certificate(发布证书)&lt;/h3&gt;&lt;p&gt;iOS应用都有一个安全证书用于验证开发者身份和签名。为了可以向App Store提交app，你需要创建一个iOS provisioning profile 。首先需要创建一个distribution certificate（发布证书），过程类似于创建一个development certificate（开发证书）。如果你已经在实体设备上测试你的App，那么你对创建development certificate就已经很熟悉了。&lt;/p&gt;
 &lt;p&gt;首先选择Certificate,然后点击“＋”&lt;/p&gt;
-&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_certificates_step1.png&quot; alt=&quot;create_certificates_step1&quot; title=&quot;create_certificates_step1&quot;&gt;
-&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_certificates_step2.png&quot; alt=&quot;create_certificates_step2&quot; title=&quot;create_certificates_step2&quot;&gt;
-&lt;p&gt;然后点击“下一步”来到如下界面：&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_certificates_step3.png&quot; alt=&quot;create_certificates_step3&quot; title=&quot;create_certificates_step3&quot;&gt;&lt;/p&gt;
-&lt;p&gt;这里需要上传一个.certSigningRequest文件来生成相应的证书。下面简单讲一下.certSigningRequest文件的生成方法：&lt;br&gt;首先打开“钥匙串访问”，在菜单中选择“钥匙串访问”-&amp;gt;“证书助理”-&amp;gt;“从证书颁发机构请求证书…”。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_certSigningRequest_step1.png&quot; alt=&quot;create_certSigningRequest_step1&quot; title=&quot;create_certSigningRequest_step1&quot;&gt;&lt;br&gt;然后填写好相应的信息，注意：选择保存到磁盘。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_certSigningRequest_step2.png&quot; alt=&quot;create_certSigningRequest_step2&quot; title=&quot;create_certSigningRequest_step2&quot;&gt;&lt;br&gt;点击继续，然后会生成一个.certSigningRequest文件。&lt;br&gt;然后选择生成的.certSigningRequest文件，点击下一步即可生成相应的证书。&lt;/p&gt;
-&lt;h6 id=&quot;Step-4-Provisioning-Profile-配置文件&quot;&gt;&lt;a href=&quot;#Step-4-Provisioning-Profile-配置文件&quot; class=&quot;headerlink&quot; title=&quot;Step 4:Provisioning Profile(配置文件)&quot;&gt;&lt;/a&gt;Step 4:Provisioning Profile(配置文件)&lt;/h6&gt;&lt;p&gt;一旦你创建了App ID和distribution certificate，你可以创建一个iOS provisioning profile以方便在App Store中销售你的App。Provisioning Profile主要分为开发配置文件和发布配置文件，发布配置文件中又分App Store配置文件和Ad Hoc配置文件。App Store类型的Provisioning Profile顾名思义是用于发布到App Store的配置文件。Ad Hoc的Provisioning Profile配置文件是用于发布应用内的测试包的，在应用还没有上线的时候需要发ipa给客户安装的时候需要用到，只需要获取到客户手机的UDID然后生成相应的Ad Hoc类型的Provisioning Profile文件然后打包发布即可。&lt;br&gt;同样Provisioning Profile的创建方式如下：&lt;br&gt;选择“Provisioning Profiles”，然后点击“➕”创建Provisioning Profiles文件&lt;/p&gt;
-&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_pp_step1.png&quot; alt=&quot;create_pp_step1&quot; title=&quot;create_pp_step1&quot;&gt;
-&lt;p&gt;选择相应的Provisioning Profiles文件类型&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_pp_step2.png&quot; alt=&quot;create_pp_step2&quot; title=&quot;create_pp_step2&quot;&gt;&lt;br&gt;选择您需要生成Provisioning Profiles文件的App ID&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_pp_step3.png&quot; alt=&quot;create_pp_step3&quot; title=&quot;create_pp_step3&quot;&gt;&lt;br&gt;选择相应的证书&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_pp_step4.png&quot; alt=&quot;create_pp_step4&quot; title=&quot;create_pp_step4&quot;&gt;&lt;br&gt;选择已注册的设备&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_pp_step5.png&quot; alt=&quot;create_pp_step5&quot; title=&quot;create_pp_step5&quot;&gt;&lt;br&gt;然后点击下一步即可生成Provisioning Profiles文件，点击下载，然后双击打开。&lt;/p&gt;
-&lt;h6 id=&quot;Step-5-Build-Settings-生成设置&quot;&gt;&lt;a href=&quot;#Step-5-Build-Settings-生成设置&quot; class=&quot;headerlink&quot; title=&quot;Step 5:Build Settings(生成设置)&quot;&gt;&lt;/a&gt;Step 5:Build Settings(生成设置)&lt;/h6&gt;&lt;p&gt;配置App ID、distribution certificate 和provisioning profile已经完成，是时候配置Xcode中target的build settings了。在Xcode Project  Navigator的targets列表中选择一个target，打开顶部的Build Settings选项，然后更新一下Code Signing来跟之前创建的distribution provisioning profile相匹配。最近添加的provisioning profiles有时候不会立马就在build settings的Code Signing中看到，重启一下Xcode就可以解决这个问题。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/build_setting.png&quot; alt=&quot;build_setting&quot; title=&quot;build_setting&quot;&gt;&lt;/p&gt;
-&lt;h6 id=&quot;Step-6-Deployment-Target-部署目标&quot;&gt;&lt;a href=&quot;#Step-6-Deployment-Target-部署目标&quot; class=&quot;headerlink&quot; title=&quot;Step 6:Deployment Target(部署目标)&quot;&gt;&lt;/a&gt;Step 6:Deployment Target(部署目标)&lt;/h6&gt;&lt;p&gt;所有配置都已配好后，就可以开始打包了生成ipa了。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/archive.png&quot; alt=&quot;archive&quot; title=&quot;archive&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;iTunes-Connect相关配置&quot;&gt;&lt;a href=&quot;#iTunes-Connect相关配置&quot; class=&quot;headerlink&quot; title=&quot;iTunes Connect相关配置&quot;&gt;&lt;/a&gt;iTunes Connect相关配置&lt;/h2&gt;&lt;h6 id=&quot;Step-1-创建“我的App”&quot;&gt;&lt;a href=&quot;#Step-1-创建“我的App”&quot; class=&quot;headerlink&quot; title=&quot;Step 1:创建“我的App”&quot;&gt;&lt;/a&gt;Step 1:创建“我的App”&lt;/h6&gt;&lt;p&gt;首先用你自己的开发者帐号登录到&lt;a href=&quot;https://itunesconnect.apple.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iTunes Connect&lt;/a&gt;。&lt;/p&gt;
-&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/itunes_connect_step1.png&quot; alt=&quot;itunes_connect_step1&quot; title=&quot;itunes_connect_step1&quot;&gt;
-&lt;p&gt;登录成功后点击“我的App”，然后点击“＋”-&amp;gt;“新建App”&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/itunes_connect_step2.png&quot; alt=&quot;itunes_connect_step2&quot; title=&quot;itunes_connect_step2&quot;&gt;&lt;br&gt;其中平台选择iOS，名称为你的app的名词，主要语言为你的app的主要语言，套装ID为之前创建的App ID，也就是Xcode工程中的Bundle ID。&lt;br&gt;点击下一步，创建成功后，选择你刚创建成功的应用，进行相关的设置。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/itunes_connect_step3.png&quot; alt=&quot;itunes_connect_step3&quot; title=&quot;itunes_connect_step3&quot;&gt;&lt;/p&gt;
+&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_certificates_step1.png&quot; alt=&quot;创建Certificate证书第一步&quot; title=&quot;创建Certificate证书第一步&quot;&gt;
+&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_certificates_step2.png&quot; alt=&quot;创建Certificate证书第二步&quot; title=&quot;创建Certificate证书第二步&quot;&gt;
+&lt;p&gt;然后点击“下一步”来到如下界面：&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_certificates_step3.png&quot; alt=&quot;创建Certificate证书第三步&quot; title=&quot;创建Certificate证书第三步&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这里需要上传一个.certSigningRequest文件来生成相应的证书。下面简单讲一下.certSigningRequest文件的生成方法：&lt;br&gt;首先打开“钥匙串访问”，在菜单中选择“钥匙串访问”-&amp;gt;“证书助理”-&amp;gt;“从证书颁发机构请求证书…”。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_certSigningRequest_step1.png&quot; alt=&quot;创建.certSigningRequest文件&quot; title=&quot;创建.certSigningRequest文件&quot;&gt;&lt;br&gt;然后填写好相应的信息，注意：选择保存到磁盘。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_certSigningRequest_step2.png&quot; alt=&quot;填写.certSigningRequest文件信息&quot; title=&quot;填写.certSigningRequest文件信息&quot;&gt;&lt;br&gt;点击继续，然后会生成一个.certSigningRequest文件。&lt;br&gt;然后选择生成的.certSigningRequest文件，点击下一步即可生成相应的证书。&lt;/p&gt;
+&lt;h3 id=&quot;Step-4-Provisioning-Profile-配置文件&quot;&gt;&lt;a href=&quot;#Step-4-Provisioning-Profile-配置文件&quot; class=&quot;headerlink&quot; title=&quot;Step 4:Provisioning Profile(配置文件)&quot;&gt;&lt;/a&gt;Step 4:Provisioning Profile(配置文件)&lt;/h3&gt;&lt;p&gt;一旦你创建了App ID和distribution certificate，你可以创建一个iOS provisioning profile以方便在App Store中销售你的App。Provisioning Profile主要分为开发配置文件和发布配置文件，发布配置文件中又分App Store配置文件和Ad Hoc配置文件。App Store类型的Provisioning Profile顾名思义是用于发布到App Store的配置文件。Ad Hoc的Provisioning Profile配置文件是用于发布应用内的测试包的，在应用还没有上线的时候需要发ipa给客户安装的时候需要用到，只需要获取到客户手机的UDID然后生成相应的Ad Hoc类型的Provisioning Profile文件然后打包发布即可。&lt;br&gt;同样Provisioning Profile的创建方式如下：&lt;br&gt;选择“Provisioning Profiles”，然后点击“➕”创建Provisioning Profiles文件&lt;/p&gt;
+&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_pp_step1.png&quot; alt=&quot;创建Provisioning Profiles文件&quot; title=&quot;创建Provisioning Profiles文件&quot;&gt;
+&lt;p&gt;选择相应的Provisioning Profiles文件类型&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_pp_step2.png&quot; alt=&quot;选择Provisioning Profiles文件类型&quot; title=&quot;选择Provisioning Profiles文件类型&quot;&gt;&lt;/p&gt;
+&lt;p&gt;选择您需要生成Provisioning Profiles文件的App ID&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_pp_step3.png&quot; alt=&quot;选择Provisioning Profiles文件的App ID&quot; title=&quot;选择Provisioning Profiles文件的App ID&quot;&gt;&lt;br&gt;选择相应的证书&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_pp_step4.png&quot; alt=&quot;选择相应的证书&quot; title=&quot;选择相应的证书&quot;&gt;&lt;br&gt;选择已注册的设备&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/create_pp_step5.png&quot; alt=&quot;选择已注册的设备&quot; title=&quot;选择已注册的设备&quot;&gt;&lt;br&gt;然后点击下一步即可生成Provisioning Profiles文件，点击下载，然后双击打开。&lt;/p&gt;
+&lt;h3 id=&quot;Step-5-Build-Settings-生成设置&quot;&gt;&lt;a href=&quot;#Step-5-Build-Settings-生成设置&quot; class=&quot;headerlink&quot; title=&quot;Step 5:Build Settings(生成设置)&quot;&gt;&lt;/a&gt;Step 5:Build Settings(生成设置)&lt;/h3&gt;&lt;p&gt;配置App ID、distribution certificate 和provisioning profile已经完成，是时候配置Xcode中target的build settings了。在Xcode Project  Navigator的targets列表中选择一个target，打开顶部的Build Settings选项，然后更新一下Code Signing来跟之前创建的distribution provisioning profile相匹配。最近添加的provisioning profiles有时候不会立马就在build settings的Code Signing中看到，重启一下Xcode就可以解决这个问题。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/build_setting.png&quot; alt=&quot;Build Setting配置&quot; title=&quot;Build Setting配置&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Step-6-Deployment-Target-部署目标&quot;&gt;&lt;a href=&quot;#Step-6-Deployment-Target-部署目标&quot; class=&quot;headerlink&quot; title=&quot;Step 6:Deployment Target(部署目标)&quot;&gt;&lt;/a&gt;Step 6:Deployment Target(部署目标)&lt;/h3&gt;&lt;p&gt;所有配置都已配好后，就可以开始打包了生成ipa了。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/archive.png&quot; alt=&quot;开始打包&quot; title=&quot;开始打包&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;iTunes-Connect相关配置&quot;&gt;&lt;a href=&quot;#iTunes-Connect相关配置&quot; class=&quot;headerlink&quot; title=&quot;iTunes Connect相关配置&quot;&gt;&lt;/a&gt;iTunes Connect相关配置&lt;/h2&gt;&lt;h3 id=&quot;Step-1-创建“我的App”&quot;&gt;&lt;a href=&quot;#Step-1-创建“我的App”&quot; class=&quot;headerlink&quot; title=&quot;Step 1:创建“我的App”&quot;&gt;&lt;/a&gt;Step 1:创建“我的App”&lt;/h3&gt;&lt;p&gt;首先用你自己的开发者帐号登录到&lt;a href=&quot;https://itunesconnect.apple.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iTunes Connect&lt;/a&gt;。&lt;/p&gt;
+&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/itunes_connect_step1.png&quot; alt=&quot;iTunes Connect&quot; title=&quot;iTunes Connect&quot;&gt;
+&lt;p&gt;登录成功后点击“我的App”，然后点击“＋”-&amp;gt;“新建App”&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/itunes_connect_step2.png&quot; alt=&quot;在iTunes Connect上新建App&quot; title=&quot;在iTunes Connect上新建App&quot;&gt;&lt;br&gt;其中平台选择iOS，名称为你的app的名词，主要语言为你的app的主要语言，套装ID为之前创建的App ID，也就是Xcode工程中的Bundle ID。&lt;br&gt;点击下一步，创建成功后，选择你刚创建成功的应用，进行相关的设置。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/itunes_connect_step3.png&quot; alt=&quot;填写相关信息&quot; title=&quot;填写相关信息&quot;&gt;&lt;/p&gt;
 &lt;p&gt;相关设置比较简单就不再多说。&lt;/p&gt;
-&lt;h6 id=&quot;Step-2-打包上传到iTunes-Connect&quot;&gt;&lt;a href=&quot;#Step-2-打包上传到iTunes-Connect&quot; class=&quot;headerlink&quot; title=&quot;Step 2:打包上传到iTunes Connect&quot;&gt;&lt;/a&gt;Step 2:打包上传到iTunes Connect&lt;/h6&gt;&lt;p&gt;配置好了iTunes Connect的相关配置后，就可以将我们生成的ipa包上传到iTunes Connect上了。Xcode中配置完成后archive成功后Xcode会弹出如下界面：&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/upload_itunes_connect.png&quot; alt=&quot;upload_itunes_connect&quot; title=&quot;upload_itunes_connect&quot;&gt;&lt;br&gt; 上传到iTunes Connect有两种方法：&lt;/p&gt;
+&lt;h3 id=&quot;Step-2-打包上传到iTunes-Connect&quot;&gt;&lt;a href=&quot;#Step-2-打包上传到iTunes-Connect&quot; class=&quot;headerlink&quot; title=&quot;Step 2:打包上传到iTunes Connect&quot;&gt;&lt;/a&gt;Step 2:打包上传到iTunes Connect&lt;/h3&gt;&lt;p&gt;配置好了iTunes Connect的相关配置后，就可以将我们生成的ipa包上传到iTunes Connect上了。Xcode中配置完成后archive成功后Xcode会弹出如下界面：&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/upload_itunes_connect.png&quot; alt=&quot;上传到iTunes Connect&quot; title=&quot;上传到iTunes Connect&quot;&gt;&lt;br&gt; 上传到iTunes Connect有两种方法：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt; 方法一 &lt;/strong&gt;&lt;br&gt;直接点击上图的“Upload to App Store”按钮直接上传到App Store。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; 方法二 &lt;/strong&gt;&lt;br&gt;先导出ipa，然后使用Application Loader上传到App Store。&lt;br&gt;点击“Export”，会弹出如下界面，选择导出的类型，这里要上传App Store，所以选择第一种。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/archive_step_1.png&quot; alt=&quot;archive_step_1&quot; title=&quot;archive_step_1&quot;&gt;&lt;br&gt;点击“下一步”，默认回去检查你的证书，如果没有什么问题一直下一步，最后会在桌面生成一个ipa的包。然后在Xcode中打开Application Loader。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/application_loader_1.png&quot; alt=&quot;application_loader_1&quot; title=&quot;application_loader_1&quot;&gt;&lt;br&gt;用你自己的开发者帐号登录Application Loader，&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/application_loader_login.png&quot; alt=&quot;application_loader_login&quot; title=&quot;application_loader_login&quot;&gt;&lt;br&gt;登录成功后选取你刚刚生成的ipa&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/application_loader_step2.png&quot; alt=&quot;application_loader_step2&quot; title=&quot;application_loader_step2&quot;&gt;&lt;br&gt;然后上传提交到App Store。&lt;/p&gt;
-&lt;h6 id=&quot;Step-3-提交给苹果审核&quot;&gt;&lt;a href=&quot;#Step-3-提交给苹果审核&quot; class=&quot;headerlink&quot; title=&quot;Step 3:提交给苹果审核&quot;&gt;&lt;/a&gt;Step 3:提交给苹果审核&lt;/h6&gt;&lt;p&gt;完成上面的步骤后，返回到iTunes Connect界面，选择你先前创建的App，在它的活动页面下可以看到所有已上传过的ipa版本。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/itunes_connect_step4.png&quot; alt=&quot;itunes_connect_step4&quot; title=&quot;itunes_connect_step4&quot;&gt;&lt;br&gt;选择App信息配置界面，找到“构建版本”，然后选择你刚刚上传的构建版本，然后提交审核即可&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/itunes_connect_step5.png&quot; alt=&quot;itunes_connect_step5&quot; title=&quot;itunes_connect_step5&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; 方法二 &lt;/strong&gt;&lt;br&gt;先导出ipa，然后使用Application Loader上传到App Store。&lt;br&gt;点击“Export”，会弹出如下界面，选择导出的类型，这里要上传App Store，所以选择第一种。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/archive_step_1.png&quot; alt=&quot;导出ipa文件&quot; title=&quot;导出ipa文件&quot;&gt;&lt;br&gt;点击“下一步”，默认回去检查你的证书，如果没有什么问题一直下一步，最后会在桌面生成一个ipa的包。然后在Xcode中打开Application Loader。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/application_loader_1.png&quot; alt=&quot;Application Loader&quot; title=&quot;Application Loader&quot;&gt;&lt;br&gt;用你自己的开发者帐号登录Application Loader，&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/application_loader_login.png&quot; alt=&quot;Application Loader登录&quot; title=&quot;Application Loader登录&quot;&gt;&lt;br&gt;登录成功后选取你刚刚生成的ipa&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/application_loader_step2.png&quot; alt=&quot;Application Loader上传&quot; title=&quot;Application Loader上传&quot;&gt;&lt;br&gt;然后上传提交到App Store。&lt;/p&gt;
+&lt;h3 id=&quot;Step-3-提交给苹果审核&quot;&gt;&lt;a href=&quot;#Step-3-提交给苹果审核&quot; class=&quot;headerlink&quot; title=&quot;Step 3:提交给苹果审核&quot;&gt;&lt;/a&gt;Step 3:提交给苹果审核&lt;/h3&gt;&lt;p&gt;完成上面的步骤后，返回到iTunes Connect界面，选择你先前创建的App，在它的活动页面下可以看到所有已上传过的ipa版本。&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/itunes_connect_step4.png&quot; alt=&quot;上传成功后&quot; title=&quot;上传成功后&quot;&gt;&lt;br&gt;选择App信息配置界面，找到“构建版本”，然后选择你刚刚上传的构建版本，然后提交审核即可&lt;br&gt;&lt;img src=&quot;/2016/03/05/App-Store上线完整流程/itunes_connect_step5.png&quot; alt=&quot;提交审核&quot; title=&quot;提交审核&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -826,14 +827,14 @@
     <link href="http://www.jvaeyhcd.cc/2016/02/20/Hexo%E5%AE%89%E8%A3%85%E6%96%B0%E4%B8%BB%E9%A2%98apollo/"/>
     <id>http://www.jvaeyhcd.cc/2016/02/20/Hexo安装新主题apollo/</id>
     <published>2016-02-20T08:15:35.000Z</published>
-    <updated>2016-02-25T03:11:54.000Z</updated>
+    <updated>2016-04-27T11:25:51.000Z</updated>
     
     <content type="html">&lt;p&gt;Hexo博客系统的流行原因，是因为他的个人性，而皮肤就是个人性的一种体现。Hexo换皮肤还是比较简单的,既可以自己根据默认的主题来修改，也可以到&lt;a href=&quot;https://hexo.io/themes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://hexo.io/themes/&lt;/a&gt;上去找主题。&lt;/p&gt;
 &lt;p&gt;下面简单描述一下我安装apollo主题的过程。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;github上的文档给出了详细的安装命令&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;hexo init #blogname#&amp;#10;cd #blogname# &amp;#10;npm install&amp;#10;npm install --save hexo-renderer-jade hexo-generator-feed hexo-generator-sitemap hexo-browsersync hexo-generator-archive&amp;#10;git clone https://github.com/pinggod/hexo-theme-apollo.git themes/apollo&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h2 id=&quot;启用&quot;&gt;&lt;a href=&quot;#启用&quot; class=&quot;headerlink&quot; title=&quot;启用&quot;&gt;&lt;/a&gt;启用&lt;/h2&gt;&lt;p&gt;安装成功后就可以开始启用主题，主题的启用需要修改_config.yml 的 theme 配置项为 apollo：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# Extensions &amp;#25554;&amp;#20214;&amp;#21644;&amp;#30382;&amp;#32932;&amp;#10;## Plugins: https://hexo.io/plugins/&amp;#10;## Themes: https://hexo.io/themes/&amp;#10;# theme: landscape&amp;#10;theme: apollo&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;启动hexo后修改成功后的皮肤如图所示&lt;br&gt;&lt;img src=&quot;/2016/02/20/Hexo安装新主题apollo/apollo.png&quot; alt=&quot;hexo-theme-apollo&quot; title=&quot;hexo-theme-apollo&quot;&gt;&lt;/p&gt;
+&lt;p&gt;启动hexo后修改成功后的皮肤如图所示&lt;br&gt;&lt;img src=&quot;/2016/02/20/Hexo安装新主题apollo/apollo.png&quot; alt=&quot;apollo主题&quot; title=&quot;apollo主题&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">

@@ -96,7 +96,7 @@
 
 进程间不能共享内存，但线程间共享内存非常容易。
 系统创建进程需要">
-<meta property="og:updated_time" content="2016-04-27T07:08:15.000Z">
+<meta property="og:updated_time" content="2016-04-27T11:12:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于iOS多线程小记">
 <meta name="twitter:description" content="这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。当然也会给出几种简单的代码案例，再试实际使用中去感受它们的区别。
@@ -328,7 +328,7 @@
 
       
         <p>这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。当然也会给出几种简单的代码案例，再试实际使用中去感受它们的区别。</p>
-<h6 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h6><p>在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：</p>
 <ul>
 <li>进程间不能共享内存，但线程间共享内存非常容易。</li>
 <li>系统创建进程需要为该进程重新分配系统资源，但创建线程的代价要小得多，因此使用多线程来实现任务并发比多进程效率高得多。</li>
@@ -568,7 +568,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li></ol></div>
             
           </div>
         </section>
