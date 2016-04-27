@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-04-18T09:38:57.000Z</updated>
+  <updated>2016-04-27T07:27:57.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="http://www.jvaeyhcd.cc/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/"/>
     <id>http://www.jvaeyhcd.cc/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/</id>
     <published>2016-04-18T08:58:38.000Z</published>
-    <updated>2016-04-18T09:38:57.000Z</updated>
+    <updated>2016-04-27T07:27:57.000Z</updated>
     
-    <content type="html">&lt;p&gt;刚开始还是好好的，突然就出现了标题的提示错误，首先签名是正确的，App ID也没有被占用的，但是在导出ipa的时候一直出现“Failed to locate or generate matchin signing assets”的提示信息。我也是醉得不行，有时能成功，有时不行，不知道苹果在搞什么鬼（不管他在搞什么，出现问题，还是不要一味的去抱怨，找解决办法才是真的）。&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;发现问题&quot;&gt;&lt;a href=&quot;#发现问题&quot; class=&quot;headerlink&quot; title=&quot;发现问题&quot;&gt;&lt;/a&gt;发现问题&lt;/h2&gt;&lt;p&gt;刚开始还是好好的，突然就出现了标题的提示错误，首先签名是正确的，App ID也没有被占用的，但是在导出ipa的时候一直出现“Failed to locate or generate matchin signing assets”的提示信息。我也是醉得不行，有时能成功，有时不行，不知道苹果在搞什么鬼（不管他在搞什么，出现问题，还是不要一味的去抱怨，找解决办法才是真的）。&lt;/p&gt;
 &lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/problem.png&quot; alt=&quot;problem&quot; title=&quot;problem&quot;&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;还是Google大法好，一下就找到了解决办法。&lt;/p&gt;
+&lt;h2 id=&quot;如何解决&quot;&gt;&lt;a href=&quot;#如何解决&quot; class=&quot;headerlink&quot; title=&quot;如何解决&quot;&gt;&lt;/a&gt;如何解决&lt;/h2&gt;&lt;p&gt;还是Google大法好，一下就找到了解决办法。&lt;/p&gt;
 &lt;p&gt;以下是我在网上找到了解决办法的详细步骤：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;首先创建一个文件夹，名字就叫Payload，&lt;a style=&quot;color:#4cc190&quot;&gt;一定要是Payload&lt;/a&gt;（如果你不信，可以换一个名字试试）。&lt;/p&gt;
@@ -51,7 +51,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;刚开始还是好好的，突然就出现了标题的提示错误，首先签名是正确的，App ID也没有被占用的，但是在导出ipa的时候一直出现“Failed to locate or generate matchin signing assets”的提示信息。我也是醉得不行，有时能成功，有时不行，不知道苹果在搞什么鬼（不管他在搞什么，出现问题，还是不要一味的去抱怨，找解决办法才是真的）。&lt;/p&gt;
+      &lt;h2 id=&quot;发现问题&quot;&gt;&lt;a href=&quot;#发现问题&quot; class=&quot;headerlink&quot; title=&quot;发现问题&quot;&gt;&lt;/a&gt;发现问题&lt;/h2&gt;&lt;p&gt;刚开始还是好好的，突然就出现了标题的提示错误，首先签名是正确的，App ID也没有被占用的，但是在导出ipa的时候一直出现“Failed to locate or generate matchin signing assets”的提示信息。我也是醉得不行，有时能成功，有时不行，不知道苹果在搞什么鬼（不管他在搞什么，出现问题，还是不要一味的去抱怨，找解决办法才是真的）。&lt;/p&gt;
 &lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/problem.png&quot; alt=&quot;problem&quot; title=&quot;problem&quot;&gt;
     
     </summary>
