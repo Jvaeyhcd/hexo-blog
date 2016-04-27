@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Jvaeyhcd‘s Note</title>
-  <subtitle>技术博客</subtitle>
+  <title>Jvaeyhcd&#39;s Note</title>
+  <subtitle>My Coding Note</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
