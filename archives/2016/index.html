@@ -1,1 +1,840 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Jvaeyhcd的技术博客</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/javeyhcd" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/Jvaeyhcd" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="archive"><h2 class="archive-year">2016</h2><div class="post-item"><div class="post-time">Apr 18, 2016</div><a href="/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/" class="post-title-link">Failed to Locate or Generate Matchin Signing Assets</a></div><div class="post-item"><div class="post-time">Apr 11, 2016</div><a href="/2016/04/11/Swift开源项目汇总/" class="post-title-link">Swift开源项目汇总</a></div><div class="post-item"><div class="post-time">Apr 6, 2016</div><a href="/2016/04/06/iOS中造成dealloc不调用的原因/" class="post-title-link">iOS中造成dealloc不调用的原因</a></div><div class="post-item"><div class="post-time">Apr 5, 2016</div><a href="/2016/04/05/关于UItableView的复用/" class="post-title-link">关于UItableView的复用</a></div><div class="post-item"><div class="post-time">Mar 30, 2016</div><a href="/2016/03/30/关于iOS多线程小记/" class="post-title-link">关于iOS多线程小记</a></div><div class="post-item"><div class="post-time">Mar 28, 2016</div><a href="/2016/03/28/iOS上完美编译FFmpeg/" class="post-title-link">iOS上完美编译FFmpeg</a></div><div class="post-item"><div class="post-time">Mar 26, 2016</div><a href="/2016/03/26/iOS-UIWebView简单使用/" class="post-title-link">iOS UIWebView简单使用</a></div><div class="post-item"><div class="post-time">Mar 23, 2016</div><a href="/2016/03/23/Objective-C常用关键字的使用与区别/" class="post-title-link">Objective-C常用关键字的使用与区别</a></div><div class="post-item"><div class="post-time">Mar 17, 2016</div><a href="/2016/03/17/iOS几种不同传值方式/" class="post-title-link">iOS几种不同传值方式</a></div><div class="post-item"><div class="post-time">Mar 5, 2016</div><a href="/2016/03/05/App-Store上线完整流程/" class="post-title-link">App Store上线完整流程</a></div></div></section><footer><div class="paginator"><a href="/archives/2016/page/2/" class="next">NEXT</a></div><div class="copyright"><p>© 2016 <a href="http://www.jvaeyhcd.cc">Jvaeyhcd</a> | Powered by Hexo</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?a36e15d9e2adec9a21fcdd9f686b1ed2";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Jvaeyhcd的技术博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jvaeyhcd的技术博客">
+<meta property="og:url" content="http://www.jvaeyhcd.cc/archives/2016/index.html">
+<meta property="og:site_name" content="Jvaeyhcd的技术博客">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jvaeyhcd的技术博客">
+<meta name="twitter:description">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 归档 | Jvaeyhcd的技术博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?29df66b98641fa1eb4edb792fef116c9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  page-archive  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jvaeyhcd的技术博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">技术博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+      
+        
+      
+      嗯..! 目前共计 16 篇日志。 继续努力。
+    </span>
+
+    
+
+      
+      
+      
+
+      
+        
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+        </div>
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/" itemprop="url">
+              
+                <span itemprop="name">Failed to Locate or Generate Matchin Signing Assets</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-04-18T16:58:38+08:00"
+              content="2016-04-18" >
+          04-18
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/04/11/Swift开源项目汇总/" itemprop="url">
+              
+                <span itemprop="name">Swift开源项目汇总</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-04-11T15:06:52+08:00"
+              content="2016-04-11" >
+          04-11
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/04/06/iOS中造成dealloc不调用的原因/" itemprop="url">
+              
+                <span itemprop="name">iOS中造成dealloc不调用的原因</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-04-06T12:18:32+08:00"
+              content="2016-04-06" >
+          04-06
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/04/05/关于UItableView的复用/" itemprop="url">
+              
+                <span itemprop="name">关于UItableView的复用</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-04-05T09:26:44+08:00"
+              content="2016-04-05" >
+          04-05
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/03/30/关于iOS多线程小记/" itemprop="url">
+              
+                <span itemprop="name">关于iOS多线程小记</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-03-30T11:42:06+08:00"
+              content="2016-03-30" >
+          03-30
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/03/28/iOS上完美编译FFmpeg/" itemprop="url">
+              
+                <span itemprop="name">iOS上完美编译FFmpeg</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-03-28T21:50:00+08:00"
+              content="2016-03-28" >
+          03-28
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/03/26/iOS-UIWebView简单使用/" itemprop="url">
+              
+                <span itemprop="name">iOS UIWebView简单使用</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-03-26T15:44:12+08:00"
+              content="2016-03-26" >
+          03-26
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/03/23/Objective-C常用关键字的使用与区别/" itemprop="url">
+              
+                <span itemprop="name">Objective-C常用关键字的使用与区别</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-03-23T10:17:12+08:00"
+              content="2016-03-23" >
+          03-23
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/03/17/iOS几种不同传值方式/" itemprop="url">
+              
+                <span itemprop="name">iOS几种不同传值方式</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-03-17T15:17:32+08:00"
+              content="2016-03-17" >
+          03-17
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/03/05/App-Store上线完整流程/" itemprop="url">
+              
+                <span itemprop="name">App Store上线完整流程</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-03-05T17:25:33+08:00"
+              content="2016-03-05" >
+          03-05
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/archives/2016/page/2/">2</a><a class="extend next" rel="next" href="/archives/2016/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/6993775?v=3&s=460"
+               alt="Jvaeyhcd" />
+          <p class="site-author-name" itemprop="name">Jvaeyhcd</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jvaeyhcd</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jvaeyhcd"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
