@@ -84,26 +84,20 @@
 
 <meta name="description" content="本文只介绍了MRC时的情况，有些细节不适用于ARC。比如MRC下block不会增加引用计数，但ARC会，ARC下必须用weak指明不增加引用计数；ARC下block内存分配机制也与MRC不一样，所以文中的一些例子在ARC下测试结果可能与文中描述的不一样
 
-Block简介
-
-Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-">
+Block简介Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-C在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Block正确使用避免Cycle Retain和Crash">
 <meta property="og:url" content="http://www.jvaeyhcd.cc/2016/02/24/Block正确使用避免Cycle-Retain和Crash/index.html">
 <meta property="og:site_name" content="Jvaeyhcd's Note">
 <meta property="og:description" content="本文只介绍了MRC时的情况，有些细节不适用于ARC。比如MRC下block不会增加引用计数，但ARC会，ARC下必须用weak指明不增加引用计数；ARC下block内存分配机制也与MRC不一样，所以文中的一些例子在ARC下测试结果可能与文中描述的不一样
 
-Block简介
-
-Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-">
-<meta property="og:updated_time" content="2016-02-25T03:11:24.000Z">
+Block简介Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-C在">
+<meta property="og:updated_time" content="2016-04-28T03:44:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Block正确使用避免Cycle Retain和Crash">
 <meta name="twitter:description" content="本文只介绍了MRC时的情况，有些细节不适用于ARC。比如MRC下block不会增加引用计数，但ARC会，ARC下必须用weak指明不增加引用计数；ARC下block内存分配机制也与MRC不一样，所以文中的一些例子在ARC下测试结果可能与文中描述的不一样
 
-Block简介
-
-Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-">
+Block简介Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-C在">
 
 
 
@@ -311,9 +305,7 @@ Block作为C语言的扩展，并不是高新技术，和其他语言的闭包�
         <blockquote>
 <p>本文只介绍了MRC时的情况，有些细节不适用于ARC。比如MRC下<strong>block不会增加引用计数，但ARC会，ARC下必须用</strong>weak指明不增加引用计数；ARC下block内存分配机制也与MRC不一样，所以文中的一些例子在ARC下测试结果可能与文中描述的不一样</p>
 </blockquote>
-<h6>Block简介</h6>
-
-<p>Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-C在iOS中不支持GC机制，使用Block必须自己管理内存，而内存管理正是使用Block坑最多的地方，错误的内存管理 要么导致return cycle内存泄漏要么内存被提前释放导致crash。 Block的使用很像函数指针，不过与函数最大的不同是：Block可以访问函数以外、词法作用域以内的外部变量的值。换句话说，Block不仅 实现函数的功能，还能携带函数的执行环境。</p>
+<h2 id="Block简介"><a href="#Block简介" class="headerlink" title="Block简介"></a>Block简介</h2><p>Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-C在iOS中不支持GC机制，使用Block必须自己管理内存，而内存管理正是使用Block坑最多的地方，错误的内存管理 要么导致return cycle内存泄漏要么内存被提前释放导致crash。 Block的使用很像函数指针，不过与函数最大的不同是：Block可以访问函数以外、词法作用域以内的外部变量的值。换句话说，Block不仅 实现函数的功能，还能携带函数的执行环境。</p>
 <p>可以这样理解，Block其实包含两个部分内容</p>
 <ul>
 <li>Block执行的代码，这是在编译的时候已经生成好的；</li>
@@ -321,14 +313,10 @@ Block作为C语言的扩展，并不是高新技术，和其他语言的闭包�
 </ul>
 <p>Block与函数另一个不同是，Block类似ObjC的对象，可以使用自动释放池管理内存（但Block并不完全等同于ObjC对象，后面将详细说明）。</p>
 <a id="more"></a>
-<h6>Block基本语法</h6>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#22768;&#26126;&#19968;&#20010;Block&#21464;&#37327;&#10;long (^sum) (int, int) = nil;&#10;// sum&#26159;&#20010;Block&#21464;&#37327;&#65292;&#35813;Block&#31867;&#22411;&#26377;&#20004;&#20010;int&#22411;&#21442;&#25968;&#65292;&#36820;&#22238;&#31867;&#22411;&#26159;long&#12290;&#10;&#10;// &#23450;&#20041;Block&#24182;&#36171;&#32473;&#21464;&#37327;sum&#10;sum = ^ long (int a, int b) &#123;&#10;  return a + b;&#10;&#125;;&#10;&#10;// &#35843;&#29992;Block&#65306;&#10;long s = sum(1, 2);</span><br></pre></td></tr></table></figure>
+<h2 id="Block基本语法"><a href="#Block基本语法" class="headerlink" title="Block基本语法"></a>Block基本语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#22768;&#26126;&#19968;&#20010;Block&#21464;&#37327;&#10;long (^sum) (int, int) = nil;&#10;// sum&#26159;&#20010;Block&#21464;&#37327;&#65292;&#35813;Block&#31867;&#22411;&#26377;&#20004;&#20010;int&#22411;&#21442;&#25968;&#65292;&#36820;&#22238;&#31867;&#22411;&#26159;long&#12290;&#10;&#10;// &#23450;&#20041;Block&#24182;&#36171;&#32473;&#21464;&#37327;sum&#10;sum = ^ long (int a, int b) &#123;&#10;  return a + b;&#10;&#125;;&#10;&#10;// &#35843;&#29992;Block&#65306;&#10;long s = sum(1, 2);</span><br></pre></td></tr></table></figure>
 <p>定义一个实例函数，该函数返回Block：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (long (^)(int, int)) sumBlock &#123;&#10;    int base = 100;&#10;    return [[ ^ long (int a, int b) &#123;&#10;      return base + a + b;&#10;    &#125; copy] autorelease];&#10;  &#125;&#10;&#10;// &#35843;&#29992;Block&#10;[self sumBlock](1,2);</span><br></pre></td></tr></table></figure></p>
 <p>是不是感觉很怪？为了看的舒服，我们把Block类型typedef一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef long (^BlkSum)(int, int);&#10;&#10;- (BlkSum) sumBlock &#123;&#10;    int base = 100;&#10;    BlkSum blk = ^ long (int a, int b) &#123;&#10;      return base + a + b;&#10;    &#125;&#10;    return [[blk copy] autorelease];&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<h6>Block在内存中的位置</h6>
-
-<p>根据Block在内存中的位置分为三种类型NSGlobalBlock，NSStackBlock, NSMallocBlock。</p>
+<h2 id="Block在内存中的位置"><a href="#Block在内存中的位置" class="headerlink" title="Block在内存中的位置"></a>Block在内存中的位置</h2><p>根据Block在内存中的位置分为三种类型NSGlobalBlock，NSStackBlock, NSMallocBlock。</p>
 <ul>
 <li>NSGlobalBlock：类似函数，位于text段；</li>
 <li>NSStackBlock：位于栈内存，函数返回后Block将无效；</li>
@@ -341,9 +329,7 @@ Block作为C语言的扩展，并不是高新技术，和其他语言的闭包�
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__block int base = 100;&#10;base += 100;&#10;BlkSum sum = ^ long (int a, int b) &#123;&#10;    base += 10;&#10;    return base + a + b;&#10;&#125;;&#10;base++;&#10;printf(&#34;%ld\n&#34;,sum(1,2));&#10;printf(&#34;%d\n&#34;,base);</span><br></pre></td></tr></table></figure>
 <p>上方的代码输出将是214,211。Block中使用__block修饰的变量时，将取变量此刻运行时的值，而不是定义时的快照。这个例子中，执行sum(1,2)时，base将取base++之后的值，也就是201，再执行Blockbase+=10; base+a+b，运行结果是214。执行完Block时，base已经变成211了。</p>
-<h6>Block的copy、retain、release操作</h6>
-
-<p>不同于NSObjec的copy、retain、release操作：</p>
+<h2 id="Block的copy、retain、release操作"><a href="#Block的copy、retain、release操作" class="headerlink" title="Block的copy、retain、release操作"></a>Block的copy、retain、release操作</h2><p>不同于NSObjec的copy、retain、release操作：</p>
 <ul>
 <li>Block_copy与copy等效，Block_release与release等效；</li>
 <li>对Block不管是retain、copy、release都不会改变引用计数retainCount，retainCount始终是1；</li>
@@ -352,9 +338,7 @@ Block作为C语言的扩展，并不是高新技术，和其他语言的闭包�
 <li>NSMallocBlock支持retain、release，虽然retainCount始终是1，但内存管理器中仍然会增加、减少计数。copy之后不会生成新的对象，只是增加了一次引用，类似retain；</li>
 <li>尽量不要对Block使用retain操作。</li>
 </ul>
-<h6>Block对不同类型的变量的存取</h6>
-
-<p><strong> 基本类型 </strong></p>
+<h2 id="Block对不同类型的变量的存取"><a href="#Block对不同类型的变量的存取" class="headerlink" title="Block对不同类型的变量的存取"></a>Block对不同类型的变量的存取</h2><p><strong> 基本类型 </strong></p>
 <ul>
 <li><p>局部自动变量，在Block中只读。Block定义时copy变量的值，在Block中作为常量使用，所以即使变量的值在Block外改变，也不影响他在Block中的值。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int base = 100;&#10;BlkSum sum = ^ long (int a, int b) &#123;&#10;  // base++; &#32534;&#35793;&#38169;&#35823;&#65292;&#21482;&#35835;&#10;  return base + a + b;&#10;&#125;;&#10;base = 0;&#10;printf(&#34;%ld\n&#34;,sum(1,2)); // &#36825;&#37324;&#36755;&#20986;&#26159;103&#65292;&#32780;&#19981;&#26159;3</span><br></pre></td></tr></table></figure>
@@ -371,13 +355,9 @@ Block作为C语言的扩展，并不是高新技术，和其他语言的闭包�
 <li><p>非ObjC对象，如GCD队列dispatch_queue_t。Block copy时并不会自动增加他的引用计数，这点要非常小心。</p>
 </li>
 </ul>
-<h6>Block中使用的ObjC对象的行为</h6>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, copy) void(^myBlock)(void);&#10;&#10;MyClass* obj = [[[MyClass alloc] init] autorelease];&#10;self.myBlock = ^ &#123;&#10;  [obj doSomething];&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Block中使用的ObjC对象的行为"><a href="#Block中使用的ObjC对象的行为" class="headerlink" title="Block中使用的ObjC对象的行为"></a>Block中使用的ObjC对象的行为</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, copy) void(^myBlock)(void);&#10;&#10;MyClass* obj = [[[MyClass alloc] init] autorelease];&#10;self.myBlock = ^ &#123;&#10;  [obj doSomething];&#10;&#125;;</span><br></pre></td></tr></table></figure>
 <p>对象obj在Block被copy到堆上的时候自动retain了一次。因为Block不知道obj什么时候被释放，为了不在Block使用obj前被释放，Block retain了obj一次，在Block被释放的时候，obj被release一次。</p>
-<h6>retain cycle</h6>
-
-<p>retain cycle问题的根源在于Block和obj可能会互相强引用，互相retain对方，这样就导致了retain cycle，最后这个Block和obj就变成了孤岛，谁也释放不了谁。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];&#10;[request setCompletionBlock:^&#123;&#10;  NSString* string = [request responseString];&#10;&#125;];</span><br></pre></td></tr></table></figure></p>
+<h2 id="retain-cycle"><a href="#retain-cycle" class="headerlink" title="retain cycle"></a>retain cycle</h2><p>retain cycle问题的根源在于Block和obj可能会互相强引用，互相retain对方，这样就导致了retain cycle，最后这个Block和obj就变成了孤岛，谁也释放不了谁。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];&#10;[request setCompletionBlock:^&#123;&#10;  NSString* string = [request responseString];&#10;&#125;];</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">     +-----------+           +-----------+&#10;     | request   |           |   Block   |&#10;---&#62; |           | --------&#62; |           |&#10;     | retain 2  | &#60;-------- | retain 1  |&#10;     |           |           |           |&#10;     +-----------+           +-----------+</span><br></pre></td></tr></table></figure>
 <p>解决这个问题的办法是使用弱引用打断retain cycle：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];&#10;[request setCompletionBlock:^&#123;&#10;  NSString* string = [request responseString];&#10;&#125;];</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">     +-----------+           +-----------+&#10;     | request   |           |   Block   |&#10;----&#62;|           | --------&#62; |           |&#10;     | retain 1  | &#60; - - - - | retain 1  |&#10;     |           |   weak    |           |&#10;     +-----------+           +-----------+</span><br></pre></td></tr></table></figure>
@@ -393,7 +373,7 @@ Block作为C语言的扩展，并不是高新技术，和其他语言的闭包�
 <blockquote>
 <p>注意：MRC中<strong>block是不会引起retain；但在ARC中</strong>block则会引起retain。ARC中应该使用<strong>weak或</strong>unsafe_unretained弱引用。__weak只能在iOS5以后使用。</p>
 </blockquote>
-<p></p><h6>Block使用对象被提前释放</h6><br>看下面例子，有这种情况，如果不只是request持有了Block，另一个对象也持有了Block。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">     +-----------+           +-----------+&#10;     | request   |           |   Block   |   objA&#10;----&#62;|           | --------&#62; |           |&#60;--------&#10;     | retain 1  | &#60; - - - - | retain 2  |&#10;     |           |   weak    |           |&#10;     +-----------+           +-----------+</span><br></pre></td></tr></table></figure><p></p>
+<h2 id="Block使用对象被提前释放"><a href="#Block使用对象被提前释放" class="headerlink" title="Block使用对象被提前释放"></a>Block使用对象被提前释放</h2><p>看下面例子，有这种情况，如果不只是request持有了Block，另一个对象也持有了Block。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">     +-----------+           +-----------+&#10;     | request   |           |   Block   |   objA&#10;----&#62;|           | --------&#62; |           |&#60;--------&#10;     | retain 1  | &#60; - - - - | retain 2  |&#10;     |           |   weak    |           |&#10;     +-----------+           +-----------+</span><br></pre></td></tr></table></figure></p>
 <p>这时如果request 被持有者释放。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">     +-----------+           +-----------+&#10;     | request   |           |   Block   |   objA&#10;--X-&#62;|           | --------&#62; |           |&#60;--------&#10;     | retain 0  | &#60; - - - - | retain 1  |&#10;     |           |   weak    |           |&#10;     +-----------+           +-----------+</span><br></pre></td></tr></table></figure></p>
 <p>这时request已被完全释放，但Block仍被objA持有，没有释放，如果这时触发了Block，在Block中将访问已经销毁的request，这将导致程序crash。为了避免这种情况，开发者必须要注意对象和Block的生命周期。</p>
 <p>另一个常见错误使用是，开发者担心retain cycle错误的使用__block。比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__block kkProducView* weakSelf = self;&#10;dispatch_async(dispatch_get_main_queue(), ^&#123;&#10;  weakSelf.xx = xx;&#10;&#125;);</span><br></pre></td></tr></table></figure></p>
@@ -618,7 +598,7 @@ Block作为C语言的扩展，并不是高新技术，和其他语言的闭包�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Block简介</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Block基本语法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Block在内存中的位置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Block的copy、retain、release操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Block对不同类型的变量的存取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Block中使用的ObjC对象的行为</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">retain cycle</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">Block使用对象被提前释放</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Block简介"><span class="nav-number">1.</span> <span class="nav-text">Block简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block基本语法"><span class="nav-number">2.</span> <span class="nav-text">Block基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block在内存中的位置"><span class="nav-number">3.</span> <span class="nav-text">Block在内存中的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block的copy、retain、release操作"><span class="nav-number">4.</span> <span class="nav-text">Block的copy、retain、release操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block对不同类型的变量的存取"><span class="nav-number">5.</span> <span class="nav-text">Block对不同类型的变量的存取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block中使用的ObjC对象的行为"><span class="nav-number">6.</span> <span class="nav-text">Block中使用的ObjC对象的行为</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#retain-cycle"><span class="nav-number">7.</span> <span class="nav-text">retain cycle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block使用对象被提前释放"><span class="nav-number">8.</span> <span class="nav-text">Block使用对象被提前释放</span></a></li></ol></div>
             
           </div>
         </section>

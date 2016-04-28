@@ -532,9 +532,7 @@
           <blockquote>
 <p>本文只介绍了MRC时的情况，有些细节不适用于ARC。比如MRC下<strong>block不会增加引用计数，但ARC会，ARC下必须用</strong>weak指明不增加引用计数；ARC下block内存分配机制也与MRC不一样，所以文中的一些例子在ARC下测试结果可能与文中描述的不一样</p>
 </blockquote>
-<h6>Block简介</h6>
-
-<p>Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-C在iOS中不支持GC机制，使用Block必须自己管理内存，而内存管理正是使用Block坑最多的地方，错误的内存管理 要么导致return cycle内存泄漏要么内存被提前释放导致crash。 Block的使用很像函数指针，不过与函数最大的不同是：Block可以访问函数以外、词法作用域以内的外部变量的值。换句话说，Block不仅 实现函数的功能，还能携带函数的执行环境。</p>
+<h2 id="Block简介"><a href="#Block简介" class="headerlink" title="Block简介"></a>Block简介</h2><p>Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-C在iOS中不支持GC机制，使用Block必须自己管理内存，而内存管理正是使用Block坑最多的地方，错误的内存管理 要么导致return cycle内存泄漏要么内存被提前释放导致crash。 Block的使用很像函数指针，不过与函数最大的不同是：Block可以访问函数以外、词法作用域以内的外部变量的值。换句话说，Block不仅 实现函数的功能，还能携带函数的执行环境。</p>
 <p>可以这样理解，Block其实包含两个部分内容</p>
 <ul>
 <li>Block执行的代码，这是在编译的时候已经生成好的；</li>
