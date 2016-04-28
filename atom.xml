@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-04-27T11:33:01.000Z</updated>
+  <updated>2016-04-28T02:34:21.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac基础：如何让Finder显示隐藏文件和文件夹</title>
+    <link href="http://www.jvaeyhcd.cc/2016/04/28/Mac%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%A9Finder%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
+    <id>http://www.jvaeyhcd.cc/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/</id>
+    <published>2016-04-28T01:43:25.000Z</published>
+    <updated>2016-04-28T02:34:21.000Z</updated>
+    
+    <content type="html">&lt;p&gt;有些人中喜欢折腾一些奇怪的东西（比如说我），使用git已经很长一段时间了，但是最近才发现在Finder中找不到.git的文件夹。原来这个东西是被隐藏了，那么现在问题来了，我要将隐藏的文件或者文件夹显示出来应该如何做呢？&lt;/p&gt;
+&lt;h2 id=&quot;让Finder显示隐藏文件和文件夹&quot;&gt;&lt;a href=&quot;#让Finder显示隐藏文件和文件夹&quot; class=&quot;headerlink&quot; title=&quot;让Finder显示隐藏文件和文件夹&quot;&gt;&lt;/a&gt;让Finder显示隐藏文件和文件夹&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;第一步：&lt;/b&gt;打开「终端」应用程序（我推荐使用&lt;a href=&quot;https://www.iterm2.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iTerm&lt;/a&gt;,他比Mac自带终端好用很多）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;b&gt;第二步：&lt;/b&gt;输入如下命令，如图一所示：&lt;/p&gt;
+&lt;img src=&quot;/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/bash.png&quot; alt=&quot;图一&quot; title=&quot;图一&quot;&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;defaults write com.apple.finder AppleShowAllFiles -boolean &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt; ; killall Finder&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//OS X Mountain Lion 和早期版本命令如下：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;defaults write com.apple.finder AppleShowAllFiles TRUE ; killall Finder&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;b&gt;第三步：&lt;/b&gt;按下「Return」键确认。&lt;br&gt;现在你将会在 Finder 窗口中看到那些隐藏的文件和文件夹了。如图二所示：&lt;/p&gt;
+&lt;img src=&quot;/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/finder.png&quot; alt=&quot;图二&quot; title=&quot;图二&quot;&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;让Finder隐藏隐藏文件和文件夹&quot;&gt;&lt;a href=&quot;#让Finder隐藏隐藏文件和文件夹&quot; class=&quot;headerlink&quot; title=&quot;让Finder隐藏隐藏文件和文件夹&quot;&gt;&lt;/a&gt;让Finder隐藏隐藏文件和文件夹&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;只需要一步&lt;br&gt;如果你想再次隐藏原本的隐藏文件和文件夹的话，将上述命令替换成（图三）即可。&lt;/p&gt;
+&lt;img src=&quot;/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/show.png&quot; alt=&quot;图三&quot; title=&quot;图三&quot;&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;defaults write com.apple.finder AppleShowAllFiles -boolean &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt; ; killall Finder&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//OS X Mountain Lion 和早期版本命令如下：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;defaults write com.apple.finder AppleShowAllFiles FALSE ; killall Finder&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;最后看到的效果如图四所示：&lt;/p&gt;
+&lt;img src=&quot;/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/hidefinder.png&quot; alt=&quot;图四&quot; title=&quot;图四&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有些人中喜欢折腾一些奇怪的东西（比如说我），使用git已经很长一段时间了，但是最近才发现在Finder中找不到.git的文件夹。原来这个东西是被隐藏了，那么现在问题来了，我要将隐藏的文件或者文件夹显示出来应该如何做呢？&lt;/p&gt;
+&lt;h2 id=&quot;让Finder显示隐藏文件和文件夹&quot;&gt;&lt;a href=&quot;#让Finder显示隐藏文件和文件夹&quot; class=&quot;headerlink&quot; title=&quot;让Finder显示隐藏文件和文件夹&quot;&gt;&lt;/a&gt;让Finder显示隐藏文件和文件夹&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;第一步：&lt;/b&gt;打开「终端」应用程序（我推荐使用&lt;a href=&quot;https://www.iterm2.com/&quot;&gt;iTerm&lt;/a&gt;,他比Mac自带终端好用很多）。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Mac基础" scheme="http://www.jvaeyhcd.cc/categories/Mac%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Mac" scheme="http://www.jvaeyhcd.cc/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>Failed to Locate or Generate Matchin Signing Assets</title>
