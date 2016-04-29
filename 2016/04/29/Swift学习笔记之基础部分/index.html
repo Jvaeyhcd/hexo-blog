@@ -1,0 +1,819 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Swift," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Jvaeyhcd's Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。
+
+概述Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 Objective-C 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 Objective-C 相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习笔记之基础部分">
+<meta property="og:url" content="http://www.jvaeyhcd.cc/2016/04/29/Swift学习笔记之基础部分/index.html">
+<meta property="og:site_name" content="Jvaeyhcd's Note">
+<meta property="og:description" content="本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。
+
+概述Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 Objective-C 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 Objective-C 相关">
+<meta property="og:updated_time" content="2016-04-29T07:30:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift学习笔记之基础部分">
+<meta name="twitter:description" content="本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。
+
+概述Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 Objective-C 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 Objective-C 相关">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Swift学习笔记之基础部分 | Jvaeyhcd's Note </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?29df66b98641fa1eb4edb792fef116c9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jvaeyhcd's Note</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">My Coding Note</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swift学习笔记之基础部分
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-29T10:07:32+08:00" content="2016-04-29">
+              2016-04-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/29/Swift学习笔记之基础部分/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/29/Swift学习笔记之基础部分/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-eye"></i> 本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。</p>
+</blockquote>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 Objective-C 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 Objective-C 相关开发经验也没有关系，大家都说Swift比较通俗易懂更加容易上手）。</p>
+<a id="more"></a>
+<p>Swift包含了C 和Objective-C上所有的数据类型，<code>Int</code>表示整型值；<code>Double</code>和<code>Float</code>表示浮点型值；<code>Bool</code>是布尔型值；<code>String</code>是字符串型值。此外Swift还提供了三个基本的集合类型，<code>Array</code>，<code>Set</code>和<code>Dictionary</code>。<br>除了我们熟悉的类型，Swift 还增加了 Objective-C 中没有的高阶数据类型比如元组（Tuple）。元组可以让你创建或者传递一组数据，比如作为函数的返回值时，你可以用一个元组可以返回多个值。</p>
+<p>Swift 还增加了可选（Optional）类型，用于处理值缺失的情况。可选表示“那儿有一个值，并且它等于 x ”或者“那儿没有值”。可选有点像在 Objective-C 中使用<code>nil</code>，但是它可以用在任何类型上，不仅仅是类。可选类型比 Objective-C 中的nil指针更加安全也更具表现力，它是 Swift 许多强大特性的重要组成部分。</p>
+<p>Swift 是一门类型安全的语言，可选类型就是一个很好的例子。Swift 可以让你清楚地知道值的类型。如果你的代码期望得到一个String，类型安全会阻止你不小心传入一个<code>Int</code>。你可以在开发阶段尽早发现并修正错误。</p>
+<h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><p>常量的值一旦设定就不能改变，而变量的值可以随意更改。</p>
+<h2 id="声明常量和变量"><a href="#声明常量和变量" class="headerlink" title="声明常量和变量"></a>声明常量和变量</h2><p>常量和变量必须在使用前声明，用<code>let</code>来声明常量，用<code>var</code>来声明变量。下面的例子展示了如何用常量和变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let maxNumberOfLoginTimes = 10&#10;var currentLoginTimes = 0</span><br></pre></td></tr></table></figure>
+<p>这两行代码可以理解为：<br><code>maxNumberOfLoginTimes</code>声明为一个常量，它的值是10并且不可再被改变，<code>currentLoginAttempt</code>申明为一个初始值为0的变量。<br>我们可以在一行中声明多个常量或者多个变量，用逗号隔开：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var x = 0.0, y = 0.0&#10;let a = 1, b = 2</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：如果你的代码中有不需要改变的值，请使用<code>let</code>关键字将它声明为常量。只将需要改变的值声明为变量。与变量不同，常量的值一旦被确定就不能更改了。尝试这样做会导致编译时报错：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let languageName = &#34;Swift&#34;&#10;languageName = &#34;Swift++&#34;&#10;// &#36825;&#20250;&#25253;&#32534;&#35793;&#26102;&#38169;&#35823; - languageName &#19981;&#21487;&#25913;&#21464;</span><br></pre></td></tr></table></figure>
+<h2 id="类型标注"><a href="#类型标注" class="headerlink" title="类型标注"></a>类型标注</h2><p>当你声明常量或者变量的时候可以加上类型标注（type annotation），说明常量或者变量中要存储的值的类型。如果要添加类型标注，需要在常量或者变量名后面加上一个冒号和空格，然后加上类型名称。<br>这个例子给<code>welcomeMessage</code>变量添加了类型标注，表示这个变量可以存储<code>String</code>类型的值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var welcomeMessage: String</span><br></pre></td></tr></table></figure></p>
+<p>声明中的冒号代表着“是…类型”，所以这行代码可以被理解为：<br>“声明一个类型为<code>String</code>，名字为<code>welcomeMessage</code>的变量。”<br>“类型为<code>String</code>”的意思是“可以存储任意<code>String</code>类型的值。”<br><code>welcomeMessage</code>变量现在可以被设置成任意字符串：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">welcomeMessage = &#34;Hello&#34;</span><br></pre></td></tr></table></figure></p>
+<p>你可以在一行中定义多个同样类型的变量，用逗号分割，并在最后一个变量名之后添加类型标注：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var red, green, blue: Double</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：一般来说你很少需要写类型标注。如果你在声明常量或者变量的时候赋了一个初始值，Swift可以推断出这个常量或者变量的类型，请参考类型安全和类型推断。在上面的例子中，没有给<code>welcomeMessage</code>赋初始值，所以变量<code>welcomeMessage</code>的类型是通过一个类型标注指定的，而不是通过初始值推断的。</p>
+</blockquote>
+<h2 id="常量和变量的命名"><a href="#常量和变量的命名" class="headerlink" title="常量和变量的命名"></a>常量和变量的命名</h2><p>你可以用任何你喜欢的字符作为常量和变量名，包括 Unicode 字符：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let &#960; = 3.14159&#10;let &#20320;&#22909; = &#34;&#20320;&#22909;&#19990;&#30028;&#34;&#10;let &#128054;&#128046; = &#34;dogcow&#34;</span><br></pre></td></tr></table></figure></p>
+<p>常量与变量名不能包含数学符号，箭头，保留的（或者非法的）Unicode 码位，连线与制表符。也不能以数字开头，但是可以在常量与变量名的其他地方包含数字。</p>
+<p>一旦你将常量或者变量声明为确定的类型，你就不能使用相同的名字再次进行声明，或者改变其存储的值的类型。同时，你也不能将常量与变量进行互转。</p>
+<blockquote>
+<p>注意：如果你需要使用与Swift保留关键字相同的名称作为常量或者变量名，你可以使用反引号（`）将关键字包围的方式将其作为名字使用。无论如何，你应当避免使用关键字作为常量或变量名，除非你别无选择。</p>
+</blockquote>
+<h2 id="输出常量和变量"><a href="#输出常量和变量" class="headerlink" title="输出常量和变量"></a>输出常量和变量</h2><p>你可以用<code>print(_:separator:terminator:)</code>函数来输出当前常量或变量的值:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var friendlyWelcome = &#34;Bonjour!&#34;&#10;print(friendlyWelcome)&#10;// &#36755;&#20986; &#34;Bonjour!&#34;</span><br></pre></td></tr></table></figure></p>
+<p><code>print(_:separator:terminator:)</code>是一个用来输出一个或多个值到适当输出区的全局函数。如果你用 Xcode，<code>print(_:separator:terminator:)</code>将会输出内容到“console”面板上。separator和terminator参数具有默认值，因此你调用这个函数的时候可以忽略它们。默认情况下，该函数通过添加换行符来结束当前行。如果不想换行，可以传递一个空字符串给terminator参数–例如，<code>print(someValue, terminator:&quot;&quot;)</code>。</p>
+<p>Swift 用字符串插值（string interpolation）的方式把常量名或者变量名当做占位符加入到长字符串中，Swift 会用当前常量或变量的值替换这些占位符。将常量或变量名放入圆括号中，并在开括号前使用反斜杠将其转义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&#34;The current value of friendlyWelcome is \(friendlyWelcome)&#34;)&#10;// &#36755;&#20986; &#34;The current value of friendlyWelcome is Bonjour!</span><br></pre></td></tr></table></figure></p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>请将你的代码中的非执行文本注释成提示或者笔记以方便你将来阅读。Swift 的编译器将会在编译代码时自动忽略掉注释部分。<br>与 C 语言多行注释不同，Swift 的多行注释可以嵌套在其它的多行注释之中。你可以先生成一个多行注释块，然后在这个注释块之中再嵌套成第二个多行注释。终止注释时先插入第二个注释块的终止标记，然后再插入第一个注释块的终止标记：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#36825;&#26159;&#31532;&#19968;&#20010;&#22810;&#34892;&#27880;&#37322;&#30340;&#24320;&#22836;&#10;/* &#36825;&#26159;&#31532;&#20108;&#20010;&#34987;&#23884;&#22871;&#30340;&#22810;&#34892;&#27880;&#37322; */&#10;&#36825;&#26159;&#31532;&#19968;&#20010;&#22810;&#34892;&#27880;&#37322;&#30340;&#32467;&#23614; */</span><br></pre></td></tr></table></figure></p>
+<p>通过运用嵌套多行注释，你可以快速方便的注释掉一大段代码，即使这段代码之中已经含有了多行注释块。<br>当然Swift的单行注释和多行注释和C语言的类似。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#36825;&#26159;&#19968;&#20010;&#21333;&#34892;&#27880;&#37322;&#10;/* &#36825;&#26159;&#19968;&#20010;,&#10;&#22810;&#34892;&#27880;&#37322; */</span><br></pre></td></tr></table></figure></p>
+<h2 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h2><p>与其他大部分编程语言不同，Swift 并不强制要求你在每条语句的结尾处使用分号（;），当然，你也可以按照你自己的习惯添加分号。有一种情况下必须要用分号，即你打算在同一行内写多条独立的语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let cat = &#34;&#128049;&#34;; print(cat)&#10;// &#36755;&#20986; &#34;&#128049;&#34;</span><br></pre></td></tr></table></figure></p>
+<h2 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h2><p>整数就是没有小数部分的数字，比如42和-23。整数可以是有符号（正、负、零）或者无符号（正、零）。</p>
+<p>Swift 提供了8，16，32和64位的有符号和无符号整数类型。这些整数类型和 C 语言的命名方式很像，比如8位无符号整数类型是<code>UInt8</code>，32位有符号整数类型是<code>Int32</code>。就像 Swift 的其他类型一样，整数类型采用大写命名法。</p>
+<h2 id="整数范围"><a href="#整数范围" class="headerlink" title="整数范围"></a>整数范围</h2><p>你可以访问不同整数类型的<code>min</code>和<code>max</code>属性来获取对应类型的最小值和最大值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let minValue = UInt8.min  // minValue &#20026; 0&#65292;&#26159; UInt8 &#31867;&#22411;&#10;let maxValue = UInt8.max  // maxValue &#20026; 255&#65292;&#26159; UInt8 &#31867;&#22411;</span><br></pre></td></tr></table></figure></p>
+<p><code>min</code>和<code>max</code>所传回值的类型，正是其所对的整数类型(如上例<code>UInt8</code>, 所传回的类型是<code>UInt8</code>)，可用在表达式中相同类型值旁。</p>
+<h2 id="Int"><a href="#Int" class="headerlink" title="Int"></a>Int</h2><p>一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型Int，长度与当前平台的原生字长相同：</p>
+<ul>
+<li>在32位平台上，<code>Int</code>和<code>Int32</code>长度相同。</li>
+<li>在64位平台上，<code>Int</code>和<code>Int64</code>长度相同。<br>除非你需要特定长度的整数，一般来说使用<code>Int</code>就够了。这可以提高代码一致性和可复用性。即使是在32位平台上，<code>Int</code>可以存储的整数范围也可以达到-2,147,483,648~2,147,483,647，大多数时候这已经足够大了。</li>
+</ul>
+<h2 id="UInt"><a href="#UInt" class="headerlink" title="UInt"></a>UInt</h2><p>Swift 也提供了一个特殊的无符号类型<code>UInt</code>，长度与当前平台的原生字长相同：</p>
+<ul>
+<li>在32位平台上，<code>UInt</code>和<code>UInt32</code>长度相同。</li>
+<li>在64位平台上，<code>UInt</code>和<code>UInt64</code>长度相同。<blockquote>
+<p>注意：尽量不要使用<code>UInt</code>，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。除了这种情况，最好使用<code>Int</code>，即使你要存储的值已知是非负的。统一使用Int可以提高代码的可复用性，避免不同类型数字之间的转换，并且匹配数字的类型推断</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点数是有小数部分的数字，比如<code>3.14159</code>，<code>0.1</code>和<code>-273.15</code>。</p>
+<p>浮点类型比整数类型表示的范围更大，可以存储比<code>Int</code>类型更大或者更小的数字。Swift 提供了两种有符号浮点数类型：</p>
+<ul>
+<li><code>Double</code>表示64位浮点数。当你需要存储很大或者很高精度的浮点数时请使用此类型。</li>
+<li><code>Float</code>表示32位浮点数。精度要求不高的话可以使用此类型。</li>
+</ul>
+<h2 id="类型安全和类型推断"><a href="#类型安全和类型推断" class="headerlink" title="类型安全和类型推断"></a>类型安全和类型推断</h2><p>Swift 是一个类型安全（type safe）的语言。类型安全的语言可以让你清楚地知道代码要处理的值的类型。如果你的代码需要一个<code>String</code>，你绝对不可能不小心传进去一个<code>Int</code>。</p>
+<p>由于 Swift 是类型安全的，所以它会在编译你的代码时进行类型检查（type checks），并把不匹配的类型标记为错误。这可以让你在开发的时候尽早发现并修复错误。</p>
+<p>当你要处理不同类型的值时，类型检查可以帮你避免错误。然而，这并不是说你每次声明常量和变量的时候都需要显式指定类型。如果你没有显式指定类型，Swift 会使用类型推断（type inference）来选择合适的类型。有了类型推断，编译器可以在编译代码的时候自动推断出表达式的类型。原理很简单，只要检查你赋的值即可。</p>
+<p>因为有类型推断，和 C 或者 Objective-C 比起来 Swift 很少需要声明类型。常量和变量虽然需要明确类型，但是大部分工作并不需要你自己来完成。</p>
+<p>当你声明常量或者变量并赋初值的时候类型推断非常有用。当你在声明常量或者变量的时候赋给它们一个字面量（literal value 或 literal）即可触发类型推断。（字面量就是会直接出现在你代码中的值，比如<code>42</code>和<code>3.14159</code>。）</p>
+<p>例如，如果你给一个新常量赋值<code>42</code>并且没有标明类型，Swift 可以推断出常量类型是Int，因为你给它赋的初始值看起来像一个整数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let meaningOfLife = 42&#10;// meaningOfLife &#20250;&#34987;&#25512;&#27979;&#20026; Int &#31867;&#22411;</span><br></pre></td></tr></table></figure></p>
+<p>同理，如果你没有给浮点字面量标明类型，Swift 会推断你想要的是<code>Double</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let pi = 3.14159&#10;// pi &#20250;&#34987;&#25512;&#27979;&#20026; Double &#31867;&#22411;</span><br></pre></td></tr></table></figure></p>
+<p>当推断浮点数的类型时，Swift 总是会选择<code>Double</code>而不是<code>Float</code>。<br>如果表达式中同时出现了整数和浮点数，会被推断为<code>Double</code>类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let anotherPi = 3 + 0.14159&#10;// anotherPi &#20250;&#34987;&#25512;&#27979;&#20026; Double &#31867;&#22411;</span><br></pre></td></tr></table></figure></p>
+<p>原始值<code>3</code>没有显式声明类型，而表达式中出现了一个浮点字面量，所以表达式会被推断为<code>Double</code>类型。</p>
+<h2 id="数值型字面量"><a href="#数值型字面量" class="headerlink" title="数值型字面量"></a>数值型字面量</h2><p>整数字面量可以被写作：</p>
+<ul>
+<li>一个十进制数，没有前缀</li>
+<li>一个二进制数，前缀是<code>0b</code></li>
+<li>一个八进制数，前缀是<code>0o</code></li>
+<li>一个十六进制数，前缀是<code>0x</code></li>
+</ul>
+<p>下面的所有整数字面量的十进制值都是16:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let decimalInteger = 16&#10;let binaryInteger = 0b10000       // &#20108;&#36827;&#21046;&#30340;16&#10;let octalInteger = 0o20           // &#20843;&#36827;&#21046;&#30340;16&#10;let hexadecimalInteger = 0x10     // &#21313;&#20845;&#36827;&#21046;&#30340;16</span><br></pre></td></tr></table></figure></p>
+<p>浮点字面量可以是十进制（没有前缀）或者是十六进制（前缀是<code>0x</code>）。小数点两边必须有至少一个十进制数字（或者是十六进制的数字）。十进制浮点数也可以有一个可选的指数（exponent)，通过大写或者小写的 <code>e</code> 来指定；十六进制浮点数必须有一个指数，通过大写或者小写的 <code>p</code> 来指定。<br>如果一个十进制数的指数为<code>exp</code>，那这个数相当于基数和10^exp的乘积：</p>
+<ul>
+<li><code>1.25e2</code> 表示 1.25 × 10^2，等于 <code>125.0</code>。</li>
+<li><code>1.25e-2</code> 表示 1.25 × 10^-2，等于 <code>0.0125</code>。</li>
+</ul>
+<p>如果一个十六进制数的指数为<code>exp</code>，那这个数相当于基数和2^exp的乘积：</p>
+<ul>
+<li><code>0xFp2</code> 表示 15 × 2^2，等于 <code>60.0</code>。</li>
+<li><code>0xFp-2</code> 表示 15 × 2^-2，等于 <code>3.75</code>。</li>
+</ul>
+<p>下面的这些浮点字面量都等于十进制的<code>12.1875</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let decimalDouble = 12.1875&#10;let exponentDouble = 1.21875e1&#10;let hexadecimalDouble = 0xC.3p0</span><br></pre></td></tr></table></figure></p>
+<p>数值类字面量可以包括额外的格式来增强可读性。整数和浮点数都可以添加额外的零并且包含下划线，并不会影响字面量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let paddedDouble = 000123.456&#10;let oneMillion = 1_000_000&#10;let justOverOneMillion = 1_000_000.000_000_1</span><br></pre></td></tr></table></figure></p>
+<h2 id="数值型类型转换"><a href="#数值型类型转换" class="headerlink" title="数值型类型转换"></a>数值型类型转换</h2><p>通常来讲，即使代码中的整数常量和变量已知非负，也请使用<code>Int</code>类型。总是使用默认的整数类型可以保证你的整数常量和变量可以直接被复用并且可以匹配整数类字面量的类型推断。</p>
+<p>只有在必要的时候才使用其他整数类型，比如要处理外部的长度明确的数据或者为了优化性能、内存占用等等。使用显式指定长度的类型可以及时发现值溢出并且可以暗示正在处理特殊数据。</p>
+<h2 id="整数转换"><a href="#整数转换" class="headerlink" title="整数转换"></a>整数转换</h2><p>不同整数类型的变量和常量可以存储不同范围的数字。<code>Int8</code>类型的常量或者变量可以存储的数字范围是-128~127，而<code>UInt8</code>类型的常量或者变量能存储的数字范围是0~255。如果数字超出了常量或者变量可存储的范围，编译的时候会报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let cannotBeNegative: UInt8 = -1&#10;// UInt8 &#31867;&#22411;&#19981;&#33021;&#23384;&#20648;&#36127;&#25968;&#65292;&#25152;&#20197;&#20250;&#25253;&#38169;&#10;let tooBig: Int8 = Int8.max + 1&#10;// Int8 &#31867;&#22411;&#19981;&#33021;&#23384;&#20648;&#36229;&#36807;&#26368;&#22823;&#20540;&#30340;&#25968;&#65292;&#25152;&#20197;&#20250;&#25253;&#38169;</span><br></pre></td></tr></table></figure></p>
+<p>由于每种整数类型都可以存储不同范围的值，所以你必须根据不同情况选择性使用数值型类型转换。这种选择性使用的方式，可以预防隐式转换的错误并让你的代码中的类型转换意图变得清晰。</p>
+<p>要将一种数字类型转换成另一种，你要用当前值来初始化一个期望类型的新数字，这个数字的类型就是你的目标类型。在下面的例子中，常量<code>twoThousand</code>是<code>UInt16</code>类型，然而常量<code>one</code>是<code>UInt8</code>类型。它们不能直接相加，因为它们类型不同。所以要调用<code>UInt16(one)</code>来创建一个新的<code>UInt16</code>数字并用<code>one</code>的值来初始化，然后使用这个新数字来计算：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let twoThousand: UInt16 = 2_000&#10;let one: UInt8 = 1&#10;let twoThousandAndOne = twoThousand + UInt16(one)</span><br></pre></td></tr></table></figure></p>
+<p>现在两个数字的类型都是<code>UInt16</code>，可以进行相加。目标常量<code>twoThousandAndOne</code>的类型被推断为<code>UInt16</code>，因为它是两个<code>UInt16</code>值的和。</p>
+<p><code>SomeType(ofInitialValue)</code>是调用 Swift 构造器并传入一个初始值的默认方法。在语言内部，<code>UInt16</code>有一个构造器，可以接受一个<code>UInt8</code>类型的值，所以这个构造器可以用现有的<code>UInt8</code>来创建一个新的<code>UInt16</code>。注意，你并不能传入任意类型的值，只能传入<code>UInt16</code>内部有对应构造器的值。不过你可以扩展现有的类型来让它可以接收其他类型的值（包括自定义类型）。</p>
+<h2 id="整数和浮点数转换"><a href="#整数和浮点数转换" class="headerlink" title="整数和浮点数转换"></a>整数和浮点数转换</h2><p>整数和浮点数的转换必须显式指定类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let three = 3&#10;let pointOneFourOneFiveNine = 0.14159&#10;let pi = Double(three) + pointOneFourOneFiveNine&#10;// pi &#31561;&#20110; 3.14159&#65292;&#25152;&#20197;&#34987;&#25512;&#27979;&#20026; Double &#31867;&#22411;</span><br></pre></td></tr></table></figure></p>
+<p>这个例子中，常量<code>three</code>的值被用来创建一个<code>Double</code>类型的值，所以加号两边的数类型须相同。如果不进行转换，两者无法相加。<br>浮点数到整数的反向转换同样行，整数类型可以用<code>Double</code>或者<code>Float</code>类型来初始化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let integerPi = Int(pi)&#10;// integerPi &#31561;&#20110; 3&#65292;&#25152;&#20197;&#34987;&#25512;&#27979;&#20026; Int &#31867;&#22411;</span><br></pre></td></tr></table></figure></p>
+<p>当用这种方式来初始化一个新的整数值时，浮点值会被截断。也就是说<code>4.75</code>会变成<code>4</code>，<code>-3.9</code>会变成<code>-3</code>。</p>
+<blockquote>
+<p>结合数字类常量和变量不同于结合数字类字面量。字面量<code>3</code>可以直接和字面量<code>0.14159</code>相加，因为数字字面量本身没有明确的类型。它们的类型只在编译器需要求值的时候被推测。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/" rel="tag">#Swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/" rel="next" title="Mac基础：如何让Finder显示隐藏文件和文件夹">
+                <i class="fa fa-chevron-left"></i> Mac基础：如何让Finder显示隐藏文件和文件夹
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/29/Swift学习笔记之基础部分/"
+     data-title="Swift学习笔记之基础部分"
+     data-content=""
+     data-url="http://www.jvaeyhcd.cc/2016/04/29/Swift学习笔记之基础部分/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/29/Swift学习笔记之基础部分/"
+           data-title="Swift学习笔记之基础部分" data-url="http://www.jvaeyhcd.cc/2016/04/29/Swift学习笔记之基础部分/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/6993775?v=3&s=460"
+               alt="Jvaeyhcd" />
+          <p class="site-author-name" itemprop="name">Jvaeyhcd</p>
+          <p class="site-description motion-element" itemprop="description">好记性不如烂笔头</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/javeyhcd" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Jvaeyhcd" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://iissnan.com" title="Vi" target="_blank">Vi</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.eyrefree.org/" title="EyreFree" target="_blank">EyreFree</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.lovexing.cn/" title="lovexing" target="_blank">lovexing</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量和变量"><span class="nav-number">2.</span> <span class="nav-text">常量和变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明常量和变量"><span class="nav-number">3.</span> <span class="nav-text">声明常量和变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型标注"><span class="nav-number">4.</span> <span class="nav-text">类型标注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量和变量的命名"><span class="nav-number">5.</span> <span class="nav-text">常量和变量的命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出常量和变量"><span class="nav-number">6.</span> <span class="nav-text">输出常量和变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">7.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分号"><span class="nav-number">8.</span> <span class="nav-text">分号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数"><span class="nav-number">9.</span> <span class="nav-text">整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数范围"><span class="nav-number">10.</span> <span class="nav-text">整数范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Int"><span class="nav-number">11.</span> <span class="nav-text">Int</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UInt"><span class="nav-number">12.</span> <span class="nav-text">UInt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点数"><span class="nav-number">13.</span> <span class="nav-text">浮点数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型安全和类型推断"><span class="nav-number">14.</span> <span class="nav-text">类型安全和类型推断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值型字面量"><span class="nav-number">15.</span> <span class="nav-text">数值型字面量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值型类型转换"><span class="nav-number">16.</span> <span class="nav-text">数值型类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数转换"><span class="nav-number">17.</span> <span class="nav-text">整数转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数和浮点数转换"><span class="nav-number">18.</span> <span class="nav-text">整数和浮点数转换</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jvaeyhcd</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i> 本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i> 本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jvaeyhcd"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+</body>
+</html>

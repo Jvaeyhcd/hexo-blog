@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-04-28T02:34:21.000Z</updated>
+  <updated>2016-04-29T07:30:55.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -16,11 +16,135 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Swift学习笔记之基础部分</title>
+    <link href="http://www.jvaeyhcd.cc/2016/04/29/Swift%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/"/>
+    <id>http://www.jvaeyhcd.cc/2016/04/29/Swift学习笔记之基础部分/</id>
+    <published>2016-04-29T02:07:32.000Z</published>
+    <updated>2016-04-29T07:30:55.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 Objective-C 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 Objective-C 相关开发经验也没有关系，大家都说Swift比较通俗易懂更加容易上手）。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;Swift包含了C 和Objective-C上所有的数据类型，&lt;code&gt;Int&lt;/code&gt;表示整型值；&lt;code&gt;Double&lt;/code&gt;和&lt;code&gt;Float&lt;/code&gt;表示浮点型值；&lt;code&gt;Bool&lt;/code&gt;是布尔型值；&lt;code&gt;String&lt;/code&gt;是字符串型值。此外Swift还提供了三个基本的集合类型，&lt;code&gt;Array&lt;/code&gt;，&lt;code&gt;Set&lt;/code&gt;和&lt;code&gt;Dictionary&lt;/code&gt;。&lt;br&gt;除了我们熟悉的类型，Swift 还增加了 Objective-C 中没有的高阶数据类型比如元组（Tuple）。元组可以让你创建或者传递一组数据，比如作为函数的返回值时，你可以用一个元组可以返回多个值。&lt;/p&gt;
+&lt;p&gt;Swift 还增加了可选（Optional）类型，用于处理值缺失的情况。可选表示“那儿有一个值，并且它等于 x ”或者“那儿没有值”。可选有点像在 Objective-C 中使用&lt;code&gt;nil&lt;/code&gt;，但是它可以用在任何类型上，不仅仅是类。可选类型比 Objective-C 中的nil指针更加安全也更具表现力，它是 Swift 许多强大特性的重要组成部分。&lt;/p&gt;
+&lt;p&gt;Swift 是一门类型安全的语言，可选类型就是一个很好的例子。Swift 可以让你清楚地知道值的类型。如果你的代码期望得到一个String，类型安全会阻止你不小心传入一个&lt;code&gt;Int&lt;/code&gt;。你可以在开发阶段尽早发现并修正错误。&lt;/p&gt;
+&lt;h2 id=&quot;常量和变量&quot;&gt;&lt;a href=&quot;#常量和变量&quot; class=&quot;headerlink&quot; title=&quot;常量和变量&quot;&gt;&lt;/a&gt;常量和变量&lt;/h2&gt;&lt;p&gt;常量的值一旦设定就不能改变，而变量的值可以随意更改。&lt;/p&gt;
+&lt;h2 id=&quot;声明常量和变量&quot;&gt;&lt;a href=&quot;#声明常量和变量&quot; class=&quot;headerlink&quot; title=&quot;声明常量和变量&quot;&gt;&lt;/a&gt;声明常量和变量&lt;/h2&gt;&lt;p&gt;常量和变量必须在使用前声明，用&lt;code&gt;let&lt;/code&gt;来声明常量，用&lt;code&gt;var&lt;/code&gt;来声明变量。下面的例子展示了如何用常量和变量&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let maxNumberOfLoginTimes = 10&amp;#10;var currentLoginTimes = 0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这两行代码可以理解为：&lt;br&gt;&lt;code&gt;maxNumberOfLoginTimes&lt;/code&gt;声明为一个常量，它的值是10并且不可再被改变，&lt;code&gt;currentLoginAttempt&lt;/code&gt;申明为一个初始值为0的变量。&lt;br&gt;我们可以在一行中声明多个常量或者多个变量，用逗号隔开：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var x = 0.0, y = 0.0&amp;#10;let a = 1, b = 2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：如果你的代码中有不需要改变的值，请使用&lt;code&gt;let&lt;/code&gt;关键字将它声明为常量。只将需要改变的值声明为变量。与变量不同，常量的值一旦被确定就不能更改了。尝试这样做会导致编译时报错：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let languageName = &amp;#34;Swift&amp;#34;&amp;#10;languageName = &amp;#34;Swift++&amp;#34;&amp;#10;// &amp;#36825;&amp;#20250;&amp;#25253;&amp;#32534;&amp;#35793;&amp;#26102;&amp;#38169;&amp;#35823; - languageName &amp;#19981;&amp;#21487;&amp;#25913;&amp;#21464;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;类型标注&quot;&gt;&lt;a href=&quot;#类型标注&quot; class=&quot;headerlink&quot; title=&quot;类型标注&quot;&gt;&lt;/a&gt;类型标注&lt;/h2&gt;&lt;p&gt;当你声明常量或者变量的时候可以加上类型标注（type annotation），说明常量或者变量中要存储的值的类型。如果要添加类型标注，需要在常量或者变量名后面加上一个冒号和空格，然后加上类型名称。&lt;br&gt;这个例子给&lt;code&gt;welcomeMessage&lt;/code&gt;变量添加了类型标注，表示这个变量可以存储&lt;code&gt;String&lt;/code&gt;类型的值：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var welcomeMessage: String&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;声明中的冒号代表着“是…类型”，所以这行代码可以被理解为：&lt;br&gt;“声明一个类型为&lt;code&gt;String&lt;/code&gt;，名字为&lt;code&gt;welcomeMessage&lt;/code&gt;的变量。”&lt;br&gt;“类型为&lt;code&gt;String&lt;/code&gt;”的意思是“可以存储任意&lt;code&gt;String&lt;/code&gt;类型的值。”&lt;br&gt;&lt;code&gt;welcomeMessage&lt;/code&gt;变量现在可以被设置成任意字符串：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;welcomeMessage = &amp;#34;Hello&amp;#34;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;你可以在一行中定义多个同样类型的变量，用逗号分割，并在最后一个变量名之后添加类型标注：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var red, green, blue: Double&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：一般来说你很少需要写类型标注。如果你在声明常量或者变量的时候赋了一个初始值，Swift可以推断出这个常量或者变量的类型，请参考类型安全和类型推断。在上面的例子中，没有给&lt;code&gt;welcomeMessage&lt;/code&gt;赋初始值，所以变量&lt;code&gt;welcomeMessage&lt;/code&gt;的类型是通过一个类型标注指定的，而不是通过初始值推断的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;常量和变量的命名&quot;&gt;&lt;a href=&quot;#常量和变量的命名&quot; class=&quot;headerlink&quot; title=&quot;常量和变量的命名&quot;&gt;&lt;/a&gt;常量和变量的命名&lt;/h2&gt;&lt;p&gt;你可以用任何你喜欢的字符作为常量和变量名，包括 Unicode 字符：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let &amp;#960; = 3.14159&amp;#10;let &amp;#20320;&amp;#22909; = &amp;#34;&amp;#20320;&amp;#22909;&amp;#19990;&amp;#30028;&amp;#34;&amp;#10;let &amp;#128054;&amp;#128046; = &amp;#34;dogcow&amp;#34;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;常量与变量名不能包含数学符号，箭头，保留的（或者非法的）Unicode 码位，连线与制表符。也不能以数字开头，但是可以在常量与变量名的其他地方包含数字。&lt;/p&gt;
+&lt;p&gt;一旦你将常量或者变量声明为确定的类型，你就不能使用相同的名字再次进行声明，或者改变其存储的值的类型。同时，你也不能将常量与变量进行互转。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：如果你需要使用与Swift保留关键字相同的名称作为常量或者变量名，你可以使用反引号（`）将关键字包围的方式将其作为名字使用。无论如何，你应当避免使用关键字作为常量或变量名，除非你别无选择。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;输出常量和变量&quot;&gt;&lt;a href=&quot;#输出常量和变量&quot; class=&quot;headerlink&quot; title=&quot;输出常量和变量&quot;&gt;&lt;/a&gt;输出常量和变量&lt;/h2&gt;&lt;p&gt;你可以用&lt;code&gt;print(_:separator:terminator:)&lt;/code&gt;函数来输出当前常量或变量的值:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var friendlyWelcome = &amp;#34;Bonjour!&amp;#34;&amp;#10;print(friendlyWelcome)&amp;#10;// &amp;#36755;&amp;#20986; &amp;#34;Bonjour!&amp;#34;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;print(_:separator:terminator:)&lt;/code&gt;是一个用来输出一个或多个值到适当输出区的全局函数。如果你用 Xcode，&lt;code&gt;print(_:separator:terminator:)&lt;/code&gt;将会输出内容到“console”面板上。separator和terminator参数具有默认值，因此你调用这个函数的时候可以忽略它们。默认情况下，该函数通过添加换行符来结束当前行。如果不想换行，可以传递一个空字符串给terminator参数–例如，&lt;code&gt;print(someValue, terminator:&amp;quot;&amp;quot;)&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;Swift 用字符串插值（string interpolation）的方式把常量名或者变量名当做占位符加入到长字符串中，Swift 会用当前常量或变量的值替换这些占位符。将常量或变量名放入圆括号中，并在开括号前使用反斜杠将其转义：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;print(&amp;#34;The current value of friendlyWelcome is \(friendlyWelcome)&amp;#34;)&amp;#10;// &amp;#36755;&amp;#20986; &amp;#34;The current value of friendlyWelcome is Bonjour!&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;注释&quot;&gt;&lt;a href=&quot;#注释&quot; class=&quot;headerlink&quot; title=&quot;注释&quot;&gt;&lt;/a&gt;注释&lt;/h2&gt;&lt;p&gt;请将你的代码中的非执行文本注释成提示或者笔记以方便你将来阅读。Swift 的编译器将会在编译代码时自动忽略掉注释部分。&lt;br&gt;与 C 语言多行注释不同，Swift 的多行注释可以嵌套在其它的多行注释之中。你可以先生成一个多行注释块，然后在这个注释块之中再嵌套成第二个多行注释。终止注释时先插入第二个注释块的终止标记，然后再插入第一个注释块的终止标记：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/* &amp;#36825;&amp;#26159;&amp;#31532;&amp;#19968;&amp;#20010;&amp;#22810;&amp;#34892;&amp;#27880;&amp;#37322;&amp;#30340;&amp;#24320;&amp;#22836;&amp;#10;/* &amp;#36825;&amp;#26159;&amp;#31532;&amp;#20108;&amp;#20010;&amp;#34987;&amp;#23884;&amp;#22871;&amp;#30340;&amp;#22810;&amp;#34892;&amp;#27880;&amp;#37322; */&amp;#10;&amp;#36825;&amp;#26159;&amp;#31532;&amp;#19968;&amp;#20010;&amp;#22810;&amp;#34892;&amp;#27880;&amp;#37322;&amp;#30340;&amp;#32467;&amp;#23614; */&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;通过运用嵌套多行注释，你可以快速方便的注释掉一大段代码，即使这段代码之中已经含有了多行注释块。&lt;br&gt;当然Swift的单行注释和多行注释和C语言的类似。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// &amp;#36825;&amp;#26159;&amp;#19968;&amp;#20010;&amp;#21333;&amp;#34892;&amp;#27880;&amp;#37322;&amp;#10;/* &amp;#36825;&amp;#26159;&amp;#19968;&amp;#20010;,&amp;#10;&amp;#22810;&amp;#34892;&amp;#27880;&amp;#37322; */&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;分号&quot;&gt;&lt;a href=&quot;#分号&quot; class=&quot;headerlink&quot; title=&quot;分号&quot;&gt;&lt;/a&gt;分号&lt;/h2&gt;&lt;p&gt;与其他大部分编程语言不同，Swift 并不强制要求你在每条语句的结尾处使用分号（;），当然，你也可以按照你自己的习惯添加分号。有一种情况下必须要用分号，即你打算在同一行内写多条独立的语句：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let cat = &amp;#34;&amp;#128049;&amp;#34;; print(cat)&amp;#10;// &amp;#36755;&amp;#20986; &amp;#34;&amp;#128049;&amp;#34;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;整数&quot;&gt;&lt;a href=&quot;#整数&quot; class=&quot;headerlink&quot; title=&quot;整数&quot;&gt;&lt;/a&gt;整数&lt;/h2&gt;&lt;p&gt;整数就是没有小数部分的数字，比如42和-23。整数可以是有符号（正、负、零）或者无符号（正、零）。&lt;/p&gt;
+&lt;p&gt;Swift 提供了8，16，32和64位的有符号和无符号整数类型。这些整数类型和 C 语言的命名方式很像，比如8位无符号整数类型是&lt;code&gt;UInt8&lt;/code&gt;，32位有符号整数类型是&lt;code&gt;Int32&lt;/code&gt;。就像 Swift 的其他类型一样，整数类型采用大写命名法。&lt;/p&gt;
+&lt;h2 id=&quot;整数范围&quot;&gt;&lt;a href=&quot;#整数范围&quot; class=&quot;headerlink&quot; title=&quot;整数范围&quot;&gt;&lt;/a&gt;整数范围&lt;/h2&gt;&lt;p&gt;你可以访问不同整数类型的&lt;code&gt;min&lt;/code&gt;和&lt;code&gt;max&lt;/code&gt;属性来获取对应类型的最小值和最大值：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let minValue = UInt8.min  // minValue &amp;#20026; 0&amp;#65292;&amp;#26159; UInt8 &amp;#31867;&amp;#22411;&amp;#10;let maxValue = UInt8.max  // maxValue &amp;#20026; 255&amp;#65292;&amp;#26159; UInt8 &amp;#31867;&amp;#22411;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;min&lt;/code&gt;和&lt;code&gt;max&lt;/code&gt;所传回值的类型，正是其所对的整数类型(如上例&lt;code&gt;UInt8&lt;/code&gt;, 所传回的类型是&lt;code&gt;UInt8&lt;/code&gt;)，可用在表达式中相同类型值旁。&lt;/p&gt;
+&lt;h2 id=&quot;Int&quot;&gt;&lt;a href=&quot;#Int&quot; class=&quot;headerlink&quot; title=&quot;Int&quot;&gt;&lt;/a&gt;Int&lt;/h2&gt;&lt;p&gt;一般来说，你不需要专门指定整数的长度。Swift 提供了一个特殊的整数类型Int，长度与当前平台的原生字长相同：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在32位平台上，&lt;code&gt;Int&lt;/code&gt;和&lt;code&gt;Int32&lt;/code&gt;长度相同。&lt;/li&gt;
+&lt;li&gt;在64位平台上，&lt;code&gt;Int&lt;/code&gt;和&lt;code&gt;Int64&lt;/code&gt;长度相同。&lt;br&gt;除非你需要特定长度的整数，一般来说使用&lt;code&gt;Int&lt;/code&gt;就够了。这可以提高代码一致性和可复用性。即使是在32位平台上，&lt;code&gt;Int&lt;/code&gt;可以存储的整数范围也可以达到-2,147,483,648~2,147,483,647，大多数时候这已经足够大了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;UInt&quot;&gt;&lt;a href=&quot;#UInt&quot; class=&quot;headerlink&quot; title=&quot;UInt&quot;&gt;&lt;/a&gt;UInt&lt;/h2&gt;&lt;p&gt;Swift 也提供了一个特殊的无符号类型&lt;code&gt;UInt&lt;/code&gt;，长度与当前平台的原生字长相同：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在32位平台上，&lt;code&gt;UInt&lt;/code&gt;和&lt;code&gt;UInt32&lt;/code&gt;长度相同。&lt;/li&gt;
+&lt;li&gt;在64位平台上，&lt;code&gt;UInt&lt;/code&gt;和&lt;code&gt;UInt64&lt;/code&gt;长度相同。&lt;blockquote&gt;
+&lt;p&gt;注意：尽量不要使用&lt;code&gt;UInt&lt;/code&gt;，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。除了这种情况，最好使用&lt;code&gt;Int&lt;/code&gt;，即使你要存储的值已知是非负的。统一使用Int可以提高代码的可复用性，避免不同类型数字之间的转换，并且匹配数字的类型推断&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;浮点数&quot;&gt;&lt;a href=&quot;#浮点数&quot; class=&quot;headerlink&quot; title=&quot;浮点数&quot;&gt;&lt;/a&gt;浮点数&lt;/h2&gt;&lt;p&gt;浮点数是有小数部分的数字，比如&lt;code&gt;3.14159&lt;/code&gt;，&lt;code&gt;0.1&lt;/code&gt;和&lt;code&gt;-273.15&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;浮点类型比整数类型表示的范围更大，可以存储比&lt;code&gt;Int&lt;/code&gt;类型更大或者更小的数字。Swift 提供了两种有符号浮点数类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Double&lt;/code&gt;表示64位浮点数。当你需要存储很大或者很高精度的浮点数时请使用此类型。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Float&lt;/code&gt;表示32位浮点数。精度要求不高的话可以使用此类型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;类型安全和类型推断&quot;&gt;&lt;a href=&quot;#类型安全和类型推断&quot; class=&quot;headerlink&quot; title=&quot;类型安全和类型推断&quot;&gt;&lt;/a&gt;类型安全和类型推断&lt;/h2&gt;&lt;p&gt;Swift 是一个类型安全（type safe）的语言。类型安全的语言可以让你清楚地知道代码要处理的值的类型。如果你的代码需要一个&lt;code&gt;String&lt;/code&gt;，你绝对不可能不小心传进去一个&lt;code&gt;Int&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;由于 Swift 是类型安全的，所以它会在编译你的代码时进行类型检查（type checks），并把不匹配的类型标记为错误。这可以让你在开发的时候尽早发现并修复错误。&lt;/p&gt;
+&lt;p&gt;当你要处理不同类型的值时，类型检查可以帮你避免错误。然而，这并不是说你每次声明常量和变量的时候都需要显式指定类型。如果你没有显式指定类型，Swift 会使用类型推断（type inference）来选择合适的类型。有了类型推断，编译器可以在编译代码的时候自动推断出表达式的类型。原理很简单，只要检查你赋的值即可。&lt;/p&gt;
+&lt;p&gt;因为有类型推断，和 C 或者 Objective-C 比起来 Swift 很少需要声明类型。常量和变量虽然需要明确类型，但是大部分工作并不需要你自己来完成。&lt;/p&gt;
+&lt;p&gt;当你声明常量或者变量并赋初值的时候类型推断非常有用。当你在声明常量或者变量的时候赋给它们一个字面量（literal value 或 literal）即可触发类型推断。（字面量就是会直接出现在你代码中的值，比如&lt;code&gt;42&lt;/code&gt;和&lt;code&gt;3.14159&lt;/code&gt;。）&lt;/p&gt;
+&lt;p&gt;例如，如果你给一个新常量赋值&lt;code&gt;42&lt;/code&gt;并且没有标明类型，Swift 可以推断出常量类型是Int，因为你给它赋的初始值看起来像一个整数：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let meaningOfLife = 42&amp;#10;// meaningOfLife &amp;#20250;&amp;#34987;&amp;#25512;&amp;#27979;&amp;#20026; Int &amp;#31867;&amp;#22411;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;同理，如果你没有给浮点字面量标明类型，Swift 会推断你想要的是&lt;code&gt;Double&lt;/code&gt;：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let pi = 3.14159&amp;#10;// pi &amp;#20250;&amp;#34987;&amp;#25512;&amp;#27979;&amp;#20026; Double &amp;#31867;&amp;#22411;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;当推断浮点数的类型时，Swift 总是会选择&lt;code&gt;Double&lt;/code&gt;而不是&lt;code&gt;Float&lt;/code&gt;。&lt;br&gt;如果表达式中同时出现了整数和浮点数，会被推断为&lt;code&gt;Double&lt;/code&gt;类型：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let anotherPi = 3 + 0.14159&amp;#10;// anotherPi &amp;#20250;&amp;#34987;&amp;#25512;&amp;#27979;&amp;#20026; Double &amp;#31867;&amp;#22411;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;原始值&lt;code&gt;3&lt;/code&gt;没有显式声明类型，而表达式中出现了一个浮点字面量，所以表达式会被推断为&lt;code&gt;Double&lt;/code&gt;类型。&lt;/p&gt;
+&lt;h2 id=&quot;数值型字面量&quot;&gt;&lt;a href=&quot;#数值型字面量&quot; class=&quot;headerlink&quot; title=&quot;数值型字面量&quot;&gt;&lt;/a&gt;数值型字面量&lt;/h2&gt;&lt;p&gt;整数字面量可以被写作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个十进制数，没有前缀&lt;/li&gt;
+&lt;li&gt;一个二进制数，前缀是&lt;code&gt;0b&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;一个八进制数，前缀是&lt;code&gt;0o&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;一个十六进制数，前缀是&lt;code&gt;0x&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面的所有整数字面量的十进制值都是16:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let decimalInteger = 16&amp;#10;let binaryInteger = 0b10000       // &amp;#20108;&amp;#36827;&amp;#21046;&amp;#30340;16&amp;#10;let octalInteger = 0o20           // &amp;#20843;&amp;#36827;&amp;#21046;&amp;#30340;16&amp;#10;let hexadecimalInteger = 0x10     // &amp;#21313;&amp;#20845;&amp;#36827;&amp;#21046;&amp;#30340;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;浮点字面量可以是十进制（没有前缀）或者是十六进制（前缀是&lt;code&gt;0x&lt;/code&gt;）。小数点两边必须有至少一个十进制数字（或者是十六进制的数字）。十进制浮点数也可以有一个可选的指数（exponent)，通过大写或者小写的 &lt;code&gt;e&lt;/code&gt; 来指定；十六进制浮点数必须有一个指数，通过大写或者小写的 &lt;code&gt;p&lt;/code&gt; 来指定。&lt;br&gt;如果一个十进制数的指数为&lt;code&gt;exp&lt;/code&gt;，那这个数相当于基数和10^exp的乘积：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1.25e2&lt;/code&gt; 表示 1.25 × 10^2，等于 &lt;code&gt;125.0&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1.25e-2&lt;/code&gt; 表示 1.25 × 10^-2，等于 &lt;code&gt;0.0125&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果一个十六进制数的指数为&lt;code&gt;exp&lt;/code&gt;，那这个数相当于基数和2^exp的乘积：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;0xFp2&lt;/code&gt; 表示 15 × 2^2，等于 &lt;code&gt;60.0&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0xFp-2&lt;/code&gt; 表示 15 × 2^-2，等于 &lt;code&gt;3.75&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面的这些浮点字面量都等于十进制的&lt;code&gt;12.1875&lt;/code&gt;：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let decimalDouble = 12.1875&amp;#10;let exponentDouble = 1.21875e1&amp;#10;let hexadecimalDouble = 0xC.3p0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;数值类字面量可以包括额外的格式来增强可读性。整数和浮点数都可以添加额外的零并且包含下划线，并不会影响字面量：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let paddedDouble = 000123.456&amp;#10;let oneMillion = 1_000_000&amp;#10;let justOverOneMillion = 1_000_000.000_000_1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;数值型类型转换&quot;&gt;&lt;a href=&quot;#数值型类型转换&quot; class=&quot;headerlink&quot; title=&quot;数值型类型转换&quot;&gt;&lt;/a&gt;数值型类型转换&lt;/h2&gt;&lt;p&gt;通常来讲，即使代码中的整数常量和变量已知非负，也请使用&lt;code&gt;Int&lt;/code&gt;类型。总是使用默认的整数类型可以保证你的整数常量和变量可以直接被复用并且可以匹配整数类字面量的类型推断。&lt;/p&gt;
+&lt;p&gt;只有在必要的时候才使用其他整数类型，比如要处理外部的长度明确的数据或者为了优化性能、内存占用等等。使用显式指定长度的类型可以及时发现值溢出并且可以暗示正在处理特殊数据。&lt;/p&gt;
+&lt;h2 id=&quot;整数转换&quot;&gt;&lt;a href=&quot;#整数转换&quot; class=&quot;headerlink&quot; title=&quot;整数转换&quot;&gt;&lt;/a&gt;整数转换&lt;/h2&gt;&lt;p&gt;不同整数类型的变量和常量可以存储不同范围的数字。&lt;code&gt;Int8&lt;/code&gt;类型的常量或者变量可以存储的数字范围是-128~127，而&lt;code&gt;UInt8&lt;/code&gt;类型的常量或者变量能存储的数字范围是0~255。如果数字超出了常量或者变量可存储的范围，编译的时候会报错：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let cannotBeNegative: UInt8 = -1&amp;#10;// UInt8 &amp;#31867;&amp;#22411;&amp;#19981;&amp;#33021;&amp;#23384;&amp;#20648;&amp;#36127;&amp;#25968;&amp;#65292;&amp;#25152;&amp;#20197;&amp;#20250;&amp;#25253;&amp;#38169;&amp;#10;let tooBig: Int8 = Int8.max + 1&amp;#10;// Int8 &amp;#31867;&amp;#22411;&amp;#19981;&amp;#33021;&amp;#23384;&amp;#20648;&amp;#36229;&amp;#36807;&amp;#26368;&amp;#22823;&amp;#20540;&amp;#30340;&amp;#25968;&amp;#65292;&amp;#25152;&amp;#20197;&amp;#20250;&amp;#25253;&amp;#38169;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;由于每种整数类型都可以存储不同范围的值，所以你必须根据不同情况选择性使用数值型类型转换。这种选择性使用的方式，可以预防隐式转换的错误并让你的代码中的类型转换意图变得清晰。&lt;/p&gt;
+&lt;p&gt;要将一种数字类型转换成另一种，你要用当前值来初始化一个期望类型的新数字，这个数字的类型就是你的目标类型。在下面的例子中，常量&lt;code&gt;twoThousand&lt;/code&gt;是&lt;code&gt;UInt16&lt;/code&gt;类型，然而常量&lt;code&gt;one&lt;/code&gt;是&lt;code&gt;UInt8&lt;/code&gt;类型。它们不能直接相加，因为它们类型不同。所以要调用&lt;code&gt;UInt16(one)&lt;/code&gt;来创建一个新的&lt;code&gt;UInt16&lt;/code&gt;数字并用&lt;code&gt;one&lt;/code&gt;的值来初始化，然后使用这个新数字来计算：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let twoThousand: UInt16 = 2_000&amp;#10;let one: UInt8 = 1&amp;#10;let twoThousandAndOne = twoThousand + UInt16(one)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;现在两个数字的类型都是&lt;code&gt;UInt16&lt;/code&gt;，可以进行相加。目标常量&lt;code&gt;twoThousandAndOne&lt;/code&gt;的类型被推断为&lt;code&gt;UInt16&lt;/code&gt;，因为它是两个&lt;code&gt;UInt16&lt;/code&gt;值的和。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SomeType(ofInitialValue)&lt;/code&gt;是调用 Swift 构造器并传入一个初始值的默认方法。在语言内部，&lt;code&gt;UInt16&lt;/code&gt;有一个构造器，可以接受一个&lt;code&gt;UInt8&lt;/code&gt;类型的值，所以这个构造器可以用现有的&lt;code&gt;UInt8&lt;/code&gt;来创建一个新的&lt;code&gt;UInt16&lt;/code&gt;。注意，你并不能传入任意类型的值，只能传入&lt;code&gt;UInt16&lt;/code&gt;内部有对应构造器的值。不过你可以扩展现有的类型来让它可以接收其他类型的值（包括自定义类型）。&lt;/p&gt;
+&lt;h2 id=&quot;整数和浮点数转换&quot;&gt;&lt;a href=&quot;#整数和浮点数转换&quot; class=&quot;headerlink&quot; title=&quot;整数和浮点数转换&quot;&gt;&lt;/a&gt;整数和浮点数转换&lt;/h2&gt;&lt;p&gt;整数和浮点数的转换必须显式指定类型：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let three = 3&amp;#10;let pointOneFourOneFiveNine = 0.14159&amp;#10;let pi = Double(three) + pointOneFourOneFiveNine&amp;#10;// pi &amp;#31561;&amp;#20110; 3.14159&amp;#65292;&amp;#25152;&amp;#20197;&amp;#34987;&amp;#25512;&amp;#27979;&amp;#20026; Double &amp;#31867;&amp;#22411;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这个例子中，常量&lt;code&gt;three&lt;/code&gt;的值被用来创建一个&lt;code&gt;Double&lt;/code&gt;类型的值，所以加号两边的数类型须相同。如果不进行转换，两者无法相加。&lt;br&gt;浮点数到整数的反向转换同样行，整数类型可以用&lt;code&gt;Double&lt;/code&gt;或者&lt;code&gt;Float&lt;/code&gt;类型来初始化：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let integerPi = Int(pi)&amp;#10;// integerPi &amp;#31561;&amp;#20110; 3&amp;#65292;&amp;#25152;&amp;#20197;&amp;#34987;&amp;#25512;&amp;#27979;&amp;#20026; Int &amp;#31867;&amp;#22411;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;当用这种方式来初始化一个新的整数值时，浮点值会被截断。也就是说&lt;code&gt;4.75&lt;/code&gt;会变成&lt;code&gt;4&lt;/code&gt;，&lt;code&gt;-3.9&lt;/code&gt;会变成&lt;code&gt;-3&lt;/code&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;结合数字类常量和变量不同于结合数字类字面量。字面量&lt;code&gt;3&lt;/code&gt;可以直接和字面量&lt;code&gt;0.14159&lt;/code&gt;相加，因为数字字面量本身没有明确的类型。它们的类型只在编译器需要求值的时候被推测。&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 Objective-C 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 Objective-C 相关开发经验也没有关系，大家都说Swift比较通俗易懂更加容易上手）。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Swift学习笔记" scheme="http://www.jvaeyhcd.cc/categories/Swift%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Swift" scheme="http://www.jvaeyhcd.cc/tags/Swift/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Mac基础：如何让Finder显示隐藏文件和文件夹</title>
     <link href="http://www.jvaeyhcd.cc/2016/04/28/Mac%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%A9Finder%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
     <id>http://www.jvaeyhcd.cc/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/</id>
     <published>2016-04-28T01:43:25.000Z</published>
-    <updated>2016-04-28T02:34:21.000Z</updated>
+    <updated>2016-04-28T07:27:34.000Z</updated>
     
     <content type="html">&lt;p&gt;有些人中喜欢折腾一些奇怪的东西（比如说我），使用git已经很长一段时间了，但是最近才发现在Finder中找不到.git的文件夹。原来这个东西是被隐藏了，那么现在问题来了，我要将隐藏的文件或者文件夹显示出来应该如何做呢？&lt;/p&gt;
 &lt;h2 id=&quot;让Finder显示隐藏文件和文件夹&quot;&gt;&lt;a href=&quot;#让Finder显示隐藏文件和文件夹&quot; class=&quot;headerlink&quot; title=&quot;让Finder显示隐藏文件和文件夹&quot;&gt;&lt;/a&gt;让Finder显示隐藏文件和文件夹&lt;/h2&gt;&lt;ul&gt;
