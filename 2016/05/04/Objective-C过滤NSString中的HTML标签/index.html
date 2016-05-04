@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Objective-C," />
 
 
 
@@ -82,16 +82,19 @@
 
 
 
-<meta name="description" content="好记性不如烂笔头">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Categories">
-<meta property="og:url" content="http://www.jvaeyhcd.cc/categories/index.html">
+<meta name="description" content="开发过程中常常会遇到这样一个情况：对于后台编辑的一些文本都是使用富文本的形式进行编辑的，我们在使用接口区请求数据的时候，请求到的数据是带HTML标签的富文本形式，但是我们前台是使用UIlabel去显示的，这个时候就需要去掉NSString的HTML标签。
+解决办法对于这种常用的一些方法，我们一般会创建一个NSString的Category去实现。关于去掉NSString中HTML标签的实现方法我在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Objective-C过滤NSString中的HTML标签">
+<meta property="og:url" content="http://www.jvaeyhcd.cc/2016/05/04/Objective-C过滤NSString中的HTML标签/index.html">
 <meta property="og:site_name" content="Jvaeyhcd's Note">
-<meta property="og:description" content="好记性不如烂笔头">
-<meta property="og:updated_time" content="2016-04-27T07:03:51.000Z">
+<meta property="og:description" content="开发过程中常常会遇到这样一个情况：对于后台编辑的一些文本都是使用富文本的形式进行编辑的，我们在使用接口区请求数据的时候，请求到的数据是带HTML标签的富文本形式，但是我们前台是使用UIlabel去显示的，这个时候就需要去掉NSString的HTML标签。
+解决办法对于这种常用的一些方法，我们一般会创建一个NSString的Category去实现。关于去掉NSString中HTML标签的实现方法我在">
+<meta property="og:updated_time" content="2016-05-04T03:30:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Categories">
-<meta name="twitter:description" content="好记性不如烂笔头">
+<meta name="twitter:title" content="Objective-C过滤NSString中的HTML标签">
+<meta name="twitter:description" content="开发过程中常常会遇到这样一个情况：对于后台编辑的一些文本都是使用富文本的形式进行编辑的，我们在使用接口区请求数据的时候，请求到的数据是带HTML标签的富文本形式，但是我们前台是使用UIlabel去显示的，这个时候就需要去掉NSString的HTML标签。
+解决办法对于这种常用的一些方法，我们一般会创建一个NSString的Category去实现。关于去掉NSString中HTML标签的实现方法我在">
 
 
 
@@ -109,13 +112,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    分类 | Jvaeyhcd's Note
-  
-</title>
+  <title> Objective-C过滤NSString中的HTML标签 | Jvaeyhcd's Note </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -146,7 +143,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,16 +233,156 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <div class="category-all-page">
-        <div class="category-all-title">
-            目前共计 3 个分类
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Objective-C过滤NSString中的HTML标签
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-04T11:17:29+08:00" content="2016-05-04">
+              2016-05-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/04/Objective-C过滤NSString中的HTML标签/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/04/Objective-C过滤NSString中的HTML标签/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-eye"></i> 本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
         </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Mac基础/">Mac基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift学习笔记/">Swift学习笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS学习笔记/">iOS学习笔记</a><span class="category-list-count">3</span></li></ul>
-        </div>
-      </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>开发过程中常常会遇到这样一个情况：对于后台编辑的一些文本都是使用富文本的形式进行编辑的，我们在使用接口区请求数据的时候，请求到的数据是带HTML标签的富文本形式，但是我们前台是使用UIlabel去显示的，这个时候就需要去掉NSString的HTML标签。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>对于这种常用的一些方法，我们一般会创建一个NSString的Category去实现。关于去掉NSString中HTML标签的实现方法我在网上找到了两种实现方式：</p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>用NSScanner扫描来处理</p>
+<a id="more"></a>
+<p>NSString+Jvaeyhcd.h<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#import &#60;Foundation/Foundation.h&#62;&#10;&#10;@interface NSString (Jvaeyhcd)&#10;&#10;- (NSString *)removeHTML;&#10;&#10;@end</span><br></pre></td></tr></table></figure></p>
+<p>NSString+Jvaeyhcd.m<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)removeHTML &#123;&#10;    &#10;    NSScanner *theScanner;&#10;    NSString *text = nil;&#10;    &#10;    theScanner = [NSScanner scannerWithString:self];&#10;&#10;    while ([theScanner isAtEnd] == NO) &#123;&#10;        // find start of tag&#10;        [theScanner scanUpToString:@&#34;&#60;&#34; intoString:NULL] ;&#10;        // find end of tag&#10;        [theScanner scanUpToString:@&#34;&#62;&#34; intoString:&#38;text] ;&#10;        &#10;        // replace the found tag with a space&#10;        &#10;        //(you can filter multi-spaces out later if you wish)&#10;        &#10;        self = [self stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@&#34;%@&#62;&#34;, text] withString:@&#34; &#34;];&#10;    &#125;&#10;    &#10;    return self;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>用NSString自带的Seprated自截断方法</p>
+<p>NSString+Jvaeyhcd.h<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#import &#60;Foundation/Foundation.h&#62;&#10;&#10;@interface NSString (Jvaeyhcd)&#10;&#10;- (NSString *)removeHTML2;&#10;&#10;@end</span><br></pre></td></tr></table></figure></p>
+<p>NSString+Jvaeyhcd.m<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)removeHTML2 &#123;&#10;    NSArray *components = [self componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@&#34;&#60;&#62;&#34;]];&#10;    NSMutableArray *componentsToKeep = [NSMutableArray array];&#10;    &#10;    for (int i = 0; i &#60; [components count]; i = i + 2) &#123;&#10;        [componentsToKeep addObject:[components objectAtIndex:i]];&#10;    &#125;&#10;    &#10;    NSString *plainText = [componentsToKeep componentsJoinedByString:@&#34;&#34;];&#10;    &#10;    return plainText;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/29/Swift学习笔记之基础部分/" rel="next" title="Swift学习笔记之基础部分">
+                <i class="fa fa-chevron-left"></i> Swift学习笔记之基础部分
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/05/04/Objective-C过滤NSString中的HTML标签/"
+     data-title="Objective-C过滤NSString中的HTML标签"
+     data-content=""
+     data-url="http://www.jvaeyhcd.cc/2016/05/04/Objective-C过滤NSString中的HTML标签/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
   </div>
 
 
@@ -254,6 +391,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/04/Objective-C过滤NSString中的HTML标签/"
+           data-title="Objective-C过滤NSString中的HTML标签" data-url="http://www.jvaeyhcd.cc/2016/05/04/Objective-C过滤NSString中的HTML标签/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -273,8 +418,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars2.githubusercontent.com/u/6993775?v=3&s=460"
@@ -377,6 +531,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">1.</span> <span class="nav-text">解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">1.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二"><span class="nav-number">1.2.</span> <span class="nav-text">方法二</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -496,6 +661,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

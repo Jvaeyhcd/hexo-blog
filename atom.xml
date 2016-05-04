@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-04-29T08:57:22.000Z</updated>
+  <updated>2016-05-04T03:30:28.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Objective-C过滤NSString中的HTML标签</title>
+    <link href="http://www.jvaeyhcd.cc/2016/05/04/Objective-C%E8%BF%87%E6%BB%A4NSString%E4%B8%AD%E7%9A%84HTML%E6%A0%87%E7%AD%BE/"/>
+    <id>http://www.jvaeyhcd.cc/2016/05/04/Objective-C过滤NSString中的HTML标签/</id>
+    <published>2016-05-04T03:17:29.000Z</published>
+    <updated>2016-05-04T03:30:28.000Z</updated>
+    
+    <content type="html">&lt;p&gt;开发过程中常常会遇到这样一个情况：对于后台编辑的一些文本都是使用富文本的形式进行编辑的，我们在使用接口区请求数据的时候，请求到的数据是带HTML标签的富文本形式，但是我们前台是使用UIlabel去显示的，这个时候就需要去掉NSString的HTML标签。&lt;/p&gt;
+&lt;h2 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h2&gt;&lt;p&gt;对于这种常用的一些方法，我们一般会创建一个NSString的Category去实现。关于去掉NSString中HTML标签的实现方法我在网上找到了两种实现方式：&lt;/p&gt;
+&lt;h3 id=&quot;方法一&quot;&gt;&lt;a href=&quot;#方法一&quot; class=&quot;headerlink&quot; title=&quot;方法一&quot;&gt;&lt;/a&gt;方法一&lt;/h3&gt;&lt;p&gt;用NSScanner扫描来处理&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;NSString+Jvaeyhcd.h&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;#60;Foundation/Foundation.h&amp;#62;&amp;#10;&amp;#10;@interface NSString (Jvaeyhcd)&amp;#10;&amp;#10;- (NSString *)removeHTML;&amp;#10;&amp;#10;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;NSString+Jvaeyhcd.m&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (NSString *)removeHTML &amp;#123;&amp;#10;    &amp;#10;    NSScanner *theScanner;&amp;#10;    NSString *text = nil;&amp;#10;    &amp;#10;    theScanner = [NSScanner scannerWithString:self];&amp;#10;&amp;#10;    while ([theScanner isAtEnd] == NO) &amp;#123;&amp;#10;        // find start of tag&amp;#10;        [theScanner scanUpToString:@&amp;#34;&amp;#60;&amp;#34; intoString:NULL] ;&amp;#10;        // find end of tag&amp;#10;        [theScanner scanUpToString:@&amp;#34;&amp;#62;&amp;#34; intoString:&amp;#38;text] ;&amp;#10;        &amp;#10;        // replace the found tag with a space&amp;#10;        &amp;#10;        //(you can filter multi-spaces out later if you wish)&amp;#10;        &amp;#10;        self = [self stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@&amp;#34;%@&amp;#62;&amp;#34;, text] withString:@&amp;#34; &amp;#34;];&amp;#10;    &amp;#125;&amp;#10;    &amp;#10;    return self;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;方法二&quot;&gt;&lt;a href=&quot;#方法二&quot; class=&quot;headerlink&quot; title=&quot;方法二&quot;&gt;&lt;/a&gt;方法二&lt;/h3&gt;&lt;p&gt;用NSString自带的Seprated自截断方法&lt;/p&gt;
+&lt;p&gt;NSString+Jvaeyhcd.h&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;#60;Foundation/Foundation.h&amp;#62;&amp;#10;&amp;#10;@interface NSString (Jvaeyhcd)&amp;#10;&amp;#10;- (NSString *)removeHTML2;&amp;#10;&amp;#10;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;NSString+Jvaeyhcd.m&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (NSString *)removeHTML2 &amp;#123;&amp;#10;    NSArray *components = [self componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@&amp;#34;&amp;#60;&amp;#62;&amp;#34;]];&amp;#10;    NSMutableArray *componentsToKeep = [NSMutableArray array];&amp;#10;    &amp;#10;    for (int i = 0; i &amp;#60; [components count]; i = i + 2) &amp;#123;&amp;#10;        [componentsToKeep addObject:[components objectAtIndex:i]];&amp;#10;    &amp;#125;&amp;#10;    &amp;#10;    NSString *plainText = [componentsToKeep componentsJoinedByString:@&amp;#34;&amp;#34;];&amp;#10;    &amp;#10;    return plainText;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开发过程中常常会遇到这样一个情况：对于后台编辑的一些文本都是使用富文本的形式进行编辑的，我们在使用接口区请求数据的时候，请求到的数据是带HTML标签的富文本形式，但是我们前台是使用UIlabel去显示的，这个时候就需要去掉NSString的HTML标签。&lt;/p&gt;
+&lt;h2 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h2&gt;&lt;p&gt;对于这种常用的一些方法，我们一般会创建一个NSString的Category去实现。关于去掉NSString中HTML标签的实现方法我在网上找到了两种实现方式：&lt;/p&gt;
+&lt;h3 id=&quot;方法一&quot;&gt;&lt;a href=&quot;#方法一&quot; class=&quot;headerlink&quot; title=&quot;方法一&quot;&gt;&lt;/a&gt;方法一&lt;/h3&gt;&lt;p&gt;用NSScanner扫描来处理&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Objective-C" scheme="http://www.jvaeyhcd.cc/tags/Objective-C/"/>
+    
+  </entry>
   
   <entry>
     <title>Swift学习笔记之基础部分</title>
@@ -627,7 +658,7 @@
     <link href="http://www.jvaeyhcd.cc/2016/03/23/Objective-C%E5%B8%B8%E7%94%A8%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8C%BA%E5%88%AB/"/>
     <id>http://www.jvaeyhcd.cc/2016/03/23/Objective-C常用关键字的使用与区别/</id>
     <published>2016-03-23T02:17:12.000Z</published>
-    <updated>2016-04-27T10:58:15.000Z</updated>
+    <updated>2016-05-04T03:18:20.000Z</updated>
     
     <content type="html">&lt;p&gt;虽然接触iOS已经很久了，但是对于Objective-C中常见的关键字还经常处于傻傻分不清楚的状态。遇到最多的情况就是在申明一个属性的时候，比如：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@propperty (?,?) ?*!;&amp;#10;...............&amp;#10;............&amp;#10;.........&amp;#10;......&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;就是这里，每次在这里的时候都不知道，怎么去申明他的关键字。这个看起来简单（弄明白了确实也是很简单的），但是如果没有系统的去区分这些关键字很容易混淆。&lt;br&gt;所以今天通过自己的一些积累以及在网上总结的一些资料，给自己总结一下，主要作为自己对iOS学习的一个小小的总结。&lt;/p&gt;
@@ -707,6 +738,8 @@
     
     </summary>
     
+    
+      <category term="Objective-C" scheme="http://www.jvaeyhcd.cc/tags/Objective-C/"/>
     
   </entry>
   
