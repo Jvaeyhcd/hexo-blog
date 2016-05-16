@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-05-04T03:30:28.000Z</updated>
+  <updated>2016-05-16T02:53:02.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -16,11 +16,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关闭iOS系统自动更新提示的方法</title>
+    <link href="http://www.jvaeyhcd.cc/2016/05/16/%E5%85%B3%E9%97%ADiOS%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E6%8F%90%E7%A4%BA%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>http://www.jvaeyhcd.cc/2016/05/16/关闭iOS系统自动更新提示的方法/</id>
+    <published>2016-05-16T02:16:25.000Z</published>
+    <updated>2016-05-16T02:53:02.000Z</updated>
+    
+    <content type="html">&lt;p&gt;一直以来都被iOS的自动更新困扰，每次苹果推出了最新版本的iOS系统都会提示自动更新，真的很烦。并且公司的测试机不可能全都是一个版本的系统，不然很多不同iOS版本系统的bug根本无法测出来，所以为了保持测试机系统的多样性，我想保持一部分手机系统永不更新，让我自己的手机保持最新系统就行了。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h3&gt;&lt;p&gt;经过一段时间的试验，有如下几个对应方案：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;设置 - 通用 - 用量 - 管理存储空间 - 找到更新包，然后删除它&lt;/li&gt;
+&lt;li&gt;设置 - iTunes&amp;amp;App Stores, 找到Updates，关闭&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果以上两个方案还不管用，直接放大招：&lt;br&gt;在手机上打开safari，地址栏输入:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;https://oldcat.me/web/NOOTA9.mobileconfig&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;然后回车&lt;br&gt;按照要求安装此provision文件即可，然后重启。&lt;/p&gt;
+&lt;img src=&quot;/2016/05/16/关闭iOS系统自动更新提示的方法/thumb_IMG_0889_1024.jpg&quot; alt=&quot;安装provision文件&quot; title=&quot;安装provision文件&quot;&gt;
+&lt;p&gt;重启后打开设置 - 通用 - 软件更新 有惊喜&lt;/p&gt;
+&lt;img src=&quot;/2016/05/16/关闭iOS系统自动更新提示的方法/thumb_IMG_0890_1024.jpg&quot; alt=&quot;结果图&quot; title=&quot;结果图&quot;&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一直以来都被iOS的自动更新困扰，每次苹果推出了最新版本的iOS系统都会提示自动更新，真的很烦。并且公司的测试机不可能全都是一个版本的系统，不然很多不同iOS版本系统的bug根本无法测出来，所以为了保持测试机系统的多样性，我想保持一部分手机系统永不更新，让我自己的手机保持最新系统就行了。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="其他" scheme="http://www.jvaeyhcd.cc/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="iOS系统" scheme="http://www.jvaeyhcd.cc/tags/iOS%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Objective-C过滤NSString中的HTML标签</title>
     <link href="http://www.jvaeyhcd.cc/2016/05/04/Objective-C%E8%BF%87%E6%BB%A4NSString%E4%B8%AD%E7%9A%84HTML%E6%A0%87%E7%AD%BE/"/>
     <id>http://www.jvaeyhcd.cc/2016/05/04/Objective-C过滤NSString中的HTML标签/</id>
     <published>2016-05-04T03:17:29.000Z</published>
-    <updated>2016-05-04T03:30:28.000Z</updated>
+    <updated>2016-05-04T03:32:15.000Z</updated>
     
     <content type="html">&lt;p&gt;开发过程中常常会遇到这样一个情况：对于后台编辑的一些文本都是使用富文本的形式进行编辑的，我们在使用接口区请求数据的时候，请求到的数据是带HTML标签的富文本形式，但是我们前台是使用UIlabel去显示的，这个时候就需要去掉NSString的HTML标签。&lt;/p&gt;
 &lt;h2 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h2&gt;&lt;p&gt;对于这种常用的一些方法，我们一般会创建一个NSString的Category去实现。关于去掉NSString中HTML标签的实现方法我在网上找到了两种实现方式：&lt;/p&gt;
