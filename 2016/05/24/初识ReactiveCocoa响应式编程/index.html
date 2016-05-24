@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS,笔记," />
+  <meta name="keywords" content="ReactiveCocoa," />
 
 
 
@@ -82,19 +82,16 @@
 
 
 
-<meta name="description" content="UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。
-概述为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话">
+<meta name="description" content="参考文章使用ReactiveCocoa实现iOS平台响应式编程ReactiveCocoa与Functional Reactive Programming最快让你上手ReactiveCocoa之基础篇花瓣网李忠：ReactiveCocoa是Cocoa的未来ReactiveCocoa 讨论会">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于UItableView的复用">
-<meta property="og:url" content="http://www.jvaeyhcd.cc/2016/04/05/关于UItableView的复用/index.html">
+<meta property="og:title" content="初识ReactiveCocoa响应式编程">
+<meta property="og:url" content="http://www.jvaeyhcd.cc/2016/05/24/初识ReactiveCocoa响应式编程/index.html">
 <meta property="og:site_name" content="Jvaeyhcd's Note">
-<meta property="og:description" content="UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。
-概述为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话">
-<meta property="og:updated_time" content="2016-04-27T11:00:19.000Z">
+<meta property="og:description" content="参考文章使用ReactiveCocoa实现iOS平台响应式编程ReactiveCocoa与Functional Reactive Programming最快让你上手ReactiveCocoa之基础篇花瓣网李忠：ReactiveCocoa是Cocoa的未来ReactiveCocoa 讨论会">
+<meta property="og:updated_time" content="2016-05-24T05:45:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于UItableView的复用">
-<meta name="twitter:description" content="UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。
-概述为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话">
+<meta name="twitter:title" content="初识ReactiveCocoa响应式编程">
+<meta name="twitter:description" content="参考文章使用ReactiveCocoa实现iOS平台响应式编程ReactiveCocoa与Functional Reactive Programming最快让你上手ReactiveCocoa之基础篇花瓣网李忠：ReactiveCocoa是Cocoa的未来ReactiveCocoa 讨论会">
 
 
 
@@ -112,7 +109,7 @@
   };
 </script>
 
-  <title> 关于UItableView的复用 | Jvaeyhcd's Note </title>
+  <title> 初识ReactiveCocoa响应式编程 | Jvaeyhcd's Note </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +249,7 @@
             
             
               
-                关于UItableView的复用
+                初识ReactiveCocoa响应式编程
               
             
           </h1>
@@ -264,38 +261,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-05T09:26:44+08:00" content="2016-04-05">
-              2016-04-05
+            <time itemprop="dateCreated" datetime="2016-05-24T13:02:01+08:00" content="2016-05-24">
+              2016-05-24
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/iOS学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/05/关于UItableView的复用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/05/关于UItableView的复用/" itemprop="commentsCount"></span>
+                <a href="/2016/05/24/初识ReactiveCocoa响应式编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/初识ReactiveCocoa响应式编程/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -323,16 +301,8 @@
       
 
       
-        <p>UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。</p>
-<a id="more"></a>
-<p>关于UItableView的复用机制大概是这样的：假设一个UItableView要加载10000条数据，但是一个屏幕最大只能展示3条数据（这里屏幕最多能展示的数据条数是根据UItableViewCell的高度来定的）。然后当你向上滑动，想要查看更多的内容，那么肯定需要一个cell放在已经存在的内容下边。这个时候并不会重新去创建一个UItableViewCell放在下面，而是根据cellIdetifier去内存池中拿到与之对应的UItableViewCell。</p>
-<h2 id="复用方式"><a href="#复用方式" class="headerlink" title="复用方式"></a>复用方式</h2><p>UItableView的复用方式有如下四种方式实现</p>
-<p>方式一:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &#10;if (!cell) &#123;&#10;&#9;cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier]; &#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>方式二:UItableViewCell是xib写的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XXXTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &#10;if (nil == cell) &#123;  &#10;    cell = [[[NSBundle mainBundle]loadNibNamed:@&#34;XXXTableViewCell&#34; owner:self options:nil]lastObject];  &#10;    cell.selectionStyle=UITableViewCellSelectionStyleNone;  &#10;    [tableView registerNib:[UINib nibWithNibName:@&#34;XXXTableViewCell&#34; bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellIdentifier];&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>方式三:在xib中identifier属性必须写上cellIdentifier ,对应代码中的cellIdentifier<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XXTableViewCell *cell;  &#10;cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &#10;if (nil == cell) &#123;  &#10;    cell= [[[NSBundle mainBundle] loadNibNamed:@&#34;XXTableViewCell&#34; owner:nil options:nil] lastObject];  &#10;&#125;  &#10;return cell;</span><br></pre></td></tr></table></figure></p>
-<p>方式四：先register cell，然后复用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - &#21021;&#22987;&#21270;&#25511;&#20214;&#10;&#10;- (UITableView *)tableView&#10;&#123;&#10;    if (!_tableView) &#123;&#10;        _tableView = [[UITableView alloc]initWithFrame:self.frame style:UITableViewStylePlain];&#10;        _tableView.backgroundColor = kMainBgColor;&#10;        _tableView.dataSource = self;&#10;        _tableView.delegate = self;&#10;        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;&#10;        [_tableView registerClass:[XXXCell_iPhone class] forCellReuseIdentifier:kCellIdentifier_XXXCell];&#10;        _tableView.tableFooterView = self.loadingFooterView;&#10;    &#125;&#10;    return _tableView;&#10;&#125;&#10;&#10;- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath&#10;&#123;&#10;&#9;//&#22797;&#29992;&#10;    XXXCell_iPhone *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_XXXCell forIndexPath:indexPath];&#10;    cell.type = self.type;&#10;    [cell setExpressOrder:[_list safeObjectAtIndex:indexPath.row] needTopView:indexPath.row == 0];&#10;    return cell;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2>
+        <p>参考文章<br><a href="http://www.itiger.me/?p=38" target="_blank" rel="external">使用ReactiveCocoa实现iOS平台响应式编程</a><br><a href="http://limboy.me/ios/2013/06/19/frp-reactivecocoa.html" target="_blank" rel="external">ReactiveCocoa与Functional Reactive Programming</a><br><a href="http://www.jianshu.com/p/87ef6720a096" target="_blank" rel="external">最快让你上手ReactiveCocoa之基础篇</a><br><a href="http://www.infoq.com/cn/news/2014/07/reactiveCocoa-cocoa" target="_blank" rel="external">花瓣网李忠：ReactiveCocoa是Cocoa的未来</a><br><a href="http://blog.devtang.com/2016/01/03/reactive-cocoa-discussion/" target="_blank" rel="external">ReactiveCocoa 讨论会</a></p>
+
       
     </div>
     
@@ -352,9 +322,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag">#iOS</a>
-          
-            <a href="/tags/笔记/" rel="tag">#笔记</a>
+            <a href="/tags/ReactiveCocoa/" rel="tag">#ReactiveCocoa</a>
           
         </div>
       
@@ -363,17 +331,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/30/关于iOS多线程小记/" rel="next" title="关于iOS多线程小记">
-                <i class="fa fa-chevron-left"></i> 关于iOS多线程小记
+              <a href="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/" rel="next" title="使用Jenkins构建iOS持续集成自动打包">
+                <i class="fa fa-chevron-left"></i> 使用Jenkins构建iOS持续集成自动打包
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/06/iOS中造成dealloc不调用的原因/" rel="prev" title="iOS中造成dealloc不调用的原因">
-                iOS中造成dealloc不调用的原因 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -388,10 +352,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/05/关于UItableView的复用/"
-     data-title="关于UItableView的复用"
+        <div class="ds-share flat" data-thread-key="2016/05/24/初识ReactiveCocoa响应式编程/"
+     data-title="初识ReactiveCocoa响应式编程"
      data-content=""
-     data-url="http://www.jvaeyhcd.cc/2016/04/05/关于UItableView的复用/">
+     data-url="http://www.jvaeyhcd.cc/2016/05/24/初识ReactiveCocoa响应式编程/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -418,8 +382,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/05/关于UItableView的复用/"
-           data-title="关于UItableView的复用" data-url="http://www.jvaeyhcd.cc/2016/04/05/关于UItableView的复用/">
+      <div class="ds-thread" data-thread-key="2016/05/24/初识ReactiveCocoa响应式编程/"
+           data-title="初识ReactiveCocoa响应式编程" data-url="http://www.jvaeyhcd.cc/2016/05/24/初识ReactiveCocoa响应式编程/">
       </div>
     
   </div>
@@ -563,7 +527,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复用方式"><span class="nav-number">2.</span> <span class="nav-text">复用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">3.</span> <span class="nav-text">常见问题</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

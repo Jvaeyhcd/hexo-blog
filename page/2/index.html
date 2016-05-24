@@ -251,6 +251,133 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/30/关于iOS多线程小记/" itemprop="url">
+                  关于iOS多线程小记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-30T11:42:06+08:00" content="2016-03-30">
+              2016-03-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/30/关于iOS多线程小记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/30/关于iOS多线程小记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。当然也会给出几种简单的代码案例，再试实际使用中去感受它们的区别。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：</p>
+<ul>
+<li>进程间不能共享内存，但线程间共享内存非常容易。</li>
+<li>系统创建进程需要为该进程重新分配系统资源，但创建线程的代价要小得多，因此使用多线程来实现任务并发比多进程效率高得多。</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/30/关于iOS多线程小记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/28/iOS上完美编译FFmpeg/" itemprop="url">
                   iOS上完美编译FFmpeg
                 </a>
@@ -1214,110 +1341,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/20/Hexo在github上构建免费的博客/" itemprop="url">
-                  Hexo在github上构建免费的博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-20T12:07:20+08:00" content="2016-02-20">
-              2016-02-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/20/Hexo在github上构建免费的博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/20/Hexo在github上构建免费的博客/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>很多次想搭建一个自己的博客，彻底从csdn上转移到自己的博客站点中，但是一直由于时间的原因耽搁了。之前也使用过Wordpress来搭建自己的博客，但是发现Wordpress使用起来不是太方便。后来再接触了markdown语法写文章后，喜欢上了markdown。再后来了解到了hexo，一个基于Node的博客框架，同样可以实现基于github的博客，而且更轻更快，更适合Node的开发程序员。</p>
-<h2 id="1-Hexo介绍"><a href="#1-Hexo介绍" class="headerlink" title="1.Hexo介绍"></a>1.Hexo介绍</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/20/Hexo在github上构建免费的博客/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1363,7 +1386,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1380,7 +1403,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
