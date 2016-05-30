@@ -1,0 +1,827 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Swift," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Jvaeyhcd's Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="运算符是检查、改变、合并值的特殊符号或短语。Swift支持了大部分标准C语言的运算符，并且改进了很多特性来减少常规编码错误。例如(=)不放回值，以防止把想要判断相等运算符（==）的地方写成赋值符导致的错误。
+赋值运算符赋值运算（a = b），表示用b的值来初始化或更新a的值1234let b = 1var a = 2a = b//a 现在等于1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习笔记之基本运算符">
+<meta property="og:url" content="http://www.jvaeyhcd.cc/2016/05/27/Swift学习笔记之基本运算符/index.html">
+<meta property="og:site_name" content="Jvaeyhcd's Note">
+<meta property="og:description" content="运算符是检查、改变、合并值的特殊符号或短语。Swift支持了大部分标准C语言的运算符，并且改进了很多特性来减少常规编码错误。例如(=)不放回值，以防止把想要判断相等运算符（==）的地方写成赋值符导致的错误。
+赋值运算符赋值运算（a = b），表示用b的值来初始化或更新a的值1234let b = 1var a = 2a = b//a 现在等于1">
+<meta property="og:updated_time" content="2016-05-30T02:42:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift学习笔记之基本运算符">
+<meta name="twitter:description" content="运算符是检查、改变、合并值的特殊符号或短语。Swift支持了大部分标准C语言的运算符，并且改进了很多特性来减少常规编码错误。例如(=)不放回值，以防止把想要判断相等运算符（==）的地方写成赋值符导致的错误。
+赋值运算符赋值运算（a = b），表示用b的值来初始化或更新a的值1234let b = 1var a = 2a = b//a 现在等于1">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Swift学习笔记之基本运算符 | Jvaeyhcd's Note </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?29df66b98641fa1eb4edb792fef116c9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jvaeyhcd's Note</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">My Coding Note</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swift学习笔记之基本运算符
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-27T10:49:18+08:00" content="2016-05-27">
+              2016-05-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/27/Swift学习笔记之基本运算符/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/27/Swift学习笔记之基本运算符/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-eye"></i> 本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>运算符是检查、改变、合并值的特殊符号或短语。Swift支持了大部分标准C语言的运算符，并且改进了很多特性来减少常规编码错误。例如(<code>=</code>)不放回值，以防止把想要判断相等运算符（<code>==</code>）的地方写成赋值符导致的错误。</p>
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>赋值运算（<code>a = b</code>），表示用<code>b</code>的值来初始化或更新<code>a</code>的值<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">a = b</span><br><span class="line"><span class="comment">//a 现在等于1</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>如果赋值运算符右边是一个多元组，它的元素马上被分解成多个常量或变量：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> (x, y) = (<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">// 现在x等于1，y等于2</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>与C语言和Objective－C不同，Swift的赋值操作并不返回任何值。所以一下代码是错误的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if a = b &#123;&#10;&#9;//&#36825;&#21477;&#20250;&#25253;&#38169;&#65292;&#22240;&#20026;&#36171;&#20540;&#36816;&#31639;&#31526;&#27809;&#26377;&#36820;&#22238;&#20540;&#10;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>这个特性使得你无法把（<code>==</code>）错写成（<code>=</code>）,由于<code>if a = b</code>是错误代码，Swift能帮你避免此类错误的发生。</p>
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>Swift 中所有数值类型都支持了基本的四则算术运算：</p>
+<ul>
+<li>加法(<code>+</code>)</li>
+<li>减法(<code>-</code>)</li>
+<li>乘法(<code>*</code>)</li>
+<li>除法(<code>/</code>)</li>
+</ul>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>与C语言和Objective-C不同的是，Swift默认情况下不允许在数值运算中出现溢出的情况。</li>
+<li>加法运算符可以直接用于<code>String</code>字符串的拼接：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Hello, "</span>+<span class="string">"baby"</span><span class="comment">//等于"Hello, baby"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="求余运算符"><a href="#求余运算符" class="headerlink" title="求余运算符"></a>求余运算符</h3><p>求余运算符（<code>a % b</code>）是计算<code>b</code>的多少倍刚刚好可以容入<code>a</code>，返回多出来的那部分，就是余数。</p>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>求余运算(<code>%</code>)在其它语言也叫做取模运算。然而严格来说，我们看该运算符对负数操作的结果，「求余」比「取模」更合适些。</li>
+<li>在对负数<code>b</code>求余时，<code>b</code>的符号会被忽略。这意味着<code>a % b</code>和<code>a % -b</code>的结果是一样的。</li>
+<li>不同于 C 语言和 Objective-C，Swift 中是可以对浮点数进行求余的。<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">8</span> % <span class="number">1.5</span>      <span class="comment">//等于0.5</span></span><br><span class="line"><span class="number">2.5</span> % <span class="number">1.5</span>    <span class="comment">//等于1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="一元负号运算符"><a href="#一元负号运算符" class="headerlink" title="一元负号运算符"></a>一元负号运算符</h3><p>数值的正负号可以使用前缀 <code>-</code>（即一元负号）来切换：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> one = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> minusOne = -one        <span class="comment">//minusOne等于-1</span></span><br><span class="line"><span class="keyword">let</span> plusOne = -minusOne    <span class="comment">//plusOne等于1</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>一元负号（<code>-</code>）写在操作数之前，中间没有空格。</li>
+</ul>
+</blockquote>
+<h3 id="一元正号运算符"><a href="#一元正号运算符" class="headerlink" title="一元正号运算符"></a>一元正号运算符</h3><p>一元正号（<code>+</code>）不做任何改变地返回操作数的值：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> minusSix = -<span class="number">6</span></span><br><span class="line"><span class="keyword">let</span> alsoMinusSix = +minusSix  <span class="comment">// alsoMinusSix 等于 -6</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="组合赋值运算符"><a href="#组合赋值运算符" class="headerlink" title="组合赋值运算符"></a>组合赋值运算符</h3><p>如同 C 语言，Swift 也提供把其他运算符和赋值运算（<code>=</code>）组合的组合赋值运算符，组合加运算（<code>+=</code>）是其中一个例子：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line">a += <span class="number">2</span></span><br><span class="line"><span class="comment">// a 现在是 3</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>组合赋值运算符没有返回值，<code>let b = a += 2</code>这类代码是错误的。</li>
+</ul>
+</blockquote>
+<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><p>所有标准 C 语言中的比较运算都可以在 Swift 中使用：</p>
+<ul>
+<li>等于（<code>==</code>）</li>
+<li>不等于(<code>!=</code>)</li>
+<li>大于(<code>&gt;</code>)</li>
+<li>小于(<code>&lt;</code>)</li>
+<li>大于等于(<code>&gt;=</code>)</li>
+<li>小于等于(<code>&lt;=</code>)</li>
+</ul>
+<p>当元组中的值可以比较时，你也可以使用这些运算符来比较它们的大小。例如，因为 <code>Int</code> 和 <code>String</code> 类型的值可以比较，所以类型为 <code>(Int, String)</code> 的元组也可以被比较。相反，<code>Bool</code> 不能被比较，也意味着存有布尔类型的元组不能被比较。</p>
+<p>比较元组大小会按照从左到右、逐值比较的方式，直到发现有两个值不等时停止。如果所有的值都相等，那么这一对元组我们就称它们是相等的。例如：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>, <span class="string">"zebra"</span>) &lt; (<span class="number">2</span>, <span class="string">"apple"</span>)   <span class="comment">// true，因为 1 小于 2</span></span><br><span class="line">(<span class="number">3</span>, <span class="string">"apple"</span>) &lt; (<span class="number">3</span>, <span class="string">"bird"</span>)    <span class="comment">// true，因为 3 等于 3，但是 apple 小于 bird</span></span><br><span class="line">(<span class="number">4</span>, <span class="string">"dog"</span>) == (<span class="number">4</span>, <span class="string">"dog"</span>)      <span class="comment">// true，因为 4 等于 4，dog 等于 dog</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：Swift 标准库只能比较七个以内元素的元组比较函数。如果你的元组元素超过七个时，你需要自己实现比较运算符。</p>
+</blockquote>
+<h3 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h3><p>三目运算符的特殊在于它是有三个操作数的运算符，它的形式是<code>question ? answer1 : answer2</code>。它简洁的表达了根据问题成立与否作出二选一的操作。如果<code>question</code>成立返回<code>answer1</code>的结果；否则返回<code>answer2</code>的结果。</p>
+<p>三目运算符是以下代码的缩写形式：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> question &#123;</span><br><span class="line">    answer1</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    answer2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>三目运算提供有效率且便捷的方式来表达二选一的选择。需要注意的事，过度使用三目运算符会使简洁的代码变的难懂。我们应避免在一个组合语句中使用多个三目运算符。</p>
+</blockquote>
+<h3 id="空合运算符"><a href="#空合运算符" class="headerlink" title="空合运算符"></a>空合运算符</h3><p>空合运算符（<code>a ?? b</code>）将对可选类型 <code>a</code> 进行空判断，如果 <code>a</code> 包含一个值就进行解封，否则就返回一个默认值 <code>b</code>。表达式 <code>a</code> 必须是 Optional 类型。默认值 <code>b</code> 的类型必须要和 <code>a</code> 存储值的类型保持一致。</p>
+<p>空合运算符是对以下代码的简短表达方法：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a != <span class="literal">nil</span> ? a! : b</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果 a 为非空值（non-nil），那么值 b 将不会被计算。这也就是所谓的短路求值。</p>
+</blockquote>
+<h3 id="区间运算符"><a href="#区间运算符" class="headerlink" title="区间运算符"></a>区间运算符</h3><p>Swift 提供了两个方便表达一个区间的值的运算符。</p>
+<h4 id="闭区间运算符"><a href="#闭区间运算符" class="headerlink" title="闭区间运算符"></a>闭区间运算符</h4><p>闭区间运算符（<code>a...b</code>）定义一个包含从 <code>a</code> 到 <code>b</code>（包括 <code>a</code> 和 <code>b</code>）的所有值的区间。<code>a</code> 的值不能超过 <code>b</code>。 ‌ 闭区间运算符在迭代一个区间的所有值时是非常有用的，如在 <code>for-in</code> 循环中：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="number">1</span>...<span class="number">5</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(index)</span> * 5 = <span class="subst">\(index * <span class="number">5</span>)</span>"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1 * 5 = 5</span></span><br><span class="line"><span class="comment">// 2 * 5 = 10</span></span><br><span class="line"><span class="comment">// 3 * 5 = 15</span></span><br><span class="line"><span class="comment">// 4 * 5 = 20</span></span><br><span class="line"><span class="comment">// 5 * 5 = 25</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="半开区间运算符"><a href="#半开区间运算符" class="headerlink" title="半开区间运算符"></a>半开区间运算符</h4><p>半开区间（<code>a..&lt;b</code>）定义一个从 <code>a</code> 到 <code>b</code> 但不包括 <code>b</code> 的区间。 之所以称为半开区间，是因为该区间包含第一个值而不包括最后的值。</p>
+<p>半开区间的实用性在于当你使用一个从 0 开始的列表（如数组）时，非常方便地从0数到列表的长度。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [<span class="string">"Anna"</span>, <span class="string">"Alex"</span>, <span class="string">"Brian"</span>, <span class="string">"Jack"</span>]</span><br><span class="line"><span class="keyword">let</span> <span class="built_in">count</span> = names.<span class="built_in">count</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="built_in">count</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"第 <span class="subst">\(i + <span class="number">1</span>)</span> 个人叫 <span class="subst">\(names[i])</span>"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 第 1 个人叫 Anna</span></span><br><span class="line"><span class="comment">// 第 2 个人叫 Alex</span></span><br><span class="line"><span class="comment">// 第 3 个人叫 Brian</span></span><br><span class="line"><span class="comment">// 第 4 个人叫 Jack</span></span><br></pre></td></tr></table></figure>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>逻辑运算的操作对象是逻辑布尔值。Swift 支持基于 C 语言的三个标准逻辑运算。</p>
+<ul>
+<li>逻辑非（<code>!a</code>）</li>
+<li>逻辑与（<code>a &amp;&amp; b</code>）</li>
+<li>逻辑或（<code>a || b</code>）</li>
+</ul>
+<h4 id="逻辑非"><a href="#逻辑非" class="headerlink" title="逻辑非"></a>逻辑非</h4><p>逻辑非运算（<code>!a</code>）对一个布尔值取反，使得 <code>true</code> 变 <code>false</code>，<code>false</code> 变 <code>true</code>。它是一个前置运算符，需紧跟在操作数之前，且不加空格。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> allowedEntry = <span class="literal">false</span></span><br><span class="line"><span class="keyword">if</span> !allowedEntry &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"ACCESS DENIED"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出 "ACCESS DENIED"</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="逻辑与"><a href="#逻辑与" class="headerlink" title="逻辑与"></a>逻辑与</h4><p>逻辑与（<code>a &amp;&amp; b</code>）表达了只有 <code>a</code> 和 <code>b</code> 的值都为 <code>true</code> 时，整个表达式的值才会是 <code>true</code>。</p>
+<p>只要任意一个值为 <code>false</code>，整个表达式的值就为 <code>false</code>。事实上，如果第一个值为 <code>false</code>，那么是不去计算第二个值的，因为它已经不可能影响整个表达式的结果了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> enteredDoorCode = <span class="literal">true</span></span><br><span class="line"><span class="keyword">let</span> passedRetinaScan = <span class="literal">false</span></span><br><span class="line"><span class="keyword">if</span> enteredDoorCode &amp;&amp; passedRetinaScan &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Welcome!"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"ACCESS DENIED"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出 "ACCESS DENIED"</span></span><br></pre></td></tr></table></figure>
+<h4 id="逻辑或"><a href="#逻辑或" class="headerlink" title="逻辑或"></a>逻辑或</h4><p>逻辑或（<code>a || b</code>）是一个由两个连续的 <code>|</code>组成的中置运算符。它表示了两个逻辑表达式的其中一个为 <code>true</code>，整个表达式就为 <code>true</code>。</p>
+<p>同逻辑与运算类似，逻辑或也是「短路计算」的，当左端的表达式为 <code>true</code> 时，将不计算右边的表达式了，因为它不可能改变整个表达式的值了。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> hasDoorKey = <span class="literal">false</span></span><br><span class="line"><span class="keyword">let</span> knowsOverridePassword = <span class="literal">true</span></span><br><span class="line"><span class="keyword">if</span> hasDoorKey || knowsOverridePassword &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Welcome!"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"ACCESS DENIED"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出 "Welcome!"</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="逻辑运算符组合计算"><a href="#逻辑运算符组合计算" class="headerlink" title="逻辑运算符组合计算"></a>逻辑运算符组合计算</h4><p>我们可以组合多个逻辑运算来表达一个复合逻辑：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> enteredDoorCode &amp;&amp; passedRetinaScan || hasDoorKey || knowsOverridePassword &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Welcome!"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"ACCESS DENIED"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出 "Welcome!"</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>Swift 逻辑操作符 <code>&amp;&amp;</code> 和 <code>||</code> 是左结合的，这意味着拥有多元逻辑操作符的复合表达式优先计算最左边的子表达式。</li>
+<li>为了一个复杂表达式更容易读懂，在合适的地方使用括号来明确优先级是很有效的，虽然它并非必要的。<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (enteredDoorCode &amp;&amp; passedRetinaScan) || hasDoorKey || knowsOverridePassword &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Welcome!"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"ACCESS DENIED"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出 "Welcome!"</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/" rel="tag">#Swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/24/初识ReactiveCocoa响应式编程/" rel="next" title="初识ReactiveCocoa响应式编程">
+                <i class="fa fa-chevron-left"></i> 初识ReactiveCocoa响应式编程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/30/Swift学习笔记之高级运算符/" rel="prev" title="Swift学习笔记之高级运算符">
+                Swift学习笔记之高级运算符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/05/27/Swift学习笔记之基本运算符/"
+     data-title="Swift学习笔记之基本运算符"
+     data-content=""
+     data-url="http://www.jvaeyhcd.cc/2016/05/27/Swift学习笔记之基本运算符/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/27/Swift学习笔记之基本运算符/"
+           data-title="Swift学习笔记之基本运算符" data-url="http://www.jvaeyhcd.cc/2016/05/27/Swift学习笔记之基本运算符/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/6993775?v=3&s=460"
+               alt="Jvaeyhcd" />
+          <p class="site-author-name" itemprop="name">Jvaeyhcd</p>
+          <p class="site-description motion-element" itemprop="description">好记性不如烂笔头</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/javeyhcd" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Jvaeyhcd" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://iissnan.com" title="Vi" target="_blank">Vi</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.eyrefree.org/" title="EyreFree" target="_blank">EyreFree</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.lovexing.cn/" title="lovexing" target="_blank">lovexing</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.callmewhy.com/" title="CallMeWhy" target="_blank">CallMeWhy</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值运算符"><span class="nav-number">1.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-number">2.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求余运算符"><span class="nav-number">3.</span> <span class="nav-text">求余运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一元负号运算符"><span class="nav-number">4.</span> <span class="nav-text">一元负号运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一元正号运算符"><span class="nav-number">5.</span> <span class="nav-text">一元正号运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合赋值运算符"><span class="nav-number">6.</span> <span class="nav-text">组合赋值运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较运算符"><span class="nav-number">7.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三目运算符"><span class="nav-number">8.</span> <span class="nav-text">三目运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空合运算符"><span class="nav-number">9.</span> <span class="nav-text">空合运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区间运算符"><span class="nav-number">10.</span> <span class="nav-text">区间运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#闭区间运算符"><span class="nav-number">10.1.</span> <span class="nav-text">闭区间运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#半开区间运算符"><span class="nav-number">10.2.</span> <span class="nav-text">半开区间运算符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">11.</span> <span class="nav-text">逻辑运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑非"><span class="nav-number">11.1.</span> <span class="nav-text">逻辑非</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑与"><span class="nav-number">11.2.</span> <span class="nav-text">逻辑与</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑或"><span class="nav-number">11.3.</span> <span class="nav-text">逻辑或</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑运算符组合计算"><span class="nav-number">11.4.</span> <span class="nav-text">逻辑运算符组合计算</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jvaeyhcd</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i> 本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i> 本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jvaeyhcd"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+</body>
+</html>
