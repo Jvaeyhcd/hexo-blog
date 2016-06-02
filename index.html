@@ -565,8 +565,8 @@
 
       
         
-          <p>除了基本运算符外，Swift还提供了许多可以对数值进行复杂运算的高级运算符。这些高级运算符包含了在C和Objective-C中已经被大家熟知的位运算符和位移运算符。</p>
-<p>与C语言和Objective-C的算数运算符不同，Swift中的算数运算符默认是不会溢出的。所有溢出行为都会被捕获并报告位错误。如果想让系统允许溢出行为，可以选择使用Swift中另一套默认支持溢出的运算符，比如溢出运算符（<code>&amp;+</code>）,所有的溢出运算符都是以<code>&amp;</code>开头的。</p>
+          <p>除了基本运算符外，Swift还提供了许多可以对数值进行复杂运算的高级运算符。这些高级运算符包含了在C和objc中已经被大家熟知的位运算符和位移运算符。</p>
+<p>与C语言和objc的算数运算符不同，Swift中的算数运算符默认是不会溢出的。所有溢出行为都会被捕获并报告位错误。如果想让系统允许溢出行为，可以选择使用Swift中另一套默认支持溢出的运算符，比如溢出运算符（<code>&amp;+</code>）,所有的溢出运算符都是以<code>&amp;</code>开头的。</p>
 <h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><p>位运算符可以操作数据结构中每个独立的比特位，它通常被用在底层开发中，比如图形编程和创建设备驱动。位运算符在处理外部资源和原始数据也十分有用，比如自定义通信协议传输的数据进行编码和解码。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/05/30/Swift学习笔记之高级运算符/#more" rel="contents">
@@ -690,7 +690,7 @@
       
         
           <p>运算符是检查、改变、合并值的特殊符号或短语。Swift支持了大部分标准C语言的运算符，并且改进了很多特性来减少常规编码错误。例如(<code>=</code>)不放回值，以防止把想要判断相等运算符（<code>==</code>）的地方写成赋值符导致的错误。</p>
-<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>赋值运算（<code>a = b</code>），表示用<code>b</code>的值来初始化或更新<code>a</code>的值<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">a = b</span><br><span class="line"><span class="comment">//a 现在等于1</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><p>赋值运算（<code>a = b</code>），表示用<code>b</code>的值来初始化或更新<code>a</code>的值<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">a = b</span><br><span class="line"><span class="comment">//a 现在等于1</span></span><br></pre></td></tr></table></figure></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/05/27/Swift学习笔记之基本运算符/#more" rel="contents">
               阅读全文 &raquo;
@@ -1073,7 +1073,7 @@
               
                 
                 <a class="post-title-link" href="/2016/05/04/Objective-C过滤NSString中的HTML标签/" itemprop="url">
-                  Objective-C过滤NSString中的HTML标签
+                  objc过滤NSString中的HTML标签
                 </a>
               
             
@@ -1249,7 +1249,7 @@
           <blockquote>
 <p>本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。</p>
 </blockquote>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 Objective-C 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 Objective-C 相关开发经验也没有关系，大家都说Swift比较通俗易懂更加容易上手）。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 objc 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 objc 相关开发经验也没有关系，大家都说Swift比较通俗易懂更加容易上手）。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/29/Swift学习笔记之基础部分/#more" rel="contents">
               阅读全文 &raquo;

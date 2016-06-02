@@ -409,7 +409,7 @@
           <blockquote>
 <p>本文只介绍了MRC时的情况，有些细节不适用于ARC。比如MRC下<strong>block不会增加引用计数，但ARC会，ARC下必须用</strong>weak指明不增加引用计数；ARC下block内存分配机制也与MRC不一样，所以文中的一些例子在ARC下测试结果可能与文中描述的不一样</p>
 </blockquote>
-<h2 id="Block简介"><a href="#Block简介" class="headerlink" title="Block简介"></a>Block简介</h2><p>Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于Objective-C在iOS中不支持GC机制，使用Block必须自己管理内存，而内存管理正是使用Block坑最多的地方，错误的内存管理 要么导致return cycle内存泄漏要么内存被提前释放导致crash。 Block的使用很像函数指针，不过与函数最大的不同是：Block可以访问函数以外、词法作用域以内的外部变量的值。换句话说，Block不仅 实现函数的功能，还能携带函数的执行环境。</p>
+<h2 id="Block简介"><a href="#Block简介" class="headerlink" title="Block简介"></a>Block简介</h2><p>Block作为C语言的扩展，并不是高新技术，和其他语言的闭包或lambda表达式是一回事。需要注意的是由于objc在iOS中不支持GC机制，使用Block必须自己管理内存，而内存管理正是使用Block坑最多的地方，错误的内存管理 要么导致return cycle内存泄漏要么内存被提前释放导致crash。 Block的使用很像函数指针，不过与函数最大的不同是：Block可以访问函数以外、词法作用域以内的外部变量的值。换句话说，Block不仅 实现函数的功能，还能携带函数的执行环境。</p>
 <p>可以这样理解，Block其实包含两个部分内容</p>
 <ul>
 <li>Block执行的代码，这是在编译的时候已经生成好的；</li>
@@ -731,7 +731,7 @@
       
         
           <p>很多次想搭建一个自己的博客，彻底从csdn上转移到自己的博客站点中，但是一直由于时间的原因耽搁了。之前也使用过Wordpress来搭建自己的博客，但是发现Wordpress使用起来不是太方便。后来再接触了markdown语法写文章后，喜欢上了markdown。再后来了解到了hexo，一个基于Node的博客框架，同样可以实现基于github的博客，而且更轻更快，更适合Node的开发程序员。</p>
-<h2 id="1-Hexo介绍"><a href="#1-Hexo介绍" class="headerlink" title="1.Hexo介绍"></a>1.Hexo介绍</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h2 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/20/Hexo在github上构建免费的博客/#more" rel="contents">
               阅读全文 &raquo;
@@ -834,7 +834,7 @@
 
       
         
-          <h2 id="一、CocosPods是什么"><a href="#一、CocosPods是什么" class="headerlink" title="一、CocosPods是什么"></a>一、CocosPods是什么</h2><p>CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。<br>在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要<br>1.把开源库的源代码复制到项目中<br>2.添加一些依赖框架和动态库<br>3.设置-ObjC，-fno-objc-arc等参数<br>4.管理他们的更新<br>在使用CocoaPods后，我们只需要把用到的开源库放到一个名为Podfile的文件中，然后执行pod install.Cocoapods就会自动将这些第三方开源库的源码下载下来，并且为我们的工程设置好响应的系统依赖和编译参数。</p>
+          <h2 id="CocosPods是什么"><a href="#CocosPods是什么" class="headerlink" title="CocosPods是什么"></a>CocosPods是什么</h2><p>CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。<br>在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要<br>1.把开源库的源代码复制到项目中<br>2.添加一些依赖框架和动态库<br>3.设置-ObjC，-fno-objc-arc等参数<br>4.管理他们的更新<br>在使用CocoaPods后，我们只需要把用到的开源库放到一个名为Podfile的文件中，然后执行pod install.Cocoapods就会自动将这些第三方开源库的源码下载下来，并且为我们的工程设置好响应的系统依赖和编译参数。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/20/CocoaPods安装和使用教程/#more" rel="contents">
               阅读全文 &raquo;

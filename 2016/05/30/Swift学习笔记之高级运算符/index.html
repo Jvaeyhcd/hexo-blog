@@ -82,14 +82,14 @@
 
 
 
-<meta name="description" content="除了基本运算符外，Swift还提供了许多可以对数值进行复杂运算的高级运算符。这些高级运算符包含了在C和Objective-C中已经被大家熟知的位运算符和位移运算符。
-与C语言和Objective-C的算数运算符不同，Swift中的算数运算符默认是不会溢出的。所有溢出行为都会被捕获并报告位错误。如果想让系统允许溢出行为，可以选择使用Swift中另一套默认支持溢出的运算符，比如溢出运算符（&amp;amp;+">
+<meta name="description" content="除了基本运算符外，Swift还提供了许多可以对数值进行复杂运算的高级运算符。这些高级运算符包含了在C和objc中已经被大家熟知的位运算符和位移运算符。
+与C语言和objc的算数运算符不同，Swift中的算数运算符默认是不会溢出的。所有溢出行为都会被捕获并报告位错误。如果想让系统允许溢出行为，可以选择使用Swift中另一套默认支持溢出的运算符，比如溢出运算符（&amp;amp;+）,所有的溢出运算符都是以&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift学习笔记之高级运算符">
 <meta property="og:url" content="http://www.jvaeyhcd.cc/2016/05/30/Swift学习笔记之高级运算符/index.html">
 <meta property="og:site_name" content="Jvaeyhcd's Note">
-<meta property="og:description" content="除了基本运算符外，Swift还提供了许多可以对数值进行复杂运算的高级运算符。这些高级运算符包含了在C和Objective-C中已经被大家熟知的位运算符和位移运算符。
-与C语言和Objective-C的算数运算符不同，Swift中的算数运算符默认是不会溢出的。所有溢出行为都会被捕获并报告位错误。如果想让系统允许溢出行为，可以选择使用Swift中另一套默认支持溢出的运算符，比如溢出运算符（&amp;amp;+">
+<meta property="og:description" content="除了基本运算符外，Swift还提供了许多可以对数值进行复杂运算的高级运算符。这些高级运算符包含了在C和objc中已经被大家熟知的位运算符和位移运算符。
+与C语言和objc的算数运算符不同，Swift中的算数运算符默认是不会溢出的。所有溢出行为都会被捕获并报告位错误。如果想让系统允许溢出行为，可以选择使用Swift中另一套默认支持溢出的运算符，比如溢出运算符（&amp;amp;+）,所有的溢出运算符都是以&amp;">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/30/Swift学习笔记之高级运算符/bitwiseNOT_2x.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/30/Swift学习笔记之高级运算符/bitwiseAND_2x.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/30/Swift学习笔记之高级运算符/bitwiseOR_2x.png">
@@ -102,11 +102,11 @@
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/30/Swift学习笔记之高级运算符/overflowAddition_2x.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/30/Swift学习笔记之高级运算符/overflowUnsignedSubtraction_2x.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/30/Swift学习笔记之高级运算符/overflowSignedSubtraction_2x.png">
-<meta property="og:updated_time" content="2016-05-30T08:00:57.000Z">
+<meta property="og:updated_time" content="2016-06-02T03:53:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习笔记之高级运算符">
-<meta name="twitter:description" content="除了基本运算符外，Swift还提供了许多可以对数值进行复杂运算的高级运算符。这些高级运算符包含了在C和Objective-C中已经被大家熟知的位运算符和位移运算符。
-与C语言和Objective-C的算数运算符不同，Swift中的算数运算符默认是不会溢出的。所有溢出行为都会被捕获并报告位错误。如果想让系统允许溢出行为，可以选择使用Swift中另一套默认支持溢出的运算符，比如溢出运算符（&amp;amp;+">
+<meta name="twitter:description" content="除了基本运算符外，Swift还提供了许多可以对数值进行复杂运算的高级运算符。这些高级运算符包含了在C和objc中已经被大家熟知的位运算符和位移运算符。
+与C语言和objc的算数运算符不同，Swift中的算数运算符默认是不会溢出的。所有溢出行为都会被捕获并报告位错误。如果想让系统允许溢出行为，可以选择使用Swift中另一套默认支持溢出的运算符，比如溢出运算符（&amp;amp;+）,所有的溢出运算符都是以&amp;">
 
 
 
@@ -335,8 +335,8 @@
       
 
       
-        <p>除了基本运算符外，Swift还提供了许多可以对数值进行复杂运算的高级运算符。这些高级运算符包含了在C和Objective-C中已经被大家熟知的位运算符和位移运算符。</p>
-<p>与C语言和Objective-C的算数运算符不同，Swift中的算数运算符默认是不会溢出的。所有溢出行为都会被捕获并报告位错误。如果想让系统允许溢出行为，可以选择使用Swift中另一套默认支持溢出的运算符，比如溢出运算符（<code>&amp;+</code>）,所有的溢出运算符都是以<code>&amp;</code>开头的。</p>
+        <p>除了基本运算符外，Swift还提供了许多可以对数值进行复杂运算的高级运算符。这些高级运算符包含了在C和objc中已经被大家熟知的位运算符和位移运算符。</p>
+<p>与C语言和objc的算数运算符不同，Swift中的算数运算符默认是不会溢出的。所有溢出行为都会被捕获并报告位错误。如果想让系统允许溢出行为，可以选择使用Swift中另一套默认支持溢出的运算符，比如溢出运算符（<code>&amp;+</code>）,所有的溢出运算符都是以<code>&amp;</code>开头的。</p>
 <h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><p>位运算符可以操作数据结构中每个独立的比特位，它通常被用在底层开发中，比如图形编程和创建设备驱动。位运算符在处理外部资源和原始数据也十分有用，比如自定义通信协议传输的数据进行编码和解码。</p>
 <a id="more"></a>
 <h3 id="按位取反运算符"><a href="#按位取反运算符" class="headerlink" title="按位取反运算符"></a>按位取反运算符</h3><p>按位取反运算符（<code>~</code>）可以对一个数值的全部比特位进行取反：</p>

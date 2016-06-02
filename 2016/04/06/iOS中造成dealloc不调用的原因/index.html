@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://www.jvaeyhcd.cc/2016/04/06/iOS中造成dealloc不调用的原因/index.html">
 <meta property="og:site_name" content="Jvaeyhcd's Note">
 <meta property="og:description" content="问题描述最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapVi">
-<meta property="og:updated_time" content="2016-04-27T10:58:58.000Z">
+<meta property="og:updated_time" content="2016-06-02T04:02:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS中造成dealloc不调用的原因">
 <meta name="twitter:description" content="问题描述最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapVi">
@@ -301,14 +301,14 @@
       
 
       
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)dealloc &#123;&#10;    [_mapView release];&#10;    [super dealloc];&#10;&#125;&#10;&#10;//&#24182;&#19988;&#22312;&#30028;&#38754;&#23558;&#35201;&#26174;&#31034;&#30340;&#26102;&#20505;&#35774;&#32622;&#20195;&#29702;&#65292;&#23558;&#35201;&#28040;&#22833;&#30340;&#26102;&#20505;&#21462;&#28040;&#20195;&#29702;&#10;- (void)viewWillAppear:(BOOL)animated &#123;&#10;    _mapView.delegate = self;&#10;&#125;&#10;&#10;- (void)viewWillDisappear:(BOOL)animated &#123;&#10;    _mapView.delegate = nil;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)dealloc &#123;</span><br><span class="line">    [_mapView release];</span><br><span class="line">    [<span class="keyword">super</span> dealloc];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//并且在界面将要显示的时候设置代理，将要消失的时候取消代理</span></span><br><span class="line">- (<span class="keyword">void</span>)viewWillAppear:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    _mapView<span class="variable">.delegate</span> = <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    _mapView<span class="variable">.delegate</span> = <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>以上给出的方法确实是对的，可以解决反复切换地图页面和地图上一级页面内存暴增造成的闪退问题。但是这里要说的不是这个问题，而是一个新的问题，我在dealloc中打了断点，但是dealloc根本就没有执行，所以mapView也就根本就没有释放，内存还是一样在暴增。为什么ViewController已经被pop了，而ViewController的dealloc方法却没有被调用？（按理说ViewController被pop的时候它的dealloc的方法应该被调用才对）。</p>
 <h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>通过Google搜索终于在晚上找到了答案（大家就不要用百度，想要快速准确的找到自己想要的答案推荐大家用google）。造成ViewController不释放的原因可能有很多。遇到dealloc不调用的时候只需要检查您的ViewController中是否存在以下几个问题：</p>
 <ol>
 <li><p><b>ViewController中存在NSTimer</b></p>
 <p> 如果你的ViewController中有NSTimer，那么你就要注意了，因为当你调用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NSTimer scheduledTimerWithTimeInterval:1.0 &#10;                                 target:self &#10;                               selector:@selector(updateTime:) &#10;                               userInfo:nil &#10;                                repeats:YES];</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="built_in">NSTimer</span> scheduledTimerWithTimeInterval:<span class="number">1.0</span> </span><br><span class="line">                                 target:<span class="keyword">self</span> </span><br><span class="line">                               selector:<span class="keyword">@selector</span>(updateTime:) </span><br><span class="line">                               userInfo:<span class="literal">nil</span> </span><br><span class="line">                                repeats:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure>
 <p> 时，这个<a style="color: #FF00EE">target:self</a>就增加了ViewController的return count，如果你不将这个timer invalidate，将别想调用dealloc。</p>
 </li>
 <li><p><b>ViewController中有关的代理</b></p>
@@ -316,7 +316,7 @@
 </li>
 <li><p><b>ViewController中有Block</b></p>
 <p> 这个就是我我上面不进入dealloc的真正原因，Block体内使用实例变量也会造成循环引用，使得拥有这个实例的对象不能释放。<br> 例如你这个类叫OneViewController,有个属性是NSString *name; 如果你在block体中使用了self.name，那样子的话这个类就没法释放。<br> 要解决这个问题，MRC下只需</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__block Viewcontroller *weakSelf = self;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__block Viewcontroller *weakSelf = <span class="keyword">self</span>;</span><br></pre></td></tr></table></figure>
 <p> ARC下将<strong>block 换为 </strong>weak</p>
 </li>
 </ol>

@@ -82,16 +82,16 @@
 
 
 
-<meta name="description" content="一、CocosPods是什么CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要1.把开源库的源代码复制到项目中2.添加一些依赖框架和动态库3.设置-ObjC，-fno-objc-arc等参">
+<meta name="description" content="CocosPods是什么CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要1.把开源库的源代码复制到项目中2.添加一些依赖框架和动态库3.设置-ObjC，-fno-objc-arc等参数4">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CocoaPods安装和使用教程">
 <meta property="og:url" content="http://www.jvaeyhcd.cc/2016/02/20/CocoaPods安装和使用教程/index.html">
 <meta property="og:site_name" content="Jvaeyhcd's Note">
-<meta property="og:description" content="一、CocosPods是什么CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要1.把开源库的源代码复制到项目中2.添加一些依赖框架和动态库3.设置-ObjC，-fno-objc-arc等参">
-<meta property="og:updated_time" content="2016-02-25T03:11:31.000Z">
+<meta property="og:description" content="CocosPods是什么CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要1.把开源库的源代码复制到项目中2.添加一些依赖框架和动态库3.设置-ObjC，-fno-objc-arc等参数4">
+<meta property="og:updated_time" content="2016-06-02T04:27:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CocoaPods安装和使用教程">
-<meta name="twitter:description" content="一、CocosPods是什么CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要1.把开源库的源代码复制到项目中2.添加一些依赖框架和动态库3.设置-ObjC，-fno-objc-arc等参">
+<meta name="twitter:description" content="CocosPods是什么CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要1.把开源库的源代码复制到项目中2.添加一些依赖框架和动态库3.设置-ObjC，-fno-objc-arc等参数4">
 
 
 
@@ -301,22 +301,25 @@
       
 
       
-        <h2 id="一、CocosPods是什么"><a href="#一、CocosPods是什么" class="headerlink" title="一、CocosPods是什么"></a>一、CocosPods是什么</h2><p>CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。<br>在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要<br>1.把开源库的源代码复制到项目中<br>2.添加一些依赖框架和动态库<br>3.设置-ObjC，-fno-objc-arc等参数<br>4.管理他们的更新<br>在使用CocoaPods后，我们只需要把用到的开源库放到一个名为Podfile的文件中，然后执行pod install.Cocoapods就会自动将这些第三方开源库的源码下载下来，并且为我们的工程设置好响应的系统依赖和编译参数。</p>
+        <h2 id="CocosPods是什么"><a href="#CocosPods是什么" class="headerlink" title="CocosPods是什么"></a>CocosPods是什么</h2><p>CocoaPods是iOS项目的依赖管理工具，该项目源码在Github上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间。<br>在使用CocoaPods之前，开发项目需要用到第三方开源库的时候，我们需要<br>1.把开源库的源代码复制到项目中<br>2.添加一些依赖框架和动态库<br>3.设置-ObjC，-fno-objc-arc等参数<br>4.管理他们的更新<br>在使用CocoaPods后，我们只需要把用到的开源库放到一个名为Podfile的文件中，然后执行pod install.Cocoapods就会自动将这些第三方开源库的源码下载下来，并且为我们的工程设置好响应的系统依赖和编译参数。</p>
 <a id="more"></a>
-<h2 id="二、CocoaPods的原理"><a href="#二、CocoaPods的原理" class="headerlink" title="二、CocoaPods的原理"></a>二、CocoaPods的原理</h2><p>CocoaPods的原理是将所有的依赖库都放到另一个名为Pods的项目中，然后让主项目依赖Pods项目，这样，源码管理工作都从主项目移到了Pods项目中。Pods项目最终会编译成一个名为libPods.a的文件，主项目只需要依赖这个.a文件即可。</p>
-<h2 id="三、CocoaPods的安装"><a href="#三、CocoaPods的安装" class="headerlink" title="三、CocoaPods的安装"></a>三、CocoaPods的安装</h2><p>CocoaPods可以方便地通过Mac自带的RubyGems安装。<br>打开Terminal，然后键入以下命令：<br>$ sudo gem install cocoapods</p>
-<p>执行完这句如果报告以下错误：<br>ERROR: Could not find a valid gem ‘cocoapods’ (&gt;= 0), here is why:<br>Unable to download data from <a href="https://rubygems.org/" target="_blank" rel="external">https://rubygems.org/</a> - Errno::ETIMEDOUT: Operation timed out - connect(2) (<a href="https://rubygems.org/latest_specs.4.8.gz" target="_blank" rel="external">https://rubygems.org/latest_specs.4.8.gz</a>)<br>ERROR: Possible alternatives: cocoapods</p>
-<p>这是因为ruby的软件源rubygems.org因为使用亚马逊的云服务，被我天朝屏蔽了，需要更新一下ruby的源，过程如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources -l (&#26597;&#30475;&#24403;&#21069;ruby&#30340;&#28304;)&#10;$ gem sources --remove https://rubygems.org/&#10;$ gem sources -a https://ruby.taobao.org/&#10;$ gem sources -l</span><br></pre></td></tr></table></figure></p>
-<p>如果gem太老，可以尝试用如下命令升级gem<br>$ sudo gem update –system<br>升级成功后会提示: RubyGems system software updated</p>
-<p>然后重新执行安装下载命令<br>$ sudo gem install cocoapods<br>这时候应该没什么问题了</p>
-<p>接下来进行安装，执行：<br>$ pod setup</p>
+<h2 id="CocoaPods的原理"><a href="#CocoaPods的原理" class="headerlink" title="CocoaPods的原理"></a>CocoaPods的原理</h2><p>CocoaPods的原理是将所有的依赖库都放到另一个名为Pods的项目中，然后让主项目依赖Pods项目，这样，源码管理工作都从主项目移到了Pods项目中。Pods项目最终会编译成一个名为libPods.a的文件，主项目只需要依赖这个.a文件即可。</p>
+<h2 id="CocoaPods的安装"><a href="#CocoaPods的安装" class="headerlink" title="CocoaPods的安装"></a>CocoaPods的安装</h2><p>CocoaPods可以方便地通过Mac自带的RubyGems安装。<br>打开Terminal，然后键入以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gem install cocoapods</span><br></pre></td></tr></table></figure></p>
+<p>执行完这句如果报告以下错误：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Could not find a valid gem <span class="string">'cocoapods'</span> (&gt;= <span class="number">0</span>), here is why:</span><br><span class="line">Unable to download data from https://rubygems.org/ - Errno::ETIMEDOUT: Operation timed out - connect(<span class="number">2</span>) (https://rubygems.org/latest_specs.<span class="number">4.8</span>.gz)</span><br><span class="line">ERROR: Possible alternatives: cocoapods</span><br></pre></td></tr></table></figure></p>
+<p>这是因为ruby的软件源rubygems.org因为使用亚马逊的云服务，被我天朝屏蔽了，需要更新一下ruby的源，过程如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ gem sources <span class="operator">-l</span> (查看当前ruby的源)</span><br><span class="line">$ gem sources --remove https://rubygems.org/</span><br><span class="line">$ gem sources <span class="operator">-a</span> https://ruby.taobao.org/</span><br><span class="line">$ gem sources <span class="operator">-l</span></span><br></pre></td></tr></table></figure></p>
+<p>如果gem太老，可以尝试用如下命令升级gem<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gem update --system</span><br></pre></td></tr></table></figure></p>
+<p>升级成功后会提示: RubyGems system software updated</p>
+<p>然后重新执行安装下载命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gem install cocoapods</span><br></pre></td></tr></table></figure></p>
+<p>这时候应该没什么问题了</p>
+<p>接下来进行安装，执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod setup</span><br></pre></td></tr></table></figure></p>
 <p>Terminal会停留在 Setting up CocoaPods master repo 这个状态一段时间,是因为要进行下载安装,而且目录比较大,需要耐心等待一下.如果想加快速度,可使用cocoapods的镜像索引.（文章末尾附使用镜像索引的方法）</p>
-<h2 id="四、Cocoapods的使用"><a href="#四、Cocoapods的使用" class="headerlink" title="四、Cocoapods的使用"></a>四、Cocoapods的使用</h2><p>进入工程所在的目录（工程根目录）<br>执行命令 touch Podfile<br>这句是说新建一个名为Podfile的文件（不能写成别的名字，也可以自己在工程根目录里面直接新建）</p>
-<p>然后对改文件进行编辑，执行命令 open -e Podfile<br>第一次执行这个命令,会有一个空白文件打开，可以先放在一边，<br>Podfile文件的格式应该如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">platform :ios, &#39;7.0&#39;&#10;pod &#39;AMap2DMap&#39;, &#39;~&#62; 2.5.0&#39;&#10;pod &#39;AFNetworking&#39;, &#39;~&#62; 2.5.3&#39;&#10;pod &#39;SDWebImage&#39;, &#39;~&#62; 3.7.2&#39;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Cocoapods的使用"><a href="#Cocoapods的使用" class="headerlink" title="Cocoapods的使用"></a>Cocoapods的使用</h2><p>进入工程所在的目录（工程根目录）<br>执行命令 touch Podfile<br>这句是说新建一个名为Podfile的文件（不能写成别的名字，也可以自己在工程根目录里面直接新建）</p>
+<p>然后对改文件进行编辑，执行命令 open -e Podfile<br>第一次执行这个命令,会有一个空白文件打开，可以先放在一边，<br>Podfile文件的格式应该如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">platform :ios, <span class="string">'7.0'</span></span><br><span class="line">pod <span class="string">'AMap2DMap'</span>, <span class="string">'~&gt; 2.5.0'</span></span><br><span class="line">pod <span class="string">'AFNetworking'</span>, <span class="string">'~&gt; 2.5.3'</span></span><br><span class="line">pod <span class="string">'SDWebImage'</span>, <span class="string">'~&gt; 3.7.2'</span></span><br></pre></td></tr></table></figure></p>
 <p>需要注意的几点：platform那一行，ios三个字母都要小写，而且与前面的冒号之间不能有间隔，后面的版本号也可以不写，但是有些开源库对版本是有要求的，比如要在6.0以上才能运行，遇到这样的开源库就需要写上版本号。</p>
 <p>platform下面就是Cocoapods需要集成的开源库，根据你的需要确定集成那些库。</p>
-<p>举个例子：<br>我要集成AFNetworking这个库类，需要在Cocoapods里面先搜索是否有需要的库，可以在Terminal中输入：<br>pod search AFNetworking<br>回车之后就可以看到和你搜索的关键字相关的一些库类。</p>
-<p>其中第一个就是我们需要的，把pod ‘AFNetworking’， ‘~&gt;2.5.3’<br>那一行复制到我们的Podfile文件中，保存修改。<br>然后在Terminal中执行 ：<br>pod install</p>
+<p>举个例子：<br>我要集成AFNetworking这个库类，需要在Cocoapods里面先搜索是否有需要的库，可以在Terminal中输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod search AFNetworking</span><br></pre></td></tr></table></figure></p>
+<p>回车之后就可以看到和你搜索的关键字相关的一些库类。</p>
+<p>其中第一个就是我们需要的，把pod ‘AFNetworking’， ‘~&gt;2.5.3’<br>那一行复制到我们的Podfile文件中，保存修改。<br>然后在Terminal中执行 ：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure></p>
 <p>这样，AFNetworking就已经下载完成并且设置好了编译参数和依赖，以后使用的时候切记如下两点：<br>1.从此以后需要使用Cocoapods生成的 .xcworkspace文件来打开工程，而不是使用以前的.xcodeproj文件<br>2.每次更改了Podfile文件，都需要重新执行一次pod update命令</p>
 <p>ps:当执行pod install之后，除了Podfile，还会生成一个名为Podfile.lock的文件，它会锁定当前各依赖库的版本，之后即使多次执行pod install也不会更改版本，只有执行pod update才会改变Podfile.lock.在多人协作的时候，这样可以防止第三方库升级时候造成大家各自的第三方库版本不一致。所以在提交版本的时候不能把它落下，也不要添加到.gitignore中.</p>
 
@@ -538,7 +541,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、CocosPods是什么"><span class="nav-number">1.</span> <span class="nav-text">一、CocosPods是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、CocoaPods的原理"><span class="nav-number">2.</span> <span class="nav-text">二、CocoaPods的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、CocoaPods的安装"><span class="nav-number">3.</span> <span class="nav-text">三、CocoaPods的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Cocoapods的使用"><span class="nav-number">4.</span> <span class="nav-text">四、Cocoapods的使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CocosPods是什么"><span class="nav-number">1.</span> <span class="nav-text">CocosPods是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CocoaPods的原理"><span class="nav-number">2.</span> <span class="nav-text">CocoaPods的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CocoaPods的安装"><span class="nav-number">3.</span> <span class="nav-text">CocoaPods的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cocoapods的使用"><span class="nav-number">4.</span> <span class="nav-text">Cocoapods的使用</span></a></li></ol></div>
             
           </div>
         </section>
