@@ -251,6 +251,111 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/04/Objective-C过滤NSString中的HTML标签/" itemprop="url">
+                  objc过滤NSString中的HTML标签
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-04T11:17:29+08:00" content="2016-05-04">
+              2016-05-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/04/Objective-C过滤NSString中的HTML标签/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/04/Objective-C过滤NSString中的HTML标签/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>开发过程中常常会遇到这样一个情况：对于后台编辑的一些文本都是使用富文本的形式进行编辑的，我们在使用接口区请求数据的时候，请求到的数据是带HTML标签的富文本形式，但是我们前台是使用UIlabel去显示的，这个时候就需要去掉NSString的HTML标签。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>对于这种常用的一些方法，我们一般会创建一个NSString的Category去实现。关于去掉NSString中HTML标签的实现方法我在网上找到了两种实现方式：</p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>用NSScanner扫描来处理</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/04/Objective-C过滤NSString中的HTML标签/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/29/Swift学习笔记之基础部分/" itemprop="url">
                   Swift学习笔记之基础部分
                 </a>
@@ -1264,111 +1369,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/23/Objective-C常用关键字的使用与区别/" itemprop="url">
-                  Objc常用关键字的使用与区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-23T10:17:12+08:00" content="2016-03-23">
-              2016-03-23
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/23/Objective-C常用关键字的使用与区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/23/Objective-C常用关键字的使用与区别/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>虽然接触iOS已经很久了，但是对于objc中常见的关键字还经常处于傻傻分不清楚的状态。遇到最多的情况就是在申明一个属性的时候，比如：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@propperty (?,?) ?*!;</span><br><span class="line">...............</span><br><span class="line">............</span><br><span class="line">.........</span><br><span class="line">......</span><br></pre></td></tr></table></figure></p>
-<p>就是这里，每次在这里的时候都不知道，怎么去申明他的关键字。这个看起来简单（弄明白了确实也是很简单的），但是如果没有系统的去区分这些关键字很容易混淆。<br>所以今天通过自己的一些积累以及在网上总结的一些资料，给自己总结一下，主要作为自己对iOS学习的一个小小的总结。</p>
-<p>OC中常见的关键字有copy,assign,strong,retain,weak,readonly,nonatomic,atomic。<br>这篇文章主要从这几个关键字的含义和简单的使用以及iOS开发中使用的时候的一些区别来进行总结。（看似简单但却非常重要）</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/23/Objective-C常用关键字的使用与区别/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1414,7 +1414,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
