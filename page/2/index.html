@@ -258,6 +258,112 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/" itemprop="url">
+                  使用Jenkins构建iOS持续集成自动打包
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-21T15:48:50+08:00" content="2016-05-21">
+              2016-05-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/21/使用Jenkins构建iOS持续集成自动打包/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>持续集成是一种软件开发实践，即团队开发成员经常集成它们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。</p>
+</blockquote>
+<h3 id="为什么使用持续集成"><a href="#为什么使用持续集成" class="headerlink" title="为什么使用持续集成"></a>为什么使用持续集成</h3><p>1、减少重复繁琐的打包过程<br>2、任何时间、任何地点测试都可以获取到新包<br>3、增强项目的可见性</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/16/关闭iOS系统自动更新提示的方法/" itemprop="url">
                   关闭iOS系统自动更新提示的方法
                 </a>
@@ -1283,114 +1389,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/28/iOS上完美编译FFmpeg/" itemprop="url">
-                  iOS上完美编译FFmpeg
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-28T21:50:00+08:00" content="2016-03-28">
-              2016-03-28
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/28/iOS上完美编译FFmpeg/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/iOS上完美编译FFmpeg/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>最新在使用FFmpeg的时候遇到了如下的报错信息，但是现在一直都还未找到解决办法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Undefined symbols <span class="keyword">for</span> architecture arm64:</span><br><span class="line">  <span class="string">"_avcodec_close"</span>, referenced from:</span><br><span class="line">      CH264Decoder::~CH264Decoder() <span class="keyword">in</span> H264Decoder.o</span><br><span class="line">  <span class="string">"_av_init_packet"</span>, referenced from:</span><br><span class="line">      CH264Decoder::DecoderFrame(unsigned char*, int, int&amp;, int&amp;) <span class="keyword">in</span> H264Decoder.o</span><br><span class="line">  <span class="string">"_av_malloc"</span>, referenced from:</span><br><span class="line">      CH264Decoder::CreateYUVTab_16() <span class="keyword">in</span> H264Decoder.o</span><br><span class="line">  <span class="string">"_av_free"</span>, referenced from:</span><br><span class="line">      CH264Decoder::DeleteYUVTab() <span class="keyword">in</span> H264Decoder.o</span><br><span class="line">      CH264Decoder::~CH264Decoder() <span class="keyword">in</span> H264Decoder.o</span><br><span class="line">  <span class="string">"_av_register_all"</span>, referenced from:</span><br><span class="line">      CH264Decoder::CH264Decoder() <span class="keyword">in</span> H264Decoder.o</span><br><span class="line">  <span class="string">"_avcodec_find_decoder"</span>, referenced from:</span><br><span class="line">      CH264Decoder::CH264Decoder() <span class="keyword">in</span> H264Decoder.o</span><br><span class="line">  <span class="string">"_avcodec_decode_video2"</span>, referenced from:</span><br><span class="line">      CH264Decoder::DecoderFrame(unsigned char*, int, int&amp;, int&amp;) <span class="keyword">in</span> H264Decoder.o</span><br><span class="line">  <span class="string">"_avcodec_open2"</span>, referenced from:</span><br><span class="line">      CH264Decoder::CH264Decoder() <span class="keyword">in</span> H264Decoder.o</span><br><span class="line">  <span class="string">"_avcodec_alloc_context3"</span>, referenced from:</span><br><span class="line">      CH264Decoder::CH264Decoder() <span class="keyword">in</span> H264Decoder.o</span><br><span class="line">  <span class="string">"_avcodec_alloc_frame"</span>, referenced from:</span><br><span class="line">      CH264Decoder::CH264Decoder() <span class="keyword">in</span> H264Decoder.o</span><br><span class="line">ld: symbol(s) not found <span class="keyword">for</span> architecture arm64</span><br><span class="line">clang: error: linker <span class="built_in">command</span> failed with <span class="built_in">exit</span> code <span class="number">1</span> (use -v to see invocation)</span><br></pre></td></tr></table></figure></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/28/iOS上完美编译FFmpeg/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1431,7 +1434,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1439,7 +1442,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1448,7 +1451,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
