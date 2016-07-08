@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-07-06T07:49:46.000Z</updated>
+  <updated>2016-07-08T10:21:23.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -16,11 +16,69 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CocoaPods的制作过程</title>
+    <link href="http://www.jvaeyhcd.cc/2016/07/08/CocoaPods%E7%9A%84%E5%88%B6%E4%BD%9C%E8%BF%87%E7%A8%8B/"/>
+    <id>http://www.jvaeyhcd.cc/2016/07/08/CocoaPods的制作过程/</id>
+    <published>2016-07-08T09:14:00.000Z</published>
+    <updated>2016-07-08T10:21:23.000Z</updated>
+    
+    <content type="html">&lt;p&gt;最新项目不算太忙，于是抽出了一点时间将以前项目中的使用的AVPlayer视频播放器做了一个简单的封装。现在我想把它做成CocoaPods方便以后的使用。下面我要详细的记录下我的制作过程。&lt;/p&gt;
+&lt;h3 id=&quot;创建仓库&quot;&gt;&lt;a href=&quot;#创建仓库&quot; class=&quot;headerlink&quot; title=&quot;创建仓库&quot;&gt;&lt;/a&gt;创建仓库&lt;/h3&gt;&lt;h4 id=&quot;本地仓库&quot;&gt;&lt;a href=&quot;#本地仓库&quot; class=&quot;headerlink&quot; title=&quot;本地仓库&quot;&gt;&lt;/a&gt;本地仓库&lt;/h4&gt;&lt;p&gt;使用Xcode创建一个叫做HcdCachePlayer的工程，然后将相关的封装全部编写完毕。&lt;/p&gt;
+&lt;h4 id=&quot;远程仓库&quot;&gt;&lt;a href=&quot;#远程仓库&quot; class=&quot;headerlink&quot; title=&quot;远程仓库&quot;&gt;&lt;/a&gt;远程仓库&lt;/h4&gt;&lt;p&gt;在github上同样创建一个&lt;code&gt;HcdCachePlayer&lt;/code&gt;,最好保持同名,需要注意的是,在创建仓库的时候需要添加&lt;code&gt;license&lt;/code&gt;类型,这里我使用&lt;code&gt;license&lt;/code&gt;类型为&lt;code&gt;MIT&lt;/code&gt;。这个很简单就不再啰嗦了。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;关联本地仓库到远程仓库&quot;&gt;&lt;a href=&quot;#关联本地仓库到远程仓库&quot; class=&quot;headerlink&quot; title=&quot;关联本地仓库到远程仓库&quot;&gt;&lt;/a&gt;关联本地仓库到远程仓库&lt;/h4&gt;&lt;p&gt;进入本地仓库目录&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; ~/github/H&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;CachePlayer/&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;关联远程仓库&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git init&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git remote add origin https://github.com/Jvaeyhcd/H&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;CachePlayer.git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git push -u origin master&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;添加Pods依赖库所需文件&quot;&gt;&lt;a href=&quot;#添加Pods依赖库所需文件&quot; class=&quot;headerlink&quot; title=&quot;添加Pods依赖库所需文件&quot;&gt;&lt;/a&gt;添加Pods依赖库所需文件&lt;/h3&gt;&lt;p&gt;依赖库所需的文件格式为&lt;code&gt;{project}.podspec&lt;/code&gt;格式，每个Pods依赖库必须有这个描述文件。&lt;/p&gt;
+&lt;h4 id=&quot;添加-project-podspec文件&quot;&gt;&lt;a href=&quot;#添加-project-podspec文件&quot; class=&quot;headerlink&quot; title=&quot;添加{project}.podspec文件&quot;&gt;&lt;/a&gt;添加{project}.podspec文件&lt;/h4&gt;&lt;p&gt;使用pod命令创建&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pod spec create H&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;CachePlayer&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这样就生成了HcdCachePlayer.podspec文件，打开该文件添加内容，并删除不需要的后就像这样：&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Pod::Spec.new &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; |s|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.name         = &lt;span class=&quot;string&quot;&gt;&quot;HcdCachePlayer&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.version      = &lt;span class=&quot;string&quot;&gt;&quot;0.0.1&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.summary      = &lt;span class=&quot;string&quot;&gt;&quot;一个带缓存的视频播放器HcdCachePlayer&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.description  = &amp;lt;&amp;lt;-DESC&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  一个使用AVPlayer封装的带缓存的视频播放器,支持全屏，可以左右滑动手势快进快退，上下滑动手势调节屏幕亮度&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                   DESC&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.homepage     = &lt;span class=&quot;string&quot;&gt;&quot;https://github.com/Jvaeyhcd/HcdCachePlayer&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.license      = &amp;#123; :&lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt; =&amp;gt; &lt;span class=&quot;string&quot;&gt;&quot;MIT&quot;&lt;/span&gt;, :file =&amp;gt; &lt;span class=&quot;string&quot;&gt;&quot;LICENSE&quot;&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.author             = &amp;#123; &lt;span class=&quot;string&quot;&gt;&quot;Jvaeyhcd&quot;&lt;/span&gt; =&amp;gt; &lt;span class=&quot;string&quot;&gt;&quot;chedahuang@icloud.com&quot;&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.platform     = :ios, &lt;span class=&quot;string&quot;&gt;&#39;7.0&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.source       = &amp;#123; :git =&amp;gt; &lt;span class=&quot;string&quot;&gt;&quot;https://github.com/Jvaeyhcd/HcdCachePlayer.git&quot;&lt;/span&gt;, :tag =&amp;gt; s.version.to_s &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.source_files  = &lt;span class=&quot;string&quot;&gt;&quot;hcdCachePlayer/**/*.&amp;#123;h,m&amp;#125;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.resource  = &lt;span class=&quot;string&quot;&gt;&quot;hcdCachePlayer/hcdCachePlayer.bundle&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.frameworks = &lt;span class=&quot;string&quot;&gt;&quot;UIKit&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;AVFoundation&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;MobileCoreServices&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Foundation&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.requires_arc = &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  s.dependency &lt;span class=&quot;string&quot;&gt;&quot;Masonry&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;s.source_files指向循环滚动的核心代码放在项目的s.hcdCachePlayer/&lt;em&gt;*/&lt;/em&gt;.{h,m},所以这里最好将库代码都放在同一个目录下。&lt;/p&gt;
+&lt;h3 id=&quot;提交到github&quot;&gt;&lt;a href=&quot;#提交到github&quot; class=&quot;headerlink&quot; title=&quot;提交到github&quot;&gt;&lt;/a&gt;提交到github&lt;/h3&gt;&lt;p&gt;此时编码已经完成了，并且配置好了相关文件我们可以先将代码提交到github上了。&lt;/p&gt;
+&lt;h4 id=&quot;Pods验证&quot;&gt;&lt;a href=&quot;#Pods验证&quot; class=&quot;headerlink&quot; title=&quot;Pods验证&quot;&gt;&lt;/a&gt;Pods验证&lt;/h4&gt;&lt;p&gt;提交之前我们需要先验证一下HcdCachePlayer.podspec文件。在HcdCachePlayer.podspec所在目录运行如下命令：&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pod lib lint&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果出现ERROR和WARING都会失败，如果失败会明确指明哪个地方出错了，按提示修改就可以了。&lt;/p&gt;
+&lt;h4 id=&quot;提交代码到Github&quot;&gt;&lt;a href=&quot;#提交代码到Github&quot; class=&quot;headerlink&quot; title=&quot;提交代码到Github&quot;&gt;&lt;/a&gt;提交代码到Github&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git add .&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git commit -m &lt;span class=&quot;string&quot;&gt;&quot;version 0.0.1&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git push origin master&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;打上标签&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git tag &lt;span class=&quot;number&quot;&gt;0.0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git push --tags&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;不出问题的话,就可以在github上看到最新提交的内容了。&lt;/p&gt;
+&lt;h3 id=&quot;上传-project-podspec到CocoaPods官方仓库中&quot;&gt;&lt;a href=&quot;#上传-project-podspec到CocoaPods官方仓库中&quot; class=&quot;headerlink&quot; title=&quot;上传{project}.podspec到CocoaPods官方仓库中&quot;&gt;&lt;/a&gt;上传{project}.podspec到CocoaPods官方仓库中&lt;/h3&gt;&lt;p&gt;要想一个HcdCachePlayer真正可以用,就得把生成的HcdCachePlayer.podspec文件提交到Cocoapods官方的&lt;a href=&quot;https://github.com/CocoaPods/Specs&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Specs&lt;/a&gt;仓库中,才能被search到并使用。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;之前的提交方式是先将&lt;a href=&quot;https://github.com/CocoaPods/Specs&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Specs&lt;/a&gt;仓库fork一份，添加修改，然后push，等待审核，这种显示是不安全的，所以现在不能使用了。也就是这篇文章：&lt;a href=&quot;http://blog.csdn.net/wzzvictory/article/details/20067595&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《CocoaPods详解之—-制作篇》&lt;/a&gt;中说提到的方法，注意这个方法已经不能使用了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;CocoaPods为我们提供了另外一个更加安全的方法&lt;a href=&quot;http://blog.cocoapods.org/CocoaPods-Trunk/#transition&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Trunk&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;Trunk的Register&quot;&gt;&lt;a href=&quot;#Trunk的Register&quot; class=&quot;headerlink&quot; title=&quot;Trunk的Register&quot;&gt;&lt;/a&gt;Trunk的Register&lt;/h4&gt;&lt;p&gt;如果第一次使用的话那么就需要注册了，需要CocoaPods0.33版本以上才支持&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pod trunk register *youremail* *yourname* --description=&lt;span class=&quot;string&quot;&gt;&#39;iMac&#39;&lt;/span&gt; --verbose&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;以上命令是注册所需的,替换你的邮箱,用户名,以及描述内容, –verbose可以输入详细的debug。&lt;/p&gt;
+&lt;p&gt;注册完成后可以使用一下命令查看注册信息&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pod trunk me&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&quot;提交-project-podspec&quot;&gt;&lt;a href=&quot;#提交-project-podspec&quot; class=&quot;headerlink&quot; title=&quot;提交{project}.podspec&quot;&gt;&lt;/a&gt;提交{project}.podspec&lt;/h4&gt;&lt;p&gt;在{project}.podspec文件的路径下执行&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pod trunk push H&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;CachePlayer.podspec&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这条命令做了如下三件事:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;验证本地的podspec文件,也可以使用 pod lib lint验证&lt;/li&gt;
+&lt;li&gt;上传podspec文件到trunk服务&lt;/li&gt;
+&lt;li&gt;将{project}.podspec文件转为{poject}.podspec.json文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果没有报错那么就成功了。&lt;/p&gt;
+&lt;h4 id=&quot;使用&quot;&gt;&lt;a href=&quot;#使用&quot; class=&quot;headerlink&quot; title=&quot;使用&quot;&gt;&lt;/a&gt;使用&lt;/h4&gt;&lt;p&gt;终端执行 pod search HcdCachePlayer就可以找到了,如果没有找到 pod setup再试一下。&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-&amp;gt; H&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;CachePlayer (&lt;span class=&quot;number&quot;&gt;0.0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   一个带缓存的视频播放器H&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;CachePlayer&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   pod &lt;span class=&quot;string&quot;&gt;&#39;HcdCachePlayer&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;~&amp;gt; 0.0.1&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   - Homepage: https://github.com/Jvaeyhcd/H&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;CachePlayer&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   - Source:   https://github.com/Jvaeyhcd/H&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;CachePlayer.git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   - Versions: &lt;span class=&quot;number&quot;&gt;0.0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; [master repo]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(END)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里遇到一个问题创建成功了，但是另外一台电脑却收不到。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;协同工作&quot;&gt;&lt;a href=&quot;#协同工作&quot; class=&quot;headerlink&quot; title=&quot;协同工作&quot;&gt;&lt;/a&gt;协同工作&lt;/h4&gt;&lt;p&gt;当需要其他人来共同维护你的代码,需要提供权限。&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pod trunk add-owner H&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;CachePlayer *email*&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最新项目不算太忙，于是抽出了一点时间将以前项目中的使用的AVPlayer视频播放器做了一个简单的封装。现在我想把它做成CocoaPods方便以后的使用。下面我要详细的记录下我的制作过程。&lt;/p&gt;
+&lt;h3 id=&quot;创建仓库&quot;&gt;&lt;a href=&quot;#创建仓库&quot; class=&quot;headerlink&quot; title=&quot;创建仓库&quot;&gt;&lt;/a&gt;创建仓库&lt;/h3&gt;&lt;h4 id=&quot;本地仓库&quot;&gt;&lt;a href=&quot;#本地仓库&quot; class=&quot;headerlink&quot; title=&quot;本地仓库&quot;&gt;&lt;/a&gt;本地仓库&lt;/h4&gt;&lt;p&gt;使用Xcode创建一个叫做HcdCachePlayer的工程，然后将相关的封装全部编写完毕。&lt;/p&gt;
+&lt;h4 id=&quot;远程仓库&quot;&gt;&lt;a href=&quot;#远程仓库&quot; class=&quot;headerlink&quot; title=&quot;远程仓库&quot;&gt;&lt;/a&gt;远程仓库&lt;/h4&gt;&lt;p&gt;在github上同样创建一个&lt;code&gt;HcdCachePlayer&lt;/code&gt;,最好保持同名,需要注意的是,在创建仓库的时候需要添加&lt;code&gt;license&lt;/code&gt;类型,这里我使用&lt;code&gt;license&lt;/code&gt;类型为&lt;code&gt;MIT&lt;/code&gt;。这个很简单就不再啰嗦了。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="CocoaPods" scheme="http://www.jvaeyhcd.cc/tags/CocoaPods/"/>
+    
+  </entry>
+  
+  <entry>
     <title>全屏设置setStatusBarOrientation 未生效的解决办法</title>
     <link href="http://www.jvaeyhcd.cc/2016/07/06/%E5%85%A8%E5%B1%8F%E8%AE%BE%E7%BD%AEsetStatusBarOrientation-%E6%9C%AA%E7%94%9F%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     <id>http://www.jvaeyhcd.cc/2016/07/06/全屏设置setStatusBarOrientation-未生效的解决办法/</id>
     <published>2016-07-06T07:21:10.000Z</published>
-    <updated>2016-07-06T07:49:46.000Z</updated>
+    <updated>2016-07-06T10:19:57.000Z</updated>
     
     <content type="html">&lt;p&gt;最近在一个项目中用到了视频播放组件，并且项目要求视频能够边下边播，并且需要实现视频的缓存，如果下次播放就不要再通过网络去访问播放，而是直接读取本地的缓存文件播放。在实现让视频全屏播放的时候遇到了比较难搞的问题，当视频全屏的时候，视频成功旋转过来了，，但是状态栏的方向始终不能旋转过来。&lt;br&gt;手动调用了如下代码，但是并没有什么卵用：&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[[&lt;span class=&quot;built_in&quot;&gt;UIApplication&lt;/span&gt; sharedApplication]setStatusBarOrientation:&lt;span class=&quot;built_in&quot;&gt;UIInterfaceOrientationLandscapeRight&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;经过一番搜索，网上给了各种方法，归纳起来大致是这个样子的：&lt;/p&gt;
@@ -1284,49 +1342,6 @@
     
       &lt;p&gt;UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。&lt;/p&gt;
 &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS学习笔记" scheme="http://www.jvaeyhcd.cc/categories/iOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="iOS" scheme="http://www.jvaeyhcd.cc/tags/iOS/"/>
-    
-      <category term="笔记" scheme="http://www.jvaeyhcd.cc/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于iOS多线程小记</title>
-    <link href="http://www.jvaeyhcd.cc/2016/03/30/%E5%85%B3%E4%BA%8EiOS%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B0%8F%E8%AE%B0/"/>
-    <id>http://www.jvaeyhcd.cc/2016/03/30/关于iOS多线程小记/</id>
-    <published>2016-03-30T03:42:06.000Z</published>
-    <updated>2016-04-27T11:12:17.000Z</updated>
-    
-    <content type="html">&lt;p&gt;这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。当然也会给出几种简单的代码案例，再试实际使用中去感受它们的区别。&lt;/p&gt;
-&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;进程间不能共享内存，但线程间共享内存非常容易。&lt;/li&gt;
-&lt;li&gt;系统创建进程需要为该进程重新分配系统资源，但创建线程的代价要小得多，因此使用多线程来实现任务并发比多进程效率高得多。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;在实际开发过程中多线程是非常有用的，假如用户点击界面上某个按钮的时候，该按钮需要执行的任务需要耗时很长，如果我们直接在UI线程中完成这个任务，在该任务执行完成返回之前，UI线程被该任务阻塞，将无法再相应用户的其它操作。在这段时间内用户对界面上的任何操作将不会被相应（除非按Home键返回），这并不是我们希望看到的结果。一般这个时候我们能够想到的办法就是将耗时的操作放到非UI线程（开启一个线程）中完成，这样UI线程就不会被阻塞，应用也就不会失去相应。&lt;/p&gt;
-&lt;p&gt;iOS系统大致提供了如下3种实现多线程：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;NSThread&lt;/li&gt;
-&lt;li&gt;NSOperation和NSOperationQueue&lt;/li&gt;
-&lt;li&gt;GCD(Grand Central Dispatch)&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这篇文章我将整理一下iOS中的几种多线程方案，以及使用方法和注意事项。当然也会给出几种简单的代码案例，再试实际使用中去感受它们的区别。&lt;/p&gt;
-&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;在了解线程前，我们需要先了解进程。一句话概括线程和进程就是：操作系统可以同时执行多个任务，每个任务就是进程，进程可以同时执行多个任务，每个任务就是线程。对于多线程的优点大致可以总结为以下几点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;进程间不能共享内存，但线程间共享内存非常容易。&lt;/li&gt;
-&lt;li&gt;系统创建进程需要为该进程重新分配系统资源，但创建线程的代价要小得多，因此使用多线程来实现任务并发比多进程效率高得多。&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     
