@@ -1,92 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
+  <html class="light page-post">
 
-  
 
-
-<html class="theme-next pisces use-motion">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="utf-8">
+  
+  <title>RXSwift基础 | Jvaeyhcd&#39;s Note</title>
 
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
+    <meta name="keywords" content="RXSwift," />
   
 
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="RXSwift," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Jvaeyhcd's Note" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-
-
-
-
-
-
-<meta name="description" content="概念一个观察者(Observer)订阅一个可观察序列(Observable)。观察者对Observable发射的数据或数据序列作出响应
+  <meta name="description" content="概念一个观察者(Observer)订阅一个可观察序列(Observable)。观察者对Observable发射的数据或数据序列作出响应
 为什么发用RxSwift一个程序通常包含着大量的各种事件的产生以及对应的处理逻辑，各种响应方法使代码更加的混乱和复杂，而RxSwift是一个统一的处理各种响应事件的方式
 
 Observable的创建和订阅
@@ -126,34 +55,22 @@ Observable的创建和订阅
 Subjects的使用
 Combination：Obser">
 
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
 
 
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-
-
-
-  <title> RXSwift基础 | Jvaeyhcd's Note </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  
+    <link rel="stylesheet" href="/css/personal-style.css" type="text/css">
+  
 
   
 
-
-
+  
   <script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
@@ -165,179 +82,143 @@ Combination：Obser">
   </script>
 
 
+</head>
 
-
-
-
+<body>
 
 
   
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
   
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Jvaeyhcd's Note</span>
-      <span class="logo-line-after"><i></i></span>
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
     </a>
-  </div>
-  <p class="site-subtitle">My Coding Note</p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
+    <ul class="list-toolbox">
       
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
             分类
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
             标签
           </a>
         </li>
       
-
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
       
     </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                RXSwift基础
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-08T09:32:44+08:00" content="2016-06-08">
-              2016-06-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/08/RXSwift基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/08/RXSwift基础/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-              &nbsp; | &nbsp;
-              <span class="page-pv"><i class="fa fa-eye"></i> 本文总阅读量
-              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
-              </span>
-          
-        </div>
-      </header>
-    
+  </div>
 
 
-    <div class="post-body" itemprop="articleBody">
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么发用RxSwift"><span class="toc-text">为什么发用RxSwift</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息的订阅方式"><span class="toc-text">消息的订阅方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#释放分配的资源"><span class="toc-text">释放分配的资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Observable的创建和订阅"><span class="toc-text">Observable的创建和订阅</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#never-创建即不会完成也不会发消息的Observable"><span class="toc-text">never()创建即不会完成也不会发消息的Observable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#empty-创建只会发送一次完成消息的Observable"><span class="toc-text">empty()创建只会发送一次完成消息的Observable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#just-创建只包含一个元素的Observable，在发送一次Next消息后便发送Completed消息"><span class="toc-text">just()创建只包含一个元素的Observable，在发送一次Next消息后便发送Completed消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#of-创建可以包含任意个元素的Observable，连续相同的元素会被忽略"><span class="toc-text">of()创建可以包含任意个元素的Observable，连续相同的元素会被忽略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#create-可以创建自定义的Observable，在最原始的Observable基础上创建Observable"><span class="toc-text">create()可以创建自定义的Observable，在最原始的Observable基础上创建Observable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#range-创建一个发送一个范围的整数的Observable，发送完后发送Completed"><span class="toc-text">range()创建一个发送一个范围的整数的Observable，发送完后发送Completed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#repeatElement-创建一个可以重复发送消息的Observable，可以指定重复的次数，未指定即无限发送"><span class="toc-text">repeatElement()创建一个可以重复发送消息的Observable，可以指定重复的次数，未指定即无限发送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#generate-创建一个可以指定规则的Observable，会发送所有满足规则的元素"><span class="toc-text">generate()创建一个可以指定规则的Observable，会发送所有满足规则的元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deferred-序列为每一个订阅者创建一个全新的Observable"><span class="toc-text">deferred()序列为每一个订阅者创建一个全新的Observable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#error-创建一个不发送元素的Observable，然后立即发送error并终止"><span class="toc-text">error()创建一个不发送元素的Observable，然后立即发送error并终止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#doOn-在发送元素消息前对每一个元素做指定的操作，然后返回操作前的元素消息"><span class="toc-text">doOn()在发送元素消息前对每一个元素做指定的操作，然后返回操作前的元素消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toObservable-通过Array-Dictionary-或Set等SequenceType创建一个Observable"><span class="toc-text">toObservable()通过Array,Dictionary,或Set等SequenceType创建一个Observable</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Subjects的使用"><span class="toc-text">Subjects的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PublishSubject向所有订阅者广播从订阅之后的事件"><span class="toc-text">PublishSubject向所有订阅者广播从订阅之后的事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReplaySubject有一个缓存机制，可以在创建时通过指定bufferSize指定缓存大小或调用buffer方法指定更详细的缓存条件来指定新添加的订阅者可以接收多少订阅前的消息"><span class="toc-text">ReplaySubject有一个缓存机制，可以在创建时通过指定bufferSize指定缓存大小或调用buffer方法指定更详细的缓存条件来指定新添加的订阅者可以接收多少订阅前的消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BehaviorSubject向新的订阅者发送一条最近的事件，如果没有事件则发送一条默认的消息"><span class="toc-text">BehaviorSubject向新的订阅者发送一条最近的事件，如果没有事件则发送一条默认的消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Variable与BehaviorSubject的区别是在完成的时候它会自动发送一条Completed消息和调用deist"><span class="toc-text">Variable与BehaviorSubject的区别是在完成的时候它会自动发送一条Completed消息和调用deist</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Combination：Observable的混合操作"><span class="toc-text">Combination：Observable的混合操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#startWith-分为原Observable和新Observable，并且在发送原Observable元素前会先发送完新Observable元素，有点像栈"><span class="toc-text">startWith()分为原Observable和新Observable，并且在发送原Observable元素前会先发送完新Observable元素，有点像栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#merge-按顺序混合多个Observable为一个新Observable"><span class="toc-text">merge()按顺序混合多个Observable为一个新Observable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zip-相当于并排的将多个Observable合并成一个新Observable"><span class="toc-text">zip()相当于并排的将多个Observable合并成一个新Observable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#combineLatest-总是将某个Observable发出的最新元素与其他Observable的最后发出的元素混合"><span class="toc-text">combineLatest()总是将某个Observable发出的最新元素与其他Observable的最后发出的元素混合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#switchLatest-可以将多个Observable序列合并成一个一维的Observable序列，只合并当前关注的Observable序列最近的消息"><span class="toc-text">switchLatest()可以将多个Observable序列合并成一个一维的Observable序列，只合并当前关注的Observable序列最近的消息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transforming：Observable的转换操作"><span class="toc-text">Transforming：Observable的转换操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#map-将闭包操作应用到一个被观察序列的所有元素上，然后返回一个新的被观察序列"><span class="toc-text">map()将闭包操作应用到一个被观察序列的所有元素上，然后返回一个新的被观察序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scan-可以迭代的操作，并且可以设置一个初始的迭代值"><span class="toc-text">scan()可以迭代的操作，并且可以设置一个初始的迭代值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Filtering：Observable消息元素的过滤操作"><span class="toc-text">Filtering：Observable消息元素的过滤操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#filter-发出满足bool条件的元素"><span class="toc-text">filter()发出满足bool条件的元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#distinctUntilChanged-过滤掉连续的相同元素"><span class="toc-text">distinctUntilChanged()过滤掉连续的相同元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elementAt-只发送指定下标的元素"><span class="toc-text">elementAt()只发送指定下标的元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#single-不传参数则发送Observable的第一个元素，否则为满足条件表达式的第一个元素，如果没有发送一个确切的元素，将发送一个-Error消息"><span class="toc-text">single()不传参数则发送Observable的第一个元素，否则为满足条件表达式的第一个元素，如果没有发送一个确切的元素，将发送一个 Error消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#take-仅发送从第一个元素开始指定个数的元素"><span class="toc-text">take()仅发送从第一个元素开始指定个数的元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#takeLast-与take不同的是takeLast是从末尾开始"><span class="toc-text">takeLast()与take不同的是takeLast是从末尾开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#takeWhile-发送从头开始的满足条件的元素"><span class="toc-text">takeWhile()发送从头开始的满足条件的元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#takeUntil：在与之关联的另一Observable发送元素前发送元素"><span class="toc-text">takeUntil：在与之关联的另一Observable发送元素前发送元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#skip-与take相反，它是不发送"><span class="toc-text">skip()与take相反，它是不发送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#skipWhile-与takeWhile相反，它是不发送"><span class="toc-text">skipWhile()与takeWhile相反，它是不发送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#skipWhileWithIndex-只是skipWhile基础上增加了一个下标index"><span class="toc-text">skipWhileWithIndex()只是skipWhile基础上增加了一个下标index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#skipUntil-与takeUntil相反，它是之后发送"><span class="toc-text">skipUntil()与takeUntil相反，它是之后发送</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对Observable元素做运算操作"><span class="toc-text">对Observable元素做运算操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#toArray-将Observable序列转换成array并发送，然后终止"><span class="toc-text">toArray()将Observable序列转换成array并发送，然后终止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reduce-迭代运算，通过指定初始迭代值和运算符"><span class="toc-text">reduce()迭代运算，通过指定初始迭代值和运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#concat-将一个Observable序列的内部Observable序列串联起来，且同一时间只操作一个序列，只有当前序列Completed后，才开始串联下一个序列的前一个元素及之后的元素"><span class="toc-text">concat()将一个Observable序列的内部Observable序列串联起来，且同一时间只操作一个序列，只有当前序列Completed后，才开始串联下一个序列的前一个元素及之后的元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Connectable操作"><span class="toc-text">Connectable操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#publish-将一个普通序列转换成Connectable-Observable序列"><span class="toc-text">publish()将一个普通序列转换成Connectable Observable序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#replay-相对于publish增加了bufferSize指定对元素的缓存大小，这样新加入的订阅者可以获取相应个数的已发送的元素"><span class="toc-text">replay()相对于publish增加了bufferSize指定对元素的缓存大小，这样新加入的订阅者可以获取相应个数的已发送的元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#multicast-需要传入一个subject，通过subject来管理向订阅者发送消息"><span class="toc-text">multicast()需要传入一个subject，通过subject来管理向订阅者发送消息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误处理"><span class="toc-text">错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#catchErrorJustReturn-通过返回一个只发送一个元素的Observable序列来捕获错误信息，然后-Completed"><span class="toc-text">catchErrorJustReturn()通过返回一个只发送一个元素的Observable序列来捕获错误信息，然后 Completed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#catchError-当捕获错误后会返回一个正常的Observable序列与之合并"><span class="toc-text">catchError()当捕获错误后会返回一个正常的Observable序列与之合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#retry-当遇到error后发送一条error消息然后重新重头发送元素，通过传入一个整数可以指定重复次数"><span class="toc-text">retry()当遇到error后发送一条error消息然后重新重头发送元素，通过传入一个整数可以指定重复次数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#debug"><span class="toc-text">debug</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-RXSwift基础" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">RXSwift基础</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.06.08</span>
+      </span>
 
       
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jvaeyhcd</span>
+        </span>
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>一个观察者(Observer)订阅一个可观察序列(Observable)。观察者对Observable发射的数据或数据序列作出响应</p>
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.Jvaeyhcd.com/2016/06/08/RXSwift基础/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>一个观察者(Observer)订阅一个可观察序列(Observable)。观察者对Observable发射的数据或数据序列作出响应</p>
 <h2 id="为什么发用RxSwift"><a href="#为什么发用RxSwift" class="headerlink" title="为什么发用RxSwift"></a>为什么发用RxSwift</h2><p>一个程序通常包含着大量的各种事件的产生以及对应的处理逻辑，各种响应方法使代码更加的混乱和复杂，而RxSwift是一个统一的处理各种响应事件的方式</p>
 <ul>
 <li>Observable的创建和订阅</li>
@@ -495,389 +376,197 @@ Combination：Obser">
 <p>注：不要在Release builds中使用</p>
 </blockquote>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/RXSwift/" rel="tag">#RXSwift</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/06/01/Swift学习笔记之闭包/" rel="next" title="Swift学习笔记之闭包">
-                <i class="fa fa-chevron-left"></i> Swift学习笔记之闭包
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/15/Objective-C身份证验证实现/" rel="prev" title="Objective-C身份证验证实现">
-                Objective-C身份证验证实现 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="2016/06/08/RXSwift基础/"
-     data-title="RXSwift基础"
-     data-content=""
-     data-url="http://www.jvaeyhcd.cc/2016/06/08/RXSwift基础/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
+    
   </div>
+</article>
+
 </div>
-      
-    </div>
-  </div>
 
 
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/06/08/RXSwift基础/"
-           data-title="RXSwift基础" data-url="http://www.jvaeyhcd.cc/2016/06/08/RXSwift基础/">
-      </div>
-    
-  </div>
-
-
-        </div>
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul class="theme.donation.items.length">
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
           </li>
+        
         </ul>
-      
+      </div>
+    </div>
+  </div>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://dn-coding-net-production-static.qbox.me/0dcf6be4-e41e-4842-80af-af8f2b0eb3f3.jpg"
-               alt="Jvaeyhcd" />
-          <p class="site-author-name" itemprop="name">Jvaeyhcd</p>
-          <p class="site-description motion-element" itemprop="description">好记性不如烂笔头</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">32</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
 
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
 
-        </nav>
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
 
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
         
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
               RSS
             </a>
-          </div>
+          </li>
         
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
         
-        
+      </ul>
 
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://funmi.github.io/" title="方米团队" target="_blank">方米团队</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.eyrefree.org/" title="EyreFree" target="_blank">EyreFree</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.lovexing.cn/" title="lovexing" target="_blank">lovexing</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://blog.callmewhy.com/" title="CallMeWhy" target="_blank">CallMeWhy</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://gaoryrt.com/" title="gaoryrt" target="_blank">gaoryrt</a>
-                </li>
-              
-            </ul>
-          </div>
-        
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么发用RxSwift"><span class="nav-number">2.</span> <span class="nav-text">为什么发用RxSwift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息的订阅方式"><span class="nav-number">3.</span> <span class="nav-text">消息的订阅方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#释放分配的资源"><span class="nav-number">4.</span> <span class="nav-text">释放分配的资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Observable的创建和订阅"><span class="nav-number">5.</span> <span class="nav-text">Observable的创建和订阅</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#never-创建即不会完成也不会发消息的Observable"><span class="nav-number">5.1.</span> <span class="nav-text">never()创建即不会完成也不会发消息的Observable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#empty-创建只会发送一次完成消息的Observable"><span class="nav-number">5.2.</span> <span class="nav-text">empty()创建只会发送一次完成消息的Observable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#just-创建只包含一个元素的Observable，在发送一次Next消息后便发送Completed消息"><span class="nav-number">5.3.</span> <span class="nav-text">just()创建只包含一个元素的Observable，在发送一次Next消息后便发送Completed消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#of-创建可以包含任意个元素的Observable，连续相同的元素会被忽略"><span class="nav-number">5.4.</span> <span class="nav-text">of()创建可以包含任意个元素的Observable，连续相同的元素会被忽略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#create-可以创建自定义的Observable，在最原始的Observable基础上创建Observable"><span class="nav-number">5.5.</span> <span class="nav-text">create()可以创建自定义的Observable，在最原始的Observable基础上创建Observable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#range-创建一个发送一个范围的整数的Observable，发送完后发送Completed"><span class="nav-number">5.6.</span> <span class="nav-text">range()创建一个发送一个范围的整数的Observable，发送完后发送Completed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#repeatElement-创建一个可以重复发送消息的Observable，可以指定重复的次数，未指定即无限发送"><span class="nav-number">5.7.</span> <span class="nav-text">repeatElement()创建一个可以重复发送消息的Observable，可以指定重复的次数，未指定即无限发送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#generate-创建一个可以指定规则的Observable，会发送所有满足规则的元素"><span class="nav-number">5.8.</span> <span class="nav-text">generate()创建一个可以指定规则的Observable，会发送所有满足规则的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deferred-序列为每一个订阅者创建一个全新的Observable"><span class="nav-number">5.9.</span> <span class="nav-text">deferred()序列为每一个订阅者创建一个全新的Observable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error-创建一个不发送元素的Observable，然后立即发送error并终止"><span class="nav-number">5.10.</span> <span class="nav-text">error()创建一个不发送元素的Observable，然后立即发送error并终止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#doOn-在发送元素消息前对每一个元素做指定的操作，然后返回操作前的元素消息"><span class="nav-number">5.11.</span> <span class="nav-text">doOn()在发送元素消息前对每一个元素做指定的操作，然后返回操作前的元素消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toObservable-通过Array-Dictionary-或Set等SequenceType创建一个Observable"><span class="nav-number">5.12.</span> <span class="nav-text">toObservable()通过Array,Dictionary,或Set等SequenceType创建一个Observable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subjects的使用"><span class="nav-number">6.</span> <span class="nav-text">Subjects的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PublishSubject向所有订阅者广播从订阅之后的事件"><span class="nav-number">6.1.</span> <span class="nav-text">PublishSubject向所有订阅者广播从订阅之后的事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReplaySubject有一个缓存机制，可以在创建时通过指定bufferSize指定缓存大小或调用buffer方法指定更详细的缓存条件来指定新添加的订阅者可以接收多少订阅前的消息"><span class="nav-number">6.2.</span> <span class="nav-text">ReplaySubject有一个缓存机制，可以在创建时通过指定bufferSize指定缓存大小或调用buffer方法指定更详细的缓存条件来指定新添加的订阅者可以接收多少订阅前的消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BehaviorSubject向新的订阅者发送一条最近的事件，如果没有事件则发送一条默认的消息"><span class="nav-number">6.3.</span> <span class="nav-text">BehaviorSubject向新的订阅者发送一条最近的事件，如果没有事件则发送一条默认的消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable与BehaviorSubject的区别是在完成的时候它会自动发送一条Completed消息和调用deist"><span class="nav-number">6.4.</span> <span class="nav-text">Variable与BehaviorSubject的区别是在完成的时候它会自动发送一条Completed消息和调用deist</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Combination：Observable的混合操作"><span class="nav-number">7.</span> <span class="nav-text">Combination：Observable的混合操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#startWith-分为原Observable和新Observable，并且在发送原Observable元素前会先发送完新Observable元素，有点像栈"><span class="nav-number">7.1.</span> <span class="nav-text">startWith()分为原Observable和新Observable，并且在发送原Observable元素前会先发送完新Observable元素，有点像栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#merge-按顺序混合多个Observable为一个新Observable"><span class="nav-number">7.2.</span> <span class="nav-text">merge()按顺序混合多个Observable为一个新Observable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip-相当于并排的将多个Observable合并成一个新Observable"><span class="nav-number">7.3.</span> <span class="nav-text">zip()相当于并排的将多个Observable合并成一个新Observable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#combineLatest-总是将某个Observable发出的最新元素与其他Observable的最后发出的元素混合"><span class="nav-number">7.4.</span> <span class="nav-text">combineLatest()总是将某个Observable发出的最新元素与其他Observable的最后发出的元素混合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switchLatest-可以将多个Observable序列合并成一个一维的Observable序列，只合并当前关注的Observable序列最近的消息"><span class="nav-number">7.5.</span> <span class="nav-text">switchLatest()可以将多个Observable序列合并成一个一维的Observable序列，只合并当前关注的Observable序列最近的消息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transforming：Observable的转换操作"><span class="nav-number">8.</span> <span class="nav-text">Transforming：Observable的转换操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#map-将闭包操作应用到一个被观察序列的所有元素上，然后返回一个新的被观察序列"><span class="nav-number">8.1.</span> <span class="nav-text">map()将闭包操作应用到一个被观察序列的所有元素上，然后返回一个新的被观察序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scan-可以迭代的操作，并且可以设置一个初始的迭代值"><span class="nav-number">8.2.</span> <span class="nav-text">scan()可以迭代的操作，并且可以设置一个初始的迭代值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filtering：Observable消息元素的过滤操作"><span class="nav-number">9.</span> <span class="nav-text">Filtering：Observable消息元素的过滤操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#filter-发出满足bool条件的元素"><span class="nav-number">9.1.</span> <span class="nav-text">filter()发出满足bool条件的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#distinctUntilChanged-过滤掉连续的相同元素"><span class="nav-number">9.2.</span> <span class="nav-text">distinctUntilChanged()过滤掉连续的相同元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elementAt-只发送指定下标的元素"><span class="nav-number">9.3.</span> <span class="nav-text">elementAt()只发送指定下标的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#single-不传参数则发送Observable的第一个元素，否则为满足条件表达式的第一个元素，如果没有发送一个确切的元素，将发送一个-Error消息"><span class="nav-number">9.4.</span> <span class="nav-text">single()不传参数则发送Observable的第一个元素，否则为满足条件表达式的第一个元素，如果没有发送一个确切的元素，将发送一个 Error消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#take-仅发送从第一个元素开始指定个数的元素"><span class="nav-number">9.5.</span> <span class="nav-text">take()仅发送从第一个元素开始指定个数的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#takeLast-与take不同的是takeLast是从末尾开始"><span class="nav-number">9.6.</span> <span class="nav-text">takeLast()与take不同的是takeLast是从末尾开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#takeWhile-发送从头开始的满足条件的元素"><span class="nav-number">9.7.</span> <span class="nav-text">takeWhile()发送从头开始的满足条件的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#takeUntil：在与之关联的另一Observable发送元素前发送元素"><span class="nav-number">9.8.</span> <span class="nav-text">takeUntil：在与之关联的另一Observable发送元素前发送元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skip-与take相反，它是不发送"><span class="nav-number">9.9.</span> <span class="nav-text">skip()与take相反，它是不发送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skipWhile-与takeWhile相反，它是不发送"><span class="nav-number">9.10.</span> <span class="nav-text">skipWhile()与takeWhile相反，它是不发送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skipWhileWithIndex-只是skipWhile基础上增加了一个下标index"><span class="nav-number">9.11.</span> <span class="nav-text">skipWhileWithIndex()只是skipWhile基础上增加了一个下标index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skipUntil-与takeUntil相反，它是之后发送"><span class="nav-number">9.12.</span> <span class="nav-text">skipUntil()与takeUntil相反，它是之后发送</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对Observable元素做运算操作"><span class="nav-number">10.</span> <span class="nav-text">对Observable元素做运算操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#toArray-将Observable序列转换成array并发送，然后终止"><span class="nav-number">10.1.</span> <span class="nav-text">toArray()将Observable序列转换成array并发送，然后终止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-迭代运算，通过指定初始迭代值和运算符"><span class="nav-number">10.2.</span> <span class="nav-text">reduce()迭代运算，通过指定初始迭代值和运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concat-将一个Observable序列的内部Observable序列串联起来，且同一时间只操作一个序列，只有当前序列Completed后，才开始串联下一个序列的前一个元素及之后的元素"><span class="nav-number">10.3.</span> <span class="nav-text">concat()将一个Observable序列的内部Observable序列串联起来，且同一时间只操作一个序列，只有当前序列Completed后，才开始串联下一个序列的前一个元素及之后的元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connectable操作"><span class="nav-number">11.</span> <span class="nav-text">Connectable操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#publish-将一个普通序列转换成Connectable-Observable序列"><span class="nav-number">11.1.</span> <span class="nav-text">publish()将一个普通序列转换成Connectable Observable序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#replay-相对于publish增加了bufferSize指定对元素的缓存大小，这样新加入的订阅者可以获取相应个数的已发送的元素"><span class="nav-number">11.2.</span> <span class="nav-text">replay()相对于publish增加了bufferSize指定对元素的缓存大小，这样新加入的订阅者可以获取相应个数的已发送的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multicast-需要传入一个subject，通过subject来管理向订阅者发送消息"><span class="nav-number">11.3.</span> <span class="nav-text">multicast()需要传入一个subject，通过subject来管理向订阅者发送消息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误处理"><span class="nav-number">12.</span> <span class="nav-text">错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#catchErrorJustReturn-通过返回一个只发送一个元素的Observable序列来捕获错误信息，然后-Completed"><span class="nav-number">12.1.</span> <span class="nav-text">catchErrorJustReturn()通过返回一个只发送一个元素的Observable序列来捕获错误信息，然后 Completed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#catchError-当捕获错误后会返回一个正常的Observable序列与之合并"><span class="nav-number">12.2.</span> <span class="nav-text">catchError()当捕获错误后会返回一个正常的Observable序列与之合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#retry-当遇到error后发送一条error消息然后重新重头发送元素，通过传入一个整数可以指定重复次数"><span class="nav-number">12.3.</span> <span class="nav-text">retry()当遇到error后发送一条error消息然后重新重头发送元素，通过传入一个整数可以指定重复次数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debug"><span class="nav-number">13.</span> <span class="nav-text">debug</span></a></li></ol></div>
-            
-          </div>
-        </section>
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Jvaeyhcd</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
-        
-
-<div class="busuanzi-count">
-
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv"><i class="fa fa-user"></i> 本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
-  
-
-  
-    <span class="site-pv"><i class="fa fa-eye"></i> 本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
-  
-  
-</div>
-
-
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
     </div>
   </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
+</div>
 
 
 
   
-
-
-
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-  
+      <div class="fexo-comments comments-post">
     
-  
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"jvaeyhcd"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
+  <script>
+    var disqus_shortname = 'jvaeyhcd';
+    
+    var disqus_url = 'http://www.jvaeyhcd.cc/2016/06/08/RXSwift基础/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
   </script>
 
-  
+  <script id="dsq-count-scr" src="//jvaeyhcd.disqus.com/count.js" async></script>
+
+
+
     
-  
 
 
 
 
-
-
-  
-  
-  
+  </div>
 
   
 
-  
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
   <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
 </html>
