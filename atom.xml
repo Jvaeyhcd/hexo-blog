@@ -292,7 +292,7 @@
     <link href="http://www.jvaeyhcd.cc/2016/06/16/CocosPods%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%EF%BC%8C%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     <id>http://www.jvaeyhcd.cc/2016/06/16/CocosPods使用过程中遇到的一些问题，以及解决办法/</id>
     <published>2016-06-16T07:21:30.000Z</published>
-    <updated>2016-08-05T08:07:37.000Z</updated>
+    <updated>2016-08-05T08:13:26.000Z</updated>
     
     <content type="html">&lt;p&gt;经常会遇到很多莫名其妙的问题，这次遇到了，下次可能依然还会遇到，常常因为自己没有做什么记录，所以下次遇到了还是不知道如何解决。所以在这里我想记录一些我在使用CocosPods的过程中遇到过的一些问题。&lt;/p&gt;
 &lt;h2 id=&quot;library-not-found-for-lPods&quot;&gt;&lt;a href=&quot;#library-not-found-for-lPods&quot; class=&quot;headerlink&quot; title=&quot;library not found for -lPods&quot;&gt;&lt;/a&gt;library not found for -lPods&lt;/h2&gt;&lt;h3 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h3&gt;&lt;p&gt;这是一个很奇葩的问题，我在使用Cocoapods管理项目，编译Debug运行没有任何问题，但是就是在Archive的时候，报错如下&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ld: library not found &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;-l&lt;/span&gt;Pods&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -300,7 +300,7 @@
 &lt;h3 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h3&gt;&lt;p&gt;于是在网上搜索了一番找打了一篇帖子：&lt;a href=&quot;http://www.cocoachina.com/bbs/read.php?tid-253614.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cocoachina.com/bbs/read.php?tid-253614.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;各种各样的回复都有，我最终的解决步骤如下：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;更新cocospods到最新版本，注：gem的最新的镜像地址：&lt;a href=&quot;https://gems.ruby-china.org/，&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://gems.ruby-china.org/，&lt;/a&gt; 淘宝的好像不能访问了。（也有说将版本降到0.37的，但是我是不想退步的，要用就用最新的）。&lt;/li&gt;
+&lt;li&gt;更新cocospods到最新版本，注：gem的最新的镜像地址：&lt;a href=&quot;https://gems.ruby-china.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://gems.ruby-china.org/&lt;/a&gt;， 淘宝的好像不能访问了。（也有说将版本降到0.37的，但是我是不想退步的，要用就用最新的）。&lt;/li&gt;
 &lt;li&gt;在Build Setting &amp;gt; Other Linker Flag 中删除所有，只留下$(inherited)轻松解决。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;其实还有一个原因就是我的工程目录名称和Finder工程目录的文件夹不一致造成的。&lt;/p&gt;
