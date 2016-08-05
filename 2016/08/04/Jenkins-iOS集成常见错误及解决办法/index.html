@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jenkins+iOS集成常见错误及解决办法 | Jvaeyhcd&#39;s Note</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="常见错误," />
+  
+
+  <meta name="description" content="问题一: failed to import bridging header问题详情123456Header.h:7:9: error: &apos;HcdGuideView/HcdGuideView.h&apos; file not found#import &amp;lt;HcdGuideView/HcdGuideView.h&amp;gt;^&amp;lt;unknown&amp;gt;:0: error: failed to import b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins+iOS集成常见错误及解决办法">
+<meta property="og:url" content="http://www.jvaeyhcd.cc/2016/08/04/Jenkins-iOS集成常见错误及解决办法/index.html">
+<meta property="og:site_name" content="Jvaeyhcd's Note">
+<meta property="og:description" content="问题一: failed to import bridging header问题详情123456Header.h:7:9: error: &apos;HcdGuideView/HcdGuideView.h&apos; file not found#import &amp;lt;HcdGuideView/HcdGuideView.h&amp;gt;^&amp;lt;unknown&amp;gt;:0: error: failed to import b">
+<meta property="og:image" content="http://www.jvaeyhcd.cc/2016/08/04/Jenkins-iOS集成常见错误及解决办法/error_example_1.png">
+<meta property="og:updated_time" content="2016-08-05T02:39:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jenkins+iOS集成常见错误及解决办法">
+<meta name="twitter:description" content="问题一: failed to import bridging header问题详情123456Header.h:7:9: error: &apos;HcdGuideView/HcdGuideView.h&apos; file not found#import &amp;lt;HcdGuideView/HcdGuideView.h&amp;gt;^&amp;lt;unknown&amp;gt;:0: error: failed to import b">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css" type="text/css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?29df66b98641fa1eb4edb792fef116c9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题一-failed-to-import-bridging-header"><span class="toc-text">问题一: failed to import bridging header</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题详情"><span class="toc-text">问题详情</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决办法"><span class="toc-text">解决办法</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Jenkins-iOS集成常见错误及解决办法" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Jenkins+iOS集成常见错误及解决办法</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.08.04</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Jvaeyhcd</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="问题一-failed-to-import-bridging-header"><a href="#问题一-failed-to-import-bridging-header" class="headerlink" title="问题一: failed to import bridging header"></a>问题一: failed to import bridging header</h3><h4 id="问题详情"><a href="#问题详情" class="headerlink" title="问题详情"></a>问题详情</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Header.h:<span class="number">7</span>:<span class="number">9</span>: error: <span class="string">'HcdGuideView/HcdGuideView.h'</span> file not found</span><br><span class="line"><span class="comment">#import &lt;HcdGuideView/HcdGuideView.h&gt;</span></span><br><span class="line">^</span><br><span class="line">&lt;unknown&gt;:<span class="number">0</span>: error: failed to import bridging header <span class="string">'/Users/polesapp/.jenkins/workspace/qiangtoubao/qiangtoubao/OCFile/qiangtoubao-Bridging-Header.h'</span></span><br><span class="line"></span><br><span class="line">** BUILD FAILED **</span><br></pre></td></tr></table></figure>
+<p>集成项目是Swift项目，使用了Cocoapods导入一个自己写的一个Objective-C第三方库，所以需要用到桥接文件。在Xcode中运行没有任何问题，但是用Jenkins集成的时候却报错了。<br><a id="more"></a></p>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>上述所报的错误已经写得十分明显了，错误的原因出在<code>#import &lt;HcdGuideView/HcdGuideView.h&gt;</code>这一句，桥接文件中找不到<code>HcdGuideView.h</code>这个文件。</p>
+<p>所以最后的解决办法如下：</p>
+<ol>
+<li>选择target-BuildSettings-Search Paths下的User Header Search Paths，点击空白处，并且点击“＋”号添加一项，然后输入<code>$(PODS_ROOT)</code>,选择：recursive（会在相应的目录递归搜索文件）,如下图所示：</li>
+</ol>
+<img src="/2016/08/04/Jenkins-iOS集成常见错误及解决办法/error_example_1.png" alt="failed to import bridging header" title="failed to import bridging header">
+<p>这样就需要将<code>#import &lt;HcdGuideView/HcdGuideView.h&gt;</code>替换成<code>#import &quot;HcdGuideView.h&quot;</code>就可以了。</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，打赏Jvaeyhcd</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="Jenkins+iOS集成常见错误及解决办法" data-url="http://www.jvaeyhcd.cc/2016/08/04/Jenkins-iOS集成常见错误及解决办法/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"jvaeyhcd"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

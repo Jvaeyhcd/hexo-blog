@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-08-02T07:04:10.000Z</updated>
+  <updated>2016-08-05T02:39:15.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jenkins+iOS集成常见错误及解决办法</title>
+    <link href="http://www.jvaeyhcd.cc/2016/08/04/Jenkins-iOS%E9%9B%86%E6%88%90%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://www.jvaeyhcd.cc/2016/08/04/Jenkins-iOS集成常见错误及解决办法/</id>
+    <published>2016-08-04T01:36:07.000Z</published>
+    <updated>2016-08-05T02:39:15.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;问题一-failed-to-import-bridging-header&quot;&gt;&lt;a href=&quot;#问题一-failed-to-import-bridging-header&quot; class=&quot;headerlink&quot; title=&quot;问题一: failed to import bridging header&quot;&gt;&lt;/a&gt;问题一: failed to import bridging header&lt;/h3&gt;&lt;h4 id=&quot;问题详情&quot;&gt;&lt;a href=&quot;#问题详情&quot; class=&quot;headerlink&quot; title=&quot;问题详情&quot;&gt;&lt;/a&gt;问题详情&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Header.h:&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;: error: &lt;span class=&quot;string&quot;&gt;&#39;HcdGuideView/HcdGuideView.h&#39;&lt;/span&gt; file not found&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#import &amp;lt;HcdGuideView/HcdGuideView.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;^&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;unknown&amp;gt;:&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;: error: failed to import bridging header &lt;span class=&quot;string&quot;&gt;&#39;/Users/polesapp/.jenkins/workspace/qiangtoubao/qiangtoubao/OCFile/qiangtoubao-Bridging-Header.h&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;** BUILD FAILED **&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;集成项目是Swift项目，使用了Cocoapods导入一个自己写的一个Objective-C第三方库，所以需要用到桥接文件。在Xcode中运行没有任何问题，但是用Jenkins集成的时候却报错了。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h4&gt;&lt;p&gt;上述所报的错误已经写得十分明显了，错误的原因出在&lt;code&gt;#import &amp;lt;HcdGuideView/HcdGuideView.h&amp;gt;&lt;/code&gt;这一句，桥接文件中找不到&lt;code&gt;HcdGuideView.h&lt;/code&gt;这个文件。&lt;/p&gt;
+&lt;p&gt;所以最后的解决办法如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择target-BuildSettings-Search Paths下的User Header Search Paths，点击空白处，并且点击“＋”号添加一项，然后输入&lt;code&gt;$(PODS_ROOT)&lt;/code&gt;,选择：recursive（会在相应的目录递归搜索文件）,如下图所示：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&quot;/2016/08/04/Jenkins-iOS集成常见错误及解决办法/error_example_1.png&quot; alt=&quot;failed to import bridging header&quot; title=&quot;failed to import bridging header&quot;&gt;
+&lt;p&gt;这样就需要将&lt;code&gt;#import &amp;lt;HcdGuideView/HcdGuideView.h&amp;gt;&lt;/code&gt;替换成&lt;code&gt;#import &amp;quot;HcdGuideView.h&amp;quot;&lt;/code&gt;就可以了。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;问题一-failed-to-import-bridging-header&quot;&gt;&lt;a href=&quot;#问题一-failed-to-import-bridging-header&quot; class=&quot;headerlink&quot; title=&quot;问题一: failed to import bridging header&quot;&gt;&lt;/a&gt;问题一: failed to import bridging header&lt;/h3&gt;&lt;h4 id=&quot;问题详情&quot;&gt;&lt;a href=&quot;#问题详情&quot; class=&quot;headerlink&quot; title=&quot;问题详情&quot;&gt;&lt;/a&gt;问题详情&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Header.h:&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;: error: &lt;span class=&quot;string&quot;&gt;&#39;HcdGuideView/HcdGuideView.h&#39;&lt;/span&gt; file not found&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#import &amp;lt;HcdGuideView/HcdGuideView.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;^&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;unknown&amp;gt;:&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;: error: failed to import bridging header &lt;span class=&quot;string&quot;&gt;&#39;/Users/polesapp/.jenkins/workspace/qiangtoubao/qiangtoubao/OCFile/qiangtoubao-Bridging-Header.h&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;** BUILD FAILED **&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;集成项目是Swift项目，使用了Cocoapods导入一个自己写的一个Objective-C第三方库，所以需要用到桥接文件。在Xcode中运行没有任何问题，但是用Jenkins集成的时候却报错了。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="常见错误" scheme="http://www.jvaeyhcd.cc/tags/%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Swift学习笔记之高级运算符</title>
@@ -656,17 +686,78 @@
   </entry>
   
   <entry>
-    <title>使用Jenkins构建iOS持续集成自动打包</title>
+    <title>Jenkins+Cocoapods+Coding+Git+Fir iOS项目持续集成</title>
     <link href="http://www.jvaeyhcd.cc/2016/05/21/%E4%BD%BF%E7%94%A8Jenkins%E6%9E%84%E5%BB%BAiOS%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E8%87%AA%E5%8A%A8%E6%89%93%E5%8C%85/"/>
     <id>http://www.jvaeyhcd.cc/2016/05/21/使用Jenkins构建iOS持续集成自动打包/</id>
     <published>2016-05-21T07:48:50.000Z</published>
-    <updated>2016-05-21T07:55:25.000Z</updated>
+    <updated>2016-08-05T02:39:15.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;持续集成是一种软件开发实践，即团队开发成员经常集成它们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;为什么使用持续集成&quot;&gt;&lt;a href=&quot;#为什么使用持续集成&quot; class=&quot;headerlink&quot; title=&quot;为什么使用持续集成&quot;&gt;&lt;/a&gt;为什么使用持续集成&lt;/h3&gt;&lt;p&gt;1、减少重复繁琐的打包过程&lt;br&gt;2、任何时间、任何地点测试都可以获取到新包&lt;br&gt;3、增强项目的可见性&lt;/p&gt;
+&lt;p&gt;做持续集成对我们开发者来说是一件一劳永益的事情，对于发包这个问题，相信是每个程序员GG心中挥之不去的痛，而测试MM们也在每次马上就发出来的承诺中得出一个结论就是“你是个大骗子”。&lt;/p&gt;
+&lt;p&gt;所以每次被测试MM追着要包，产品经理说给我装一个新包瞧瞧呗，后台GG说给我装一个老版本调试一下啊。。。这个时候我们的内心是奔溃的，然后我们不得不暂停手下的工作，切换到某个版本，Archive。。。其实对于打包发包这种事情根本就不是开发需要做的，因为这是一个简单没有技术含量且浪费时间的工作。时间就是金钱，所以为了不再浪费我们开发宝贵的时间，自动化构建这件事情必须得提上日程了。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;常见的持续集成工具&quot;&gt;&lt;a href=&quot;#常见的持续集成工具&quot; class=&quot;headerlink&quot; title=&quot;常见的持续集成工具&quot;&gt;&lt;/a&gt;常见的持续集成工具&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://jenkins-ci.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Jenkins CI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://travis-ci.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Travis CI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://hudson-ci.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hudson CI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://circleci.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Circle CI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;持续集成的工具有很多，不过最好用的还是Jenkins，Travis能够对Github上的开源项目做很好的集成，考虑到Jenkins的稳定性，我们还是选择Jenkins来开始我的iOS持续集成。&lt;/p&gt;
+&lt;h3 id=&quot;工程结构&quot;&gt;&lt;a href=&quot;#工程结构&quot; class=&quot;headerlink&quot; title=&quot;工程结构&quot;&gt;&lt;/a&gt;工程结构&lt;/h3&gt;&lt;p&gt;本事例项目工程代码存放在coding，使用Cocoapods管理第三方库，存在在coding上的项目目录结构如下：&lt;br&gt;&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/coding.png&quot; alt=&quot;目录结构图&quot; title=&quot;目录结构图&quot;&gt;&lt;br&gt;由于cocoapods文件过多，所以没有必要上传到git仓库中，只用将Podfile文件传上去即可。&lt;/p&gt;
+&lt;h3 id=&quot;Jenkins的安装&quot;&gt;&lt;a href=&quot;#Jenkins的安装&quot; class=&quot;headerlink&quot; title=&quot;Jenkins的安装&quot;&gt;&lt;/a&gt;Jenkins的安装&lt;/h3&gt;&lt;p&gt;由于Jenkins是Java开发的，所以首先我们需要先安装好Java环境，然后去Jenkins的&lt;a href=&quot;http://jenkins-ci.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网&lt;/a&gt;下载最新的war包。下载完成后，打开终端，进入到war包所在目录，执行以下命令：&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;java -jar jenkins.war --httpPort=&lt;span class=&quot;number&quot;&gt;8888&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;httpPort指的就是Jenkins所使用的http端口，这里指定8888，可根据具体情况来修改。待Jenkins启动后，在浏览器页面输入以下地址:&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;http://localhost:&lt;span class=&quot;number&quot;&gt;8888&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这样就可以打开Jenkins页面了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;--httpPort=8888&lt;/code&gt;可以不输入，不输入默认端口号为8080&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;打开链接后，先要设置一些安装信息，这里就不再啰嗦，因为十分简单，接下来我们来看安装成功后的相关配置。&lt;/p&gt;
+&lt;h3 id=&quot;Jenkins的配置&quot;&gt;&lt;a href=&quot;#Jenkins的配置&quot; class=&quot;headerlink&quot; title=&quot;Jenkins的配置&quot;&gt;&lt;/a&gt;Jenkins的配置&lt;/h3&gt;&lt;p&gt;到Jenkins页面，Jenkins－系统管理－插件管理－可选插件中，安装一下插件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GIT plugin&lt;/li&gt;
+&lt;li&gt;Git client plugin&lt;/li&gt;
+&lt;li&gt;Xcode integration&lt;/li&gt;
+&lt;li&gt;CocoaPods Jenkins Integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;Git私有仓库配置&quot;&gt;&lt;a href=&quot;#Git私有仓库配置&quot; class=&quot;headerlink&quot; title=&quot;Git私有仓库配置&quot;&gt;&lt;/a&gt;Git私有仓库配置&lt;/h4&gt;&lt;p&gt;按照如下方式添加SSH，因为项目代码是存放在coding上的所以，这个关于生成SSH可以以Coding为例：&lt;a href=&quot;https://coding.net/help/doc/git/ssh-key.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://coding.net/help/doc/git/ssh-key.html&lt;/a&gt;&lt;/p&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/ssh_username_private_key.png&quot; alt=&quot;SSH 秘钥配置&quot; title=&quot;SSH 秘钥配置&quot;&gt;
+&lt;h4 id=&quot;创建Job&quot;&gt;&lt;a href=&quot;#创建Job&quot; class=&quot;headerlink&quot; title=&quot;创建Job&quot;&gt;&lt;/a&gt;创建Job&lt;/h4&gt;&lt;p&gt;这里的步骤我准备全部一图片的形式展示出来。&lt;/p&gt;
+&lt;p&gt;点击“Jenkins”－“新建”：&lt;/p&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/new_job.png&quot; alt=&quot;创建Job&quot; title=&quot;创建Job&quot;&gt;
+&lt;h4 id=&quot;源码管理&quot;&gt;&lt;a href=&quot;#源码管理&quot; class=&quot;headerlink&quot; title=&quot;源码管理&quot;&gt;&lt;/a&gt;源码管理&lt;/h4&gt;&lt;p&gt;选择刚刚创建的项目，点击“配置”：&lt;/p&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/set_code_source.png&quot; alt=&quot;设置源码地址&quot; title=&quot;设置源码地址&quot;&gt;
+&lt;p&gt;这里最好使用SSH，这个工程是私有项目，如果出现错误肯定是由你自己配置错误造成的。&lt;/p&gt;
+&lt;h4 id=&quot;构建步骤设置&quot;&gt;&lt;a href=&quot;#构建步骤设置&quot; class=&quot;headerlink&quot; title=&quot;构建步骤设置&quot;&gt;&lt;/a&gt;构建步骤设置&lt;/h4&gt;&lt;p&gt;选择构建步骤，记得添加Xcode插件，选择添加Execute Shell和Xcode，有先后顺序。&lt;/p&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/execte_config.png&quot; alt=&quot;添加构建步骤&quot; title=&quot;添加构建步骤&quot;&gt;
+&lt;p&gt;设置Execute Shell&lt;/p&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/execute_shell.png&quot; alt=&quot;Execute Shell&quot; title=&quot;Execute Shell&quot;&gt;
+&lt;h4 id=&quot;Xcode-General-build-settings&quot;&gt;&lt;a href=&quot;#Xcode-General-build-settings&quot; class=&quot;headerlink&quot; title=&quot;Xcode General build settings&quot;&gt;&lt;/a&gt;Xcode General build settings&lt;/h4&gt;&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/xcode_general_build_settings.png&quot; alt=&quot;General build settings&quot; title=&quot;General build settings&quot;&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/code_signing_OS_X_keychain_options.png&quot; alt=&quot;Code signing &amp; OS X keychain options&quot; title=&quot;Code signing &amp; OS X keychain options&quot;&gt;
+&lt;p&gt;Keychain path填写&lt;code&gt;${HOME}/Library/Keychains/login.keychain&lt;/code&gt;&lt;br&gt;Keychain password对应的密码可以在钥匙串中查看：&lt;/p&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/keychain.png&quot; alt=&quot;Code signing &amp; OS X keychain password查看方法&quot; title=&quot;Code signing &amp; OS X keychain password查看方法&quot;&gt;
+&lt;h4 id=&quot;Advanced-Xcode-build-options&quot;&gt;&lt;a href=&quot;#Advanced-Xcode-build-options&quot; class=&quot;headerlink&quot; title=&quot;Advanced Xcode build options&quot;&gt;&lt;/a&gt;Advanced Xcode build options&lt;/h4&gt;&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/xcode_build_options.png&quot; alt=&quot;Advanced Xcode build options&quot; title=&quot;Advanced Xcode build options&quot;&gt;
+&lt;h3 id=&quot;fir-im-Jenkins-插件安装&quot;&gt;&lt;a href=&quot;#fir-im-Jenkins-插件安装&quot; class=&quot;headerlink&quot; title=&quot;fir.im Jenkins 插件安装&quot;&gt;&lt;/a&gt;fir.im Jenkins 插件安装&lt;/h3&gt;&lt;p&gt;上面的构建配置好了后，如果顺利的话就已经能够编译出ipa文件了，但是编译出来的ipa只能放在本地，不能给大家安装，所以编译完成后我们还需要将ipa文件上传到fir.im。&lt;br&gt;fir插件的安装方法详情请移步：&lt;a href=&quot;http://blog.fir.im/jenkins/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《fir.im Jenkins 插件使用方法》&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;构建后上传到fir-im&quot;&gt;&lt;a href=&quot;#构建后上传到fir-im&quot; class=&quot;headerlink&quot; title=&quot;构建后上传到fir.im&quot;&gt;&lt;/a&gt;构建后上传到fir.im&lt;/h3&gt;&lt;p&gt;安装好fir插件后在“构建后操作”中点击“添加构建后操作步骤”，可以看到：&lt;/p&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/upload_fir.png&quot; alt=&quot;添加构建后上传fir步骤&quot; title=&quot;添加构建后上传fir步骤&quot;&gt;
+&lt;p&gt;点击“upload to fir.im”，然后会出现如下界面：&lt;/p&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/set_upload_fir.png&quot; alt=&quot;设置fir.im的Token&quot; title=&quot;设置fir.im的Token&quot;&gt;
+&lt;p&gt;Fir.im的Token获取地址：&lt;a href=&quot;http://fir.im/apps/apitoken&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://fir.im/apps/apitoken&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;手动构建&quot;&gt;&lt;a href=&quot;#手动构建&quot; class=&quot;headerlink&quot; title=&quot;手动构建&quot;&gt;&lt;/a&gt;手动构建&lt;/h3&gt;&lt;p&gt;选中你要构建的项目，然后点击“立即构建”&lt;/p&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/shoudong_goujian.png&quot; alt=&quot;手动构建&quot; title=&quot;手动构建&quot;&gt;
+&lt;p&gt;选择正在构建的Build，然后点击“Console Output”可以查看build过程中打印的一些信息，如果遇到什么报错信息都可以在这里面查看。&lt;/p&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/build_message.png&quot; alt=&quot;控制台输出&quot; title=&quot;控制台输出&quot;&gt;
+&lt;h3 id=&quot;自动构建设置&quot;&gt;&lt;a href=&quot;#自动构建设置&quot; class=&quot;headerlink&quot; title=&quot;自动构建设置&quot;&gt;&lt;/a&gt;自动构建设置&lt;/h3&gt;&lt;p&gt;构建触发器有一下几种触发方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;触发远程构建 (例如,使用脚本)&lt;/li&gt;
+&lt;li&gt;Build after other projects are built&lt;/li&gt;
+&lt;li&gt;Build periodically&lt;/li&gt;
+&lt;li&gt;Poll SCM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里我只用到了Build periodically&lt;/p&gt;
+&lt;img src=&quot;/2016/05/21/使用Jenkins构建iOS持续集成自动打包/zidong_goujian.png&quot; alt=&quot;Build periodically触发自动构建&quot; title=&quot;Build periodically触发自动构建&quot;&gt;
+&lt;h3 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h3&gt;&lt;p&gt;为了搭建这个Jenkins我看了很多博客，不过大多比较难懂，一直都没有成功，经过各种尝试后最终搭建成功，我在此将整个过程记录下来，以来是对自己知识的一个积累，二来如果能够给将要搭建Jenkins的iOS持续集成的朋友们一点帮助也是极好的。&lt;/p&gt;
 &lt;p&gt;参考文档：&lt;br&gt;&lt;a href=&quot;http://www.jianshu.com/p/c69deb29720d#&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;一步一步构建iOS持续集成:Jenkins+GitLab+蒲公英+FTP&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://rannie.github.io/ios/2014/12/29/xcodebuild-jenkins-ci.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;使用 Xcodebuild + Jenkins + Apache 做 iOS 持续集成&lt;/a&gt;&lt;/p&gt;
 </content>
     
@@ -676,6 +767,8 @@
 &lt;p&gt;持续集成是一种软件开发实践，即团队开发成员经常集成它们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;为什么使用持续集成&quot;&gt;&lt;a href=&quot;#为什么使用持续集成&quot; class=&quot;headerlink&quot; title=&quot;为什么使用持续集成&quot;&gt;&lt;/a&gt;为什么使用持续集成&lt;/h3&gt;&lt;p&gt;1、减少重复繁琐的打包过程&lt;br&gt;2、任何时间、任何地点测试都可以获取到新包&lt;br&gt;3、增强项目的可见性&lt;/p&gt;
+&lt;p&gt;做持续集成对我们开发者来说是一件一劳永益的事情，对于发包这个问题，相信是每个程序员GG心中挥之不去的痛，而测试MM们也在每次马上就发出来的承诺中得出一个结论就是“你是个大骗子”。&lt;/p&gt;
+&lt;p&gt;所以每次被测试MM追着要包，产品经理说给我装一个新包瞧瞧呗，后台GG说给我装一个老版本调试一下啊。。。这个时候我们的内心是奔溃的，然后我们不得不暂停手下的工作，切换到某个版本，Archive。。。其实对于打包发包这种事情根本就不是开发需要做的，因为这是一个简单没有技术含量且浪费时间的工作。时间就是金钱，所以为了不再浪费我们开发宝贵的时间，自动化构建这件事情必须得提上日程了。&lt;/p&gt;
     
     </summary>
     
@@ -1052,7 +1145,7 @@
     <link href="http://www.jvaeyhcd.cc/2016/04/11/Swift%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E6%B1%87%E6%80%BB/"/>
     <id>http://www.jvaeyhcd.cc/2016/04/11/Swift开源项目汇总/</id>
     <published>2016-04-11T07:06:52.000Z</published>
-    <updated>2016-05-21T07:32:52.000Z</updated>
+    <updated>2016-08-05T02:39:15.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;拥有着苹果先天生态优势的Swift自发布以来，各种优秀的开源项目便层出不穷。我站在个人的角度，将Swift开源项目做了一个甄别、筛选，从工具、存储、网络、界面、框架到Demo以及完整应用等，满满的干货。&lt;/p&gt;
@@ -1150,7 +1243,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/mozilla/firefox-ios&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;firefox-ios&lt;/a&gt;&lt;br&gt;来自Mozilla开发团队大型纯Swift项目&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/JakeLin/SwiftWeather&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SwiftWeather&lt;/a&gt;&lt;br&gt;清新淡雅持续改进天气预报项目&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/JakeLin/SwiftWeather&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SwiftWeather&lt;/a&gt;&lt;br&gt;清新淡雅持续改进天气预报项目&lt;br&gt;hcd是脑残&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 </content>
@@ -1212,40 +1305,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>关于UItableView的复用</title>
-    <link href="http://www.jvaeyhcd.cc/2016/04/05/%E5%85%B3%E4%BA%8EUItableView%E7%9A%84%E5%A4%8D%E7%94%A8/"/>
-    <id>http://www.jvaeyhcd.cc/2016/04/05/关于UItableView的复用/</id>
-    <published>2016-04-05T01:26:44.000Z</published>
-    <updated>2016-06-02T04:03:03.000Z</updated>
-    
-    <content type="html">&lt;p&gt;UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。&lt;/p&gt;
-&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;关于UItableView的复用机制大概是这样的：假设一个UItableView要加载10000条数据，但是一个屏幕最大只能展示3条数据（这里屏幕最多能展示的数据条数是根据UItableViewCell的高度来定的）。然后当你向上滑动，想要查看更多的内容，那么肯定需要一个cell放在已经存在的内容下边。这个时候并不会重新去创建一个UItableViewCell放在下面，而是根据cellIdetifier去内存池中拿到与之对应的UItableViewCell。&lt;/p&gt;
-&lt;h2 id=&quot;复用方式&quot;&gt;&lt;a href=&quot;#复用方式&quot; class=&quot;headerlink&quot; title=&quot;复用方式&quot;&gt;&lt;/a&gt;复用方式&lt;/h2&gt;&lt;p&gt;UItableView的复用方式有如下四种方式实现&lt;/p&gt;
-&lt;p&gt;方式一:&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;UITableViewCell&lt;/span&gt; *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!cell) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	cell=[[&lt;span class=&quot;built_in&quot;&gt;UITableViewCell&lt;/span&gt; alloc]initWithStyle:&lt;span class=&quot;built_in&quot;&gt;UITableViewCellStyleDefault&lt;/span&gt; reuseIdentifier:cellIdentifier]; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;方式二:UItableViewCell是xib写的&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;XXXTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt; == cell) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    cell = [[[&lt;span class=&quot;built_in&quot;&gt;NSBundle&lt;/span&gt; mainBundle]loadNibNamed:&lt;span class=&quot;string&quot;&gt;@&quot;XXXTableViewCell&quot;&lt;/span&gt; owner:&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt; options:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;]lastObject];  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    cell&lt;span class=&quot;variable&quot;&gt;.selectionStyle&lt;/span&gt;=&lt;span class=&quot;built_in&quot;&gt;UITableViewCellSelectionStyleNone&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [tableView registerNib:[&lt;span class=&quot;built_in&quot;&gt;UINib&lt;/span&gt; nibWithNibName:&lt;span class=&quot;string&quot;&gt;@&quot;XXXTableViewCell&quot;&lt;/span&gt; bundle:[&lt;span class=&quot;built_in&quot;&gt;NSBundle&lt;/span&gt; mainBundle]] forCellReuseIdentifier:cellIdentifier];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;方式三:在xib中identifier属性必须写上cellIdentifier ,对应代码中的cellIdentifier&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;XXTableViewCell *cell;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt; == cell) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    cell= [[[&lt;span class=&quot;built_in&quot;&gt;NSBundle&lt;/span&gt; mainBundle] loadNibNamed:&lt;span class=&quot;string&quot;&gt;@&quot;XXTableViewCell&quot;&lt;/span&gt; owner:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt; options:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;] lastObject];  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; cell;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;方式四：先register cell，然后复用&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#pragma mark - 初始化控件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;built_in&quot;&gt;UITableView&lt;/span&gt; *)tableView&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!_tableView) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _tableView = [[&lt;span class=&quot;built_in&quot;&gt;UITableView&lt;/span&gt; alloc]initWithFrame:&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.frame&lt;/span&gt; style:&lt;span class=&quot;built_in&quot;&gt;UITableViewStylePlain&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _tableView&lt;span class=&quot;variable&quot;&gt;.backgroundColor&lt;/span&gt; = kMainBgColor;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _tableView&lt;span class=&quot;variable&quot;&gt;.dataSource&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _tableView&lt;span class=&quot;variable&quot;&gt;.delegate&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _tableView&lt;span class=&quot;variable&quot;&gt;.separatorStyle&lt;/span&gt; = &lt;span class=&quot;built_in&quot;&gt;UITableViewCellSeparatorStyleNone&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [_tableView registerClass:[XXXCell_iPhone class] forCellReuseIdentifier:kCellIdentifier_XXXCell];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _tableView&lt;span class=&quot;variable&quot;&gt;.tableFooterView&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.loadingFooterView&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; _tableView;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;built_in&quot;&gt;UITableViewCell&lt;/span&gt; *)tableView:(&lt;span class=&quot;built_in&quot;&gt;UITableView&lt;/span&gt; *)tableView cellForRowAtIndexPath:(&lt;span class=&quot;built_in&quot;&gt;NSIndexPath&lt;/span&gt; *)indexPath&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//复用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    XXXCell_iPhone *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_XXXCell forIndexPath:indexPath];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    cell&lt;span class=&quot;variable&quot;&gt;.type&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.type&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [cell setExpressOrder:[_list safeObjectAtIndex:indexPath&lt;span class=&quot;variable&quot;&gt;.row&lt;/span&gt;] needTopView:indexPath&lt;span class=&quot;variable&quot;&gt;.row&lt;/span&gt; == &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; cell;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h2 id=&quot;常见问题&quot;&gt;&lt;a href=&quot;#常见问题&quot; class=&quot;headerlink&quot; title=&quot;常见问题&quot;&gt;&lt;/a&gt;常见问题&lt;/h2&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。&lt;/p&gt;
-&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;为了更清楚明白的描述UItableView的复用机制，我们先假设UItableView如果没有复用机制。如果UItableVIew没有复用机制，我们要展示10000条数据的的话，那就得生成10000条UItableViewCell，这样将会占用大量的内存，并且性能大家可以想象一下（这个UItableView滑动起来一定是相当的卡顿，非常影响用户体验）。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS学习笔记" scheme="http://www.jvaeyhcd.cc/categories/iOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="iOS" scheme="http://www.jvaeyhcd.cc/tags/iOS/"/>
-    
-      <category term="笔记" scheme="http://www.jvaeyhcd.cc/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
