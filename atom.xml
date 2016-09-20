@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-08-05T02:39:15.000Z</updated>
+  <updated>2016-09-20T05:22:04.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -16,11 +16,116 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用 Xcode 8 构建版本 iTunes Connect 获取不到应用程序的状态的解决办法</title>
+    <link href="http://www.jvaeyhcd.cc/2016/09/20/%E4%BD%BF%E7%94%A8-xcode-8-%E6%9E%84%E5%BB%BA%E7%89%88%E6%9C%AC-iTunes-Connect-%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%88%B0%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%8A%B6%E6%80%81%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://www.jvaeyhcd.cc/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/</id>
+    <published>2016-09-20T05:19:33.000Z</published>
+    <updated>2016-09-20T05:22:04.000Z</updated>
+    
+    <content type="html">&lt;p&gt;iOS10正式版本已发布，Xcode8也跟着就发布了，于是我就在第一时间将Xcode8和iOS10都更新了。但是一波需要适配的问题就来，有Xib的问题，还有很多界面上的问题，在iOS10上根本不能看。&lt;br&gt;通过半天的修改终于把界面适配好了，这时我以为iOS10的适配应该就到此为止了，于是我就Archive生成Release版本的ipa并将其提交到iTunesConnect，一切都是那么的顺利。然而事实并不是这样的，上传成功后我打开iTunesConnect网站登录我的开发账号，准备提交版本更新，然而我却找不到我之前提交的ipa。在app下的“活动”栏中的“所有构建版本”也没有我之前提交的版本。（这时我心想，我明明在Xcode中显示提交成功，为什么iTunesConnect中却不显示了，苹果也没有给出任何提示）&lt;/p&gt;
+&lt;p&gt;我发现构建版本左边的“+”号可点，点开“+”号后发现：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/905614-c52750828b24f91e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上面显示我之前提交的几个版本都是无效的，但是在Xcode提交时成功的啊，如果失败也应该给个提示啊。这次却没有任何提示，这肯定不应该啊，每次iTunesConnect中app的状态发生变化，苹果都会发送邮件的，于是我去查阅了一下苹果的邮件，还真有。邮件中有明确的写明：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/905614-7e346e4ec6a37fa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;于是我重新打开项目在Info.plist中添加了如下配置：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/905614-9df0785347c9212e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在iOS10上如果没有上述配置就使用相机、相册、麦克风程序会闪退的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;不知道还有没有其他原因，反正我就是这样解决的，再次做个笔记，同样也希望可以帮助到遇到相同问题的各位同行们。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iOS10正式版本已发布，Xcode8也跟着就发布了，于是我就在第一时间将Xcode8和iOS10都更新了。但是一波需要适配的问题就来，有Xib的问题，还有很多界面上的问题，在iOS10上根本不能看。&lt;br&gt;通过半天的修改终于把界面适配好了，这时我以为iOS10的适配应该就
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CGContextRef绘图－iOS球形波浪加载进度控件－HcdProcessView详解</title>
+    <link href="http://www.jvaeyhcd.cc/2016/09/20/CGContextRef%E7%BB%98%E5%9B%BE%EF%BC%8DiOS%E7%90%83%E5%BD%A2%E6%B3%A2%E6%B5%AA%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6%E6%8E%A7%E4%BB%B6%EF%BC%8DHcdProcessView%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://www.jvaeyhcd.cc/2016/09/20/CGContextRef绘图－iOS球形波浪加载进度控件－HcdProcessView详解/</id>
+    <published>2016-09-20T05:18:12.000Z</published>
+    <updated>2016-09-20T05:21:02.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/239a650bf73a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《iOS球形波浪加载进度控件－HcdProcessView》&lt;/a&gt;这篇文章已经展示了我在项目中编写的一个球形进度加载控件HcdProcessView，这篇文章我要简单介绍一下我的制作过程。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/905614-aad2c9e81a2873c7.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;p&gt;首先我放弃了使用通过改变图片的位置来实现上面的动画效果，虽然这样也可以实现如上的效果，但是从性能和资源消耗上来说都不是最好的选择。这里我采用了通过上下文（也就是CGContextRef）来绘制这样的效果，大家对它应该并不陌生，它既可以绘制直线、曲线、多边形圆形以及各种各样的几何图形。&lt;/p&gt;
+&lt;h2 id=&quot;具体步骤&quot;&gt;&lt;a href=&quot;#具体步骤&quot; class=&quot;headerlink&quot; title=&quot;具体步骤&quot;&gt;&lt;/a&gt;具体步骤&lt;/h2&gt;&lt;p&gt;我们可以将上面的复杂图形拆分成如下几步：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;绘制最外面的一圈刻度尺&lt;/li&gt;
+&lt;li&gt;绘制表示进度的刻度尺&lt;/li&gt;
+&lt;li&gt;绘制中间的球形加载界面&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;绘制刻度尺&quot;&gt;&lt;a href=&quot;#绘制刻度尺&quot; class=&quot;headerlink&quot; title=&quot;绘制刻度尺&quot;&gt;&lt;/a&gt;绘制刻度尺&lt;/h3&gt;&lt;p&gt;如果你先要在控件中绘制自己想要的图形，你需要重写UIView的&lt;code&gt;drawRect&lt;/code&gt;方法：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (void)drawRect:(CGRect)rect&amp;#10;&amp;#123;&amp;#10;&amp;#160; &amp;#160; CGContextRef context = UIGraphicsGetCurrentContext();&amp;#10;&amp;#160; &amp;#160; [self drawScale:context];&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;drawRect&lt;/code&gt;方法中，我们先画出了刻度尺的图形，刻度尺是由一圈短线在一个圆内围成的一个圆。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/**&amp;#10;&amp;#160;*&amp;#160; &amp;#30011;&amp;#27604;&amp;#20363;&amp;#23610;&amp;#10;&amp;#160;*&amp;#10;&amp;#160;*&amp;#160; @param context &amp;#20840;&amp;#23616;context&amp;#10;&amp;#160;*/&amp;#10;- (void)drawScale:(CGContextRef)context &amp;#123;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGContextSetLineWidth(context, _scaleDivisionsWidth);//&amp;#32447;&amp;#30340;&amp;#23485;&amp;#24230;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; //&amp;#20808;&amp;#23558;&amp;#21442;&amp;#29031;&amp;#28857;&amp;#31227;&amp;#21040;&amp;#25511;&amp;#20214;&amp;#20013;&amp;#24515;&amp;#10;&amp;#160; &amp;#160; CGContextTranslateCTM(context, fullRect.size.width / 2, fullRect.size.width / 2);&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; //&amp;#35774;&amp;#32622;&amp;#32447;&amp;#30340;&amp;#39068;&amp;#33394;&amp;#10;&amp;#160; &amp;#160; CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.655 green:0.710 blue:0.859 alpha:1.00].CGColor);//&amp;#32447;&amp;#26694;&amp;#39068;&amp;#33394;&amp;#10;&amp;#160; &amp;#160; //&amp;#32472;&amp;#21046;&amp;#19968;&amp;#20123;&amp;#22270;&amp;#24418;&amp;#10;&amp;#160; &amp;#160; for (int i = 0; i &amp;#60; _scaleCount; i++) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextMoveToPoint(context, scaleRect.size.width/2 - _scaleDivisionsLength, 0);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextAddLineToPoint(context, scaleRect.size.width/2, 0);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; //&amp;#160; &amp;#160; CGContextScaleCTM(ctx, 0.5, 0.5);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; //&amp;#28210;&amp;#26579;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextStrokePath(context);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextRotateCTM(context, 2 * M_PI / _scaleCount);&amp;#10;&amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; //&amp;#32472;&amp;#21046;&amp;#21051;&amp;#24230;&amp;#23610;&amp;#22806;&amp;#30340;&amp;#19968;&amp;#20010;&amp;#22280;&amp;#10;&amp;#160; &amp;#160; CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.694 green:0.745 blue:0.867 alpha:1.00].CGColor);//&amp;#32447;&amp;#26694;&amp;#39068;&amp;#33394;&amp;#10;&amp;#160; &amp;#160; CGContextSetLineWidth(context, 0.5);&amp;#10;&amp;#160; &amp;#160; CGContextAddArc (context, 0, 0, scaleRect.size.width/2 - _scaleDivisionsLength - 3, 0, M_PI* 2 , 0);&amp;#10;&amp;#160; &amp;#160; CGContextStrokePath(context);&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; //&amp;#22797;&amp;#21407;&amp;#21442;&amp;#29031;&amp;#28857;&amp;#10;&amp;#160; &amp;#160; CGContextTranslateCTM(context, -fullRect.size.width / 2, -fullRect.size.width / 2);&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这里需要用到两个东西一个是&lt;code&gt;CGContextAddArc&lt;/code&gt;，一个是&lt;code&gt;CGContextAddLineToPoint&lt;/code&gt;。创建圆弧的方法有两种一种是&lt;code&gt;CGContextAddArc&lt;/code&gt;，一种是&lt;code&gt;CGContextAddArcToPoint&lt;/code&gt;，这里画的圆比较简单所以用的是&lt;code&gt;CGContextAddArc&lt;/code&gt;,&lt;code&gt;CGContextAddArcToPoint&lt;/code&gt;在后面也会用到（我会在用到的地方详解）。&lt;/p&gt;
+&lt;h4 id=&quot;CGContextAddArc&quot;&gt;&lt;a href=&quot;#CGContextAddArc&quot; class=&quot;headerlink&quot; title=&quot;CGContextAddArc&quot;&gt;&lt;/a&gt;CGContextAddArc&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddArc (&amp;#10;&amp;#160;&amp;#160; CGContextRef c, &amp;#160; &amp;#160;&amp;#10;&amp;#160;&amp;#160; CGFloat x, &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; //&amp;#22278;&amp;#24515;&amp;#30340;x&amp;#22352;&amp;#26631;&amp;#10;&amp;#160;&amp;#160; CGFloat y, &amp;#160;&amp;#160;//&amp;#22278;&amp;#24515;&amp;#30340;x&amp;#22352;&amp;#26631;&amp;#10;&amp;#160;&amp;#160; CGFloat radius, &amp;#160;&amp;#160;//&amp;#22278;&amp;#30340;&amp;#21322;&amp;#24452;&amp;#10;&amp;#160;&amp;#160; CGFloat startAngle, &amp;#160; &amp;#160;//&amp;#24320;&amp;#22987;&amp;#24359;&amp;#24230;&amp;#10;&amp;#160;&amp;#160; CGFloat endAngle, &amp;#160;&amp;#160;//&amp;#32467;&amp;#26463;&amp;#24359;&amp;#24230;&amp;#10;&amp;#160;&amp;#160; int clockwise &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160;//0&amp;#34920;&amp;#31034;&amp;#39034;&amp;#26102;&amp;#38024;&amp;#65292;1&amp;#34920;&amp;#31034;&amp;#36870;&amp;#26102;&amp;#38024;&amp;#10;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里需要创建一个完整的圆，那么 开始弧度就是0 结束弧度是 2PI， 因为圆周长是 2&lt;em&gt;PI&lt;/em&gt;radius。函数执行完后，current point就被重置为(x,y)。&lt;code&gt;CGContextTranslateCTM(context, fullRect.size.width / 2, fullRect.size.width / 2);&lt;/code&gt;已经将current point移动到了&lt;code&gt;(fullRect.size.width / 2, fullRect.size.width / 2)&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;CGContextAddLineToPoint&quot;&gt;&lt;a href=&quot;#CGContextAddLineToPoint&quot; class=&quot;headerlink&quot; title=&quot;CGContextAddLineToPoint&quot;&gt;&lt;/a&gt;CGContextAddLineToPoint&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddLineToPoint (&amp;#10;&amp;#160;&amp;#160; CGContextRef c,&amp;#10;&amp;#160;&amp;#160; CGFloat x,&amp;#10;&amp;#160;&amp;#160; CGFloat y&amp;#10;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 创建一条直线，从current point到 (x,y)&lt;br&gt; 然后current point会变成(x,y)。&lt;br&gt;由于短线不连续，所以通过for循环来不断画短线，&lt;code&gt;_scaleCount&lt;/code&gt;代表的是刻度尺的个数，每次循环先将current point移动到&lt;code&gt;(scaleRect.size.width/2 - _scaleDivisionsLength, 0)&lt;/code&gt;点，&lt;code&gt;_scaleDivisionsLength&lt;/code&gt;代表短线的长度。绘制完短线后将前面绘制完成的图形旋转一个刻度尺的角度&lt;code&gt;CGContextRotateCTM(context, 2 * M_PI / _scaleCount);&lt;/code&gt;，将最终的绘制渲染后就得到了如下的刻度尺：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/905614-282356612ba9f28c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;刻度尺上的进度绘制&quot;&gt;&lt;a href=&quot;#刻度尺上的进度绘制&quot; class=&quot;headerlink&quot; title=&quot;刻度尺上的进度绘制&quot;&gt;&lt;/a&gt;刻度尺上的进度绘制&lt;/h3&gt;&lt;p&gt;首先在&lt;code&gt;drawRect&lt;/code&gt;中添加&lt;code&gt;drawProcessScale&lt;/code&gt;方法。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (void)drawRect:(CGRect)rect&amp;#10;&amp;#123;&amp;#10;&amp;#160; &amp;#160; CGContextRef context = UIGraphicsGetCurrentContext();&amp;#10;&amp;#160; &amp;#160; [self drawScale:context];&amp;#10;    [self drawProcessScale:context];&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后在&lt;code&gt;drawProcessScale&lt;/code&gt;方法中实现左右两部分的刻度尺进度绘制。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/**&amp;#10;&amp;#160;*&amp;#160; &amp;#27604;&amp;#20363;&amp;#23610;&amp;#36827;&amp;#24230;&amp;#10;&amp;#160;*&amp;#10;&amp;#160;*&amp;#160; @param context &amp;#20840;&amp;#23616;context&amp;#10;&amp;#160;*/&amp;#10;- (void)drawProcessScale:(CGContextRef)context &amp;#123;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGContextSetLineWidth(context, _scaleDivisionsWidth);//&amp;#32447;&amp;#30340;&amp;#23485;&amp;#24230;&amp;#10;&amp;#160; &amp;#160; CGContextTranslateCTM(context, fullRect.size.width / 2, fullRect.size.width / 2);&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.969 green:0.937 blue:0.227 alpha:1.00].CGColor);//&amp;#32447;&amp;#26694;&amp;#39068;&amp;#33394;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; int count = (_scaleCount / 2 + 1) * currentPercent;&amp;#10;&amp;#160; &amp;#160; CGFloat scaleAngle = 2 * M_PI / _scaleCount;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; //&amp;#32472;&amp;#21046;&amp;#24038;&amp;#36793;&amp;#21051;&amp;#24230;&amp;#36827;&amp;#24230;&amp;#10;&amp;#160; &amp;#160; for (int i = 0; i &amp;#60; count; i++) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextMoveToPoint(context, 0, scaleRect.size.width/2 - _scaleDivisionsLength);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextAddLineToPoint(context, 0, scaleRect.size.width/2);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; //&amp;#160; &amp;#160; CGContextScaleCTM(ctx, 0.5, 0.5);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; // &amp;#28210;&amp;#26579;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextStrokePath(context);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextRotateCTM(context, scaleAngle);&amp;#10;&amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160;&amp;#160; &amp;#160;//&amp;#32472;&amp;#21046;&amp;#21491;&amp;#36793;&amp;#21051;&amp;#24230;&amp;#36827;&amp;#24230;&amp;#10;&amp;#160; &amp;#160; CGContextRotateCTM(context, -count * scaleAngle);&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; for (int i = 0; i &amp;#60; count; i++) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextMoveToPoint(context, 0, scaleRect.size.width/2 - _scaleDivisionsLength);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextAddLineToPoint(context, 0, scaleRect.size.width/2);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; //&amp;#160; &amp;#160; CGContextScaleCTM(ctx, 0.5, 0.5);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; // &amp;#28210;&amp;#26579;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextStrokePath(context);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGContextRotateCTM(context, -scaleAngle);&amp;#10;&amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGContextTranslateCTM(context, -fullRect.size.width / 2, -fullRect.size.width / 2);&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;绘制完后效果如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/905614-e85a60e792a0c99d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;水的波浪效果绘制&quot;&gt;&lt;a href=&quot;#水的波浪效果绘制&quot; class=&quot;headerlink&quot; title=&quot;水的波浪效果绘制&quot;&gt;&lt;/a&gt;水的波浪效果绘制&lt;/h3&gt;&lt;p&gt;终于到了最主要也是最难的效果绘制了，对于带有波浪不断滚动的效果是采用NSTimer来不断绘制每一帧图形实现的，现在简单介绍下每一帧的绘制方法。&lt;br&gt;首先在&lt;code&gt;drawRect&lt;/code&gt;中添加&lt;code&gt;drawWave&lt;/code&gt;方法，&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (void)drawRect:(CGRect)rect&amp;#10;&amp;#123;&amp;#10;&amp;#160; &amp;#160; CGContextRef context = UIGraphicsGetCurrentContext();&amp;#10;&amp;#160; &amp;#160; [self drawScale:context];&amp;#10;    [self drawProcessScale:context];&amp;#10;    [self drawWave:context];&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;drawWave&lt;/code&gt;中实现如下方法：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/**&amp;#10;&amp;#160;*&amp;#160; &amp;#30011;&amp;#27874;&amp;#28010;&amp;#10;&amp;#160;*&amp;#10;&amp;#160;*&amp;#160; @param context &amp;#20840;&amp;#23616;context&amp;#10;&amp;#160;*/&amp;#10;- (void)drawWave:(CGContextRef)context &amp;#123;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGMutablePathRef frontPath = CGPathCreateMutable();&amp;#10;&amp;#160; &amp;#160; CGMutablePathRef backPath = CGPathCreateMutable();&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; //&amp;#30011;&amp;#27700;&amp;#10;&amp;#160; &amp;#160; CGContextSetLineWidth(context, 1);&amp;#10;&amp;#160; &amp;#160; CGContextSetFillColorWithColor(context, [_frontWaterColor CGColor]);&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGFloat offset = _scaleMargin + _waveMargin + _scaleDivisionsWidth;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; float frontY = currentLinePointY;&amp;#10;&amp;#160; &amp;#160; float backY = currentLinePointY;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGFloat radius = waveRect.size.width / 2;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGPoint frontStartPoint = CGPointMake(offset, currentLinePointY + offset);&amp;#10;&amp;#160; &amp;#160; CGPoint frontEndPoint = CGPointMake(offset, currentLinePointY + offset);&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGPoint backStartPoint = CGPointMake(offset, currentLinePointY + offset);&amp;#10;&amp;#160; &amp;#160; CGPoint backEndPoint = CGPointMake(offset, currentLinePointY + offset);&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; for(float x = 0; x &amp;#60;= waveRect.size.width; x++)&amp;#123;&amp;#10;&amp;#160;&amp;#160; &amp;#160; &amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; //&amp;#21069;&amp;#28010;&amp;#32472;&amp;#21046;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; frontY = a * sin( x / 180 * M_PI + 4 * b / M_PI ) * amplitude + currentLinePointY;&amp;#10;&amp;#160;&amp;#160; &amp;#160; &amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGFloat frontCircleY = frontY;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; if (currentLinePointY &amp;#60; radius) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; frontCircleY = radius - sqrt(pow(radius, 2) - pow((radius - x), 2));&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; if (frontY &amp;#60; frontCircleY) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; frontY = frontCircleY;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125; else if (currentLinePointY &amp;#62; radius) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; frontCircleY = radius + sqrt(pow(radius, 2) - pow((radius - x), 2));&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; if (frontY &amp;#62; frontCircleY) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; frontY = frontCircleY;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160;&amp;#160; &amp;#160; &amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; if (fabs(0 - x) &amp;#60; 0.001) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; frontStartPoint = CGPointMake(x + offset, frontY + offset);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; CGPathMoveToPoint(frontPath, NULL, frontStartPoint.x, frontStartPoint.y);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160;&amp;#160; &amp;#160; &amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; frontEndPoint = CGPointMake(x + offset, frontY + offset);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGPathAddLineToPoint(frontPath, nil, frontEndPoint.x, frontEndPoint.y);&amp;#10;&amp;#160;&amp;#160; &amp;#160; &amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; //&amp;#21518;&amp;#27874;&amp;#28010;&amp;#32472;&amp;#21046;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; backY = a * cos( x / 180 * M_PI + 3 * b / M_PI ) * amplitude + currentLinePointY;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGFloat backCircleY = backY;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; if (currentLinePointY &amp;#60; radius) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; backCircleY = radius - sqrt(pow(radius, 2) - pow((radius - x), 2));&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; if (backY &amp;#60; backCircleY) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; backY = backCircleY;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125; else if (currentLinePointY &amp;#62; radius) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; backCircleY = radius + sqrt(pow(radius, 2) - pow((radius - x), 2));&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; if (backY &amp;#62; backCircleY) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; backY = backCircleY;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160;&amp;#160; &amp;#160; &amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; if (fabs(0 - x) &amp;#60; 0.001) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; backStartPoint = CGPointMake(x + offset, backY + offset);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; CGPathMoveToPoint(backPath, NULL, backStartPoint.x, backStartPoint.y);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160;&amp;#160; &amp;#160; &amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; backEndPoint = CGPointMake(x + offset, backY + offset);&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; CGPathAddLineToPoint(backPath, nil, backEndPoint.x, backEndPoint.y);&amp;#10;&amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGPoint centerPoint = CGPointMake(fullRect.size.width / 2, fullRect.size.height / 2);&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; //&amp;#32472;&amp;#21046;&amp;#21069;&amp;#28010;&amp;#22278;&amp;#24359;&amp;#10;&amp;#160; &amp;#160; CGFloat frontStart = [self calculateRotateDegree:centerPoint point:frontStartPoint];&amp;#10;&amp;#160; &amp;#160; CGFloat frontEnd = [self calculateRotateDegree:centerPoint point:frontEndPoint];&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGPathAddArc(frontPath, nil, centerPoint.x, centerPoint.y, waveRect.size.width / 2, frontEnd, frontStart, 0);&amp;#10;&amp;#160; &amp;#160; CGContextAddPath(context, frontPath);&amp;#10;&amp;#160; &amp;#160; CGContextFillPath(context);&amp;#10;&amp;#160; &amp;#160; //&amp;#25512;&amp;#20837;&amp;#10;&amp;#160; &amp;#160; CGContextSaveGState(context);&amp;#10;&amp;#160; &amp;#160; CGContextDrawPath(context, kCGPathStroke);&amp;#10;&amp;#160; &amp;#160; CGPathRelease(frontPath);&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; //&amp;#32472;&amp;#21046;&amp;#21518;&amp;#28010;&amp;#22278;&amp;#24359;&amp;#10;&amp;#160; &amp;#160; CGFloat backStart = [self calculateRotateDegree:centerPoint point:backStartPoint];&amp;#10;&amp;#160; &amp;#160; CGFloat backEnd = [self calculateRotateDegree:centerPoint point:backEndPoint];&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGPathAddArc(backPath, nil, centerPoint.x, centerPoint.y, waveRect.size.width / 2, backEnd, backStart, 0);&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGContextSetFillColorWithColor(context, [_backWaterColor CGColor]);&amp;#10;&amp;#160; &amp;#160; CGContextAddPath(context, backPath);&amp;#10;&amp;#160; &amp;#160; CGContextFillPath(context);&amp;#10;&amp;#160; &amp;#160; //&amp;#25512;&amp;#20837;&amp;#10;&amp;#160; &amp;#160; CGContextSaveGState(context);&amp;#10;&amp;#160; &amp;#160; CGContextDrawPath(context, kCGPathStroke);&amp;#10;&amp;#160; &amp;#160; CGPathRelease(backPath);&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;上面的代码较长，可能也比较难以理解。下面我将会对上述代码简单解读一下，已前浪为例（前浪和后浪的实现方式基本一样，只是两个浪正余弦函数不一样而已）。两个浪都是由一条曲线和和一个圆弧构成的封闭区间，曲线的x区间为&lt;code&gt;[0, waveRect.size.width]&lt;/code&gt;，y值坐标为&lt;code&gt;frontY = a * sin( x / 180 * M_PI + 4 * b / M_PI ) * amplitude + currentLinePointY;&lt;/code&gt;(currentLinePointY为偏移量)，通过for循环自增x，计算出y的位置来不断&lt;code&gt;CGPathAddLineToPoint&lt;/code&gt;绘制出一条曲线，这就构成了波浪的曲线。然后我们需要根据波浪曲线的起始点和结束点以及圆心点(fullRect.size.width / 2, fullRect.size.height / 2)，来绘制一段封闭的圆弧。&lt;br&gt;这里就需要用到&lt;code&gt;CGPathAddArc&lt;/code&gt;方法；&lt;code&gt;CGPathAddArc&lt;/code&gt;方法和&lt;code&gt;CGContextAddArc&lt;/code&gt;类似。需要先计算出点波浪的起始点和结束点分别与圆心之间的夹角。知道两点计算夹角的方式如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/**&amp;#10;&amp;#160;*&amp;#160; &amp;#26681;&amp;#25454;&amp;#22278;&amp;#24515;&amp;#28857;&amp;#21644;&amp;#22278;&amp;#19978;&amp;#19968;&amp;#20010;&amp;#28857;&amp;#35745;&amp;#31639;&amp;#35282;&amp;#24230;&amp;#10;&amp;#160;*&amp;#10;&amp;#160;*&amp;#160; @param centerPoint &amp;#22278;&amp;#24515;&amp;#28857;&amp;#10;&amp;#160;*&amp;#160; @param point &amp;#160; &amp;#160; &amp;#160; &amp;#22278;&amp;#19978;&amp;#30340;&amp;#19968;&amp;#20010;&amp;#28857;&amp;#10;&amp;#160;*&amp;#10;&amp;#160;*&amp;#160; @return &amp;#35282;&amp;#24230;&amp;#10;&amp;#160;*/&amp;#10;- (CGFloat)calculateRotateDegree:(CGPoint)centerPoint point:(CGPoint)point &amp;#123;&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; CGFloat rotateDegree = asin(fabs(point.y - centerPoint.y) / (sqrt(pow(point.x - centerPoint.x, 2) + pow(point.y - centerPoint.y, 2))));&amp;#10;&amp;#160;&amp;#160; &amp;#160;&amp;#10;&amp;#160; &amp;#160; //&amp;#22914;&amp;#26524;point&amp;#32437;&amp;#22352;&amp;#26631;&amp;#22823;&amp;#20110;&amp;#21407;&amp;#28857;centerPoint&amp;#32437;&amp;#22352;&amp;#26631;(&amp;#22312;&amp;#31532;&amp;#19968;&amp;#21644;&amp;#31532;&amp;#20108;&amp;#35937;&amp;#38480;)&amp;#10;&amp;#160; &amp;#160; if (point.y &amp;#62; centerPoint.y) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; //&amp;#31532;&amp;#19968;&amp;#35937;&amp;#38480;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; if (point.x &amp;#62;= centerPoint.x) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; rotateDegree = rotateDegree;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; //&amp;#31532;&amp;#20108;&amp;#35937;&amp;#38480;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; else &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; rotateDegree = M_PI - rotateDegree;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160; &amp;#160; &amp;#125; else //&amp;#31532;&amp;#19977;&amp;#21644;&amp;#31532;&amp;#22235;&amp;#35937;&amp;#38480;&amp;#10;&amp;#160; &amp;#160; &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; if (point.x &amp;#60;= centerPoint.x) //&amp;#31532;&amp;#19977;&amp;#35937;&amp;#38480;&amp;#65292;&amp;#19981;&amp;#20570;&amp;#20219;&amp;#20309;&amp;#22788;&amp;#29702;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; rotateDegree = M_PI + rotateDegree;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; else //&amp;#31532;&amp;#22235;&amp;#35937;&amp;#38480;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; rotateDegree = 2 * M_PI - rotateDegree;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#160; &amp;#160; return rotateDegree;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&quot;波浪绘制的相关判断&quot;&gt;&lt;a href=&quot;#波浪绘制的相关判断&quot; class=&quot;headerlink&quot; title=&quot;波浪绘制的相关判断&quot;&gt;&lt;/a&gt;波浪绘制的相关判断&lt;/h4&gt;&lt;p&gt;由于曲线x区间是&lt;code&gt;[0, waveRect.size.width]&lt;/code&gt;，y值是根据公式&lt;code&gt;frontY = a * sin( x / 180 * M_PI + 4 * b / M_PI ) * amplitude + currentLinePointY;&lt;/code&gt;计算出来的，但是最终构成的波浪是一个球形的，所以对于计算出来的y值坐标，我们需要判断它是否在圆上，如果不在圆上，我们应该将它移到圆上。&lt;/p&gt;
+&lt;p&gt;判断分为两种情况：&lt;/p&gt;
+&lt;h5 id=&quot;currentLinePointY-lt-fullRect-size-height-2&quot;&gt;&lt;a href=&quot;#currentLinePointY-lt-fullRect-size-height-2&quot; class=&quot;headerlink&quot; title=&quot;currentLinePointY&amp;lt;fullRect.size.height / 2&quot;&gt;&lt;/a&gt;currentLinePointY&amp;lt;fullRect.size.height / 2&lt;/h5&gt;&lt;p&gt;当currentLinePointY&amp;lt;fullRect.size.height / 2时，已知点的坐标x，根据公式&lt;code&gt;y1 = a * sin( x / 180 * M_PI + 4 * b / M_PI ) * amplitude + currentLinePointY;&lt;/code&gt;算出来的点位置为(x, y1)，而在圆上点坐标为x的点的位置在(x,y2)，如果y1&amp;lt;y2 则最终应该放到波浪上的点为 &lt;code&gt;(x,y2)&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/905614-6d980e01c0a78df8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;currentLinePointY-gt-fullRect-size-height-2&quot;&gt;&lt;a href=&quot;#currentLinePointY-gt-fullRect-size-height-2&quot; class=&quot;headerlink&quot; title=&quot;currentLinePointY&amp;gt;fullRect.size.height / 2&quot;&gt;&lt;/a&gt;currentLinePointY&amp;gt;fullRect.size.height / 2&lt;/h5&gt;&lt;p&gt;同理当currentLinePointY&amp;gt;fullRect.size.height / 2时，已知点的坐标x，根据公式&lt;code&gt;y1 = a * sin( x / 180 * M_PI + 4 * b / M_PI ) * amplitude + currentLinePointY;&lt;/code&gt;算出来的点位置为(x, y1)，而在圆上点坐标为x的点的位置在(x,y2)，如果y1&amp;gt;y2 则最终应该放到波浪上的点为 &lt;code&gt;(x,y2)&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/905614-11de31e505d895a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;其中判断的代码如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;frontY = a * sin( x / 180 * M_PI + 4 * b / M_PI ) * amplitude + currentLinePointY;&amp;#10;&amp;#160;&amp;#160; &amp;#160; &amp;#160; &amp;#160;&amp;#10;CGFloat frontCircleY = frontY;&amp;#10;if (currentLinePointY &amp;#60; radius) &amp;#123;&amp;#10;&amp;#160; &amp;#160; frontCircleY = radius - sqrt(pow(radius, 2) - pow((radius - x), 2));&amp;#10;   &amp;#160;if (frontY &amp;#60; frontCircleY) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; frontY = frontCircleY;&amp;#10;&amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#125; else if (currentLinePointY &amp;#62; radius) &amp;#123;&amp;#10;&amp;#160; &amp;#160; frontCircleY = radius + sqrt(pow(radius, 2) - pow((radius - x), 2));&amp;#10;&amp;#160; &amp;#160; if (frontY &amp;#62; frontCircleY) &amp;#123;&amp;#10;&amp;#160; &amp;#160; &amp;#160; &amp;#160; frontY = frontCircleY;&amp;#10;&amp;#160; &amp;#160; &amp;#125;&amp;#10;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;其中当&lt;code&gt;currentLinePointY &amp;lt; radius&lt;/code&gt;时，&lt;code&gt;y2=radius - sqrt(pow(radius, 2) - pow((radius - x), 2))&lt;/code&gt;;&lt;br&gt;当&lt;code&gt;currentLinePointY &amp;gt; radius&lt;/code&gt;时，&lt;code&gt;y2=radius + sqrt(pow(radius, 2) - pow((radius - x), 2))&lt;/code&gt;；&lt;/p&gt;
+&lt;p&gt;这样就构成了一个如下的效果：&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/905614-cb9896a7ba570a22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;然后通过Timer不断的改变&lt;code&gt;a&lt;/code&gt;、&lt;code&gt;b&lt;/code&gt;的值就得到了我想要的动画效果。&lt;/p&gt;
+&lt;p&gt;Github地址：&lt;a href=&quot;https://github.com/Jvaeyhcd/HcdProcessView&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/Jvaeyhcd/HcdProcessView&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/239a650bf73a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《iOS球形波浪加载进度控件－HcdProcessView》&lt;/a&gt;这篇文章已经展示了我在项目中编写的一个球形进度加
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Jenkins+gradle+coding Android持续集成</title>
+    <link href="http://www.jvaeyhcd.cc/2016/08/08/Jenkins-gradle-coding-Android%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
+    <id>http://www.jvaeyhcd.cc/2016/08/08/Jenkins-gradle-coding-Android持续集成/</id>
+    <published>2016-08-08T09:27:36.000Z</published>
+    <updated>2016-09-06T09:18:04.000Z</updated>
+    
+    <content type="html">&lt;p&gt;等待更新,基本步骤与iOS配置相似。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;等待更新,基本步骤与iOS配置相似。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://www.jvaeyhcd.cc/tags/Android/"/>
+    
+      <category term="Jenkins" scheme="http://www.jvaeyhcd.cc/tags/Jenkins/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Jenkins+iOS集成常见错误及解决办法</title>
     <link href="http://www.jvaeyhcd.cc/2016/08/04/Jenkins-iOS%E9%9B%86%E6%88%90%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     <id>http://www.jvaeyhcd.cc/2016/08/04/Jenkins-iOS集成常见错误及解决办法/</id>
     <published>2016-08-04T01:36:07.000Z</published>
-    <updated>2016-08-05T02:39:15.000Z</updated>
+    <updated>2016-09-06T09:19:14.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;问题一-failed-to-import-bridging-header&quot;&gt;&lt;a href=&quot;#问题一-failed-to-import-bridging-header&quot; class=&quot;headerlink&quot; title=&quot;问题一: failed to import bridging header&quot;&gt;&lt;/a&gt;问题一: failed to import bridging header&lt;/h3&gt;&lt;h4 id=&quot;问题详情&quot;&gt;&lt;a href=&quot;#问题详情&quot; class=&quot;headerlink&quot; title=&quot;问题详情&quot;&gt;&lt;/a&gt;问题详情&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Header.h:&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;: error: &lt;span class=&quot;string&quot;&gt;&#39;HcdGuideView/HcdGuideView.h&#39;&lt;/span&gt; file not found&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#import &amp;lt;HcdGuideView/HcdGuideView.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;^&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;unknown&amp;gt;:&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;: error: failed to import bridging header &lt;span class=&quot;string&quot;&gt;&#39;/Users/polesapp/.jenkins/workspace/qiangtoubao/qiangtoubao/OCFile/qiangtoubao-Bridging-Header.h&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;** BUILD FAILED **&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;集成项目是Swift项目，使用了Cocoapods导入一个自己写的一个Objective-C第三方库，所以需要用到桥接文件。在Xcode中运行没有任何问题，但是用Jenkins集成的时候却报错了。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -40,6 +145,10 @@
     
     </summary>
     
+    
+      <category term="Jenkins" scheme="http://www.jvaeyhcd.cc/tags/Jenkins/"/>
+    
+      <category term="iOS" scheme="http://www.jvaeyhcd.cc/tags/iOS/"/>
     
       <category term="常见错误" scheme="http://www.jvaeyhcd.cc/tags/%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/"/>
     
@@ -1093,218 +1202,6 @@
     
     
       <category term="Mac" scheme="http://www.jvaeyhcd.cc/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Failed to Locate or Generate Matchin Signing Assets</title>
-    <link href="http://www.jvaeyhcd.cc/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/"/>
-    <id>http://www.jvaeyhcd.cc/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/</id>
-    <published>2016-04-18T08:58:38.000Z</published>
-    <updated>2016-04-27T11:33:01.000Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;发现问题&quot;&gt;&lt;a href=&quot;#发现问题&quot; class=&quot;headerlink&quot; title=&quot;发现问题&quot;&gt;&lt;/a&gt;发现问题&lt;/h2&gt;&lt;p&gt;刚开始还是好好的，突然就出现了标题的提示错误，首先签名是正确的，App ID也没有被占用的，但是在导出ipa的时候一直出现“Failed to locate or generate matchin signing assets”的提示信息。我也是醉得不行，有时能成功，有时不行，不知道苹果在搞什么鬼（不管他在搞什么，出现问题，还是不要一味的去抱怨，找解决办法才是真的）。&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/problem.png&quot; alt=&quot;问题详情&quot; title=&quot;问题详情&quot;&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;如何解决&quot;&gt;&lt;a href=&quot;#如何解决&quot; class=&quot;headerlink&quot; title=&quot;如何解决&quot;&gt;&lt;/a&gt;如何解决&lt;/h2&gt;&lt;p&gt;还是Google大法好，一下就找到了解决办法。&lt;/p&gt;
-&lt;p&gt;以下是我在网上找到了解决办法的详细步骤：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;首先创建一个文件夹，名字就叫Payload，&lt;a style=&quot;color:#4cc190&quot;&gt;一定要是Payload&lt;/a&gt;（如果你不信，可以换一个名字试试）。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;然后在Organizer中然后把 archive 出来的那个在 finder 打开。&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/export.png&quot; alt=&quot;Organizer中显示&quot; title=&quot;Organizer中显示&quot;&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;然后点击显示包内容。&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/show_in_finder.png&quot; alt=&quot;在Finder中显示&quot; title=&quot;在Finder中显示&quot;&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;把app 和 dsym 那两个文件拷贝到 Payload文件夹中。&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/product.png&quot; alt=&quot;product文件目录&quot; title=&quot;product文件目录&quot;&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/dSYMs.png&quot; alt=&quot;dSYMs文件目录&quot; title=&quot;dSYMs文件目录&quot;&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;然后对Payload压缩&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/zip.png&quot; alt=&quot;Payload压缩&quot; title=&quot;Payload压缩&quot;&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;最后将Playload.zip的后缀名改成ipa即可。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;以上的方法完全可以解决无法导出ipa的问题，但是导出ipa比export出来的包要大一些。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;发现问题&quot;&gt;&lt;a href=&quot;#发现问题&quot; class=&quot;headerlink&quot; title=&quot;发现问题&quot;&gt;&lt;/a&gt;发现问题&lt;/h2&gt;&lt;p&gt;刚开始还是好好的，突然就出现了标题的提示错误，首先签名是正确的，App ID也没有被占用的，但是在导出ipa的时候一直出现“Failed to locate or generate matchin signing assets”的提示信息。我也是醉得不行，有时能成功，有时不行，不知道苹果在搞什么鬼（不管他在搞什么，出现问题，还是不要一味的去抱怨，找解决办法才是真的）。&lt;/p&gt;
-&lt;img src=&quot;/2016/04/18/Failed-to-locate-or-generate-matchin-signing-assets/problem.png&quot; alt=&quot;问题详情&quot; title=&quot;问题详情&quot;&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Swift开源项目汇总</title>
-    <link href="http://www.jvaeyhcd.cc/2016/04/11/Swift%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E6%B1%87%E6%80%BB/"/>
-    <id>http://www.jvaeyhcd.cc/2016/04/11/Swift开源项目汇总/</id>
-    <published>2016-04-11T07:06:52.000Z</published>
-    <updated>2016-08-05T02:39:15.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;拥有着苹果先天生态优势的Swift自发布以来，各种优秀的开源项目便层出不穷。我站在个人的角度，将Swift开源项目做了一个甄别、筛选，从工具、存储、网络、界面、框架到Demo以及完整应用等，满满的干货。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;虽然现在对Swift还停留在入门水平，但是还是觉得有必要去网上收集一些优秀的Swift开源项目。&lt;/p&gt;
-&lt;h2 id=&quot;界面类&quot;&gt;&lt;a href=&quot;#界面类&quot; class=&quot;headerlink&quot; title=&quot;界面类&quot;&gt;&lt;/a&gt;界面类&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/raulriera/TextFieldEffects&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TextFieldEffects&lt;/a&gt;&lt;br&gt;你不觉得标准的UITextField有一点无聊吗？我也是——所以对TextFieldEffects说hello吧！&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/FahimF/FloatLabelFields&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;FloatLabelFields&lt;/a&gt;&lt;br&gt;带浮动标签的输入框&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/MortimerGoro/MGSwipeTableCell&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MGSwipeTableCell&lt;/a&gt;&lt;br&gt;另一个UI组件，在很多app里都常见，苹果应该考虑在iOS标准库里加入类似的东西。可滑动的table cell，这是这个pod最好的描述。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/lexrus/LTMorphingLabel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LTMorphingLabel&lt;/a&gt;&lt;br&gt;有超赞特效效果的Label&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ephread/Instructions&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Instructions&lt;/a&gt;&lt;br&gt;操作指引框架&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/mamaral/Onboard&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Onboard&lt;/a&gt;&lt;br&gt;启动导航界面，很方便的集成&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/SnapKit/SnapKit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SnapKit&lt;/a&gt;&lt;br&gt;Swift布局框架 在代码中纯手工创建约束灰常痛苦，但幸运的是我们有了SnapKit，在board中用上它，你可以简单直观地编写约束了&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;工具类&quot;&gt;&lt;a href=&quot;#工具类&quot; class=&quot;headerlink&quot; title=&quot;工具类&quot;&gt;&lt;/a&gt;工具类&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/nickoneill/PermissionScope&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PermissionScope&lt;/a&gt;&lt;br&gt;用这个库可以在询问用户前，就告知用户所需的系统权限，为用户带来更好的体验。接受度更高—&amp;gt;更多活跃用户-&amp;gt;更高的留存率-&amp;gt;数据更好-&amp;gt;下载率更高&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Quick/Quick&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Quick&lt;/a&gt;&lt;br&gt;Swift里的单元测试。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/saturngod/IAPHelper&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;IAPHelper&lt;/a&gt;&lt;br&gt;app内购带给我们很多陈词滥调的代码，用这个库就不需要了，把最有关交易金钱的普遍的任务从iOS用户到你的（或者你的公司的）钱包简单包装起来。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/SwiftyJSON/SwiftyJSON&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SwiftyJSON&lt;/a&gt;&lt;br&gt;GitHub上最为开发者认可的JSON解析类&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ankurp/Dollar&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dollar&lt;/a&gt;&lt;br&gt;Swift版Lo-Dash(或underscore)函数式工具库&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/DaveWoodCom/XCGLogger&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;XCGLogger&lt;/a&gt;&lt;br&gt;功能完整的日志管理类库&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/mattt/Surge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Surge&lt;/a&gt;&lt;br&gt;基于苹果Accelerate高性能计算框架封装库&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/duemunk/Async&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Async&lt;/a&gt;&lt;br&gt;简洁的后台执行代码封装库&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ArtSabintsev/Siren&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Siren&lt;/a&gt;&lt;br&gt;当应用更新时，通知用户并提供App Store链接&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Thomvis/BrightFutures&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;BrightFutures&lt;/a&gt;&lt;br&gt;漫长或复杂计算由独立线程异步来完成&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/tadija/AEXML&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AEXML&lt;/a&gt;&lt;br&gt;简单又易于的XML解析类及示例&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/andreamazz/AMScrollingNavbar&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AMScrollingNavbar&lt;/a&gt;&lt;br&gt;swift语言编写 上下滑动时动态隐藏标题栏&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;存储类&quot;&gt;&lt;a href=&quot;#存储类&quot; class=&quot;headerlink&quot; title=&quot;存储类&quot;&gt;&lt;/a&gt;存储类&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/stephencelis/SQLite.swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SQLite.swift&lt;/a&gt;&lt;br&gt;swift版本简单、轻量，使用上最SQL的SQLite封装库&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;网络类&quot;&gt;&lt;a href=&quot;#网络类&quot; class=&quot;headerlink&quot; title=&quot;网络类&quot;&gt;&lt;/a&gt;网络类&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Alamofire/Alamofire&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Alamofire&lt;/a&gt;&lt;br&gt;AFNetworking网络基础库Swift语言版&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/RxSwiftCommunity/RxAlamofire&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;RxAlamofire&lt;/a&gt;&lt;br&gt;对 Alamofire的封装，很是强大&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;基础工具类以及Category&quot;&gt;&lt;a href=&quot;#基础工具类以及Category&quot; class=&quot;headerlink&quot; title=&quot;基础工具类以及Category&quot;&gt;&lt;/a&gt;基础工具类以及Category&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/FabrizioBrancati/BFKit-Swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;BFKit Swift版本&lt;/a&gt;&lt;br&gt;国外的一个大神写的很好用的分类，比较齐全&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;图片类&quot;&gt;&lt;a href=&quot;#图片类&quot; class=&quot;headerlink&quot; title=&quot;图片类&quot;&gt;&lt;/a&gt;图片类&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Alamofire/AlamofireImage&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AlamofireImage&lt;/a&gt;&lt;br&gt;swift版本的SDWebImage&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/kaishin/ImageScout&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ImageScout&lt;/a&gt;&lt;br&gt;最小网络代价获得图片大小及类型&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/indragiek/DominantColor&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DominantColor&lt;/a&gt;&lt;br&gt;提取图片主色示例项目&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/gavinbunney/Toucan&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Toucan&lt;/a&gt;&lt;br&gt;小而美的图片变换及处理类&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/kaishin/gifu&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;gifu&lt;/a&gt;&lt;br&gt;高性能GIF显示类库&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Haneke/HanekeSwift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HanekeSwift&lt;/a&gt;&lt;br&gt;轻量带缓存高性能图片加载组件&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;框架类&quot;&gt;&lt;a href=&quot;#框架类&quot; class=&quot;headerlink&quot; title=&quot;框架类&quot;&gt;&lt;/a&gt;框架类&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ReactiveCocoa/ReactiveCocoa&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ReactiveCocoa&lt;/a&gt;&lt;br&gt;ReactiveCocoa带给我们一种完全不同的编程方式/结构，基于值的信号和流。这是完全的头脑风暴，首先你需要忘记你曾经学习的来理解它是如何工作的。这不是一个简单的任务，但是是有回报的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/MengTo/Spring&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Spring&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/robb/Cartography&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Cartography&lt;/a&gt;&lt;br&gt;基于代码级的自动布局封装框架&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/mutualmobile/MMWormhole&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MMWormhole&lt;/a&gt;&lt;br&gt;iOS扩展与宿主应用的通讯框架&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;示例项目&quot;&gt;&lt;a href=&quot;#示例项目&quot; class=&quot;headerlink&quot; title=&quot;示例项目&quot;&gt;&lt;/a&gt;示例项目&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/ochococo/Design-Patterns-In-Swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Design-Patterns-In-Swift&lt;/a&gt;&lt;br&gt;如何使用常用设计模式及示例&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/robb/hamburger-button&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hamburger-button&lt;/a&gt;&lt;br&gt;无论设计还是代码，都进行了精雕细琢&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;完整项目&quot;&gt;&lt;a href=&quot;#完整项目&quot; class=&quot;headerlink&quot; title=&quot;完整项目&quot;&gt;&lt;/a&gt;完整项目&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/tnantoka/edhita&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;edhita&lt;/a&gt;&lt;br&gt;支持Markdown, HTML预览的文本编辑器&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/mozilla/firefox-ios&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;firefox-ios&lt;/a&gt;&lt;br&gt;来自Mozilla开发团队大型纯Swift项目&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/JakeLin/SwiftWeather&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SwiftWeather&lt;/a&gt;&lt;br&gt;清新淡雅持续改进天气预报项目&lt;br&gt;hcd是脑残&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;拥有着苹果先天生态优势的Swift自发布以来，各种优秀的开源项目便层出不穷。我站在个人的角度，将Swift开源项目做了一个甄别、筛选，从工具、存储、网络、界面、框架到Demo以及完整应用等，满满的干货。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;虽然现在对Swift还停留在入门水平，但是还是觉得有必要去网上收集一些优秀的Swift开源项目。&lt;/p&gt;
-&lt;h2 id=&quot;界面类&quot;&gt;&lt;a href=&quot;#界面类&quot; class=&quot;headerlink&quot; title=&quot;界面类&quot;&gt;&lt;/a&gt;界面类&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/raulriera/TextFieldEffects&quot;&gt;TextFieldEffects&lt;/a&gt;&lt;br&gt;你不觉得标准的UITextField有一点无聊吗？我也是——所以对TextFieldEffects说hello吧！&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/FahimF/FloatLabelFields&quot;&gt;FloatLabelFields&lt;/a&gt;&lt;br&gt;带浮动标签的输入框&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="Swift" scheme="http://www.jvaeyhcd.cc/tags/Swift/"/>
-    
-      <category term="iOS" scheme="http://www.jvaeyhcd.cc/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS中造成dealloc不调用的原因</title>
-    <link href="http://www.jvaeyhcd.cc/2016/04/06/iOS%E4%B8%AD%E9%80%A0%E6%88%90dealloc%E4%B8%8D%E8%B0%83%E7%94%A8%E7%9A%84%E5%8E%9F%E5%9B%A0/"/>
-    <id>http://www.jvaeyhcd.cc/2016/04/06/iOS中造成dealloc不调用的原因/</id>
-    <published>2016-04-06T04:18:32.000Z</published>
-    <updated>2016-06-02T04:02:22.000Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)dealloc &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [_mapView release];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; dealloc];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//并且在界面将要显示的时候设置代理，将要消失的时候取消代理&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewWillAppear:(&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)animated &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    _mapView&lt;span class=&quot;variable&quot;&gt;.delegate&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewWillDisappear:(&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)animated &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    _mapView&lt;span class=&quot;variable&quot;&gt;.delegate&lt;/span&gt; = &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;以上给出的方法确实是对的，可以解决反复切换地图页面和地图上一级页面内存暴增造成的闪退问题。但是这里要说的不是这个问题，而是一个新的问题，我在dealloc中打了断点，但是dealloc根本就没有执行，所以mapView也就根本就没有释放，内存还是一样在暴增。为什么ViewController已经被pop了，而ViewController的dealloc方法却没有被调用？（按理说ViewController被pop的时候它的dealloc的方法应该被调用才对）。&lt;/p&gt;
-&lt;h2 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h2&gt;&lt;p&gt;通过Google搜索终于在晚上找到了答案（大家就不要用百度，想要快速准确的找到自己想要的答案推荐大家用google）。造成ViewController不释放的原因可能有很多。遇到dealloc不调用的时候只需要检查您的ViewController中是否存在以下几个问题：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;b&gt;ViewController中存在NSTimer&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt; 如果你的ViewController中有NSTimer，那么你就要注意了，因为当你调用&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;built_in&quot;&gt;NSTimer&lt;/span&gt; scheduledTimerWithTimeInterval:&lt;span class=&quot;number&quot;&gt;1.0&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                 target:&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                               selector:&lt;span class=&quot;keyword&quot;&gt;@selector&lt;/span&gt;(updateTime:) &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                               userInfo:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                repeats:&lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt; 时，这个&lt;a style=&quot;color: #FF00EE&quot;&gt;target:self&lt;/a&gt;就增加了ViewController的return count，如果你不将这个timer invalidate，将别想调用dealloc。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;b&gt;ViewController中有关的代理&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt; 一个比较隐秘的因素，你去找找与这个类有关的代理，有没有强引用属性？比如一个代理的delegate应该是 assign 的现在是retain，(╯‵□′)╯︵┻━┻，就是这个，它会影响你不让你调用dealloc，不信，就试试吧。（这个我还没有遇到过）。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;b&gt;ViewController中有Block&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt; 这个就是我我上面不进入dealloc的真正原因，Block体内使用实例变量也会造成循环引用，使得拥有这个实例的对象不能释放。&lt;br&gt; 例如你这个类叫OneViewController,有个属性是NSString *name; 如果你在block体中使用了self.name，那样子的话这个类就没法释放。&lt;br&gt; 要解决这个问题，MRC下只需&lt;/p&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;__block Viewcontroller *weakSelf = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt; ARC下将&lt;strong&gt;block 换为 &lt;/strong&gt;weak&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;目前我所知道的就以上三种情况，如果有什么错误的地方或者还存在的一些情况，欢迎大家来补充。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;最近在一个项目中用到了地图，发现在地图页面和上一个页面间反复切换回出现内存爆增的情况，就像吃了炫迈一样根本停不下来（直到app内存爆表，app闪退收场）。造成这一结果的根本原因是地图的mapView没有释放，导致每次打开地图界面的时候内存中都重新加载了一个地图mapView。于是在网上搜索了一番找到了解决办法，只需要在地图的ViewController中dealloc方法中释放掉mapView就行了。具体代码如下:&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)dealloc &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [_mapView release];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; dealloc];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//并且在界面将要显示的时候设置代理，将要消失的时候取消代理&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewWillAppear:(&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)animated &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    _mapView&lt;span class=&quot;variable&quot;&gt;.delegate&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewWillDisappear:(&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)animated &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    _mapView&lt;span class=&quot;variable&quot;&gt;.delegate&lt;/span&gt; = &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-    
-    </summary>
-    
     
   </entry>
   
