@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-09-22T02:16:34.000Z</updated>
+  <updated>2016-10-09T09:56:53.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Cocoapods无法search到库的解决办法</title>
+    <link href="http://www.jvaeyhcd.cc/2016/10/09/Cocoapods%E6%97%A0%E6%B3%95search%E5%88%B0%E5%BA%93%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://www.jvaeyhcd.cc/2016/10/09/Cocoapods无法search到库的解决办法/</id>
+    <published>2016-10-09T09:05:43.000Z</published>
+    <updated>2016-10-09T09:56:53.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;缘由&quot;&gt;&lt;a href=&quot;#缘由&quot; class=&quot;headerlink&quot; title=&quot;缘由&quot;&gt;&lt;/a&gt;缘由&lt;/h2&gt;&lt;p&gt;按照往常的方法一样安装Cocoapods，在安装的过程中遇到了一切问题，按照传统的命令&lt;code&gt;sudo gem install cocoapods&lt;/code&gt;出现了如下的错误：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ERROR:  While executing gem ... (Errno::EPERM)&amp;#10;    Operation not permitted - /usr/bin/pod&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后再&lt;a href=&quot;http://stackoverflow.com/questions/30812777/cannot-install-cocoa-pods-after-uninstalling-results-in-error/30851030#30851030&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;stackoverflow&lt;/a&gt;上找到了如下的解决办法:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo gem install -n /usr/local/bin cocoapods -v 1.0.1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;-v可以跟版本号，来按照您想安装的版本。&lt;br&gt;这就这样Cocopods安装成功了，当然如果您没有翻墙的话安装Cocoapods需要切换ruby源到&lt;a href=&quot;https://gems.ruby-china.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://gems.ruby-china.org&lt;/a&gt;，具体按照可以参考我的这篇文章&lt;a href=&quot;http://www.jvaeyhcd.cc/2016/02/20/CocoaPods%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&quot;&gt;《CocoaPods安装和使用教程》&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;当我以为一切就绪的时候，我&lt;code&gt;pod search RxSwift&lt;/code&gt;却提示我如下的错误：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[!] Unable to find a pod with name, author, summary, or descriptionmatching &amp;#39;&amp;#183;&amp;#183;&amp;#183;&amp;#183;&amp;#183;&amp;#183;&amp;#39;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对于有些类库确实是在Cocoapods中所不存在的，为了确定我们搜索的库是不是真的在Cocoapods的Repos中存在，我们可以到&lt;a href=&quot;https://cocoapods.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://cocoapods.org/&lt;/a&gt;中进行搜索。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h2&gt;&lt;p&gt;在记录一下自己的解决办法，同时分享一下自己的经验，希望能够帮助到大家。&lt;/p&gt;
+&lt;h3 id=&quot;执行pod-setup&quot;&gt;&lt;a href=&quot;#执行pod-setup&quot; class=&quot;headerlink&quot; title=&quot;执行pod setup&quot;&gt;&lt;/a&gt;执行pod setup&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;在终端输入&lt;code&gt;pod setup&lt;/code&gt;,会出现&lt;code&gt;Setting up CocoaPods master repo&lt;/code&gt;，等几分钟，会输入&lt;code&gt;Setup completed&lt;/code&gt;，说明&lt;code&gt;pod setup&lt;/code&gt;执行成功。&lt;/li&gt;
+&lt;li&gt;结果pod search还是失败&lt;/li&gt;
+&lt;li&gt;在终端输入&lt;code&gt;pod search RxSwift&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;依然还是提示&lt;code&gt;Unable to find a pod with name, author, summary, or descriptionmatching &amp;#39;RxSwift&amp;#39;&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;但是我输入&lt;code&gt;pod search pop&lt;/code&gt;，却有相应的结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;删除-Library-Caches-CocoaPods目录下的search-index-json文件&quot;&gt;&lt;a href=&quot;#删除-Library-Caches-CocoaPods目录下的search-index-json文件&quot; class=&quot;headerlink&quot; title=&quot;删除~/Library/Caches/CocoaPods目录下的search_index.json文件&quot;&gt;&lt;/a&gt;删除~/Library/Caches/CocoaPods目录下的search_index.json文件&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pod setup&lt;/code&gt;成功后会生成&lt;code&gt;~/Library/Caches/CocoaPods/search_index.json&lt;/code&gt;文件。&lt;/li&gt;
+&lt;li&gt;终端输入&lt;code&gt;rm ~/Library/Caches/CocoaPods/search_index.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除成功后再执行&lt;code&gt;pod search&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;执行pod-search&quot;&gt;&lt;a href=&quot;#执行pod-search&quot; class=&quot;headerlink&quot; title=&quot;执行pod search&quot;&gt;&lt;/a&gt;执行pod search&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;终端输入：&lt;code&gt;pod search RxSwift&lt;/code&gt;(不区分大小写)&lt;/li&gt;
+&lt;li&gt;输出：&lt;code&gt;Creating search index for spec repo &amp;#39;master&amp;#39;.. Done!&lt;/code&gt;，稍等片刻就会出现所有带RxSwift字段的类库出现。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;缘由&quot;&gt;&lt;a href=&quot;#缘由&quot; class=&quot;headerlink&quot; title=&quot;缘由&quot;&gt;&lt;/a&gt;缘由&lt;/h2&gt;&lt;p&gt;按照往常的方法一样安装Cocoapods，在安装的过程中遇到了一切问题，按照传统的命令&lt;code&gt;sudo gem install coco
+    
+    </summary>
+    
+    
+      <category term="Cocoapods" scheme="http://www.jvaeyhcd.cc/tags/Cocoapods/"/>
+    
+  </entry>
   
   <entry>
     <title>使用 Xcode 8 构建版本 iTunes Connect 获取不到应用程序的状态的解决办法</title>
@@ -1161,53 +1205,6 @@
     
     
       <category term="Swift" scheme="http://www.jvaeyhcd.cc/tags/Swift/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac基础：如何让Finder显示隐藏文件和文件夹</title>
-    <link href="http://www.jvaeyhcd.cc/2016/04/28/Mac%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%A9Finder%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
-    <id>http://www.jvaeyhcd.cc/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/</id>
-    <published>2016-04-28T01:43:25.000Z</published>
-    <updated>2016-04-28T07:27:34.000Z</updated>
-    
-    <content type="html">&lt;p&gt;有些人中喜欢折腾一些奇怪的东西（比如说我），使用git已经很长一段时间了，但是最近才发现在Finder中找不到.git的文件夹。原来这个东西是被隐藏了，那么现在问题来了，我要将隐藏的文件或者文件夹显示出来应该如何做呢？&lt;/p&gt;
-&lt;h2 id=&quot;让Finder显示隐藏文件和文件夹&quot;&gt;&lt;a href=&quot;#让Finder显示隐藏文件和文件夹&quot; class=&quot;headerlink&quot; title=&quot;让Finder显示隐藏文件和文件夹&quot;&gt;&lt;/a&gt;让Finder显示隐藏文件和文件夹&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;b&gt;第一步：&lt;/b&gt;打开「终端」应用程序（我推荐使用&lt;a href=&quot;https://www.iterm2.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iTerm&lt;/a&gt;,他比Mac自带终端好用很多）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;b&gt;第二步：&lt;/b&gt;输入如下命令，如图一所示：&lt;/p&gt;
-&lt;img src=&quot;/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/bash.png&quot; alt=&quot;图一&quot; title=&quot;图一&quot;&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;defaults write com.apple.finder AppleShowAllFiles -boolean &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt; ; killall Finder&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//OS X Mountain Lion 和早期版本命令如下：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;defaults write com.apple.finder AppleShowAllFiles TRUE ; killall Finder&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;b&gt;第三步：&lt;/b&gt;按下「Return」键确认。&lt;br&gt;现在你将会在 Finder 窗口中看到那些隐藏的文件和文件夹了。如图二所示：&lt;/p&gt;
-&lt;img src=&quot;/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/finder.png&quot; alt=&quot;图二&quot; title=&quot;图二&quot;&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;让Finder隐藏隐藏文件和文件夹&quot;&gt;&lt;a href=&quot;#让Finder隐藏隐藏文件和文件夹&quot; class=&quot;headerlink&quot; title=&quot;让Finder隐藏隐藏文件和文件夹&quot;&gt;&lt;/a&gt;让Finder隐藏隐藏文件和文件夹&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;只需要一步&lt;br&gt;如果你想再次隐藏原本的隐藏文件和文件夹的话，将上述命令替换成（图三）即可。&lt;/p&gt;
-&lt;img src=&quot;/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/show.png&quot; alt=&quot;图三&quot; title=&quot;图三&quot;&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;defaults write com.apple.finder AppleShowAllFiles -boolean &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt; ; killall Finder&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//OS X Mountain Lion 和早期版本命令如下：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;defaults write com.apple.finder AppleShowAllFiles FALSE ; killall Finder&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;最后看到的效果如图四所示：&lt;/p&gt;
-&lt;img src=&quot;/2016/04/28/Mac基础：如何让Finder显示隐藏文件和文件夹/hidefinder.png&quot; alt=&quot;图四&quot; title=&quot;图四&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;有些人中喜欢折腾一些奇怪的东西（比如说我），使用git已经很长一段时间了，但是最近才发现在Finder中找不到.git的文件夹。原来这个东西是被隐藏了，那么现在问题来了，我要将隐藏的文件或者文件夹显示出来应该如何做呢？&lt;/p&gt;
-&lt;h2 id=&quot;让Finder显示隐藏文件和文件夹&quot;&gt;&lt;a href=&quot;#让Finder显示隐藏文件和文件夹&quot; class=&quot;headerlink&quot; title=&quot;让Finder显示隐藏文件和文件夹&quot;&gt;&lt;/a&gt;让Finder显示隐藏文件和文件夹&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;b&gt;第一步：&lt;/b&gt;打开「终端」应用程序（我推荐使用&lt;a href=&quot;https://www.iterm2.com/&quot;&gt;iTerm&lt;/a&gt;,他比Mac自带终端好用很多）。&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Mac基础" scheme="http://www.jvaeyhcd.cc/categories/Mac%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="Mac" scheme="http://www.jvaeyhcd.cc/tags/Mac/"/>
     
   </entry>
   
