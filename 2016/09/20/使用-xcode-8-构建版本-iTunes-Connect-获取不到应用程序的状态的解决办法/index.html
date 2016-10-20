@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-c52750828b24f91e.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-7e346e4ec6a37fa2.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-9df0785347c9212e.png">
-<meta property="og:updated_time" content="2016-09-22T02:16:34.000Z">
+<meta property="og:updated_time" content="2016-10-20T02:07:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Xcode 8 构建版本 iTunes Connect 获取不到应用程序的状态的解决办法">
 <meta name="twitter:description" content="iOS10正式版本已发布，Xcode8也跟着就发布了，于是我就在第一时间将Xcode8和iOS10都更新了。但是一波需要适配的问题就来，有Xib的问题，还有很多界面上的问题，在iOS10上根本不能看。通过半天的修改终于把界面适配好了，这时我以为iOS10的适配应该就到此为止了，于是我就Archive生成Release版本的ipa并将其提交到iTunesConnect，一切都是那么的顺利。然而事实并">
@@ -338,6 +338,7 @@
 <p>我发现构建版本左边的“+”号可点，点开“+”号后发现：</p>
 <img src="/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-c52750828b24f91e.png" alt="905614-c52750828b24f91e.png" title="">
 <!-- ![](http://upload-images.jianshu.io/upload_images/905614-c52750828b24f91e.png) -->
+<a id="more"></a>
 <p>上面显示我之前提交的几个版本都是无效的，但是在Xcode提交时成功的啊，如果失败也应该给个提示啊。这次却没有任何提示，这肯定不应该啊，每次iTunesConnect中app的状态发生变化，苹果都会发送邮件的，于是我去查阅了一下苹果的邮件，还真有。邮件中有明确的写明：<br><img src="/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-7e346e4ec6a37fa2.png" alt="905614-7e346e4ec6a37fa2.png" title=""><br><!-- ![](http://upload-images.jianshu.io/upload_images/905614-7e346e4ec6a37fa2.png) --></p>
 <p>于是我重新打开项目在Info.plist中添加了如下配置：</p>
 <img src="/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-9df0785347c9212e.png" alt="905614-9df0785347c9212e.png" title="">
