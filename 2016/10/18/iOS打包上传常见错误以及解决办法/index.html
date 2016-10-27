@@ -106,7 +106,7 @@ ERROR ITMS-90535
 找到箭头所指向的一行,随后删掉 这一行 就可">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/10/18/iOS打包上传常见错误以及解决办法/QQ201610180.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/10/18/iOS打包上传常见错误以及解决办法/QQ201610181.png">
-<meta property="og:updated_time" content="2016-10-18T08:23:37.000Z">
+<meta property="og:updated_time" content="2016-10-27T03:03:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS打包上传常见错误以及解决办法">
 <meta name="twitter:description" content="关于打包上传至AppStore，大家都认为是最后一步了，其实到了这里往往会遇到很多的坑。对于踩过的坑我不想再踩第二篇，所以在此将我遇到的所有奇葩问题在此做一个记录，当作对自己的一个提醒，同时也分享给给位。
@@ -368,6 +368,8 @@ ERROR ITMS-90535
 <h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>podfile文件加入以下代码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">post_install <span class="keyword">do</span> |installer|</span><br><span class="line">    installer.pods_project.targets.each <span class="keyword">do</span> |target|</span><br><span class="line">        target.build_configurations.each <span class="keyword">do</span> |config|</span><br><span class="line">            config.build_settings[<span class="string">'ENABLE_BITCODE'</span>] = <span class="string">'NO'</span></span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>打包上传的时候，注意界面是否有复选框“include bitcode”，改成不勾选</p>
+<h2 id="ERROR-ITMS-90168"><a href="#ERROR-ITMS-90168" class="headerlink" title="ERROR ITMS-90168"></a>ERROR ITMS-90168</h2><p>关于这个错误网上给的所有解决办法都是如下的办法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.itmstransporter  </span><br><span class="line">$ rm update_check*  </span><br><span class="line">$ mv softwaresupport softwaresupport.bak  </span><br><span class="line">$ <span class="built_in">cd</span> UploadTokens  </span><br><span class="line">$ rm *.token</span><br></pre></td></tr></table></figure></p>
+<h2 id="ERROR-ITMS-4238"><a href="#ERROR-ITMS-4238" class="headerlink" title="ERROR ITMS-4238"></a>ERROR ITMS-4238</h2><p>出现这个错误的原因是iTunes Connect已经上传了一个相应版本号的包，然后现在上传的版本号没有修改，所以就出现了这个错误，解决办法十分简单，修改版本号，重新打包再上传就可以了。</p>
 
       
     </div>
@@ -576,7 +578,7 @@ ERROR ITMS-90535
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ERROR-ITMS-90535"><span class="nav-number">1.</span> <span class="nav-text">ERROR ITMS-90535</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERROR-ITMS-90635"><span class="nav-number">2.</span> <span class="nav-text">ERROR ITMS-90635</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">2.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二"><span class="nav-number">2.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法三"><span class="nav-number">2.3.</span> <span class="nav-text">方法三</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ERROR-ITMS-90535"><span class="nav-number">1.</span> <span class="nav-text">ERROR ITMS-90535</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERROR-ITMS-90635"><span class="nav-number">2.</span> <span class="nav-text">ERROR ITMS-90635</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">2.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二"><span class="nav-number">2.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法三"><span class="nav-number">2.3.</span> <span class="nav-text">方法三</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERROR-ITMS-90168"><span class="nav-number">3.</span> <span class="nav-text">ERROR ITMS-90168</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERROR-ITMS-4238"><span class="nav-number">4.</span> <span class="nav-text">ERROR ITMS-4238</span></a></li></ol></div>
             
           </div>
         </section>

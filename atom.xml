@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.jvaeyhcd.cc/"/>
-  <updated>2016-10-18T08:23:37.000Z</updated>
+  <updated>2016-10-27T03:03:06.000Z</updated>
   <id>http://www.jvaeyhcd.cc/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.jvaeyhcd.cc/2016/10/18/iOS%E6%89%93%E5%8C%85%E4%B8%8A%E4%BC%A0%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     <id>http://www.jvaeyhcd.cc/2016/10/18/iOS打包上传常见错误以及解决办法/</id>
     <published>2016-10-18T08:02:20.000Z</published>
-    <updated>2016-10-18T08:23:37.000Z</updated>
+    <updated>2016-10-27T03:03:06.000Z</updated>
     
     <content type="html">&lt;p&gt;关于打包上传至AppStore，大家都认为是最后一步了，其实到了这里往往会遇到很多的坑。对于踩过的坑我不想再踩第二篇，所以在此将我遇到的所有奇葩问题在此做一个记录，当作对自己的一个提醒，同时也分享给给位。&lt;/p&gt;
 &lt;h2 id=&quot;ERROR-ITMS-90535&quot;&gt;&lt;a href=&quot;#ERROR-ITMS-90535&quot; class=&quot;headerlink&quot; title=&quot;ERROR ITMS-90535&quot;&gt;&lt;/a&gt;ERROR ITMS-90535&lt;/h2&gt;&lt;ul&gt;
@@ -39,6 +39,8 @@
 &lt;h3 id=&quot;方法二&quot;&gt;&lt;a href=&quot;#方法二&quot; class=&quot;headerlink&quot; title=&quot;方法二&quot;&gt;&lt;/a&gt;方法二&lt;/h3&gt;&lt;p&gt;podfile文件加入以下代码：&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;post_install &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; |installer|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    installer.pods_project.targets.each &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; |target|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        target.build_configurations.each &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; |config|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            config.build_settings[&lt;span class=&quot;string&quot;&gt;&#39;ENABLE_BITCODE&#39;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;NO&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;方法三&quot;&gt;&lt;a href=&quot;#方法三&quot; class=&quot;headerlink&quot; title=&quot;方法三&quot;&gt;&lt;/a&gt;方法三&lt;/h3&gt;&lt;p&gt;打包上传的时候，注意界面是否有复选框“include bitcode”，改成不勾选&lt;/p&gt;
+&lt;h2 id=&quot;ERROR-ITMS-90168&quot;&gt;&lt;a href=&quot;#ERROR-ITMS-90168&quot; class=&quot;headerlink&quot; title=&quot;ERROR ITMS-90168&quot;&gt;&lt;/a&gt;ERROR ITMS-90168&lt;/h2&gt;&lt;p&gt;关于这个错误网上给的所有解决办法都是如下的办法：&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; ~/.itmstransporter  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ rm update_check*  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ mv softwaresupport softwaresupport.bak  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; UploadTokens  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ rm *.token&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;ERROR-ITMS-4238&quot;&gt;&lt;a href=&quot;#ERROR-ITMS-4238&quot; class=&quot;headerlink&quot; title=&quot;ERROR ITMS-4238&quot;&gt;&lt;/a&gt;ERROR ITMS-4238&lt;/h2&gt;&lt;p&gt;出现这个错误的原因是iTunes Connect已经上传了一个相应版本号的包，然后现在上传的版本号没有修改，所以就出现了这个错误，解决办法十分简单，修改版本号，重新打包再上传就可以了。&lt;/p&gt;
 </content>
     
     <summary type="html">
