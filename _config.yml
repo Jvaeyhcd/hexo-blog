@@ -1,0 +1,87 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site 站点信息
+title: Jvaeyhcd's Note
+subtitle: My Coding Note
+description: 好记性不如烂笔头
+author: Jvaeyhcd
+language: zh-Hans
+timezone:
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://www.jvaeyhcd.cc
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+
+# Directory 文件目录
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing 写博客配置
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: true # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+
+# Category & Tag 目录和标签
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format 时间和日期格式
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination 分页设置
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+auto_excerpt:
+  enable: true
+  length: 150 #默认截取的长度为 150 字符
+
+# Extensions 插件和皮肤
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+# theme: hcdexo
+theme: next
+# theme: fexo
+
+# Baidu Analytics ID
+baidu_analytics: 29df66b98641fa1eb4edb792fef116c9
+
+# Deployment 部署配置
+## Docs: https://hexo.io/docs/deployment.html
+#deploy:
+#  type: git
+#  repo: https://github.com/Jvaeyhcd/jvaeyhcd.github.io.git
+deploy:
+  type: git
+  # repo: https://git.coding.net/chedahuang/chedahuang.git
+  # branch: coding-pages
+  repo: https://github.com/Jvaeyhcd/jvaeyhcd.github.io.git
+  branch: master

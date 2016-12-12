@@ -1,0 +1,36 @@
+<!--<div>-->
+    <!--<span><%- post.date.format("YYYY-MM-DD") %></span>-->
+    <!--<a href="<%- config.root %><%- post.path %>"><%- post.title %></a>-->
+<!--</div>-->
+
+<!-- Post -->
+<div class="post">
+    <!-- Heading -->
+    <a href="<%- config.root %><%- post.path %>"><h1><%- post.title %></h1></a>
+    <hr>
+    <div class="in-content">
+        <!--<img class="right" src="img/post-img.jpg" alt="">-->
+        <p>
+            <%- post.excerpt %>
+        </p>
+        <a class="read-more" href="#">Read more</a>
+    </div>
+    <div class="foot-post">
+        <div class="units-row">
+            <div class="unit-100">
+                <%- post.tags.length %>
+                <% if (post.tags && post.tags.length > 0) { %>
+                <strong>Tags:</strong>
+                <% post.tags.each(function(tag){ %>
+                <a href="#"> <%- tag.name %> </a>
+                <% }); %>
+                <% } %>
+            </div>
+            <div class="unit-100">
+                <strong>COMMENTS:</strong>
+                <a href="#">3</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /post -->

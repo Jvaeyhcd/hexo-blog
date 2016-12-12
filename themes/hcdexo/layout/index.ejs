@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%- config.title %></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Salvador is free PSD &amp; HTML template by @flamekaizar">
+    <meta name="author" content="Afnizar Nur Ghifari">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%- css("/css/kube") %>
+    <%- css("/css/font-awesome") %>
+    <%- css("/css/custom") %>
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!-- Header -->
+<%- partial("_partial/header") %>
+
+<!-- Introduction -->
+<%- partial("_partial/home_introduction") %>
+
+<!-- Content -->
+<div class="content">
+    <div class="container">
+        <!-- Post -->
+        <% site.posts.sort("date", "desc").each(function(post){ %>
+        <%- partial("_partial/post_entry", {post: post}) %>
+        <% }) %>
+    </div>
+</div>
+
+<%- partial("_partial/footer") %>
+
+<!-- Javascript -->
+<%- js("/js/jquery.min.js")%>
+<%- js("/js/kube.min.js")%>
+</body>
+</html>
