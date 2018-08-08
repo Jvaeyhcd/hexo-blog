@@ -88,7 +88,7 @@ typedef struct objc_object *id;
 
 类对象中的元数据存储的是如何创建一个实例的相关信息，类对象和类方法都应该从哪里创建呢？就是从isa指针指向的结构体创建，类对象的isa指针指向的我们称之为元类（Meta Class），元类中保存了创建类对象以及类方法所需的所有信息。因此整个结构应该如下图所示：
 
-![Meta Class](https://user-gold-cdn.xitu.io/2018/4/1/1628088a3e4f0167?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+{% asset_img 1628088a3e4f0167 Meta Class %}
 
 通过上图我们可以看出整个体系构成了一个自闭环，`struct objc_object`结构体实例它的isa指针指向类对象，类对象的isa指向了元类，`super_class`指向了父类的类对象，而元类的`super_class`指向了父类的元类，那元类的isa又指向了自己。
 
@@ -204,9 +204,10 @@ struct objc_category {
   -(void)forwardInvocation:(NSInvocation *)anInvocation
   ```
 
-首先来看一张别人总结的一张图：
+消息转发流程简图：
 
-![Runtime转发流程简图](https://user-gold-cdn.xitu.io/2018/4/1/1628088a3e48a485?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+{% asset_img runtime_msg_send.svg 消息转发流程简图 %}
+
 
 ### 动态解析方法
 
