@@ -7,13 +7,14 @@
 
         <i class="dot dot-<%= i % 5%> "></i>
 
-        <div class="text">
-          <a class="project-url" href="<%= item.url || ''%>" target="_blank"><%= item.name || ''%></a>
-          <% if (item.star) { %>
-            <image src=<%= item.star || ''%>>
-          <% } %>
-
-          <span class="intro">- <%= item.intro || ''%></span>
+        <div style="flex-direction: column; display: flex;">
+          <div class="text" style="line-height: 20px;display: flex;flex-direction: row;">
+            <a style="padding-left: 10px;" class="project-url" href="<%= item.url || ''%>" target="_blank"><%= item.name || ''%></a>
+            <% if (item.star) { %>
+              <image style="padding-left: 10px;height: 20px;" src=<%= item.star || ''%>>
+            <% } %>
+          </div>
+          <span style="padding-left: 30px;" class="intro"><%= item.intro || ''%></span>
         </div>
 
       </li>

@@ -23,7 +23,7 @@ home_nav:
     url: https://github.com/Jvaeyhcd
     target_blank: true
   - name: Coding
-    url: https://coding.net/u/Jvaeyhcd
+    url: https://coding.net/u/chedahuang
     target_blank: true
 
 # config page nav
@@ -43,12 +43,9 @@ page_nav:
   - name: 关于
     url: /about/
     target_blank: false
-  - name: RSS
-    url: /atom.xml
-    target_blank: true # 在新页面打开
-  - name: 搜索
-    url: /search/
-    target_blank: false # 在新页面打开
+  # - name: 搜索
+  #   url: /search/
+  #   target_blank: false # 在新页面打开
 
 page_nav_style: CIRCLE  # CIRCLE|ROUND_RECT
 
@@ -104,9 +101,9 @@ post:
 # =========================================================
 
 # Custom CSS style
-personal_style: /css/personal-style.css
+# personal_style: /css/personal-style.css
 
-home_background_scheme: dark # dark、light
+home_background_scheme: light # dark、light
 
 # custom font-family 暂时只支持这3种英文字体，你可以完全自定义字体(看文档)
 # blog_name_font_familiy: calligraffittiregular
@@ -124,8 +121,8 @@ google_analytics:
 baidu_analytics: 29df66b98641fa1eb4edb792fef116c9
 
 # Comment service
-# disqus_shortname: jvaeyhcd
-duoshuo_shortname: jvaeyhcd
+disqus_shortname: jvaeyhcd
+# duoshuo_shortname: jvaeyhcd
 
 
 # =========================================================

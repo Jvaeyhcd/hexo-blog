@@ -74,8 +74,6 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Jvaeyhcd's Note" type="application/atom+xml" />
-
 
 
 
@@ -86,22 +84,18 @@
 
 
 
-<meta name="description" content="最新项目不算太忙，于是抽出了一点时间将以前项目中的使用的AVPlayer视频播放器做了一个简单的封装。现在我想把它做成CocoaPods方便以后的使用。下面我要详细的记录下我的制作过程。
-创建仓库本地仓库使用Xcode创建一个叫做HcdCachePlayer的工程，然后将相关的封装全部编写完毕。
-远程仓库在github上同样创建一个HcdCachePlayer,最好保持同名,需要注意的是,在创建仓">
+<meta name="description" content="最新项目不算太忙，于是抽出了一点时间将以前项目中的使用的AVPlayer视频播放器做了一个简单的封装。现在我想把它做成CocoaPods方便以后的使用。下面我要详细的记录下我的制作过程。 创建仓库本地仓库使用Xcode创建一个叫做HcdCachePlayer的工程，然后将相关的封装全部编写完毕。 远程仓库在github上同样创建一个HcdCachePlayer,最好保持同名,需要注意的是,在创建仓">
+<meta name="keywords" content="CocoaPods">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CocoaPods的制作过程">
 <meta property="og:url" content="http://www.jvaeyhcd.cc/2016/07/08/CocoaPods的制作过程/index.html">
-<meta property="og:site_name" content="Jvaeyhcd's Note">
-<meta property="og:description" content="最新项目不算太忙，于是抽出了一点时间将以前项目中的使用的AVPlayer视频播放器做了一个简单的封装。现在我想把它做成CocoaPods方便以后的使用。下面我要详细的记录下我的制作过程。
-创建仓库本地仓库使用Xcode创建一个叫做HcdCachePlayer的工程，然后将相关的封装全部编写完毕。
-远程仓库在github上同样创建一个HcdCachePlayer,最好保持同名,需要注意的是,在创建仓">
-<meta property="og:updated_time" content="2016-07-08T10:25:22.000Z">
+<meta property="og:site_name" content="Jvaeyhcd&#39;s Note">
+<meta property="og:description" content="最新项目不算太忙，于是抽出了一点时间将以前项目中的使用的AVPlayer视频播放器做了一个简单的封装。现在我想把它做成CocoaPods方便以后的使用。下面我要详细的记录下我的制作过程。 创建仓库本地仓库使用Xcode创建一个叫做HcdCachePlayer的工程，然后将相关的封装全部编写完毕。 远程仓库在github上同样创建一个HcdCachePlayer,最好保持同名,需要注意的是,在创建仓">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-01T05:48:48.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CocoaPods的制作过程">
-<meta name="twitter:description" content="最新项目不算太忙，于是抽出了一点时间将以前项目中的使用的AVPlayer视频播放器做了一个简单的封装。现在我想把它做成CocoaPods方便以后的使用。下面我要详细的记录下我的制作过程。
-创建仓库本地仓库使用Xcode创建一个叫做HcdCachePlayer的工程，然后将相关的封装全部编写完毕。
-远程仓库在github上同样创建一个HcdCachePlayer,最好保持同名,需要注意的是,在创建仓">
+<meta name="twitter:description" content="最新项目不算太忙，于是抽出了一点时间将以前项目中的使用的AVPlayer视频播放器做了一个简单的封装。现在我想把它做成CocoaPods方便以后的使用。下面我要详细的记录下我的制作过程。 创建仓库本地仓库使用Xcode创建一个叫做HcdCachePlayer的工程，然后将相关的封装全部编写完毕。 远程仓库在github上同样创建一个HcdCachePlayer,最好保持同名,需要注意的是,在创建仓">
 
 
 
@@ -226,32 +220,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
   
 </nav>
 
@@ -340,27 +311,27 @@
         <p>最新项目不算太忙，于是抽出了一点时间将以前项目中的使用的AVPlayer视频播放器做了一个简单的封装。现在我想把它做成CocoaPods方便以后的使用。下面我要详细的记录下我的制作过程。</p>
 <h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><h4 id="本地仓库"><a href="#本地仓库" class="headerlink" title="本地仓库"></a>本地仓库</h4><p>使用Xcode创建一个叫做HcdCachePlayer的工程，然后将相关的封装全部编写完毕。</p>
 <h4 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h4><p>在github上同样创建一个<code>HcdCachePlayer</code>,最好保持同名,需要注意的是,在创建仓库的时候需要添加<code>license</code>类型,这里我使用<code>license</code>类型为<code>MIT</code>。这个很简单就不再啰嗦了。<br><a id="more"></a></p>
-<h4 id="关联本地仓库到远程仓库"><a href="#关联本地仓库到远程仓库" class="headerlink" title="关联本地仓库到远程仓库"></a>关联本地仓库到远程仓库</h4><p>进入本地仓库目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/github/H<span class="built_in">cd</span>CachePlayer/</span><br></pre></td></tr></table></figure></p>
-<p>关联远程仓库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin https://github.com/Jvaeyhcd/H<span class="built_in">cd</span>CachePlayer.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></p>
+<h4 id="关联本地仓库到远程仓库"><a href="#关联本地仓库到远程仓库" class="headerlink" title="关联本地仓库到远程仓库"></a>关联本地仓库到远程仓库</h4><p>进入本地仓库目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/github/HcdCachePlayer/</span><br></pre></td></tr></table></figure></p>
+<p>关联远程仓库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin https://github.com/Jvaeyhcd/HcdCachePlayer.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></p>
 <h3 id="添加Pods依赖库所需文件"><a href="#添加Pods依赖库所需文件" class="headerlink" title="添加Pods依赖库所需文件"></a>添加Pods依赖库所需文件</h3><p>依赖库所需的文件格式为<code>{project}.podspec</code>格式，每个Pods依赖库必须有这个描述文件。</p>
-<h4 id="添加-project-podspec文件"><a href="#添加-project-podspec文件" class="headerlink" title="添加{project}.podspec文件"></a>添加{project}.podspec文件</h4><p>使用pod命令创建<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec create H<span class="built_in">cd</span>CachePlayer</span><br></pre></td></tr></table></figure></p>
+<h4 id="添加-project-podspec文件"><a href="#添加-project-podspec文件" class="headerlink" title="添加{project}.podspec文件"></a>添加{project}.podspec文件</h4><p>使用pod命令创建<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec create HcdCachePlayer</span><br></pre></td></tr></table></figure></p>
 <p>这样就生成了HcdCachePlayer.podspec文件，打开该文件添加内容，并删除不需要的后就像这样：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Pod::Spec.new <span class="keyword">do</span> |s|</span><br><span class="line">  s.name         = <span class="string">"HcdCachePlayer"</span></span><br><span class="line">  s.version      = <span class="string">"0.0.1"</span></span><br><span class="line">  s.summary      = <span class="string">"一个带缓存的视频播放器HcdCachePlayer"</span></span><br><span class="line">  s.description  = &lt;&lt;-DESC</span><br><span class="line">  一个使用AVPlayer封装的带缓存的视频播放器,支持全屏，可以左右滑动手势快进快退，上下滑动手势调节屏幕亮度</span><br><span class="line">                   DESC</span><br><span class="line">  s.homepage     = <span class="string">"https://github.com/Jvaeyhcd/HcdCachePlayer"</span></span><br><span class="line">  s.license      = &#123; :<span class="built_in">type</span> =&gt; <span class="string">"MIT"</span>, :file =&gt; <span class="string">"LICENSE"</span> &#125;</span><br><span class="line">  s.author             = &#123; <span class="string">"Jvaeyhcd"</span> =&gt; <span class="string">"chedahuang@icloud.com"</span> &#125;</span><br><span class="line">  s.platform     = :ios, <span class="string">'7.0'</span></span><br><span class="line">  s.source       = &#123; :git =&gt; <span class="string">"https://github.com/Jvaeyhcd/HcdCachePlayer.git"</span>, :tag =&gt; s.version.to_s &#125;</span><br><span class="line">  s.source_files  = <span class="string">"hcdCachePlayer/**/*.&#123;h,m&#125;"</span></span><br><span class="line">  s.resource  = <span class="string">"hcdCachePlayer/hcdCachePlayer.bundle"</span></span><br><span class="line">  s.frameworks = <span class="string">"UIKit"</span>, <span class="string">"AVFoundation"</span>, <span class="string">"MobileCoreServices"</span>, <span class="string">"Foundation"</span></span><br><span class="line">  s.requires_arc = <span class="literal">true</span></span><br><span class="line">  s.dependency <span class="string">"Masonry"</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
-<p>s.source_files指向循环滚动的核心代码放在项目的s.hcdCachePlayer/<em>*/</em>.{h,m},所以这里最好将库代码都放在同一个目录下。</p>
+<p>s.source_files指向循环滚动的核心代码放在项目的s.hcdCachePlayer/*<em>/</em>.{h,m},所以这里最好将库代码都放在同一个目录下。</p>
 <h3 id="提交到github"><a href="#提交到github" class="headerlink" title="提交到github"></a>提交到github</h3><p>此时编码已经完成了，并且配置好了相关文件我们可以先将代码提交到github上了。</p>
 <h4 id="Pods验证"><a href="#Pods验证" class="headerlink" title="Pods验证"></a>Pods验证</h4><p>提交之前我们需要先验证一下HcdCachePlayer.podspec文件。在HcdCachePlayer.podspec所在目录运行如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib lint</span><br></pre></td></tr></table></figure></p>
 <p>如果出现ERROR和WARING都会失败，如果失败会明确指明哪个地方出错了，按提示修改就可以了。</p>
 <h4 id="提交代码到Github"><a href="#提交代码到Github" class="headerlink" title="提交代码到Github"></a>提交代码到Github</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"version 0.0.1"</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<p>打上标签<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag <span class="number">0.0</span>.<span class="number">1</span></span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure></p>
+<p>打上标签<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag 0.0.1</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure></p>
 <p>不出问题的话,就可以在github上看到最新提交的内容了。</p>
-<h3 id="上传-project-podspec到CocoaPods官方仓库中"><a href="#上传-project-podspec到CocoaPods官方仓库中" class="headerlink" title="上传{project}.podspec到CocoaPods官方仓库中"></a>上传{project}.podspec到CocoaPods官方仓库中</h3><p>要想一个HcdCachePlayer真正可以用,就得把生成的HcdCachePlayer.podspec文件提交到Cocoapods官方的<a href="https://github.com/CocoaPods/Specs" target="_blank" rel="external">Specs</a>仓库中,才能被search到并使用。</p>
+<h3 id="上传-project-podspec到CocoaPods官方仓库中"><a href="#上传-project-podspec到CocoaPods官方仓库中" class="headerlink" title="上传{project}.podspec到CocoaPods官方仓库中"></a>上传{project}.podspec到CocoaPods官方仓库中</h3><p>要想一个HcdCachePlayer真正可以用,就得把生成的HcdCachePlayer.podspec文件提交到Cocoapods官方的<a href="https://github.com/CocoaPods/Specs" target="_blank" rel="noopener">Specs</a>仓库中,才能被search到并使用。</p>
 <blockquote>
-<p>之前的提交方式是先将<a href="https://github.com/CocoaPods/Specs" target="_blank" rel="external">Specs</a>仓库fork一份，添加修改，然后push，等待审核，这种显示是不安全的，所以现在不能使用了。也就是这篇文章：<a href="http://blog.csdn.net/wzzvictory/article/details/20067595" target="_blank" rel="external">《CocoaPods详解之—-制作篇》</a>中说提到的方法，注意这个方法已经不能使用了。</p>
+<p>之前的提交方式是先将<a href="https://github.com/CocoaPods/Specs" target="_blank" rel="noopener">Specs</a>仓库fork一份，添加修改，然后push，等待审核，这种显示是不安全的，所以现在不能使用了。也就是这篇文章：<a href="http://blog.csdn.net/wzzvictory/article/details/20067595" target="_blank" rel="noopener">《CocoaPods详解之—-制作篇》</a>中说提到的方法，注意这个方法已经不能使用了。</p>
 </blockquote>
-<p>CocoaPods为我们提供了另外一个更加安全的方法<a href="http://blog.cocoapods.org/CocoaPods-Trunk/#transition" target="_blank" rel="external">Trunk</a>。</p>
+<p>CocoaPods为我们提供了另外一个更加安全的方法<a href="http://blog.cocoapods.org/CocoaPods-Trunk/#transition" target="_blank" rel="noopener">Trunk</a>。</p>
 <h4 id="Trunk的Register"><a href="#Trunk的Register" class="headerlink" title="Trunk的Register"></a>Trunk的Register</h4><p>如果第一次使用的话那么就需要注册了，需要CocoaPods0.33版本以上才支持<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk register *youremail* *yourname* --description=<span class="string">'iMac'</span> --verbose</span><br></pre></td></tr></table></figure></p>
 <p>以上命令是注册所需的,替换你的邮箱,用户名,以及描述内容, –verbose可以输入详细的debug。</p>
 <p>注册完成后可以使用一下命令查看注册信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure></p>
-<h4 id="提交-project-podspec"><a href="#提交-project-podspec" class="headerlink" title="提交{project}.podspec"></a>提交{project}.podspec</h4><p>在{project}.podspec文件的路径下执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk push H<span class="built_in">cd</span>CachePlayer.podspec</span><br></pre></td></tr></table></figure></p>
+<h4 id="提交-project-podspec"><a href="#提交-project-podspec" class="headerlink" title="提交{project}.podspec"></a>提交{project}.podspec</h4><p>在{project}.podspec文件的路径下执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk push HcdCachePlayer.podspec</span><br></pre></td></tr></table></figure></p>
 <p>这条命令做了如下三件事:</p>
 <ul>
 <li>验证本地的podspec文件,也可以使用 pod lib lint验证</li>
@@ -368,13 +339,13 @@
 <li>将{project}.podspec文件转为{poject}.podspec.json文件</li>
 </ul>
 <p>如果没有报错那么就成功了。</p>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>终端执行 pod search HcdCachePlayer就可以找到了,如果没有找到 pod setup再试一下。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-&gt; H<span class="built_in">cd</span>CachePlayer (<span class="number">0.0</span>.<span class="number">1</span>)</span><br><span class="line">   一个带缓存的视频播放器H<span class="built_in">cd</span>CachePlayer</span><br><span class="line">   pod <span class="string">'HcdCachePlayer'</span>, <span class="string">'~&gt; 0.0.1'</span></span><br><span class="line">   - Homepage: https://github.com/Jvaeyhcd/H<span class="built_in">cd</span>CachePlayer</span><br><span class="line">   - Source:   https://github.com/Jvaeyhcd/H<span class="built_in">cd</span>CachePlayer.git</span><br><span class="line">   - Versions: <span class="number">0.0</span>.<span class="number">1</span> [master repo]</span><br><span class="line">(END)</span><br></pre></td></tr></table></figure></p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>终端执行 pod search HcdCachePlayer就可以找到了,如果没有找到 pod setup再试一下。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-&gt; HcdCachePlayer (0.0.1)</span><br><span class="line">   一个带缓存的视频播放器HcdCachePlayer</span><br><span class="line">   pod <span class="string">'HcdCachePlayer'</span>, <span class="string">'~&gt; 0.0.1'</span></span><br><span class="line">   - Homepage: https://github.com/Jvaeyhcd/HcdCachePlayer</span><br><span class="line">   - Source:   https://github.com/Jvaeyhcd/HcdCachePlayer.git</span><br><span class="line">   - Versions: 0.0.1 [master repo]</span><br><span class="line">(END)</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>这里遇到一个问题创建成功了，但是另外一台电脑却收不到。</p>
 </blockquote>
-<h4 id="协同工作"><a href="#协同工作" class="headerlink" title="协同工作"></a>协同工作</h4><p>当需要其他人来共同维护你的代码,需要提供权限。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk add-owner H<span class="built_in">cd</span>CachePlayer *email*</span><br></pre></td></tr></table></figure></p>
+<h4 id="协同工作"><a href="#协同工作" class="headerlink" title="协同工作"></a>协同工作</h4><p>当需要其他人来共同维护你的代码,需要提供权限。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk add-owner HcdCachePlayer *email*</span><br></pre></td></tr></table></figure></p>
 <p>参考文章：</p>
-<p><a href="http://foggry.com/blog/2016/03/23/cocoapods-xiang-jie-zhi-geng-xin-pian/" target="_blank" rel="external">CocoaPods 详解之—-更新篇</a></p>
+<p><a href="http://foggry.com/blog/2016/03/23/cocoapods-xiang-jie-zhi-geng-xin-pian/" target="_blank" rel="noopener">CocoaPods 详解之—-更新篇</a></p>
 
       
     </div>
@@ -429,25 +400,6 @@
 
 
     <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="2016/07/08/CocoaPods的制作过程/"
-     data-title="CocoaPods的制作过程"
-     data-content=""
-     data-url="http://www.jvaeyhcd.cc/2016/07/08/CocoaPods的制作过程/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
       
     </div>
   </div>
@@ -506,7 +458,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -531,13 +483,6 @@
 
         </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
         
 
         <div class="links-of-author motion-element">
@@ -612,7 +557,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -758,135 +703,6 @@
 
   
   
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.json";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
   
 
   

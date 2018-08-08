@@ -74,8 +74,6 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Jvaeyhcd's Note" type="application/atom+xml" />
-
 
 
 
@@ -90,15 +88,17 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Xcode 8 构建版本 iTunes Connect 获取不到应用程序的状态的解决办法">
 <meta property="og:url" content="http://www.jvaeyhcd.cc/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/index.html">
-<meta property="og:site_name" content="Jvaeyhcd's Note">
+<meta property="og:site_name" content="Jvaeyhcd&#39;s Note">
 <meta property="og:description" content="iOS10正式版本已发布，Xcode8也跟着就发布了，于是我就在第一时间将Xcode8和iOS10都更新了。但是一波需要适配的问题就来，有Xib的问题，还有很多界面上的问题，在iOS10上根本不能看。通过半天的修改终于把界面适配好了，这时我以为iOS10的适配应该就到此为止了，于是我就Archive生成Release版本的ipa并将其提交到iTunesConnect，一切都是那么的顺利。然而事实并">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-c52750828b24f91e.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-7e346e4ec6a37fa2.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-9df0785347c9212e.png">
-<meta property="og:updated_time" content="2016-10-20T02:07:15.000Z">
+<meta property="og:updated_time" content="2018-03-01T05:48:48.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Xcode 8 构建版本 iTunes Connect 获取不到应用程序的状态的解决办法">
 <meta name="twitter:description" content="iOS10正式版本已发布，Xcode8也跟着就发布了，于是我就在第一时间将Xcode8和iOS10都更新了。但是一波需要适配的问题就来，有Xib的问题，还有很多界面上的问题，在iOS10上根本不能看。通过半天的修改终于把界面适配好了，这时我以为iOS10的适配应该就到此为止了，于是我就Archive生成Release版本的ipa并将其提交到iTunesConnect，一切都是那么的顺利。然而事实并">
+<meta name="twitter:image" content="http://www.jvaeyhcd.cc/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-c52750828b24f91e.png">
 
 
 
@@ -223,32 +223,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
   
 </nav>
 
@@ -336,12 +313,12 @@
       
         <p>iOS10正式版本已发布，Xcode8也跟着就发布了，于是我就在第一时间将Xcode8和iOS10都更新了。但是一波需要适配的问题就来，有Xib的问题，还有很多界面上的问题，在iOS10上根本不能看。<br>通过半天的修改终于把界面适配好了，这时我以为iOS10的适配应该就到此为止了，于是我就Archive生成Release版本的ipa并将其提交到iTunesConnect，一切都是那么的顺利。然而事实并不是这样的，上传成功后我打开iTunesConnect网站登录我的开发账号，准备提交版本更新，然而我却找不到我之前提交的ipa。在app下的“活动”栏中的“所有构建版本”也没有我之前提交的版本。（这时我心想，我明明在Xcode中显示提交成功，为什么iTunesConnect中却不显示了，苹果也没有给出任何提示）</p>
 <p>我发现构建版本左边的“+”号可点，点开“+”号后发现：</p>
-<img src="/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-c52750828b24f91e.png" alt="905614-c52750828b24f91e.png" title="">
+<img src="/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-c52750828b24f91e.png">
 <!-- ![](http://upload-images.jianshu.io/upload_images/905614-c52750828b24f91e.png) -->
 <a id="more"></a>
-<p>上面显示我之前提交的几个版本都是无效的，但是在Xcode提交时成功的啊，如果失败也应该给个提示啊。这次却没有任何提示，这肯定不应该啊，每次iTunesConnect中app的状态发生变化，苹果都会发送邮件的，于是我去查阅了一下苹果的邮件，还真有。邮件中有明确的写明：<br><img src="/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-7e346e4ec6a37fa2.png" alt="905614-7e346e4ec6a37fa2.png" title=""><br><!-- ![](http://upload-images.jianshu.io/upload_images/905614-7e346e4ec6a37fa2.png) --></p>
+<p>上面显示我之前提交的几个版本都是无效的，但是在Xcode提交时成功的啊，如果失败也应该给个提示啊。这次却没有任何提示，这肯定不应该啊，每次iTunesConnect中app的状态发生变化，苹果都会发送邮件的，于是我去查阅了一下苹果的邮件，还真有。邮件中有明确的写明：<br><img src="/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-7e346e4ec6a37fa2.png"><br><!-- ![](http://upload-images.jianshu.io/upload_images/905614-7e346e4ec6a37fa2.png) --></p>
 <p>于是我重新打开项目在Info.plist中添加了如下配置：</p>
-<img src="/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-9df0785347c9212e.png" alt="905614-9df0785347c9212e.png" title="">
+<img src="/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/905614-9df0785347c9212e.png">
 <!-- ![](http://upload-images.jianshu.io/upload_images/905614-9df0785347c9212e.png) -->
 <blockquote>
 <p>在iOS10上如果没有上述配置就使用相机、相册、麦克风程序会闪退的。</p>
@@ -395,25 +372,6 @@
 
 
     <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/"
-     data-title="使用 Xcode 8 构建版本 iTunes Connect 获取不到应用程序的状态的解决办法"
-     data-content=""
-     data-url="http://www.jvaeyhcd.cc/2016/09/20/使用-xcode-8-构建版本-iTunes-Connect-获取不到应用程序的状态的解决办法/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
       
     </div>
   </div>
@@ -472,7 +430,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -497,13 +455,6 @@
 
         </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
         
 
         <div class="links-of-author motion-element">
@@ -578,7 +529,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -724,135 +675,6 @@
 
   
   
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.json";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
   
 
   

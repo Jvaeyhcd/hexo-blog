@@ -74,8 +74,6 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Jvaeyhcd's Note" type="application/atom+xml" />
-
 
 
 
@@ -86,18 +84,14 @@
 
 
 
-<meta name="description" content="持续集成是一种软件开发实践，即团队开发成员经常集成它们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。
-
-为什么使用持续集成1、减少重复繁琐的打包过程2、任何时间、任何地点测试都可以获取到新包3、增强项目的可见性
-做持续集成对我们开发者来说是一件一劳永益的事情，对于发包这个问题，相信是每">
+<meta name="description" content="持续集成是一种软件开发实践，即团队开发成员经常集成它们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。  为什么使用持续集成1、减少重复繁琐的打包过程2、任何时间、任何地点测试都可以获取到新包3、增强项目的可见性 做持续集成对我们开发者来说是一件一劳永益的事情，对于发包这个问题，相信是">
+<meta name="keywords" content="Jenkins">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jenkins+Cocoapods+Coding+Git+Fir iOS项目持续集成">
 <meta property="og:url" content="http://www.jvaeyhcd.cc/2016/05/21/使用Jenkins构建iOS持续集成自动打包/index.html">
-<meta property="og:site_name" content="Jvaeyhcd's Note">
-<meta property="og:description" content="持续集成是一种软件开发实践，即团队开发成员经常集成它们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。
-
-为什么使用持续集成1、减少重复繁琐的打包过程2、任何时间、任何地点测试都可以获取到新包3、增强项目的可见性
-做持续集成对我们开发者来说是一件一劳永益的事情，对于发包这个问题，相信是每">
+<meta property="og:site_name" content="Jvaeyhcd&#39;s Note">
+<meta property="og:description" content="持续集成是一种软件开发实践，即团队开发成员经常集成它们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。  为什么使用持续集成1、减少重复繁琐的打包过程2、任何时间、任何地点测试都可以获取到新包3、增强项目的可见性 做持续集成对我们开发者来说是一件一劳永益的事情，对于发包这个问题，相信是">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/21/使用Jenkins构建iOS持续集成自动打包/coding.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/21/使用Jenkins构建iOS持续集成自动打包/ssh_username_private_key.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/21/使用Jenkins构建iOS持续集成自动打包/new_job.png">
@@ -113,13 +107,11 @@
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/21/使用Jenkins构建iOS持续集成自动打包/shoudong_goujian.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/21/使用Jenkins构建iOS持续集成自动打包/build_message.png">
 <meta property="og:image" content="http://www.jvaeyhcd.cc/2016/05/21/使用Jenkins构建iOS持续集成自动打包/zidong_goujian.png">
-<meta property="og:updated_time" content="2016-08-05T02:39:15.000Z">
+<meta property="og:updated_time" content="2018-03-01T05:48:48.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins+Cocoapods+Coding+Git+Fir iOS项目持续集成">
-<meta name="twitter:description" content="持续集成是一种软件开发实践，即团队开发成员经常集成它们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。
-
-为什么使用持续集成1、减少重复繁琐的打包过程2、任何时间、任何地点测试都可以获取到新包3、增强项目的可见性
-做持续集成对我们开发者来说是一件一劳永益的事情，对于发包这个问题，相信是每">
+<meta name="twitter:description" content="持续集成是一种软件开发实践，即团队开发成员经常集成它们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。  为什么使用持续集成1、减少重复繁琐的打包过程2、任何时间、任何地点测试都可以获取到新包3、增强项目的可见性 做持续集成对我们开发者来说是一件一劳永益的事情，对于发包这个问题，相信是">
+<meta name="twitter:image" content="http://www.jvaeyhcd.cc/2016/05/21/使用Jenkins构建iOS持续集成自动打包/coding.png">
 
 
 
@@ -244,32 +236,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
   
 </nav>
 
@@ -363,15 +332,15 @@
 <p>所以每次被测试MM追着要包，产品经理说给我装一个新包瞧瞧呗，后台GG说给我装一个老版本调试一下啊。。。这个时候我们的内心是奔溃的，然后我们不得不暂停手下的工作，切换到某个版本，Archive。。。其实对于打包发包这种事情根本就不是开发需要做的，因为这是一个简单没有技术含量且浪费时间的工作。时间就是金钱，所以为了不再浪费我们开发宝贵的时间，自动化构建这件事情必须得提上日程了。</p>
 <a id="more"></a>
 <h3 id="常见的持续集成工具"><a href="#常见的持续集成工具" class="headerlink" title="常见的持续集成工具"></a>常见的持续集成工具</h3><ul>
-<li><a href="https://jenkins-ci.org" target="_blank" rel="external">Jenkins CI</a></li>
-<li><a href="https://travis-ci.com/" target="_blank" rel="external">Travis CI</a></li>
-<li><a href="http://hudson-ci.org/" target="_blank" rel="external">Hudson CI</a></li>
-<li><a href="https://circleci.com/" target="_blank" rel="external">Circle CI</a></li>
+<li><a href="https://jenkins-ci.org" target="_blank" rel="noopener">Jenkins CI</a></li>
+<li><a href="https://travis-ci.com/" target="_blank" rel="noopener">Travis CI</a></li>
+<li><a href="http://hudson-ci.org/" target="_blank" rel="noopener">Hudson CI</a></li>
+<li><a href="https://circleci.com/" target="_blank" rel="noopener">Circle CI</a></li>
 </ul>
 <p>持续集成的工具有很多，不过最好用的还是Jenkins，Travis能够对Github上的开源项目做很好的集成，考虑到Jenkins的稳定性，我们还是选择Jenkins来开始我的iOS持续集成。</p>
-<h3 id="工程结构"><a href="#工程结构" class="headerlink" title="工程结构"></a>工程结构</h3><p>本事例项目工程代码存放在coding，使用Cocoapods管理第三方库，存在在coding上的项目目录结构如下：<br><img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/coding.png" alt="目录结构图" title="目录结构图"><br>由于cocoapods文件过多，所以没有必要上传到git仓库中，只用将Podfile文件传上去即可。</p>
-<h3 id="Jenkins的安装"><a href="#Jenkins的安装" class="headerlink" title="Jenkins的安装"></a>Jenkins的安装</h3><p>由于Jenkins是Java开发的，所以首先我们需要先安装好Java环境，然后去Jenkins的<a href="http://jenkins-ci.org/" target="_blank" rel="external">官网</a>下载最新的war包。下载完成后，打开终端，进入到war包所在目录，执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar jenkins.war --httpPort=<span class="number">8888</span></span><br></pre></td></tr></table></figure></p>
-<p>httpPort指的就是Jenkins所使用的http端口，这里指定8888，可根据具体情况来修改。待Jenkins启动后，在浏览器页面输入以下地址:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:<span class="number">8888</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="工程结构"><a href="#工程结构" class="headerlink" title="工程结构"></a>工程结构</h3><p>本事例项目工程代码存放在coding，使用Cocoapods管理第三方库，存在在coding上的项目目录结构如下：<br><img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/coding.png" title="目录结构图"><br>由于cocoapods文件过多，所以没有必要上传到git仓库中，只用将Podfile文件传上去即可。</p>
+<h3 id="Jenkins的安装"><a href="#Jenkins的安装" class="headerlink" title="Jenkins的安装"></a>Jenkins的安装</h3><p>由于Jenkins是Java开发的，所以首先我们需要先安装好Java环境，然后去Jenkins的<a href="http://jenkins-ci.org/" target="_blank" rel="noopener">官网</a>下载最新的war包。下载完成后，打开终端，进入到war包所在目录，执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar jenkins.war --httpPort=8888</span><br></pre></td></tr></table></figure></p>
+<p>httpPort指的就是Jenkins所使用的http端口，这里指定8888，可根据具体情况来修改。待Jenkins启动后，在浏览器页面输入以下地址:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8888</span><br></pre></td></tr></table></figure></p>
 <p>这样就可以打开Jenkins页面了。</p>
 <blockquote>
 <p><code>--httpPort=8888</code>可以不输入，不输入默认端口号为8080</p>
@@ -384,33 +353,33 @@
 <li>Xcode integration</li>
 <li>CocoaPods Jenkins Integration</li>
 </ul>
-<h4 id="Git私有仓库配置"><a href="#Git私有仓库配置" class="headerlink" title="Git私有仓库配置"></a>Git私有仓库配置</h4><p>按照如下方式添加SSH，因为项目代码是存放在coding上的所以，这个关于生成SSH可以以Coding为例：<a href="https://coding.net/help/doc/git/ssh-key.html" target="_blank" rel="external">https://coding.net/help/doc/git/ssh-key.html</a></p>
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/ssh_username_private_key.png" alt="SSH 秘钥配置" title="SSH 秘钥配置">
+<h4 id="Git私有仓库配置"><a href="#Git私有仓库配置" class="headerlink" title="Git私有仓库配置"></a>Git私有仓库配置</h4><p>按照如下方式添加SSH，因为项目代码是存放在coding上的所以，这个关于生成SSH可以以Coding为例：<a href="https://coding.net/help/doc/git/ssh-key.html" target="_blank" rel="noopener">https://coding.net/help/doc/git/ssh-key.html</a></p>
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/ssh_username_private_key.png" title="SSH 秘钥配置">
 <h4 id="创建Job"><a href="#创建Job" class="headerlink" title="创建Job"></a>创建Job</h4><p>这里的步骤我准备全部一图片的形式展示出来。</p>
 <p>点击“Jenkins”－“新建”：</p>
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/new_job.png" alt="创建Job" title="创建Job">
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/new_job.png" title="创建Job">
 <h4 id="源码管理"><a href="#源码管理" class="headerlink" title="源码管理"></a>源码管理</h4><p>选择刚刚创建的项目，点击“配置”：</p>
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/set_code_source.png" alt="设置源码地址" title="设置源码地址">
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/set_code_source.png" title="设置源码地址">
 <p>这里最好使用SSH，这个工程是私有项目，如果出现错误肯定是由你自己配置错误造成的。</p>
 <h4 id="构建步骤设置"><a href="#构建步骤设置" class="headerlink" title="构建步骤设置"></a>构建步骤设置</h4><p>选择构建步骤，记得添加Xcode插件，选择添加Execute Shell和Xcode，有先后顺序。</p>
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/execte_config.png" alt="添加构建步骤" title="添加构建步骤">
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/execte_config.png" title="添加构建步骤">
 <p>设置Execute Shell</p>
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/execute_shell.png" alt="Execute Shell" title="Execute Shell">
-<h4 id="Xcode-General-build-settings"><a href="#Xcode-General-build-settings" class="headerlink" title="Xcode General build settings"></a>Xcode General build settings</h4><img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/xcode_general_build_settings.png" alt="General build settings" title="General build settings">
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/code_signing_OS_X_keychain_options.png" alt="Code signing & OS X keychain options" title="Code signing & OS X keychain options">
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/execute_shell.png" title="Execute Shell">
+<h4 id="Xcode-General-build-settings"><a href="#Xcode-General-build-settings" class="headerlink" title="Xcode General build settings"></a>Xcode General build settings</h4><img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/xcode_general_build_settings.png" title="General build settings">
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/code_signing_OS_X_keychain_options.png" title="Code signing & OS X keychain options">
 <p>Keychain path填写<code>${HOME}/Library/Keychains/login.keychain</code><br>Keychain password对应的密码可以在钥匙串中查看：</p>
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/keychain.png" alt="Code signing & OS X keychain password查看方法" title="Code signing & OS X keychain password查看方法">
-<h4 id="Advanced-Xcode-build-options"><a href="#Advanced-Xcode-build-options" class="headerlink" title="Advanced Xcode build options"></a>Advanced Xcode build options</h4><img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/xcode_build_options.png" alt="Advanced Xcode build options" title="Advanced Xcode build options">
-<h3 id="fir-im-Jenkins-插件安装"><a href="#fir-im-Jenkins-插件安装" class="headerlink" title="fir.im Jenkins 插件安装"></a>fir.im Jenkins 插件安装</h3><p>上面的构建配置好了后，如果顺利的话就已经能够编译出ipa文件了，但是编译出来的ipa只能放在本地，不能给大家安装，所以编译完成后我们还需要将ipa文件上传到fir.im。<br>fir插件的安装方法详情请移步：<a href="http://blog.fir.im/jenkins/" target="_blank" rel="external">《fir.im Jenkins 插件使用方法》</a></p>
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/keychain.png" title="Code signing & OS X keychain password查看方法">
+<h4 id="Advanced-Xcode-build-options"><a href="#Advanced-Xcode-build-options" class="headerlink" title="Advanced Xcode build options"></a>Advanced Xcode build options</h4><img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/xcode_build_options.png" title="Advanced Xcode build options">
+<h3 id="fir-im-Jenkins-插件安装"><a href="#fir-im-Jenkins-插件安装" class="headerlink" title="fir.im Jenkins 插件安装"></a>fir.im Jenkins 插件安装</h3><p>上面的构建配置好了后，如果顺利的话就已经能够编译出ipa文件了，但是编译出来的ipa只能放在本地，不能给大家安装，所以编译完成后我们还需要将ipa文件上传到fir.im。<br>fir插件的安装方法详情请移步：<a href="http://blog.fir.im/jenkins/" target="_blank" rel="noopener">《fir.im Jenkins 插件使用方法》</a></p>
 <h3 id="构建后上传到fir-im"><a href="#构建后上传到fir-im" class="headerlink" title="构建后上传到fir.im"></a>构建后上传到fir.im</h3><p>安装好fir插件后在“构建后操作”中点击“添加构建后操作步骤”，可以看到：</p>
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/upload_fir.png" alt="添加构建后上传fir步骤" title="添加构建后上传fir步骤">
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/upload_fir.png" title="添加构建后上传fir步骤">
 <p>点击“upload to fir.im”，然后会出现如下界面：</p>
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/set_upload_fir.png" alt="设置fir.im的Token" title="设置fir.im的Token">
-<p>Fir.im的Token获取地址：<a href="http://fir.im/apps/apitoken" target="_blank" rel="external">http://fir.im/apps/apitoken</a></p>
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/set_upload_fir.png" title="设置fir.im的Token">
+<p>Fir.im的Token获取地址：<a href="http://fir.im/apps/apitoken" target="_blank" rel="noopener">http://fir.im/apps/apitoken</a></p>
 <h3 id="手动构建"><a href="#手动构建" class="headerlink" title="手动构建"></a>手动构建</h3><p>选中你要构建的项目，然后点击“立即构建”</p>
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/shoudong_goujian.png" alt="手动构建" title="手动构建">
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/shoudong_goujian.png" title="手动构建">
 <p>选择正在构建的Build，然后点击“Console Output”可以查看build过程中打印的一些信息，如果遇到什么报错信息都可以在这里面查看。</p>
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/build_message.png" alt="控制台输出" title="控制台输出">
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/build_message.png" title="控制台输出">
 <h3 id="自动构建设置"><a href="#自动构建设置" class="headerlink" title="自动构建设置"></a>自动构建设置</h3><p>构建触发器有一下几种触发方式：</p>
 <ul>
 <li>触发远程构建 (例如,使用脚本)</li>
@@ -419,9 +388,9 @@
 <li>Poll SCM</li>
 </ul>
 <p>这里我只用到了Build periodically</p>
-<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/zidong_goujian.png" alt="Build periodically触发自动构建" title="Build periodically触发自动构建">
+<img src="/2016/05/21/使用Jenkins构建iOS持续集成自动打包/zidong_goujian.png" title="Build periodically触发自动构建">
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>为了搭建这个Jenkins我看了很多博客，不过大多比较难懂，一直都没有成功，经过各种尝试后最终搭建成功，我在此将整个过程记录下来，以来是对自己知识的一个积累，二来如果能够给将要搭建Jenkins的iOS持续集成的朋友们一点帮助也是极好的。</p>
-<p>参考文档：<br><a href="http://www.jianshu.com/p/c69deb29720d#" target="_blank" rel="external">一步一步构建iOS持续集成:Jenkins+GitLab+蒲公英+FTP</a><br><a href="http://rannie.github.io/ios/2014/12/29/xcodebuild-jenkins-ci.html" target="_blank" rel="external">使用 Xcodebuild + Jenkins + Apache 做 iOS 持续集成</a></p>
+<p>参考文档：<br><a href="http://www.jianshu.com/p/c69deb29720d#" target="_blank" rel="noopener">一步一步构建iOS持续集成:Jenkins+GitLab+蒲公英+FTP</a><br><a href="http://rannie.github.io/ios/2014/12/29/xcodebuild-jenkins-ci.html" target="_blank" rel="noopener">使用 Xcodebuild + Jenkins + Apache 做 iOS 持续集成</a></p>
 
       
     </div>
@@ -476,25 +445,6 @@
 
 
     <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="2016/05/21/使用Jenkins构建iOS持续集成自动打包/"
-     data-title="Jenkins+Cocoapods+Coding+Git+Fir iOS项目持续集成"
-     data-content=""
-     data-url="http://www.jvaeyhcd.cc/2016/05/21/使用Jenkins构建iOS持续集成自动打包/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
       
     </div>
   </div>
@@ -553,7 +503,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -578,13 +528,6 @@
 
         </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
         
 
         <div class="links-of-author motion-element">
@@ -659,7 +602,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -805,135 +748,6 @@
 
   
   
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.json";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
   
 
   

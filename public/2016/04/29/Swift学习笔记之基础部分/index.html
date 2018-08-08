@@ -74,8 +74,6 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Jvaeyhcd's Note" type="application/atom+xml" />
-
 
 
 
@@ -86,22 +84,18 @@
 
 
 
-<meta name="description" content="本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。
-
-概述Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 objc 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 objc 相关开发经验也没有关系，大家都说">
+<meta name="description" content="本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。  概述Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 objc 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 objc 相关开发经验也没有关系，大家都">
+<meta name="keywords" content="Swift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift学习笔记之基础部分">
 <meta property="og:url" content="http://www.jvaeyhcd.cc/2016/04/29/Swift学习笔记之基础部分/index.html">
-<meta property="og:site_name" content="Jvaeyhcd's Note">
-<meta property="og:description" content="本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。
-
-概述Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 objc 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 objc 相关开发经验也没有关系，大家都说">
-<meta property="og:updated_time" content="2016-06-02T04:00:33.000Z">
+<meta property="og:site_name" content="Jvaeyhcd&#39;s Note">
+<meta property="og:description" content="本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。  概述Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 objc 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 objc 相关开发经验也没有关系，大家都">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-01T05:48:48.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习笔记之基础部分">
-<meta name="twitter:description" content="本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。
-
-概述Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 objc 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 objc 相关开发经验也没有关系，大家都说">
+<meta name="twitter:description" content="本文所有知识都来至于网上以及官方的学习资料，本文不做任何商业用途，只是自己的一个学习笔记，如有侵权请及时告知我。  概述Swift 是一门开发 iOS, OS X 和 watchOS 应用的新语言(传说以后还可以用于开始Android应用)。然而，如果你有 C 或者 objc 开发经验的话，你会发现 Swift 的很多内容都是你熟悉的（如果没有 C 或者 objc 相关开发经验也没有关系，大家都">
 
 
 
@@ -226,32 +220,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
   
 </nav>
 
@@ -386,9 +357,9 @@
 </blockquote>
 <h2 id="输出常量和变量"><a href="#输出常量和变量" class="headerlink" title="输出常量和变量"></a>输出常量和变量</h2><p>你可以用<code>print(_:separator:terminator:)</code>函数来输出当前常量或变量的值:<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> friendlyWelcome = <span class="string">"Bonjour!"</span></span><br><span class="line"><span class="built_in">print</span>(friendlyWelcome)</span><br><span class="line"><span class="comment">// 输出 "Bonjour!"</span></span><br></pre></td></tr></table></figure></p>
 <p><code>print(_:separator:terminator:)</code>是一个用来输出一个或多个值到适当输出区的全局函数。如果你用 Xcode，<code>print(_:separator:terminator:)</code>将会输出内容到“console”面板上。separator和terminator参数具有默认值，因此你调用这个函数的时候可以忽略它们。默认情况下，该函数通过添加换行符来结束当前行。如果不想换行，可以传递一个空字符串给terminator参数–例如，<code>print(someValue, terminator:&quot;&quot;)</code>。</p>
-<p>Swift 用字符串插值（string interpolation）的方式把常量名或者变量名当做占位符加入到长字符串中，Swift 会用当前常量或变量的值替换这些占位符。将常量或变量名放入圆括号中，并在开括号前使用反斜杠将其转义：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"The current value of friendlyWelcome is <span class="subst">\(friendlyWelcome)</span>"</span>)</span><br><span class="line"><span class="comment">// 输出 "The current value of friendlyWelcome is Bonjour!</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>请将你的代码中的非执行文本注释成提示或者笔记以方便你将来阅读。Swift 的编译器将会在编译代码时自动忽略掉注释部分。<br>与 C 语言多行注释不同，Swift 的多行注释可以嵌套在其它的多行注释之中。你可以先生成一个多行注释块，然后在这个注释块之中再嵌套成第二个多行注释。终止注释时先插入第二个注释块的终止标记，然后再插入第一个注释块的终止标记：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 这是第一个多行注释的开头</span><br><span class="line"><span class="comment">/* 这是第二个被嵌套的多行注释 */</span></span><br><span class="line">这是第一个多行注释的结尾 */</span></span><br></pre></td></tr></table></figure></p>
-<p>通过运用嵌套多行注释，你可以快速方便的注释掉一大段代码，即使这段代码之中已经含有了多行注释块。<br>当然Swift的单行注释和多行注释和C语言的类似。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是一个单行注释</span></span><br><span class="line"><span class="comment">/* 这是一个,</span><br><span class="line">多行注释 */</span></span><br></pre></td></tr></table></figure></p>
+<p>Swift 用字符串插值（string interpolation）的方式把常量名或者变量名当做占位符加入到长字符串中，Swift 会用当前常量或变量的值替换这些占位符。将常量或变量名放入圆括号中，并在开括号前使用反斜杠将其转义：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"The current value of friendlyWelcome is \(friendlyWelcome)"</span>)</span><br><span class="line"><span class="comment">// 输出 "The current value of friendlyWelcome is Bonjour!</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>请将你的代码中的非执行文本注释成提示或者笔记以方便你将来阅读。Swift 的编译器将会在编译代码时自动忽略掉注释部分。<br>与 C 语言多行注释不同，Swift 的多行注释可以嵌套在其它的多行注释之中。你可以先生成一个多行注释块，然后在这个注释块之中再嵌套成第二个多行注释。终止注释时先插入第二个注释块的终止标记，然后再插入第一个注释块的终止标记：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 这是第一个多行注释的开头</span></span><br><span class="line"><span class="comment"><span class="comment">/* 这是第二个被嵌套的多行注释 */</span></span></span><br><span class="line"><span class="comment">这是第一个多行注释的结尾 */</span></span><br></pre></td></tr></table></figure></p>
+<p>通过运用嵌套多行注释，你可以快速方便的注释掉一大段代码，即使这段代码之中已经含有了多行注释块。<br>当然Swift的单行注释和多行注释和C语言的类似。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是一个单行注释</span></span><br><span class="line"><span class="comment">/* 这是一个,</span></span><br><span class="line"><span class="comment">多行注释 */</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h2><p>与其他大部分编程语言不同，Swift 并不强制要求你在每条语句的结尾处使用分号（;），当然，你也可以按照你自己的习惯添加分号。有一种情况下必须要用分号，即你打算在同一行内写多条独立的语句：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> cat = <span class="string">"🐱"</span>; <span class="built_in">print</span>(cat)</span><br><span class="line"><span class="comment">// 输出 "🐱"</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h2><p>整数就是没有小数部分的数字，比如42和-23。整数可以是有符号（正、负、零）或者无符号（正、零）。</p>
 <p>Swift 提供了8，16，32和64位的有符号和无符号整数类型。这些整数类型和 C 语言的命名方式很像，比如8位无符号整数类型是<code>UInt8</code>，32位有符号整数类型是<code>Int32</code>。就像 Swift 的其他类型一样，整数类型采用大写命名法。</p>
@@ -467,11 +438,11 @@
 <p>和 Swift 中的其他类型安全的例子一样，这个方法可以避免错误并保证这块代码的意图总是清晰的。</p>
 <h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>元组（tuples）把多个值组合成一个复合值。元组内的值可以是任意类型，并不要求是相同类型。</p>
 <p>下面这个例子中，<code>(404, &quot;Not Found&quot;)</code>是一个描述 HTTP 状态码（HTTP status code）的元组。HTTP 状态码是当你请求网页的时候 web 服务器返回的一个特殊值。如果你请求的网页不存在就会返回一个<code>404 Not Found</code>状态码。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http404Error = (<span class="number">404</span>, <span class="string">"Not Found"</span>)</span><br><span class="line"><span class="comment">// http404Error 的类型是 (Int, String)，值是 (404, "Not Found")</span></span><br></pre></td></tr></table></figure></p>
-<p><code>(404, &quot;Not Found&quot;)</code>元组把一个<code>Int</code>值和一个<code>String</code>值组合起来表示 HTTP 状态码的两个部分：一个数字和一个人类可读的描述。这个元组可以被描述为“一个类型为<code>(Int, String)</code>的元组”。<br>你可以把任意顺序的类型组合成一个元组，这个元组可以包含所有类型。只要你想，你可以创建一个类型为<code>(Int, Int, Int)</code>或者<code>(String, Bool)</code>或者其他任何你想要的组合的元组。<br>你可以将一个元组的内容分解（decompose）成单独的常量和变量，然后你就可以正常使用它们了：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> (statusCode, statusMessage) = http404Error</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status code is <span class="subst">\(statusCode)</span>"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status code is 404"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status message is <span class="subst">\(statusMessage)</span>"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status message is Not Found"</span></span><br></pre></td></tr></table></figure></p>
-<p>如果你只需要一部分元组值，分解的时候可以把要忽略的部分用下划线（<code>_</code>）标记：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> (justTheStatusCode, <span class="number">_</span>) = http404Error</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status code is <span class="subst">\(justTheStatusCode)</span>"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status code is 404"</span></span><br></pre></td></tr></table></figure></p>
-<p>此外，你还可以通过下标来访问元组中的单个元素，下标从零开始：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"The status code is <span class="subst">\(http404Error.<span class="number">0</span>)</span>"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status code is 404"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status message is <span class="subst">\(http404Error.<span class="number">1</span>)</span>"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status message is Not Found"</span></span><br></pre></td></tr></table></figure></p>
+<p><code>(404, &quot;Not Found&quot;)</code>元组把一个<code>Int</code>值和一个<code>String</code>值组合起来表示 HTTP 状态码的两个部分：一个数字和一个人类可读的描述。这个元组可以被描述为“一个类型为<code>(Int, String)</code>的元组”。<br>你可以把任意顺序的类型组合成一个元组，这个元组可以包含所有类型。只要你想，你可以创建一个类型为<code>(Int, Int, Int)</code>或者<code>(String, Bool)</code>或者其他任何你想要的组合的元组。<br>你可以将一个元组的内容分解（decompose）成单独的常量和变量，然后你就可以正常使用它们了：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> (statusCode, statusMessage) = http404Error</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status code is \(statusCode)"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status code is 404"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status message is \(statusMessage)"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status message is Not Found"</span></span><br></pre></td></tr></table></figure></p>
+<p>如果你只需要一部分元组值，分解的时候可以把要忽略的部分用下划线（<code>_</code>）标记：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> (justTheStatusCode, <span class="number">_</span>) = http404Error</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status code is \(justTheStatusCode)"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status code is 404"</span></span><br></pre></td></tr></table></figure></p>
+<p>此外，你还可以通过下标来访问元组中的单个元素，下标从零开始：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"The status code is \(http404Error.0)"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status code is 404"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status message is \(http404Error.1)"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status message is Not Found"</span></span><br></pre></td></tr></table></figure></p>
 <p>你可以在定义元组的时候给单个元素命名：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http200Status = (statusCode: <span class="number">200</span>, description: <span class="string">"OK"</span>)</span><br></pre></td></tr></table></figure></p>
-<p>给元组中的元素命名后，你可以通过名字来获取这些元素的值：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"The status code is <span class="subst">\(http200Status.statusCode)</span>"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status code is 200"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status message is <span class="subst">\(http200Status.description)</span>"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status message is OK"</span></span><br></pre></td></tr></table></figure></p>
+<p>给元组中的元素命名后，你可以通过名字来获取这些元素的值：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"The status code is \(http200Status.statusCode)"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status code is 200"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The status message is \(http200Status.description)"</span>)</span><br><span class="line"><span class="comment">// 输出 "The status message is OK"</span></span><br></pre></td></tr></table></figure></p>
 <p>作为函数返回值时，元组非常有用。一个用来获取网页的函数可能会返回一个<code>(Int, String)</code>元组来描述是否获取成功。和只能返回一个类型的值比较起来，一个包含两个不同类型值的元组可以让函数的返回信息更有用。</p>
 <blockquote>
 <p>注意：元组在临时组织值的时候很有用，但是并不适合创建复杂的数据结构。如果你的数据结构并不是临时使用，请使用类或者结构体而不是元组。</p>
@@ -489,19 +460,19 @@
 </blockquote>
 <h2 id="if-语句以及强制解析"><a href="#if-语句以及强制解析" class="headerlink" title="if 语句以及强制解析"></a>if 语句以及强制解析</h2><p>你可以使用<code>if</code>语句和<code>nil</code>比较来判断一个可选值是否包含值。你可以使用“相等”(<code>==</code>)或“不等”(<code>!=</code>)来执行比较。</p>
 <p>如果可选类型有值，它将不等于<code>nil</code>:<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> convertedNumber != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"convertedNumber contains some integer value."</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出 "convertedNumber contains some integer value."</span></span><br></pre></td></tr></table></figure></p>
-<p>当你确定可选类型确实包含值之后，你可以在可选的名字后面加一个感叹号（<code>!</code>）来获取值。这个惊叹号表示“我知道这个可选有值，请使用它。”这被称为可选值的强制解析（forced unwrapping）：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> convertedNumber != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"convertedNumber has an integer value of <span class="subst">\(convertedNumber!)</span>."</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出 "convertedNumber has an integer value of 123."</span></span><br></pre></td></tr></table></figure></p>
+<p>当你确定可选类型确实包含值之后，你可以在可选的名字后面加一个感叹号（<code>!</code>）来获取值。这个惊叹号表示“我知道这个可选有值，请使用它。”这被称为可选值的强制解析（forced unwrapping）：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> convertedNumber != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"convertedNumber has an integer value of \(convertedNumber!)."</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出 "convertedNumber has an integer value of 123."</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>注意：使用<code>!</code>来获取一个不存在的可选值会导致运行时错误。使用<code>!</code>来强制解析值之前，一定要确定可选包含一个非<code>nil</code>的值。</p>
 </blockquote>
 <h2 id="可选绑定"><a href="#可选绑定" class="headerlink" title="可选绑定"></a>可选绑定</h2><p>使用可选绑定（optional binding）来判断可选类型是否包含值，如果包含就把值赋给一个临时常量或者变量。可选绑定可以用在<code>if</code>和<code>while</code>语句中，这条语句不仅可以用来判断可选类型中是否有值，同时可以将可选类型中的值赋给一个常量或者变量。</p>
 <p>像下面这样在<code>if</code>语句中写一个可选绑定：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> constantName = someOptional &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>你可以像上面这样使用可选绑定来重写<code>possibleNumber</code>这个例子：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> actualNumber = <span class="type">Int</span>(possibleNumber) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\'<span class="subst">\(possibleNumber)</span>\' has an integer value of <span class="subst">\(actualNumber)</span>"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\'<span class="subst">\(possibleNumber)</span>\' could not be converted to an integer"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出 "'123' has an integer value of 123"</span></span><br></pre></td></tr></table></figure></p>
+<p>你可以像上面这样使用可选绑定来重写<code>possibleNumber</code>这个例子：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> actualNumber = <span class="type">Int</span>(possibleNumber) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\'\(possibleNumber)\' has an integer value of \(actualNumber)"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\'\(possibleNumber)\' could not be converted to an integer"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出 "'123' has an integer value of 123"</span></span><br></pre></td></tr></table></figure></p>
 <p>这段代码可以被理解为：“如果<code>Int(possibleNumber)</code>返回的可选<code>Int</code>包含一个值，创建一个叫做<code>actualNumber</code>的新常量并将可选包含的值赋给它。”</p>
 <p>如果转换成功，<code>actualNumber</code>常量可以在<code>if</code>语句的第一个分支中使用。它已经被可选类型 包含的 值初始化过，所以不需要再使用!后缀来获取它的值。在这个例子中，<code>actualNumber</code>只被用来输出转换结果。</p>
 <p>你可以在可选绑定中使用常量和变量。如果你想在<code>if</code>语句的第一个分支中操作<code>actualNumber</code>的值，你可以改成<code>if var actualNumber</code>，这样可选类型包含的值就会被赋给一个变量而非常量。</p>
-<p>你可以包含多个可选绑定在<code>if</code>语句中，并使用<code>where</code>子句做布尔值判断。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> firstNumber = <span class="type">Int</span>(<span class="string">"4"</span>), secondNumber = <span class="type">Int</span>(<span class="string">"42"</span>) <span class="keyword">where</span> firstNumber &lt; secondNumber &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(firstNumber)</span> &lt; <span class="subst">\(secondNumber)</span>"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// prints "4 &lt; 42"</span></span><br></pre></td></tr></table></figure></p>
+<p>你可以包含多个可选绑定在<code>if</code>语句中，并使用<code>where</code>子句做布尔值判断。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> firstNumber = <span class="type">Int</span>(<span class="string">"4"</span>), secondNumber = <span class="type">Int</span>(<span class="string">"42"</span>) <span class="keyword">where</span> firstNumber &lt; secondNumber &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(firstNumber) &lt; \(secondNumber)"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// prints "4 &lt; 42"</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="隐式解析可选类型"><a href="#隐式解析可选类型" class="headerlink" title="隐式解析可选类型"></a>隐式解析可选类型</h2><p>如上所述，可选类型暗示了常量或者变量可以“没有值”。可选可以通过if语句来判断是否有值，如果有值的话可以通过可选绑定来解析值。</p>
-<p>有时候在程序架构中，第一次被赋值之后，可以确定一个可选类型<em>总会</em>有值。在这种情况下，每次都要判断和解析可选值是非常低效的，因为可以确定它总会有值。</p>
+<p>有时候在程序架构中，第一次被赋值之后，可以确定一个可选类型_总会_有值。在这种情况下，每次都要判断和解析可选值是非常低效的，因为可以确定它总会有值。</p>
 <p>这种类型的可选状态被定义为隐式解析可选类型（implicitly unwrapped optionals）。把想要用作可选的类型的后面的问号（<code>String?</code>）改成感叹号（<code>String!</code>）来声明一个隐式解析可选类型。</p>
 <p>当可选类型被第一次赋值之后就可以确定之后一直有值的时候，隐式解析可选类型非常有用。</p>
 <p>一个隐式解析可选类型其实就是一个普通的可选类型，但是可以被当做非可选类型来使用，并不需要每次都使用解析来获取可选值。下面的例子展示了可选类型<code>String</code>和隐式解析可选类型<code>String</code>之间的区别：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> possibleString: <span class="type">String</span>? = <span class="string">"An optional string."</span></span><br><span class="line"><span class="keyword">let</span> forcedString: <span class="type">String</span> = possibleString! <span class="comment">// 需要惊叹号来获取值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> assumedString: <span class="type">String</span>! = <span class="string">"An implicitly unwrapped optional string."</span></span><br><span class="line"><span class="keyword">let</span> implicitString: <span class="type">String</span> = assumedString  <span class="comment">// 不需要感叹号</span></span><br></pre></td></tr></table></figure></p>
@@ -514,9 +485,9 @@
 <blockquote>
 <p>注意：如果一个变量之后可能变成<code>nil</code>的话请不要使用隐式解析可选类型。如果你需要在变量的生命周期中判断是否是<code>nil</code>的话，请使用普通可选类型。</p>
 </blockquote>
-<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>你可以使用错误处理（error handling）来应对程序执行中可能会遇到的错误条件。相对于可选中运用值的存在与缺失来表达函数的成功与失败，错误处理可以推断失败的原因，并传播至程序的其他部分。当一个函数遇到错误条件，它能报错。调用函数的地方能抛出错误消息并合理处理。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">canThrowAnError</span><span class="params">()</span></span> <span class="keyword">throws</span> &#123;</span><br><span class="line">    <span class="comment">// 这个函数有可能抛出错误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>你可以使用错误处理（error handling）来应对程序执行中可能会遇到的错误条件。相对于可选中运用值的存在与缺失来表达函数的成功与失败，错误处理可以推断失败的原因，并传播至程序的其他部分。当一个函数遇到错误条件，它能报错。调用函数的地方能抛出错误消息并合理处理。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canThrowAnError</span><span class="params">()</span></span> <span class="keyword">throws</span> &#123;</span><br><span class="line">    <span class="comment">// 这个函数有可能抛出错误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>一个函数可以通过在声明中添加<code>throws</code>关键词来抛出错误消息。当你的函数能抛出错误消息时, 你应该在表达式中前置<code>try</code>关键词。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> canThrowAnError()</span><br><span class="line">    <span class="comment">// 没有错误消息抛出</span></span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    <span class="comment">// 有一个错误消息抛出</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>一个<code>do</code>语句创建了一个新的包含作用域,使得错误能被传播到一个或多个<code>catch</code>从句。<br>这里有一个错误处理如何用来应对不同错误条件的例子。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">makeASandwich</span><span class="params">()</span></span> <span class="keyword">throws</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> makeASandwich()</span><br><span class="line">    eatASandwich()</span><br><span class="line">&#125; <span class="keyword">catch</span> <span class="type">Error</span>.<span class="type">OutOfCleanDishes</span> &#123;</span><br><span class="line">    washDishes()</span><br><span class="line">&#125; <span class="keyword">catch</span> <span class="type">Error</span>.<span class="type">MissingIngredients</span>(<span class="keyword">let</span> ingredients) &#123;</span><br><span class="line">    buyGroceries(ingredients)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>一个<code>do</code>语句创建了一个新的包含作用域,使得错误能被传播到一个或多个<code>catch</code>从句。<br>这里有一个错误处理如何用来应对不同错误条件的例子。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeASandwich</span><span class="params">()</span></span> <span class="keyword">throws</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> makeASandwich()</span><br><span class="line">    eatASandwich()</span><br><span class="line">&#125; <span class="keyword">catch</span> <span class="type">Error</span>.<span class="type">OutOfCleanDishes</span> &#123;</span><br><span class="line">    washDishes()</span><br><span class="line">&#125; <span class="keyword">catch</span> <span class="type">Error</span>.<span class="type">MissingIngredients</span>(<span class="keyword">let</span> ingredients) &#123;</span><br><span class="line">    buyGroceries(ingredients)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>在此例中，<code>makeASandwich()</code>（做一个三明治）函数会抛出一个错误消息如果没有干净的盘子或者某个原料缺失。因为<code>makeASandwich()</code>抛出错误，函数调用被包裹在<code>try</code>表达式中。将函数包裹在一个<code>do</code>语句中,任何被抛出的错误会被传播到提供的<code>catch</code>从句中。</p>
 <p>如果没有错误被抛出, <code>eatASandwich()</code>函数会被调用。如果一个匹配<code>Error.OutOfCleanDishes</code>的错误被抛出,<code>washDishes</code>函数会被调用。如果一个匹配<code>Error.MissingIngredients</code>的错误被抛出，<code>buyGroceries(_:)</code>函数会随着被<code>catch</code>所捕捉到的关联值[<code>String</code>]被调用。</p>
 <h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>可选类型可以让你判断值是否存在，你可以在代码中优雅地处理值缺失的情况。然而，在某些情况下，如果值缺失或者值并不满足特定的条件，你的代码可能没办法继续执行。这时，你可以在你的代码中触发一个断言（assertion）来结束代码运行并通过调试来找到值缺失的原因。</p>
@@ -528,7 +499,7 @@
 <blockquote>
 <p>注意：当代码使用优化编译的时候，断言将会被禁用，例如在 Xcode 中，使用默认的 target Release 配置选项来 build 时，断言会被禁用。</p>
 </blockquote>
-<h2 id="何时使用断言"><a href="#何时使用断言" class="headerlink" title="何时使用断言"></a>何时使用断言</h2><p>当条件可能为假时使用断言，但是最终一定要<em>保证</em>条件为真，这样你的代码才能继续运行。断言的适用情景：</p>
+<h2 id="何时使用断言"><a href="#何时使用断言" class="headerlink" title="何时使用断言"></a>何时使用断言</h2><p>当条件可能为假时使用断言，但是最终一定要_保证_条件为真，这样你的代码才能继续运行。断言的适用情景：</p>
 <ul>
 <li>整数类型的下标索引被传入一个自定义下标实现，但是下标索引值可能太小或者太大。</li>
 <li>需要给函数传入一个值，但是非法的值可能导致函数不能正常执行。</li>
@@ -592,25 +563,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/29/Swift学习笔记之基础部分/"
-     data-title="Swift学习笔记之基础部分"
-     data-content=""
-     data-url="http://www.jvaeyhcd.cc/2016/04/29/Swift学习笔记之基础部分/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -668,7 +620,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -693,13 +645,6 @@
 
         </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
         
 
         <div class="links-of-author motion-element">
@@ -774,7 +719,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -920,135 +865,6 @@
 
   
   
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.json";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
   
 
   

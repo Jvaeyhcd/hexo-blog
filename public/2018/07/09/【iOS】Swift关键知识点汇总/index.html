@@ -1,0 +1,713 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Swift扩展扩展就是向一个已知的类、结构体或枚举类型添加新功能。扩展可以对一个类型添加新的功能，但是不能重写已有的功能。 Swift中的扩展可以：  添加计算型属性和计算型静态属性 定义实例方法和类型方法 提供新的构造器 定义下标 定义和使用新的嵌套类型 使一个已有类型符合某个协议">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【iOS】Swift关键知识点汇总">
+<meta property="og:url" content="http://www.jvaeyhcd.cc/2018/07/09/【iOS】Swift关键知识点汇总/index.html">
+<meta property="og:site_name" content="Jvaeyhcd&#39;s Note">
+<meta property="og:description" content="Swift扩展扩展就是向一个已知的类、结构体或枚举类型添加新功能。扩展可以对一个类型添加新的功能，但是不能重写已有的功能。 Swift中的扩展可以：  添加计算型属性和计算型静态属性 定义实例方法和类型方法 提供新的构造器 定义下标 定义和使用新的嵌套类型 使一个已有类型符合某个协议">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-09T07:50:43.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【iOS】Swift关键知识点汇总">
+<meta name="twitter:description" content="Swift扩展扩展就是向一个已知的类、结构体或枚举类型添加新功能。扩展可以对一个类型添加新的功能，但是不能重写已有的功能。 Swift中的扩展可以：  添加计算型属性和计算型静态属性 定义实例方法和类型方法 提供新的构造器 定义下标 定义和使用新的嵌套类型 使一个已有类型符合某个协议">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <title> 【iOS】Swift关键知识点汇总 | Jvaeyhcd's Note </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?29df66b98641fa1eb4edb792fef116c9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jvaeyhcd's Note</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">My Coding Note</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                【iOS】Swift关键知识点汇总
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-09T13:23:38+08:00" content="2018-07-09">
+              2018-07-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/07/09/【iOS】Swift关键知识点汇总/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/07/09/【iOS】Swift关键知识点汇总/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-eye"></i> 本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Swift扩展"><a href="#Swift扩展" class="headerlink" title="Swift扩展"></a>Swift扩展</h2><p>扩展就是向一个已知的类、结构体或枚举类型添加新功能。<b>扩展可以对一个类型添加新的功能，但是不能重写已有的功能。</b></p>
+<p>Swift中的扩展可以：</p>
+<ul>
+<li>添加计算型属性和计算型静态属性</li>
+<li>定义实例方法和类型方法</li>
+<li>提供新的构造器</li>
+<li>定义下标</li>
+<li>定义和使用新的嵌套类型</li>
+<li>使一个已有类型符合某个协议<a id="more"></a>
+</li>
+</ul>
+<h2 id="Swift类型转换"><a href="#Swift类型转换" class="headerlink" title="Swift类型转换"></a>Swift类型转换</h2><p>Swift语言转换可以判断实例的类型，也可以用于检测实例类型是否属于其父类或则子类的实例。</p>
+<p>Swift中类型转换使用<code>is</code>和<code>as</code>操作符实现，<code>is</code>用于检测值的类型，<code>as</code>用于转换类型。</p>
+<h3 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h3><p>类型检查使用<code>is</code>关键字，操作符<code>is</code>是来检查一个实例是否属于特定子类型，若事例属于这个子类型，类型检查操作返回true，否则返回false。</p>
+<h3 id="向下转型"><a href="#向下转型" class="headerlink" title="向下转型"></a>向下转型</h3><p>向下转型，用转型操作符(<code>as?</code>或则<code>as!</code>)。</p>
+<p>当你不确定向下转型可以成功时，用类型转换的条件形式（<code>as?</code>）。条件形式的类型转换总是返回一个可选值（optional value），并且若下转是不可能的，可选值将是nil。</p>
+<p>只有当你可以确定向下转型一定会成功时候，才使用强制形式（<code>as!</code>）。当你试图向下转型一个不正确的类型时，强制形式的类型转换会触发一个运行时错误。</p>
+<h3 id="Any和AnyObject的类型转换"><a href="#Any和AnyObject的类型转换" class="headerlink" title="Any和AnyObject的类型转换"></a>Any和AnyObject的类型转换</h3><p>Swift为确定别名类型提供了两种特殊的类型别名：</p>
+<ul>
+<li>AnyObject可以代表任何class类型的实例。</li>
+<li>Any可以表示任何类型，包括方法类型（function types）。</li>
+</ul>
+<blockquote>
+<p>在一个switch语句的case中使用强制形式的类型转换操作符<code>as</code>（而不是<code>as?</code>）来检查和转换到一个明确的类型。</p>
+</blockquote>
+<h2 id="Swift自动引用计数（ARC）"><a href="#Swift自动引用计数（ARC）" class="headerlink" title="Swift自动引用计数（ARC）"></a>Swift自动引用计数（ARC）</h2><p>Swift使用自动引用计数（ARC）这一机制来跟踪和管理引用程序的内存。通常情况下我们不需要手动释放内存，因为ARC会在类的实例不在被使用时，自动释放其占用的内存。但在有些时候我们还是需要在代码中实现内存管理。</p>
+<h3 id="ARC功能"><a href="#ARC功能" class="headerlink" title="ARC功能"></a>ARC功能</h3><ul>
+<li>当每次使用<code>init()</code>方法创建一个类的新的实例的时候，ARC会分配一大块内存来存储实例的信息。</li>
+<li>内存会包含实例的类型信息，以及这个实例所有相关属性的值。</li>
+<li>当实例不再被使用时，ARC释放实例所占用的内存，并让释放的内存能挪作他用。</li>
+<li>为了确保使用中的实例不被销毁，ARC会跟踪和计算每一个实例正在被多少属性、变量和常量所引用。</li>
+<li>实例赋值给属性、变量和常量时，它们都会创建此实例的强引用，只要引用还在，实例是不允许被销毁的。</li>
+</ul>
+<h3 id="解决实例之间的循环强引用"><a href="#解决实例之间的循环强引用" class="headerlink" title="解决实例之间的循环强引用"></a>解决实例之间的循环强引用</h3><p>Swift提供了两种办法来解决你在使用类的属性时所遇到的循环强引用问题：</p>
+<ul>
+<li>弱引用（weak）</li>
+<li>无主引用（unowned）</li>
+</ul>
+<p>弱引用和无主引用允许循环引用中的一个实例引用另外一个实例而不保持强引用。这样实例能够互相引用而不产生循环强引用。</p>
+<p>解决闭包引起的循环强引用：在定义闭包时同时定义捕获列表作为闭包的一部分，通过这种方式可以解决闭包和类实例之间的循环强引用。</p>
+<p><b>对于生命周期中会变成nil的实例使用弱引用，相反的，对于初始化后再也不会被赋值为nil的实例，使用无主引用。</b></p>
+<p><b>当闭包和捕获的实例总是互相引用时并且总是同时销毁时，将闭包内的捕获定义为无主引用。</b></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/09/【iOS】Objective-C关键知识点汇总/" rel="next" title="【iOS】Objective-C关键知识点汇总">
+                <i class="fa fa-chevron-left"></i> 【iOS】Objective-C关键知识点汇总
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/07/09/【iOS】Swift关键知识点汇总/"
+           data-title="【iOS】Swift关键知识点汇总" data-url="http://www.jvaeyhcd.cc/2018/07/09/【iOS】Swift关键知识点汇总/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://dn-coding-net-production-static.qbox.me/0dcf6be4-e41e-4842-80af-af8f2b0eb3f3.jpg"
+               alt="Jvaeyhcd" />
+          <p class="site-author-name" itemprop="name">Jvaeyhcd</p>
+          <p class="site-description motion-element" itemprop="description">好记性不如烂笔头</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://funmi.github.io/" title="方米团队" target="_blank">方米团队</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.eyrefree.org/" title="EyreFree" target="_blank">EyreFree</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.lovexing.cn/" title="lovexing" target="_blank">lovexing</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.callmewhy.com/" title="CallMeWhy" target="_blank">CallMeWhy</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gaoryrt.com/" title="gaoryrt" target="_blank">gaoryrt</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://jkyeo.com/" title="jkyeo" target="_blank">jkyeo</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Swift扩展"><span class="nav-number">1.</span> <span class="nav-text">Swift扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swift类型转换"><span class="nav-number">2.</span> <span class="nav-text">Swift类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型检查"><span class="nav-number">2.1.</span> <span class="nav-text">类型检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向下转型"><span class="nav-number">2.2.</span> <span class="nav-text">向下转型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Any和AnyObject的类型转换"><span class="nav-number">2.3.</span> <span class="nav-text">Any和AnyObject的类型转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swift自动引用计数（ARC）"><span class="nav-number">3.</span> <span class="nav-text">Swift自动引用计数（ARC）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ARC功能"><span class="nav-number">3.1.</span> <span class="nav-text">ARC功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决实例之间的循环强引用"><span class="nav-number">3.2.</span> <span class="nav-text">解决实例之间的循环强引用</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jvaeyhcd</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i> 本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i> 本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jvaeyhcd"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

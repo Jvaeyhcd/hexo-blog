@@ -56,8 +56,8 @@ menu_icons:
 # ---------------------------------------------------------------
 
 # Schemes
-#scheme: Muse
-#scheme: Mist
+# scheme: Muse
+# scheme: Mist
 scheme: Pisces
 
 
@@ -244,7 +244,10 @@ mathjax:
 baidu_analytics: 29df66b98641fa1eb4edb792fef116c9
 
 # Duoshuo ShortName
-duoshuo_shortname: jvaeyhcd
+# duoshuo_shortname: jvaeyhcd
+duoshuo:
+  enable: true
+  shortname: jvaeyhcd
 
 # Disqus
 #disqus_shortname:

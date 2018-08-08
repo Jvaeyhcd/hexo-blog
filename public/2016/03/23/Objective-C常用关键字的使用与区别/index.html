@@ -74,8 +74,6 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Jvaeyhcd's Note" type="application/atom+xml" />
-
 
 
 
@@ -86,19 +84,18 @@
 
 
 
-<meta name="description" content="虽然接触iOS已经很久了，但是对于objc中常见的关键字还经常处于傻傻分不清楚的状态。遇到最多的情况就是在申明一个属性的时候，比如：12345@propperty (?,?) ?*!;..........................................
-就是这里，每次在这里的时候都不知道，怎么去申明他的关键字。这个看起来简单（弄明白了确实也是很简单的），但是如果没有系统的去区分这些">
+<meta name="description" content="虽然接触iOS已经很久了，但是对于objc中常见的关键字还经常处于傻傻分不清楚的状态。遇到最多的情况就是在申明一个属性的时候，比如：12345@propperty (?,?) ?*!;.......................................... 就是这里，每次在这里的时候都不知道，怎么去申明他的关键字。这个看起来简单（弄明白了确实也是很简单的），但是如果没有系统的去区分这些">
+<meta name="keywords" content="objc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objc常用关键字的使用与区别">
 <meta property="og:url" content="http://www.jvaeyhcd.cc/2016/03/23/Objective-C常用关键字的使用与区别/index.html">
-<meta property="og:site_name" content="Jvaeyhcd's Note">
-<meta property="og:description" content="虽然接触iOS已经很久了，但是对于objc中常见的关键字还经常处于傻傻分不清楚的状态。遇到最多的情况就是在申明一个属性的时候，比如：12345@propperty (?,?) ?*!;..........................................
-就是这里，每次在这里的时候都不知道，怎么去申明他的关键字。这个看起来简单（弄明白了确实也是很简单的），但是如果没有系统的去区分这些">
-<meta property="og:updated_time" content="2016-06-02T04:07:59.000Z">
+<meta property="og:site_name" content="Jvaeyhcd&#39;s Note">
+<meta property="og:description" content="虽然接触iOS已经很久了，但是对于objc中常见的关键字还经常处于傻傻分不清楚的状态。遇到最多的情况就是在申明一个属性的时候，比如：12345@propperty (?,?) ?*!;.......................................... 就是这里，每次在这里的时候都不知道，怎么去申明他的关键字。这个看起来简单（弄明白了确实也是很简单的），但是如果没有系统的去区分这些">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-01T05:48:48.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objc常用关键字的使用与区别">
-<meta name="twitter:description" content="虽然接触iOS已经很久了，但是对于objc中常见的关键字还经常处于傻傻分不清楚的状态。遇到最多的情况就是在申明一个属性的时候，比如：12345@propperty (?,?) ?*!;..........................................
-就是这里，每次在这里的时候都不知道，怎么去申明他的关键字。这个看起来简单（弄明白了确实也是很简单的），但是如果没有系统的去区分这些">
+<meta name="twitter:description" content="虽然接触iOS已经很久了，但是对于objc中常见的关键字还经常处于傻傻分不清楚的状态。遇到最多的情况就是在申明一个属性的时候，比如：12345@propperty (?,?) ?*!;.......................................... 就是这里，每次在这里的时候都不知道，怎么去申明他的关键字。这个看起来简单（弄明白了确实也是很简单的），但是如果没有系统的去区分这些">
 
 
 
@@ -223,32 +220,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
   
 </nav>
 
@@ -346,7 +320,7 @@
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">BOOL</span> isOK;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">CGFloat</span> width;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">CGPoint</span> height;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>retain</strong><br>释放旧的对象，将旧对象的值赋予输入对象并将输入对象的索引计数＋1，主要应用与NSObject与其子类中。 retain是指针复制（浅复制），引用计数加1，而不会导致内容被复制。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span>  (<span class="keyword">nonatomic</span>, retain) <span class="built_in">UIColor</span> *myColor;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)newName &#123;</span><br><span class="line">    [newName retain];</span><br><span class="line">    [name release];  </span><br><span class="line">    name = newName;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span>  (<span class="keyword">nonatomic</span>, <span class="keyword">retain</span>) <span class="built_in">UIColor</span> *myColor;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)newName &#123;</span><br><span class="line">    [newName <span class="keyword">retain</span>];</span><br><span class="line">    [name release];  </span><br><span class="line">    name = newName;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>strong</strong><br>相当于retain，strong在ARC环境下为默认属性类型。</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">readwrite</span>,<span class="keyword">strong</span>) <span class="built_in">NSString</span> *title;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">UIViewController</span> *viewController;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,  <span class="keyword">strong</span>) <span class="keyword">id</span> childObject;</span><br></pre></td></tr></table></figure>
@@ -457,25 +431,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/03/23/Objective-C常用关键字的使用与区别/"
-     data-title="Objc常用关键字的使用与区别"
-     data-content=""
-     data-url="http://www.jvaeyhcd.cc/2016/03/23/Objective-C常用关键字的使用与区别/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -533,7 +488,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -558,13 +513,6 @@
 
         </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
         
 
         <div class="links-of-author motion-element">
@@ -639,7 +587,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -785,135 +733,6 @@
 
   
   
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.json";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
   
 
   
