@@ -51,6 +51,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
+            <span>{{post.author}}</span>
             <span class="post-meta-item-text">{{ __('post.posted') }}</span>
             <time itemprop="dateCreated" datetime="{{ moment(post.date).format() }}" content="{{ date(post.date, config.date_format) }}">
               {{ date(post.date, config.date_format) }}
@@ -80,6 +81,7 @@
             </span>
           {% endif %}
 
+          {#
           {% if post.comments %}
             {% if (theme.duoshuo and theme.duoshuo.shortname) or theme.duoshuo_shortname %}
               <span class="post-comments-count">
@@ -97,7 +99,7 @@
               </span>
             {% endif %}
           {% endif %}
-
+          #}
           {% if not is_index and theme.facebook_sdk.enable and theme.facebook_sdk.like_button %}
             &nbsp; | &nbsp;
             <div class="fb-like" data-layout="button_count" data-share="true"></div>

@@ -2,6 +2,9 @@
 title: 【iOS】Runtime应用
 date: 2018-08-08 16:47:52
 tags:
+  - Runtime
+author: Jvaeyhcd
+categories: iOS学习笔记
 ---
 
 `Runtime`简直就是做大型架构的利器，它的应用场景非常多，下面就介绍一些常见的应用场景。

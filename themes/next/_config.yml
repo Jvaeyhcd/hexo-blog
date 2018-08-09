@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 
 # Put your favicon.ico into `hexo-site/source/` directory.
-favicon: /favicon.ico
+favicon: /images/pinned-octocat.svg
 
 # Set default keywords (Use a comma to separate)
 keywords: "Hexo, NexT"
@@ -245,9 +245,9 @@ baidu_analytics: 29df66b98641fa1eb4edb792fef116c9
 
 # Duoshuo ShortName
 # duoshuo_shortname: jvaeyhcd
-duoshuo:
-  enable: true
-  shortname: jvaeyhcd
+# duoshuo:
+#   enable: true
+#   shortname: jvaeyhcd
 
 # Disqus
 #disqus_shortname:
@@ -263,7 +263,7 @@ duoshuo:
 #add_this_id:
 
 # Share
-duoshuo_share: true
+# duoshuo_share: true
 
 # Google Webmaster tools verification setting
 # See: https://www.google.com/webmasters/
@@ -280,10 +280,10 @@ duoshuo_share: true
 # Make duoshuo show UA
 # user_id must NOT be null when admin_enable is true!
 # you can visit http://dev.duoshuo.com get duoshuo user id.
-duoshuo_info:
-  ua_enable: true
-  admin_enable: false
-  user_id: 0
+# duoshuo_info:
+#   ua_enable: true
+#   admin_enable: false
+#   user_id: 0
   #admin_nickname: Author
 
 
