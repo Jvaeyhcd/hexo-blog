@@ -8,7 +8,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
+    <div class="sidebar-inner" style="position: fixed;">
 
       {% set display_toc = is_post and theme.toc.enable %}
 

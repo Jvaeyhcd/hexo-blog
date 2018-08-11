@@ -2,9 +2,15 @@
 
 $(document).ready(function () {
 
+  initCss();
   initScrollSpy();
   NexT.utils.needAffix() && initAffix();
   initTOCDimension();
+
+  function initCss () {
+    $('.header-inner').css({'position': ''});
+    $('.sidebar-inner').css({'position': ''});
+  }
 
   function initScrollSpy () {
     var tocSelector = '.post-toc';
