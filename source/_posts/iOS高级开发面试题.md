@@ -4,9 +4,55 @@ date: 2018-08-06 10:37:30
 tags:
 ---
 
+## nil、Nil、NULL、NSNull的区别？
+<table><tr><td>Symbol</td><td>Value</td><td>Meaning</td></tr><tr><td>NULL</td><td>(void *)0</td><td>literal null value for C pointers</td></tr><tr><td>nil</td><td>(id)0</td><td>literal null value for Objective-C objects</td></tr><tr><td>Nil</td><td>(Class)0</td><td>literal null value for Objective-C classes</td></tr><tr><td>NSNull</td><td>[NSNull null]</td><td>singleton object used to represent null
+</td></tr></table>
+
+### nil：对象为空
+定义某一实例对象为空值。例如：
+``` objc
+NSObject* obj = nil;
+if (obj == nil) {
+  NSLog(@"obj is nil");
+} else {
+  NSLog(@"obj is not nil");
+}
+```
+<!-- more -->
+### Nil：类为空
+定义一个类为空。例如：
+``` objc
+Class someClass = Nil;
+Class anotherClass = [NSString class];
+```
+### NULL：基本数据对象指针为空
+用于C语言的各种数据类型的指针为空。例如：
+``` objc
+
+int *pointerToInt = NULL; 
+char *pointerToChar = NULL; 
+struct TreeNode *rootNode = NULL;
+```
+### NSNull
+集合对下那个无法包含nil作为其具体值，如NSArray、NSSet和NSDictionary。相应的，nil值使用一个特定的对象NSNull来表示。`NSNull`提供了一个单一实例用于表示对象属性中的的nil值。
+
+通常初始化NSArray对象，我们是这样的：
+``` objc
+NSArray *arr = [NSArray arrayWithObjects:@"wang", @"zz", nil];
+```
+当NSArray里遇到nil时，说明这个数组对象元素截止了，即NSArray只关注nil之前的对象，nil之后的对象会被抛弃，比如下面的写法，与上面的arr值是一样的。
+``` objc
+NSArray *arr = [NSArray arrayWithObjects:@"wang", @"zz", nil, @"foogry"];
+```
+如果要让nil后的元素不被抛弃就只能借助NSNull了。
+``` objc
+NSArray *arr = [NSArray arrayWithObjects:@"wang", @"zz", [NSNull null], @"foogry"];
+```
+
+一句话总结Nil、nil、NSNull之间的区别就是：不管是NULL、Nil、nil，他们本质上都是一样的，都是(void *)0，只是写法不同。这样做的意义是区分不同的数据类型，比如你看到NULL就知道他是一个C指针，看到nil就知道这是一个Objective-C对象，看到Nil就知道这是一个Class类型的数据。
+
 ## 线程与进程的区别
 
-<!-- more -->
 ## 定义一个NSString类类型属性时，为什么使用copy不用strong？
 
 ## 引用多线程时会出现什么问题，应如何避免问题的发生？

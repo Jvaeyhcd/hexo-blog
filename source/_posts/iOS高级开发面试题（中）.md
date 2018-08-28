@@ -164,6 +164,10 @@ UIView和CALayer有一下区别：
 ## runtime 如何实现 weak 属性
 weakg关键字表明该属性定义了一种“非拥有关系”（nonowning relationship）。为这种属性设置新值时，设置方法既不保留新值，又不释放旧值。此特质与`assign`类似，然而在属性所指的对象遭到摧毁时，属性值也会清空(nil out)。
 
+那么runtime如何实现weak变量的自动置为nil？
+
+在runtime中对注册的类进行管理，对于`weak`对象将会放入`hash`表中。用weak指向的内存地址作为key,当此对象的引用计数为0的时候回dealloc，加入weak指向的内存地址是a，那么就会以a为键，在这个weak表中搜索，找到键为a的weak对象，从而设置为nil。
+
 ## @property 的本质是什么？ivar、getter、setter 是如何生成并添加到这个类中的
 https://blog.csdn.net/u011774517/article/details/56013365
 ### @property的本质是什么？
@@ -233,26 +237,131 @@ https://blog.csdn.net/u011774517/article/details/56013365
 
 
 ## 如何实现A、B请求完成后，再执行C请求？
+基本思路是使用iOS的gcd异步请求A、B完成后汇总结果，然后再执行C请求。
+``` objc
+- (void)gcdGroup {
+    dispatch_queue_t queue = dispatch_queue_create(0, 0);
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_async(group, queue, ^{
+        // 任务A
+    });
+    dispatch_group_async(group, queue, ^{
+        // 任务B
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        // 任务C
+    });
+}
+```
 
 ## @synthesize合成实例变量的规则是什么？假如property名为foo，存在一个名为_foo的实例变量，那么还会自动合成新变量么？
 
+实例变量 = 成员变量 = ivar
+
+`@synthesize`合成实例变量的规则，有一下几点：
+* 如果指定了成员变量的名称，会生成一个指定名称的成员变量
+* 如果这个成员变量存在了就不会再生成了
+* 如果是`@synthesize foo;`会生成一个名称为foo的成员变量，也就是说：如果没有指定成员变量的名称会生成一个和属性同名的成员变量
+* 如果是`@synthesize foo = _foo;`，就不会生成成员变量了
+
+加入property名为foo，存在一个名为_foo的实例变量，就不会再自动合成新变量。
+
 ## 在有了自动合成属性实例变量之后，@synthesize还有哪些使用场景？
+有了自动合成属性实例变量之后，`@synthesize`还有以下使用场景：
+* 同时重写了属性的setter和getter方法
+* 只读属性的getter时
+* 使用了`@dynamic`时
+* 在`@protocol`中定义的所有属性
+* 在category中定义的所有属性重载的属性
+* 当在子类中重载了父类的属性
+
+在上面的场景中，你必须使用`@synthesize`来手动合成ivar。
 
 ## 什么时候会报unrecognized selector的异常？
+objc向一个对象发送消息时，runtime库会根据对象的isa指针找到该对象所属的类，然后在该类的方法列表以及父类方法列表中寻找方法运行，如果在最顶层的父类方法列表中依然找不到相应的方法时，程序运行就会挂掉并抛出unrecognized selector的异常。但是在这之前，runtime会有三次拯救程序崩溃的机会。
 
 ## objc中向一个nil对象发送消息将会发生什么？
 
-## 一个objc对象的isa的指针指向什么？有什么作用？
+不会报错，看上去什么都没有发生，但事实上还是发生了一些事情的。
+``` objc
+SomeClass * someObject;
+someObject = nil;
+[someObject doSomething];
+```
+就上上面的代码，向nil对象发送了doSomething，OC中nil是被当做0定义的。也就是说runtime要去获取这个nil的对象时，回去读取内存中0的位置，这是肯定不会被允许的，会返回nil，0，0.0等数据，根据返回值类型。
+
+nil比较容易与僵尸对象混淆，僵尸对象并不是nil，僵尸对象是你的对象被销毁了或则用于其他地方了，但是他的指针依然存在。会发生向一个object发送一个没有的方法。
+
+## 一个objc对象的isa指针指向什么？有什么作用？
+一个objc对象的isa指针指向它的类对象，从而可以找到类对象上的方法。
+
+每个objc对象都有一个隐藏的数据结构，这个数据结构是objcd对象的第一个成员变量，他就是isa指针。它指向一个类对象(class object，记住它是一个对象，是占用内存空间的一个变量，这个对象在编译的时候编译器就生成了，专门来描述某个类的定义)，这个类对象包含了objc对象的一些信息(为了区分两个对象，这里我们称作objc对象)，包含objc对象的方法调度表，实现了什么协议等等。
+``` objc
+@implementation Son : Father
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        NSLog(@"%@", NSStringFromClass([self class]));
+        NSLog(@"%@", NSStringFromClass([super class]));
+    }
+    return self;
+}
+```
+上面的代码输出都是Son，因为`[self class]`和`[super class]`都是以这个Son实例作为参数，去调用自己的class方法或father的class方法，结果发现它们都没有实现，都是调用NSObject的class方法，参数是同一个Son，所以输出的都是Son。
 
 ## 一个objc对象如何进行内存布局？（考虑有父类的情况）
+所有父类成员变量和父类成员变量都会存放在该对象对应的存储空间中。
+每个对象内部都有一个isa指针，指向它的类对象，类对象中存放着本对象的：
+* 对象方法列表（对象能够接受的消息列表，保存在它所对应的类对象中）
+* 成员变量的列表
+* 属性列表
 
+它内部有一个isa指针指向元对象（meta class），元对象内部存放的是类方法列表，类对象内部还有一个superclass的指针，指向他的父类对象。
+* 根对象就是NSObject，它的superclass指针指向nil。
+* 类对象既然成为对象，那它也是一个实例。类对象中也有一个isa指针指向它的元类（meta class），即类对象是元类的实例。元类内部存放的是类方法列表，根元类的isa指针指向自己，superclass指针指向NSObject类。
 ## objc中的类方法和实例方法有什么本质区别和联系？
-
+### 类方法
+* 类方法是属于类对象的
+* 类方法只能通过类对象调用
+* 类方法中的self是类对象
+* 类方法可以调用其他的类方法
+* 类方法不能访问成员变量
+* 类方法不能直接调用对象方法
+### 实例方法
+* 实例方法是属于实例对象的
+* 实例方法只能通过实例对象调用
+* 实例方法中的self是实例对象
+* 实例方法中可以访问成员变量
+* 实例方法中直接调用实例方法
+* 实例方法中可以调用类方法（通过类名）
 ## _objc_msgForward函数是做什么的，直接调用它将会发生什么？
+_objc_msgForward是IMP类型，用于消息转发的：当一个对象发送一条消息，但它并没有实现的时候，_objc_msgForward会尝试做消息转发。
+
+直接调用_objc_msgForward是非常危险的事，如果用不好会导致程序Crash，但是如果用得好，能做非常酷的事。
+
+一旦调用_objc_msgForward，将调过查找IMP的过程，直接触发“消息转发”，如果调用了_objc_msgForward，即使这个对象确实已经实现了这个方法，也会告诉objc_msgSend：“我没有在这个对象里找到这个方法的实现”。
 
 ## runloop的mode作用是什么？
+runloop主要是用来指定事件在运行循环的优先级，分为：
+* `NSDefaultRunLoopMode`：默认，空闲状态
+* `UITrackingRunLoopMode`：ScrollView滑动时
+* `UIInitializationRunLoopMode`：启动时
+* `NSRunLoopCommonModes`：Mode集合
+
+苹果公开提供的Mode有两个：
+* `NSDefaultRunLoopMode`
+* `NSRunLoopCommonModes`
 
 ## 能否向编译后得到的类中增加实例变量？能否向运行时创建的类中添加实例变量？为什么？
+
+不能向编译后得到的类中增加实例变量，能向运行时创建的类中添加实例变量。
+
+因为编译后的类已经注册在runtime中，类结构体中的objc_ivar_list实例变量的链表和instance_size实例变量的内存大小已经确定，同时runtime会调用class_setIvarLayout或class_setWeakIvarLayout来处理strong weak引用。所以不能向存在的类中添加实例变量。
+
+运行时创建的类是可以添加实例变量，调用class_addIvar函数。但是得在调用objc_allocateClassPair之后，objc_registerClassPair之前，原因和上面一样。
 
 ## runloop和线程有什么关系？
 
