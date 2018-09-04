@@ -203,6 +203,7 @@ ARC相对于MRC，不是编译时添加retain、release、autorelease这么简�
 4. ARC管理对象生命周期的办法是：在合适的地方“插入”、“保留”及“释放”操作。在方法中创建的对象，在方法中自动release；类中的对象，在dealloc方法中释放。
 5. ARC下，变量的内存管理语义可以通过修饰符指明。
 6. ARC只负责管理Objective-C对象的内存，CoreFoundation对象不归ARC管理。
+
 ## 滑动TableView视图的时候NSTimer会不会工作？
 1. 默认情况下NSTimer不能在后台正常工作。
 2. 滑动UI是NSTimer不能工作。
@@ -215,27 +216,274 @@ Runloop可以理解为cocoa下的一种消息循环机制，用来处理各种�
 [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 ```
 简单的说就是NSTimer不会开启新的进程，只是在runloop里注册了一下，runloop每次loop时都会检测这个timer，看是否可以触发。当runloop在A mode，而timer注册在B mode时就无法去检测这个timer，所以需要把NSTimer也注册到A mode，这样就可以被检测到。
+
 ## 绘制图形
 
 ## 构建缓存时选用NSCache而非NSDictionary
+当系统资源将要耗尽时，NSCache可以自动删减缓存。如果采用普通的字典，那么就要自己编写挂钩，在系统发出“低内存”通知时手动删减缓存，NSCache会先删减“最久未使用”的对象。
+
+NSCache不会拷贝键，而是会保留它。此行为用NSDictionary也可以实现，但是需要编写比较复杂的代码。NSCache对象不拷贝键的原因在于：很多时候，键都是由不支持拷贝操作的对象来充当的。因此，NSCache对象不会自动拷贝键，所以说，在键不支持拷贝操作的情况下，该类用起来比字典方便。
+
+NSCache是线程安全的，NSDictionary不是。在开发者自己不编写加锁代码的前提下，多个线程可以同时访问NSCache。对缓存来说，线程安全很重要，因为开发者可能要在某个线程中读取数据，此时如果发现缓存里找不到指定的键，那么就要下载该键对应的数据了。
+
+如果缓存使用得当，那么应用程序的响应速度就能提高。只有那种“重新计算起来很费事”的数据，才值得放入缓存，比如那些需要从网络获取从磁盘读取的数据。
 
 ## Runtime机制
 
+
 ## Runloop是怎样持续监听事件从而实现线程保护？如果线程启用Runloop，它会一直占用CPU吗？
+RunLoop是一个让线程能随时处理事件但不退出的机制。RunLoop实际上是一个对象，这个对象管理了其需要处理的事件和消息，并提供了一个入口函数来执行EventLoop的逻辑。线程执行了这个函数后，就会一直处于这个函数内部“接受消息->等待->处理”的循环中，知道循环结束（比如传入quit的消息），函数返回。让线程在没有处理消息时休眠以避免资源占用、在有消息到来时立刻被唤醒。
+
+OSX/iOS系统中，提供了两个这样的对象：NSRunLoop和CFRunLoopRef。CFRunLoopRef是在CoreFoundation框架内的，它提供了纯C函数的API，所有这些API都是线程安全的。NSRunLoop是基于CFRunLoopRef的封装，提供了面向对象的API，但是这些API不是线程安全的。
+
+线程和RunLoop之间是一一对应的，其关系是保存在一个全局的Dictionary里。线程刚创建时并没有RunLoop，如果你不主动获取，那它一直都不会有。RunLoop的创建是发生在第一次获取时，RunLoop的销毁是发生在线程结束时。你只能在一个线程的内部获取其RunLoop（主线程除外）。
+
+系统默认注册了5个RunLoop的Mode：
+1. `kCFRunLoopDefaultMode`：App的默认Mode，通常主线程是在这个Mode下运行的。
+2. `UITrackingRunLoopMode`：界面跟踪Mode，用于ScrollView追踪触摸滑动，保证界面滑动时不受其他Mode影响。
+3. `UIInitializationRunLoopMode`：在刚启动App时进入的第一个Mode，启动完成后不再使用。
+4. `GSEventReceiveRunLoopMode`：接受系统事件的内部Mode，通常用不到。
+5. `kCFRunLoopCommonModes`：这是一个占位的Mode，没有实际作用。
+
+RunLoop的四个作用：
+1. 使程序一直运行接受用户输入
+2. 决定程序在何时应该处理哪些Event
+3. 调用解耦
+4. 节省CPU时间
+
+主线程的RunLoop默认是启动的。iOS的应用程序里面，程序启动后会有一个如下的main()函数：
+``` objc
+int main(int argc, char * argv[]) {
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
+```
+
+参考文章：https://blog.csdn.net/potato512/article/details/51455728
 
 ## 临界区的理解，临界资源有什么特点？为什么会发生死锁？死锁怎么预防？发生死锁了怎么办？
 
-## 上线APP的crash收集
-
 ## 动画掉帧，CADisPlayLink， Core graphics
+使用![KMCGeigerCounter](https://github.com/kconner/KMCGeigerCounter)检测动画掉帧问题。
 
+CADisplayLink是一个能让我们以和屏幕刷新率相同的频率将内容画到屏幕上的定时器。我们在应用中创建一个新的CADisplayLink对象，把它添加到一个RunLoop中，并给它提供一个target和selector在屏幕刷新的时候调用。另外CADisplayLink不能被继承。frameInterval属性是可读可写的NSInteger型值，标识间隔多少帧调用一次selector方法，默认值是1，即每帧都调用一次。如果每帧都调用一次的话，对于iOS设备来说那刷新频率就是60hz也就是每秒60次，如果将frameInterval设为2那么就会两帧调用一次，也就是变成了每秒刷新30次。
+
+我们通过pause属性开控制CADisplayLink的运行。当我们想结束一个CADisplayLink的时候，应该调用`invalidate`从RunLoop中删除并删除之前绑定的target和selector，另外CADisplayLink不能被继承。
+
+iOS设备的屏幕刷新率是固定的，CADisplayLink在正常情况下会在每次刷新结束都被调用，精确度相当高。
+
+NSTimer的精确度就显得低了点，比如NSTimer的触发时间到的时候，RunLoop如果在阻塞状态，触发时间就会推迟到下一个RunLoop周期。并且NSTimer新增了tolerance属性，让用户可以设置可以容忍触发的时间的延迟范围。
+
+CADisplayLink使用场合相对专一，适合做UI的不停绘制，比如自定义动画引擎或则视频播放的渲染。NSTimer的使用范围要广泛的多，各种需要单次或者循环定时处理的任务都可以使用。在UI相关的动画或者显示内容使用CADisplayLink比起用NSTimer的好处就是我们不需要在格外关系屏幕的刷新频率了，因为它本身就是跟屏幕刷新同步的。
+
+注意：
+通常来讲：iOS设备的刷新频率是60Hz也就是每秒60次。那么每一次刷新的时间就是1/60秒（大概16.7毫秒）。当我们得frameInterval值为1的时候我们需要保证的是CADisplayLink调用`target`的函数计算时间不应该大于16.7，否则就会出现严重的丢帧现象。
+
+在mac应用中我们使用的不是CADisplayLink而是CVDisplayLink它是基于C接口的用起来配置有些麻烦但是用起来还是很简单的。
+
+## 使用ARC是否会出现野指针，为什么？
+会出现野指针，在定义block的时候，是将block内存分配在堆上的。当在函数作用范围外的时候，block的内存会被回收释放，就会生成野指针，这时候去掉用block，就会crash。
+## 如何让异步方法进行二次封装让其同步执行
+可以用dispatch_group_async，dispatch_group_notify。
+## 为什么这样定义单例？
+``` objc
+static HLTestObject *instance = nil;
++ (instancetype)sharedInstance
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[[self class] alloc] init];
+    });
+    return instance;
+}
+```
+为什么使用GCD去创建单例，GCD中的dispatch_once函数只调用一次，多线程若有两个线程先后去执行到dispatch_once这个地方，则先执行到的回去调用，后执行的就不会调用了。
+
+为什么要让对象指针static，多线程情况下，因为dispatch_once只执行一次，除了第一个执行的，之后的线程都不执行，直接返回对象指针，若此时指针是临时变量，则会导致返回一个空指针，若为static 则返回的永远是同一个又第一个执行的生成的对象。
 ## 如何给按钮画边框
-
+``` objc
+ringButton.tintColor = [UIColor colorWithRed:0.000 green:0.537 blue:0.506 alpha:1];
+[ringButton.layer setMasksToBounds:YES];
+[ringButton.layer setCornerRadius:8.0];
+[ringButton.layer setBorderWidth:1.0];
+CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+CGColorRef colorref = CGColorCreate(colorSpace, (CGFloat[]){0.000,0.537,0.506,1});
+[ringButton.layer setBorderColor:colorref];
+```
 ## Socket和Http的区别，和TCP的区别
+### Socket套接字
+套接字（Socket）是支持TCP/IP协议的网络通信的基本操作单元。它是网络通信过程中端点的抽象表示，包含进行网络通信必须的五种信息：连接使用的协议、本地主机的IP地址、本地进程的协议端口、远程主机的IP地址、远程进程的协议端口。
 
+应用层通过传输层进行数据通信时，TCP会遇到同时为多个应用程序提供并发服务的问题。多个TCP连接或多个应用程序可能需要通过一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，许多计算机操作系统为应用程序与TCP/IP协议交互提供了套接字（Socket）接口。应用层可以和传输层通过Socket接口，区分来自不同应用程序进程或网络连接的通信，实现数据传输的并发服务。
+
+套接字之间的连接过程分为三个步骤：服务器监听、客户端请求、连接确认。
+服务器监听：服务器端套接字并不定位具体的客户端套接字，而是出于等待连接的状态，实时监控网络状态，等待客户端的链接请求。
+
+客户端请求：指客户端的套接字提出链接请求，要链接的目标是服务端的套接字。为此，客户端的套接字必须首先描述它要连接的服务器套接字，指出服务器端套接字的地址和端口，然后就向服务端套接字提出链接请求。
+
+连接确认：当服务器端套接字监听到或则说收到客户端套接字的连接请求时，就响应客户端套接字的请求，建立一个新的线程，把服务端套接字的描述发送给客户端，一旦客户端确认了此描述，双方就正式建立连接。而服务器端套接字继续处于监听状态，继续接受其他客户端套接字的链接请求。
+
+创建Socket连接时，可以指定使用的传输层协议，Socket可以支持不同的传输层协议（TCP或UDP），当时使用TCP协议进行连接时，该Socket连接就是一个TCP连接。
+
+若双方建立的是HTTP连接，则服务器需要等到客户端发送一次请求后才能将数据传回给客户端，因此，客户端定时向服务器端发送连接请求，不仅可以保持在线，同时也是在“询问”服务器是否有新的数据，如果有就将数据传给客户端。
+
+TCP/IP协议是传输层协议，主要解决数据如何在网络中传输，而HTTP是应用层协议，主要解决如何包装数据。关于TCP/IP和HTTP协议的关系，网络有一段比较容易理解的介绍：“我们在传输数据时，可以只使用（传输层）TCP/IP协议，但是那样的话，如果没有应用层，便无法识别数据内容，如果想要使传输层的数据有意义，则必须使用到应用层协议，应用层协议有很多，比如HTTP、TCP、TELNET等，也可以自己定义应用层协议。WEB使用HTTP协议作为应用层协议，以封装HTTP文本信息，然后使用TCP/IP做传输层协议将它发到网络上。”
 ## OC对象模型
-
+对象是OC中基本构造单元（building block），用于存储和传递数据。类和对象的最终实现都是一种数据结构。可以完整的类应该包括类方法、实例方法和成员变量（实例变量），每个对象都包括一个isa（is a class）指针指向类对象（运行时方法发送给对象消息，才确定类别并调用相应的方法实现），元类对象中的方法列表是类方法（+，class methods）。
 ## HTTPS和HTTP的区别
+1. HTTPS是加密传输协议，HTTP是明文传输协议
+2. HTTPS需要用到SSL证书，而HTTP不用
+3. HTTPS比HTTP更加安全，对搜索引擎更友好，利于SEO
+4. HTTPS标准端口443，HTTP标准端口90
+5. HTTPS基于传输层，HTTP基于应用层
+6. HTTPS在浏览器显示绿色安全锁，HTTP没有显示
 
 ## 使用atomic一定是线程安全的吗？
+不是的。
+nonatomic的内存管理语义是非原子性的，非原子性的操作本来就是线程不安全的，而atomic的操作是原子性的，但是并不意味着它是线程安全的，它会增加正确的几率，能够更好的避免线程的错误，但是它仍然是线程不安全的。
 
+当使用atomic时，虽然对属性和读和写是原则性的，但是仍然可能出现线程错误：当线程A进行写操作，这时其他线程的读或则写操作会因为该操作而等待。当A线程的写操作结束后，B线程进行写操作，然后有线程C在A线程读操作前release了该属性，那么还会导致程序崩溃。所以仅仅使用atomic并不会使得线程安全，我们还要为线程添加lock来确保线程的安全。
+
+也就是要注意：<b>atomic所说的线程安全只是保证了getter和setter存取方法的线程安全，并不能保证整个对象是线程安全的。</b>如下例所示：
+``` objc
+@property(atomic,strong)NSMutableArray *arr;
+```
+如果一个线程循环的读数据，一个线程循环写数据，那么肯定会产生内存问题，因为这和setter、getter没有关系。如使用`[self.arr objectAtIndex:index]`就不是线程安全的。好的解决方案就是加锁。
+
+<b>探讨一下Objective-C中几种不同方式实现的锁</b>，在这之前先构建一个测试类，假设它是我们的一个共享资源，method1和method2是互斥的，代码如下：
+``` objc
+@implementation TestObj
+
+- (void)method1 
+{
+    NSLog(@"%@",NSStringFromSelector(_cmd));
+}
+- (void)method2
+{
+    NSLog(@"%@",NSStringFromSelector(_cmd));
+}
+@end
+```
+
+### 使用NSLock实现的锁
+``` objc
+// 主线程中
+TestObj *ojc = [[TestObj alloc] init];
+NSLock *lock = [[NSLock alloc] init];
+
+// 线程一
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    [lock lock];
+    [ojc method1];
+    sleep(10);
+    [lock unlock];
+});
+
+// 线程二
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    sleep(1);
+    [lock lock];
+    [ojc method2];
+    [lock unlock];
+});
+```
+根据打印的结果已经看到，线程一锁住之后，线程二回一直等待线程一走完并将锁设置为unlock后，才会执行method2中的方法。
+
+NSLock是Cocoa提供给我们最基本的锁对象，这也是我们经常所使用的，除lock和unlock方法外，NSLock还提供了tryLock和lockBeforeDate两个方法，前一个方法会尝试加锁，如果锁不可用（已经被锁住），并不会阻塞线程，并返回NO。lockBeforeDate方法会在指定Date之前尝试加锁，如果在指定时间之前都不能加锁，则返回NO。
+
+### 使用synchronized关键字构建的锁
+当然在Objective-C中你还可以用@synchronized指令快速的实现锁：
+``` objc
+TestObj *ojc = [[TestObj alloc] init];
+NSLock *lock = [[NSLock alloc] init];
+
+// 线程一
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    @synchronized(ojc){
+        [ojc method1];
+        sleep(10);
+    }
+});
+
+// 线程二
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    sleep(1);
+    @synchronized(ojc){
+        [ojc method2];
+    }
+});
+```
+
+@synchronized指令使用的obj为该锁的唯一标识，只有当标识相同时，才会满足互斥，如果线程二中的@synchronized(obj)改为@synchronized(other)，线程二就不会被阻塞，@synchronized指令实现锁的优点就是我们不需要在代码中显式的创建锁对象，便可以实现锁的机制，但作为一种预防措施，@synchronized块会隐式的添加一个异常处理例程来保护代码，该处理例程会在异常抛出的时候自动释放互斥锁。所以如果不想让隐式的异常处理例程带来额外的开销，可以考虑使用锁对象。
+
+### 使用C语言的pthread_mutex_t实现的锁
+
+``` objc
+TestObj *ojc = [[TestObj alloc] init];
+__block pthread_mutex_t mutex;
+pthread_mutex_init(&mutex,NULL);
+
+// 线程一
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    pthread_mutex_lock(&mutex);
+    [ojc method1];
+    sleep(10);
+    pthread_mutex_unlock(&mutex);
+});
+
+// 线程二
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    sleep(1);
+    pthread_mutex_lock(&mutex);
+    [ojc method2];
+    pthread_mutex_unlock(&mutex);
+});
+```
+pthread_mutex_t定义在pthread.h中，需要引入`#import <pthread.h>`。
+
+### 使用GCD来实现的锁
+
+以上代码的多线程中已经使用到了GCD的dispatch_async方法，其实在GCD中也已经提供了一种信号机制，使用它我们也可以构建一把“锁”（本质意义上讲，信号量与锁是有区别的，具体差异参考信号量与互斥锁之间的区别）：
+``` objc
+TestObj *ojc = [[TestObj alloc] init];
+dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+// 线程一
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    [ojc method1];
+    dispatch_semaphore_signal(semaphore);
+});
+
+// 线程二
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    sleep(1);
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    [ojc method2];
+    dispatch_semaphore_signal(semaphore);
+});
+```
+
+### 使用自旋锁OSSpinLock来实现的“锁”
+``` objc
+//主线程中
+TestObj *obj = [[TestObj alloc] init];
+OSSpinLock spinlock = OS_SPINLOCK_INIT;
+//线程1
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
+    OSSpinLockLock(&spinlock);
+    [obj method1];
+    sleep(10);
+    OSSpinLockUnlock(&spinlock);
+});
+
+//线程2
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
+    sleep(1);//以保证让线程2的代码后执行
+    OSSpinLockLock(&spinlock);
+    [obj method2];
+    OSSpinLockUnlock(&spinlock);
+});
+```
+
+参考链接：https://www.jianshu.com/p/e286d2907bf7
