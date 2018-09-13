@@ -365,6 +365,26 @@ runloop主要是用来指定事件在运行循环的优先级，分为：
 
 ## runloop和线程有什么关系？
 
-## runloop内部是如何实现的？
+## 以`scheduledTimerWithTimeInterval`的方式触发的timer，在滑动页面上的列表时，timer会暂停回调，为什么？如何解决？
 
-## OC各个关键字修饰都有哪些？都使用在什么场景中？
+RunLoop只能运行在一种mode下，如果要换mode，当前的loop也需要停下重启成新的。利用这个机制，scrollView滚动过程中`NSDefaultRunLoopMode`(`kCFRunLoopDefaultMode`)的mode会切换到`UITrackingRunLoopMode`来保证scrollView的流畅滑动：只能在`UITrackingRunLoopMode`模式下处理的事件会影响scrollView的滑动。
+
+如果我们把一个NSTimer对象以`UITrackingRunLoopMode`(`kCFRunLoopDefaultMode`)添加到主运行循环中的时候，scrollView滚动过程中会因为mode的切换，而导致NSTimer将不再被调度。
+
+同时因为mode还是可以定制的，所以：
+NSTimer计时器会被scrollView的滑动影响的问题可以通过将timer添加在`NSRunLoopCommonModes`（`kCFRunLoopCommonModes`）来解决。
+
+这个模式等效于`NSDefaultRunLoopMode`和`NSEventTrackingRunLoopMode`的结合。两个模式以数组的形式组合，当只要其中任意一个模式触发，都是这个大模式的触发，都会响应。
+
+## runloop内部是如何实现的？
+在while里有一个一直监听唤醒时间的东西，监听到就立马处理。之后又循环回来监听，直到满足跳出条件。
+
+``` objc
+function loop() {
+    initialize();
+    do {
+        var message = get_next_message();
+        process_message(message);
+    } while (message != quit);
+}
+```
