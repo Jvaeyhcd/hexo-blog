@@ -229,7 +229,7 @@ NSCache是线程安全的，NSDictionary不是。在开发者自己不编写加�
 如果缓存使用得当，那么应用程序的响应速度就能提高。只有那种“重新计算起来很费事”的数据，才值得放入缓存，比如那些需要从网络获取从磁盘读取的数据。
 
 ## Runtime机制
-
+详情见[【iOS】Runtime详解](https://jvaeyhcd.github.io/2018/08/08/%E3%80%90iOS%E3%80%91Runtime%E8%AF%A6%E8%A7%A3/)
 
 ## Runloop是怎样持续监听事件从而实现线程保护？如果线程启用Runloop，它会一直占用CPU吗？
 RunLoop是一个让线程能随时处理事件但不退出的机制。RunLoop实际上是一个对象，这个对象管理了其需要处理的事件和消息，并提供了一个入口函数来执行EventLoop的逻辑。线程执行了这个函数后，就会一直处于这个函数内部“接受消息->等待->处理”的循环中，知道循环结束（比如传入quit的消息），函数返回。让线程在没有处理消息时休眠以避免资源占用、在有消息到来时立刻被唤醒。
@@ -265,7 +265,7 @@ int main(int argc, char * argv[]) {
 ## 临界区的理解，临界资源有什么特点？为什么会发生死锁？死锁怎么预防？发生死锁了怎么办？
 
 ## 动画掉帧，CADisPlayLink， Core graphics
-使用![KMCGeigerCounter](https://github.com/kconner/KMCGeigerCounter)检测动画掉帧问题。
+使用[KMCGeigerCounter](https://github.com/kconner/KMCGeigerCounter)检测动画掉帧问题。
 
 CADisplayLink是一个能让我们以和屏幕刷新率相同的频率将内容画到屏幕上的定时器。我们在应用中创建一个新的CADisplayLink对象，把它添加到一个RunLoop中，并给它提供一个target和selector在屏幕刷新的时候调用。另外CADisplayLink不能被继承。frameInterval属性是可读可写的NSInteger型值，标识间隔多少帧调用一次selector方法，默认值是1，即每帧都调用一次。如果每帧都调用一次的话，对于iOS设备来说那刷新频率就是60hz也就是每秒60次，如果将frameInterval设为2那么就会两帧调用一次，也就是变成了每秒刷新30次。
 
