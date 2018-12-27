@@ -8,7 +8,12 @@ $(document).ready(function () {
   initTOCDimension();
 
   function initCss () {
-    $('.header-inner').css({'position': ''});
+    if (NexT.utils.isMobile() || NexT.utils.isTablet()) {
+      $('.header-inner').css({'position': 'relative'});
+    } else {
+      $('.header-inner').css({'position': 'absolute'});
+    }
+    
     $('.sidebar-inner').css({'position': ''});
   }
 

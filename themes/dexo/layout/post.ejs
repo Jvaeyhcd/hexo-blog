@@ -1,0 +1,43 @@
+<div class="post-content-box">
+  <article id="post" class="box-section shadow">
+    <div class="post-title">
+      <h1><%=page.title%></h1>
+    </div>
+    <div class="post-base-box">
+      <time datetime="<%=page.date.toJSON()%>">
+        <%=_p('post.posted')%> <%=date(page.date)%>
+      </time>
+      <% if (page.categories && page.categories.length) { %>
+        <div class="category-item">
+          <%=_p('post.in')%>
+          <%- list_categories(page.categories, {
+              class: 'category-item',
+              show_count: false,
+              style: 'none',
+              separator: '&nbsp;/&nbsp;'
+          }) %>
+        </div>
+      <% } %>
+    </div>
+    <div class="post-body">
+      <%-page.content%>
+    </div>
+  </article>
+
+  <ul class="post-pager">
+    <% if (page.prev){ %>
+    <li class="previous">
+      <a href="<%- url_for(page.prev.path) %>">← <%=_p('post.pager.prev')%></a>
+    </li>
+    <% } %>
+    <% if (page.next){ %>
+    <li class="next">
+      <a href="<%- url_for(page.next.path) %>"><%=_p('post.pager.next')%> →</a>
+    </li>
+    <% } %>
+  </ul>
+
+  <div class="box-section shadow box-comment">
+    <%-partial('partials/disqus')%>
+  </div>
+</div>

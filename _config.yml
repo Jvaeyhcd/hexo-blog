@@ -67,8 +67,8 @@ auto_excerpt:
 # Extensions 插件和皮肤
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-# theme: hcdexo
-theme: next
+theme: dexo
+# theme: next
 # theme: fexo
 
 # Baidu Analytics ID

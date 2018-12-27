@@ -1,333 +1,83 @@
-<!doctype html>
 
 
 
-  
-
-
-<html class="theme-next pisces use-motion">
+<!DOCTYPE html>
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swift学习笔记之闭包 [ Jvaeyhcd&#39;s Note ]</title>
+  <link rel="shortcut icon" href="img/favicon.png">
   
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
+    <!-- stylesheets list from _config.yml -->
     
+      <link rel="stylesheet" href="font-awesome.min.css">
+    
+      <link rel="stylesheet" href="/css/dexo.css">
+    
+      <link rel="stylesheet" href="/css/custom.css">
+    
+      <link rel="stylesheet" href="/css/post.css">
+    
+      <link rel="stylesheet" href="/css/page.css">
+    
+      <link rel="stylesheet" href="/css/layout.css">
     
   
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Swift,闭包," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-
-
-
-
-
-
-<meta name="description" content="概述一般来说，在学习一个新的东西前我们都需要先了解这个东西的定义。在Swift中的闭包是什么呢？  闭包是自包含的函数代码块，可以在代码中被传递和使用。Swift中的闭包与C和objc中的代码块(blocks)以及其它一些语言中的匿名函数比较相似。  闭包可以捕获和存储其所在上下文中任意常量和变量的引用。这就是所谓的闭合并包裹着这些常量和变量，俗称闭包。Swift 会为您管理在捕获过程中涉及到的所">
-<meta name="keywords" content="Swift,闭包">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Swift学习笔记之闭包">
-<meta property="og:url" content="http://www.jvaeyhcd.cc/2016/06/01/Swift学习笔记之闭包/index.html">
-<meta property="og:site_name" content="Jvaeyhcd&#39;s Note">
-<meta property="og:description" content="概述一般来说，在学习一个新的东西前我们都需要先了解这个东西的定义。在Swift中的闭包是什么呢？  闭包是自包含的函数代码块，可以在代码中被传递和使用。Swift中的闭包与C和objc中的代码块(blocks)以及其它一些语言中的匿名函数比较相似。  闭包可以捕获和存储其所在上下文中任意常量和变量的引用。这就是所谓的闭合并包裹着这些常量和变量，俗称闭包。Swift 会为您管理在捕获过程中涉及到的所">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-01T05:48:48.710Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift学习笔记之闭包">
-<meta name="twitter:description" content="概述一般来说，在学习一个新的东西前我们都需要先了解这个东西的定义。在Swift中的闭包是什么呢？  闭包是自包含的函数代码块，可以在代码中被传递和使用。Swift中的闭包与C和objc中的代码块(blocks)以及其它一些语言中的匿名函数比较相似。  闭包可以捕获和存储其所在上下文中任意常量和变量的引用。这就是所谓的闭合并包裹着这些常量和变量，俗称闭包。Swift 会为您管理在捕获过程中涉及到的所">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-
-
-
-  <title> Swift学习笔记之闭包 | Jvaeyhcd's Note </title>
 </head>
+<body>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?29df66b98641fa1eb4edb792fef116c9";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
+<div class="layout-container">
+  <div class="layout-header">
     
-  
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Jvaeyhcd's Note</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">My Coding Note</p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
+<div class="main-nav">
+  <div class="container">
+    <header class="group top-nav">
+      <nav class="navbar logo-w navbar-left">
+        <a class="logo">Jvaeyhcd's Note</a>
+      </nav>
+      <div class="navigation-toggle" onClick="hideShowMenu()">
+        <span class="logo">Jvaeyhcd's Note</span>
+      </div>
+      <nav id="navbar-menu" class="navbar item-nav navbar-right">
+        <ul>
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/tag">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </nav>
     </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Swift学习笔记之闭包
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T09:20:16+08:00" content="2016-06-01">
-              2016-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/01/Swift学习笔记之闭包/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/Swift学习笔记之闭包/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-              &nbsp; | &nbsp;
-              <span class="page-pv"><i class="fa fa-eye"></i> 本文总阅读量
-              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
-              </span>
-          
+  </div>
+</div>
+  </div>
+  <div class="layout-content">
+    <div id="content-outer" class="container container-box">
+      <div id="content-inner" class="content-view">
+        <div class="post-content-box">
+  <article id="post" class="box-section shadow">
+    <div class="post-title">
+      <h1>Swift学习笔记之闭包</h1>
+    </div>
+    <div class="post-base-box">
+      <time datetime="2016-06-01T01:20:16.000Z">
+        Posted on 2016-06-01
+      </time>
+      
+        <div class="category-item">
+          In
+          <a class="category-item-link" href="/categories/Swift学习笔记/">Swift学习笔记</a>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
       
-      
-
-      
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>一般来说，在学习一个新的东西前我们都需要先了解这个东西的定义。在Swift中的闭包是什么呢？</p>
+    </div>
+    <div class="post-body">
+      <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>一般来说，在学习一个新的东西前我们都需要先了解这个东西的定义。在Swift中的闭包是什么呢？</p>
 <blockquote>
 <p>闭包是自包含的函数代码块，可以在代码中被传递和使用。Swift中的闭包与C和objc中的代码块(blocks)以及其它一些语言中的匿名函数比较相似。</p>
 </blockquote>
@@ -390,369 +140,71 @@
 <p><code>someFunctionWithNoescapeClosure</code>定义了一个传入非逃逸闭包的函数。<br>一种能使闭包“逃逸”出函数的方法是，将这个闭包保存在一个函数外部定义的变量中。比如，很多启动异步操作的函数接受一个闭包参数作为completion handler。这类函数会在异步操作开始之后立即返回，但是闭包直到异步操作结束后才会被调用。在这种情况下，闭包需要“逃逸”出函数，因为闭包需要在函数返回之后被调用。例如：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> completionHandlers:[() -&gt; <span class="type">Void</span>] = []</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunctionWithEscapingClosure</span><span class="params">(completionHandler:<span class="params">()</span></span></span>-&gt;<span class="type">Void</span>) -&gt; <span class="type">Void</span> &#123;</span><br><span class="line">    completionHandlers.append(completionHandler)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><code>someFunctionWithEscapingClosure(_:)</code>函数接受一个闭包作为参数，该闭包被添加到一个函数外定义的数组中。如果你试图将这个参数标注为<code>@noescape</code>将会得到一个编译错误。<br>将闭包标注为<code>@noescape</code>使你能在闭包中隐式地引用<code>self</code>。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">doSomething</span><span class="params">()</span></span> -&gt; <span class="type">Void</span> &#123;</span><br><span class="line">        someFunctionWithEscapingClosure(&#123;<span class="keyword">self</span>.x = <span class="number">120</span>&#125;)</span><br><span class="line">        someFunctionWithEscapingClosure(&#123;<span class="keyword">self</span>.x = <span class="number">10</span>&#125;)</span><br><span class="line">        someFunctionWithNoescapeClosure(&#123;x = <span class="number">20</span>&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> instance = <span class="type">ExClass</span>()</span><br><span class="line">instance.doSomething()</span><br><span class="line"><span class="built_in">print</span>(instance.x)</span><br><span class="line"></span><br><span class="line">completionHandlers.first?()</span><br><span class="line"><span class="built_in">print</span>(instance.x)</span><br><span class="line"></span><br><span class="line">completionHandlers.last?()</span><br><span class="line"><span class="built_in">print</span>(instance.x)</span><br></pre></td></tr></table></figure></p>
 
-      
     </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Swift/" rel="tag">#Swift</a>
-          
-            <a href="/tags/闭包/" rel="tag">#闭包</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/05/31/Swift学习笔记之函数/" rel="next" title="Swift学习笔记之函数">
-                <i class="fa fa-chevron-left"></i> Swift学习笔记之函数
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/08/RXSwift基础/" rel="prev" title="RXSwift基础">
-                RXSwift基础 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
   </article>
 
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
+  <ul class="post-pager">
     
-      <div class="ds-thread" data-thread-key="2016/06/01/Swift学习笔记之闭包/"
-           data-title="Swift学习笔记之闭包" data-url="http://www.jvaeyhcd.cc/2016/06/01/Swift学习笔记之闭包/">
-      </div>
+    <li class="previous">
+      <a href="/2016/06/08/RXSwift基础/">← Previous Post</a>
+    </li>
     
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://dn-coding-net-production-static.qbox.me/0dcf6be4-e41e-4842-80af-af8f2b0eb3f3.jpg"
-               alt="Jvaeyhcd" />
-          <p class="site-author-name" itemprop="name">Jvaeyhcd</p>
-          <p class="site-description motion-element" itemprop="description">好记性不如烂笔头</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">42</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">16</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://funmi.github.io/" title="方米团队" target="_blank">方米团队</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.eyrefree.org/" title="EyreFree" target="_blank">EyreFree</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.lovexing.cn/" title="lovexing" target="_blank">lovexing</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://blog.callmewhy.com/" title="CallMeWhy" target="_blank">CallMeWhy</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://gaoryrt.com/" title="gaoryrt" target="_blank">gaoryrt</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://jkyeo.com/" title="jkyeo" target="_blank">jkyeo</a>
-                </li>
-              
-            </ul>
-          </div>
-        
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包表达式"><span class="nav-number">2.</span> <span class="nav-text">闭包表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sort方法"><span class="nav-number">2.1.</span> <span class="nav-text">sort方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包表达式语法"><span class="nav-number">2.2.</span> <span class="nav-text">闭包表达式语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据上下文推断类型"><span class="nav-number">2.3.</span> <span class="nav-text">根据上下文推断类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单表达式闭包隐式返回"><span class="nav-number">2.4.</span> <span class="nav-text">单表达式闭包隐式返回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数名称缩写"><span class="nav-number">2.5.</span> <span class="nav-text">参数名称缩写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符函数"><span class="nav-number">2.6.</span> <span class="nav-text">运算符函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尾随闭包"><span class="nav-number">3.</span> <span class="nav-text">尾随闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#捕获值"><span class="nav-number">4.</span> <span class="nav-text">捕获值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包是引用类型"><span class="nav-number">5.</span> <span class="nav-text">闭包是引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非逃逸闭包"><span class="nav-number">6.</span> <span class="nav-text">非逃逸闭包</span></a></li></ol></div>
-            
-          </div>
-        </section>
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Jvaeyhcd</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
-        
-
-<div class="busuanzi-count">
-
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv"><i class="fa fa-user"></i> 本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
-  
-
-  
-    <span class="site-pv"><i class="fa fa-eye"></i> 本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
-  
-  
-</div>
-
-
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-  
     
-  
+    <li class="next">
+      <a href="/2016/05/31/Swift学习笔记之函数/">Next Post →</a>
+    </li>
+    
+  </ul>
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"jvaeyhcd"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
+  <div class="box-section shadow box-comment">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'jvaeyhcd';
+    
+    var disqus_url = 'http://www.jvaeyhcd.cc/2016/06/01/Swift学习笔记之闭包/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
   </script>
 
+  <script id="dsq-count-scr" src="//jvaeyhcd.disqus.com/count.js" async></script>
+
+
+
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="layout-footer">
+    <div id="bottom-outer" class="container">
+  <div id="bottom-inner">
+    Powered by Jvaeyhcd using
+    <a href="http://hexo.io">Hexo</a>.
+    <br>
+  </div>
+</div>
+  </div>
+</div>
+
+
+
+  <!-- scripts list from theme config.yml -->
   
-    
+    <script src="/js/dexo.js"></script>
   
 
 
-
-
-
-
-  
-  
-  
-
-  
-
-  
-  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
 </html>

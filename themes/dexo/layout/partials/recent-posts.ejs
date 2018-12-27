@@ -1,0 +1,8 @@
+
+<% if (page.posts.length > 0) { %>
+  <div id="recent-posts" class="box-section shadow">
+    <% page.posts.sort('date', -1).limit(10).each(post => { %>
+      <%- partial("item-post", {post: post}) %>
+    <% }); %>
+  </div>
+<% } %>

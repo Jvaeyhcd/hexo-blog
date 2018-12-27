@@ -1,7 +1,7 @@
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
+<meta name="google-site-verification" content="JRr2LYNCkn75r5Rw7lSHAKYHSqNPyP3ZR2YGRCc6y1s" />
 
 {# #238, Disable Baidu tranformation #}
 <meta http-equiv="Cache-Control" content="no-transform" />

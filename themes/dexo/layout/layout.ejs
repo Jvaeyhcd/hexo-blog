@@ -1,0 +1,53 @@
+
+<%
+var pageTitle = page.title || config.subtitle || '';
+if (is_archive()) pageTitle = 'Archives';
+if (is_tag()) pageTitle = 'Tag: ' + page.tag;
+if (is_category()) pageTitle = 'Category: ' + page.category;
+if (is_month()) pageTitle += ': ' + page.month + '/' + page.year;
+if (is_year()) pageTitle += ': ' + page.year;
+pageTitle += ' [ ' + config.title + ' ]';
+%>
+
+<!DOCTYPE html>
+<html lang="<%=config.language%>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%=pageTitle%></title>
+  <link rel="shortcut icon" href="img/favicon.png">
+  <% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
+    <!-- stylesheets list from _config.yml -->
+    <% theme.stylesheets.forEach(url => { %>
+      <link rel="stylesheet" href="<%=url%>">
+    <% }); %>
+  <% } %>
+</head>
+<body>
+
+<div class="layout-container">
+  <div class="layout-header">
+    <%-partial('partials/header')%>
+  </div>
+  <div class="layout-content">
+    <div id="content-outer" class="container container-box">
+      <div id="content-inner" class="content-view">
+        <%- body %>
+      </div>
+    </div>
+  </div>
+  <div class="layout-footer">
+    <%-partial('partials/footer')%>
+  </div>
+</div>
+
+
+<% if (theme.scripts !== undefined && theme.scripts.length > 0) { %>
+  <!-- scripts list from theme config.yml -->
+  <% theme.scripts.forEach(url => { %>
+    <script src="<%=url%>"></script>
+  <% }); %>
+<% } %>
+
+</body>
+</html>

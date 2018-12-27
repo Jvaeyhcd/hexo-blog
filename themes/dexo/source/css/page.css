@@ -1,0 +1,67 @@
+.paginator-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.paginator-box .page-number {
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .05);
+  margin: 8px;
+  text-align: center;
+  -webkit-appearance: none;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.25em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+  padding-top: calc(0.375em - 1px);
+  position: relative;
+  vertical-align: top;
+  color: #363636;
+}
+
+.page-number.current {
+  color: #fff;
+  background-color: #3273dc;
+  border-color: #3273dc;
+  box-shadow: none;
+}
+
+.paginator-box .extend {
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .05);
+  margin: 8px;
+  text-align: center;
+  -webkit-appearance: none;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.25em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+  padding-top: calc(0.375em - 1px);
+  position: relative;
+  vertical-align: top;
+}
+
+.paginator-box a {
+  text-decoration: none;
+}
+
+.paginator-box .space {
+  line-height: 50px;
+  padding-left: 8px;
+  padding-right: 8px;
+}

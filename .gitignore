@@ -1,0 +1,7 @@
+_config.yml
+*.iml
+.idea
+
+node_modules/
+public/
+.deploy_git/

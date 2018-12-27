@@ -12,7 +12,7 @@
 }
 
 .header-inner {
-  position: absolute;
+  position: fixed;
   top: 0;
   overflow: hidden;
   padding: 0;
@@ -20,14 +20,15 @@
   background: white;
 
   +desktop-large() {
+    position: fixed;
     .container & { width: 240px; }
   }
   +tablet() {
-    position: relative;
+    position: relative !important;
     width: auto;
   }
   +mobile() {
-    position: relative;
+    position: relative !important;
     width: auto;
   }
 }

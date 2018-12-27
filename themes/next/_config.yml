@@ -386,3 +386,6 @@ images: images
 
 # Theme version
 version: 5.0.1
+
+sitemap:
+  path: sitemap.xml

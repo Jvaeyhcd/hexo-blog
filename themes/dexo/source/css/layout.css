@@ -1,0 +1,17 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-container .layout-header {
+  min-height: 49px;
+}
+
+.layout-container .layout-content {
+  min-height: calc(100vh - 109px);
+}
+
+.layout-container .layout-footer {
+  min-height: 80px;
+  line-height: 80px;
+}

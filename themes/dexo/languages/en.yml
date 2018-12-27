@@ -1,0 +1,13 @@
+menu:
+  home: Home
+  archive: Archive
+  category: Category
+  tag: Tag
+  about: About
+
+post:
+  posted: Posted on
+  in: In
+  pager:
+    next: Next Post
+    prev: Previous Post

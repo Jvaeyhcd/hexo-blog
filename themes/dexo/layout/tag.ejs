@@ -1,0 +1,26 @@
+<%
+const tagsList = list_tags({ show_count: true });
+%>
+
+<% if (is_tag() === true) { %>
+  <div id="tag">
+    <h1><%=page.tag%></h1>
+    <% page.posts.each(article => { %>
+      <div class="tag-item">
+        <a href="<%=url_for(article.path)%>">
+          <%=article.title%>
+        </a>
+        <time datetime="<%=date_xml(article.date)%>">
+          <%=date(article.date)%>
+        </time>
+      </div>
+    <% }) %>
+  </div>
+
+  <div id="paginator">
+    <%-paginator()%>
+  </div>
+<% } else { %>
+  <%- tagcloud() %>
+<% } %>
+
