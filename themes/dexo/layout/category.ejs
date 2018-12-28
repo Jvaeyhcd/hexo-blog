@@ -1,18 +1,13 @@
 
-<div id="category">
-  <h1><%=page.category%></h1>
-  <% page.posts.each(article => { %>
-    <div class="category-item">
-      <a href="<%=url_for(article.path)%>">
-        <%=article.title%>
-      </a>
-      <time datetime="<%=date_xml(article.date)%>">
-        <%=date(article.date)%>
-      </time>
-    </div>
-  <% }); %>
+<div id="category" class="box-section shadow">
+  <div class="timeline-box">
+    <%- partial("partials/item-timeline-title", {title: page.category}) %>
+    <% page.posts.each(article => { %>
+      <%- partial("partials/item-timeline-post", {post: article}) %>
+    <% }); %>
+  </div>
 </div>
 
-<div id="paginator">
+<div id="paginator" class="container paginator-box">
   <%-paginator()%>
 </div>

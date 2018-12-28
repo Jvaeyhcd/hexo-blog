@@ -11,10 +11,9 @@
         <div class="category-item">
           <%=_p('post.in')%>
           <%- list_categories(page.categories, {
-              class: 'category-item',
+              class: 'category-link-grey',
               show_count: false,
-              style: 'none',
-              separator: '&nbsp;/&nbsp;'
+              style: 'link'
           }) %>
         </div>
       <% } %>

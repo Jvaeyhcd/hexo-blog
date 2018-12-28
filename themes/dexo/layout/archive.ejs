@@ -3,68 +3,66 @@
 const categoriesList = list_categories({ show_count: false });
 const tagsList = list_tags({ show_count: false });
 const archivesList = list_archives({ show_count: false });
+
+function postsToArray(pagePosts) {
+  var postsArr = []
+  pagePosts.each(function (post) {
+    postsArr.push(post);
+  });
+  return postsArr;
+}
+
+function getUniqueYears(posts) {
+  var years = [];
+
+  posts.forEach(function (post) {
+    var year = post.date.year();
+    if (years.indexOf(year) < 0) {
+      years.push(year);
+    }
+  });
+
+  return years;
+};
+
+function filterPostByYear(postsArr, year) {
+  return postsArr.filter(function (post) {
+    return year === post.date.year();
+  });
+};
+
+function handlePosts(postsArr) {
+  var postLists = [];
+  var years = getUniqueYears(postsArr);
+
+  years.forEach(function(year) {
+    postLists.push({year: year, isYear: true});
+    var thisYearPosts = filterPostByYear(postsArr, year);
+    postLists = postLists.concat(thisYearPosts);
+  });
+
+  return postLists;
+};
+
+function getPostListsDom(posts) {
+  var dom = '<div class="timeline-box">';
+
+  var postsArr = postsToArray(posts);
+  posts = handlePosts(postsArr);
+
+  posts.forEach(function (post) {
+    var patialPath = post.isYear ? 'partials/item-year' : 'partials/item-timeline-post';
+    dom += partial(patialPath, {post: post});
+  });
+
+  dom += '</div>';
+  return dom;
+}
 %>
 
-<% if (is_year() === false) { %>
-  <div id="archive">
-
-    <h1>Archives</h1>
-
-    <% if (theme.atom !== undefined) { %>
-      <p>
-        The feed is available via
-        <a href="<%=theme.atom%>">atom</a>.
-      </p>
-      <br>
-    <% } %>
-
-    <aside>
-      <h2>Categories</h2>
-      <% if (categoriesList !== "") { %>
-        <%-categoriesList%>
-      <% } else { %>
-        <p>None.</p>
-      <% } %>
-    </aside>
-    <br>
-
-    <aside>
-      <h2>Tags</h2>
-      <% if (tagsList !== "") { %>
-        <%-tagsList%>
-      <% } else { %>
-        <p>None.</p>
-      <% } %>
-    </aside>
-    <br>
-
-    <aside>
-      <h2>Archives</h2>
-      <% if (archivesList !== "") { %>
-        <%-archivesList%>
-      <% } else { %>
-        <p>None.</p>
-      <% } %>
-    </aside>
-
-  </div>
-<% } else { %>
-
-  <h1><%=page.month + '/' + page.year%></h1>
-
-  <% page.posts.each(article => { %>
-    <div class="archive-item">
-      <a href="<%=url_for(article.path)%>">
-        <%=article.title%>
-      </a>
-      <time datetime="<%=date_xml(article.date)%>">
-        <%=date(article.date)%>
-      </time>
-    </div>
-  <% }) %>
-
-  <div id="paginator">
-    <%-paginator()%>
-  </div>
-
-<% } %>
+<div class="box-section shadow">
+  <%- getPostListsDom(page.posts) %>
+</div>
+<div id="paginator" class="container paginator-box">
+  <%-paginator()%>
+</div>

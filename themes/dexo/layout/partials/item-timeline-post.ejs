@@ -1,0 +1,45 @@
+<div class="item-timeline-post-box">
+  <% if (hasPhoto(post) === true) { %>
+    <div class="wrap-img">
+      <img src="<%=getPostPhotos(post.content)%>" alt="">
+    </div>
+  <% } %>
+  <div class="post-content <%=hasPhoto(post) ? 'margin-left-1rem' : ''%>">
+    <time class="date-text" datetime="<%=date_xml(post.date)%>">
+      <%=date(post.date)%>
+    </time>
+    <a class="title-text" href="<%=url_for(post.path)%>"><%=post.title%></a>
+    <% if (post.categories && post.categories.length) { %>
+      <div class="category-timeline">
+        <%- list_categories(post.categories, {
+            class: 'category-link-grey',
+            show_count: false,
+            style: 'link'
+        }) %>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%
+  function getPostPhotos(htmlstr) {
+    var reg = /<img.+?src=('|")?([^'"]+)('|")?(?:\s+|>)/gim;  
+    var imgsrcArr = [];  
+    while (tem = reg.exec(htmlstr)) {  
+      imgsrcArr.push(tem[2]);  
+    }
+    if (imgsrcArr.length > 0) {
+      return imgsrcArr[0]
+    }
+    return '';
+  }
+
+  function hasPhoto(post) {
+    var photo = getPostPhotos(post.content)
+    if (photo != '') {
+      return true
+    } else {
+      return false
+    }
+  }
+%>
