@@ -1,7 +1,7 @@
 <% if (page.posts && page.posts.length) { %>
 <div id="category" class="box-section shadow">
   <div class="timeline-box">
-    <%- partial("partials/item-timeline-title", {title: page.category, _p('menu.categories')}) %>
+    <%- partial("partials/item-timeline-title", {title: page.category, type: _p('menu.categories')}) %>
     <% page.posts.each(article => { %>
       <%- partial("partials/item-timeline-post", {post: article}) %>
     <% }); %>

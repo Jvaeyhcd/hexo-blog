@@ -2,7 +2,7 @@
 title: CocoaPods的制作过程
 date: 2016-07-08 17:14:00
 tags:
-  - CocoaPods
+  - Cocoapods
 categories: 经验积累
 ---
 

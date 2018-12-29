@@ -2,7 +2,7 @@
 title: CocosPods使用过程中遇到的一些问题，以及解决办法
 date: 2016-06-16 15:21:30
 tags:
-  - CocoaPods
+  - Cocoapods
 categories: 经验积累
 ---
 

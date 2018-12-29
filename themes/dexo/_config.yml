@@ -1,0 +1,37 @@
+
+# html lang
+language: en
+
+# main menu navigation
+menu:
+  Home: /
+  Archives: /archives
+  Tags: /tag
+  About: /about
+
+# stylesheets loaded in the <head>
+stylesheets:
+- font-awesome.min.css
+- /css/dexo.css
+- /css/custom.css
+- /css/post.css
+- /css/page.css
+- /css/layout.css
+- /css/font-awesome.min.css
+
+# scripts loaded in the end of the body
+scripts:
+- /js/dexo.js
+- /js/helper.js
+
+# Disqus
+disqus_shortname: jvaeyhcd
+
+# Facebook
+facebook_name: Jvaeyhcd
+
+# Github
+github_name: Jvaeyhcd
+
+# Twritter
+twitter_name: jvaeyhcd

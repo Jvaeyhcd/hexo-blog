@@ -2,7 +2,7 @@
 title: Cocoapods无法search到库的解决办法
 date: 2016-10-09 17:05:43
 tags:
-  - CocoaPods
+  - Cocoapods
 categories: 经验积累
 ---
 
