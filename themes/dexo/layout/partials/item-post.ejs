@@ -2,13 +2,13 @@
   <div class="left-box">
     <a class="title" href="<%=url_for(post.path)%>"><%=post.title%></a>
     <div class="post-item-excerpt">
-      <%- getPostDesc(post.excerpt) %>
+      <%- getPostDesc(post.excerpt) %>...
     </div>
     <div class="post-base-box">
       <% if (post.tags && post.tags.length) { %>
         <div class="category-item">
           <%- list_tags(post.tags, {
-              class: 'has-link-grey ',
+              class: 'post-item-tag',
               show_count: false,
               style: 'link'
           }) %>

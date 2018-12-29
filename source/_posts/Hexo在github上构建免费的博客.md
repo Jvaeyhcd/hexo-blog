@@ -2,6 +2,8 @@
 title: Hexo在github上构建免费的博客
 date: 2016-02-20 12:07:20
 tags:
+  - iOS
+categories: 经验积累
 ---
 
 

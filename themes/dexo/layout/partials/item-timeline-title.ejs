@@ -1,5 +1,8 @@
 <div class="item-title item-title-<%= randomNum(0, 4) %>">
-  <span class="timeline-title"><%= title %></span>
+  <span class="timeline-title">
+    <%= title %>
+    <span style="color:#B5B5BC; font-size: 16px;font-weight:normal;"><%= type %></span>
+  </span>
 </div>
 <%
 function randomNum(minNum,maxNum){ 

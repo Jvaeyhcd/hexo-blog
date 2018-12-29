@@ -2,6 +2,8 @@
 title: iOS上完美编译FFmpeg
 date: 2016-03-28 21:50:00
 tags:
+  - iOS
+categories: 经验积累
 ---
 
 ## 问题描述

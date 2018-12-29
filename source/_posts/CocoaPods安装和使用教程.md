@@ -2,6 +2,8 @@
 title: CocoaPods安装和使用教程
 date: 2016-02-20 09:14:02
 tags:
+  - CocoaPods
+categories: 经验积累
 ---
 
 ## CocosPods是什么

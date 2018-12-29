@@ -2,6 +2,8 @@
 title: CGContextRef绘图－iOS球形波浪加载进度控件－HcdProcessView详解
 date: 2016-09-20 13:18:12
 tags:
+   - iOS
+categories: 技术杂谈
 ---
 
 [《iOS球形波浪加载进度控件－HcdProcessView》](http://www.jianshu.com/p/239a650bf73a)这篇文章已经展示了我在项目中编写的一个球形进度加载控件HcdProcessView，这篇文章我要简单介绍一下我的制作过程。
@@ -352,6 +354,7 @@ if (currentLinePointY < radius) {
 当`currentLinePointY > radius`时，`y2=radius + sqrt(pow(radius, 2) - pow((radius - x), 2))`；
 
 这样就构成了一个如下的效果：
+
 {% asset_img 905614-cb9896a7ba570a22.png %}
 <!-- ![](http://upload-images.jianshu.io/upload_images/905614-cb9896a7ba570a22.png) -->
 

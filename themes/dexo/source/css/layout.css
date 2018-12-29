@@ -67,3 +67,19 @@ a.text-year {
   font-weight: bold;
   color: #222;
 }
+
+.footer-icon {
+  float: right;
+  margin-left: 12px;
+  font-size: 24px;
+  color: #222;
+}
+
+.tags-box {
+  padding: 40px;
+}
+
+.tags-box a {
+  display: inline-block;
+  margin: 10px;
+}

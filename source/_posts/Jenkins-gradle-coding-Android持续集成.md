@@ -4,6 +4,7 @@ date: 2016-08-08 17:27:36
 tags:
   - Jenkins
   - Android
+categories: 经验积累
 ---
 
 等待更新,基本步骤与iOS配置相似。

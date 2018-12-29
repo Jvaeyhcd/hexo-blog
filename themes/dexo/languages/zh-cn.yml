@@ -1,0 +1,14 @@
+menu:
+  home: 首页
+  archive: 归档
+  categories: 分类
+  tags: 标签
+  about: 关于
+
+post:
+  visitors: 阅读次数
+  posted: 发表于
+  in: 分类于
+  pager:
+    next: 下一篇
+    prev: 上一篇

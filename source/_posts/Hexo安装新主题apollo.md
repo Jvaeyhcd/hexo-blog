@@ -2,6 +2,8 @@
 title: Hexo安装新主题apollo
 date: 2016-02-20 16:15:35
 tags:
+  - Hexo
+categories: 经验积累
 ---
 
 Hexo博客系统的流行原因，是因为他的个人性，而皮肤就是个人性的一种体现。Hexo换皮肤还是比较简单的,既可以自己根据默认的主题来修改，也可以到[https://hexo.io/themes/](https://hexo.io/themes/)上去找主题。

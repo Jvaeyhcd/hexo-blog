@@ -2,7 +2,8 @@
 title: Cocoapods无法search到库的解决办法
 date: 2016-10-09 17:05:43
 tags:
-  - Cocoapods
+  - CocoaPods
+categories: 经验积累
 ---
 
 ## 缘由
@@ -17,7 +18,7 @@ ERROR:  While executing gem ... (Errno::EPERM)
 sudo gem install -n /usr/local/bin cocoapods -v 1.0.1
 ```
 -v可以跟版本号，来按照您想安装的版本。
-这就这样Cocopods安装成功了，当然如果您没有翻墙的话安装Cocoapods需要切换ruby源到[https://gems.ruby-china.org](https://gems.ruby-china.org)，具体按照可以参考我的这篇文章[《CocoaPods安装和使用教程》](http://www.jvaeyhcd.cc/2016/02/20/CocoaPods%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/)。
+这就这样Cocopods安装成功了，当然如果您没有翻墙的话安装Cocoapods需要切换ruby源到[https://gems.ruby-china.org](https://gems.ruby-china.org)，具体按照可以参考我的这篇文章[《CocoaPods安装和使用教程》](http://jvaeyhcd.github.io/2016/02/20/CocoaPods%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/)。
 <!-- more -->
 当我以为一切就绪的时候，我`pod search RxSwift`却提示我如下的错误：
 ``` bash

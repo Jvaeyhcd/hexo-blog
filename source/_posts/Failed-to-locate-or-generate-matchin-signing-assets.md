@@ -2,6 +2,8 @@
 title: Failed to locate or generate matchin signing assets
 date: 2016-04-18 16:58:38
 tags:
+  - iOS
+categories: 经验积累
 ---
 
 ## 发现问题

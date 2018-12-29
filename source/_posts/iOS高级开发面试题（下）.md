@@ -2,6 +2,8 @@
 title: iOS高级开发面试题（下）
 date: 2018-08-06 13:27:26
 tags:
+  - iOS
+categories: 知识汇总
 ---
 
 ## objc使用什么机制管理对象内存？

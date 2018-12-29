@@ -2,7 +2,7 @@
 title: NSURLErrorDomain Code=-1002 “unsupported URL”
 date: 2016-06-30 15:13:42
 tags:
-  - 常见错误
+  - iOS
 categories: 常见错误
 ---
 

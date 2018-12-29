@@ -1,11 +1,12 @@
 <%
 const tagsList = list_tags({ show_count: true });
+const tagCount = tagsList.length
 %>
 
 <% if (is_tag() === true) { %>
   <div id="tag" class="box-section shadow">
     <div class="timeline-box">
-      <%- partial("partials/item-timeline-title", {title: page.tag}) %>
+      <%- partial("partials/item-timeline-title", {title: page.tag, type: _p('menu.tags')}) %>
       <% page.posts.each(article => { %>
         <%- partial("partials/item-timeline-post", {post: article}) %>
       <% }) %>
@@ -16,8 +17,8 @@ const tagsList = list_tags({ show_count: true });
     <%-paginator()%>
   </div>
 <% } else { %>
-  <div class="box-section shadow">
-    <%- tagcloud() %>
+  <div class="box-section shadow tags-box">
+    <%- tagcloud({min_font: 12, max_font: 30, amount: 200, color: true, start_color: '#ccc', end_color: '#111'}) %>
   </div>
 <% } %>
 

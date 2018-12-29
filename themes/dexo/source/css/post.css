@@ -183,6 +183,7 @@ a.title {
   font-size: 1rem !important;
   transition: .2s ease;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .category-link-grey-link {
@@ -193,4 +194,25 @@ a.title {
 
 .category-timeline {
   margin-left: 0px;
+}
+
+.post-detail-box {
+  padding-bottom: 20px;
+}
+
+a.post-item-tag-link {
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #b5b5b5;
+}
+
+a.post-item-tag-link:before {
+  content: '# ';
+  color: #b5b5b5;
+}
+
+a.post-item-tag-link:hover{
+  color: #0366d6;
+  text-decoration: none;
 }

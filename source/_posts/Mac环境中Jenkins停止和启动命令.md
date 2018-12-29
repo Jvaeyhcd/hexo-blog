@@ -2,6 +2,8 @@
 title: Mac环境中Jenkins停止和启动命令
 date: 2016-08-02 12:02:06
 tags:
+  - Jenkins
+categories: 经验积累
 ---
 
 ### 启动

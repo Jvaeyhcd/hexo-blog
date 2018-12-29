@@ -1,5 +1,7 @@
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 <div class="post-content-box">
-  <article id="post" class="box-section shadow">
+  <article id="post" class="post-detail-box box-section shadow">
     <div class="post-title">
       <h1><%=page.title%></h1>
     </div>
@@ -17,6 +19,9 @@
           }) %>
         </div>
       <% } %>
+      <span id="busuanzi_container_page_pv">
+        &nbsp;<%=_p('post.visitors')%> <span id="busuanzi_value_page_pv"></span>
+      </span>
     </div>
     <div class="post-body">
       <%-page.content%>

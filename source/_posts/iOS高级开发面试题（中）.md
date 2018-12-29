@@ -2,6 +2,8 @@
 title: iOS高级开发面试题（中）
 date: 2018-08-06 11:44:34
 tags:
+  - iOS
+categories: 知识汇总
 ---
 
 ## __block在arc和非arc下含义一样吗？

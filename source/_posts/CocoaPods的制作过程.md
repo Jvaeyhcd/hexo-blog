@@ -3,6 +3,7 @@ title: CocoaPods的制作过程
 date: 2016-07-08 17:14:00
 tags:
   - CocoaPods
+categories: 经验积累
 ---
 
 最新项目不算太忙，于是抽出了一点时间将以前项目中的使用的AVPlayer视频播放器做了一个简单的封装。现在我想把它做成CocoaPods方便以后的使用。下面我要详细的记录下我的制作过程。

@@ -1,11 +1,12 @@
 menu:
   home: Home
   archive: Archive
-  category: Category
-  tag: Tag
+  categories: Categories
+  tags: Tags
   about: About
 
 post:
+  visitors: visitors
   posted: Posted on
   in: In
   pager:

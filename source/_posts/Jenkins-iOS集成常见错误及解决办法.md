@@ -5,6 +5,7 @@ tags:
  - 常见错误
  - Jenkins
  - iOS
+categories: 经验积累
 ---
 
 ### 问题一: failed to import bridging header

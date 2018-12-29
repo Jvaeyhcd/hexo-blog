@@ -4,8 +4,6 @@ Jvaeyhcd's Note
 
 网站地址：
 
-www.jvaeyhcd.cc
-
 https://jvaeyhcd.github.io
 
 http://chedahuang.coding.me

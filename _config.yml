@@ -7,12 +7,12 @@ title: Jvaeyhcd's Note
 subtitle: My Coding Note
 description: 好记性不如烂笔头
 author: Jvaeyhcd
-language: zh-Hans
+language: en
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.jvaeyhcd.cc
+url: https://jvaeyhcd.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:

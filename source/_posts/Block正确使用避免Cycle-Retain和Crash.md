@@ -2,6 +2,8 @@
 title: Block正确使用避免Cycle Retain和Crash
 date: 2016-02-24 09:28:26
 tags:
+  - iOS
+categories: 技术杂谈
 ---
 
 >本文只介绍了MRC时的情况，有些细节不适用于ARC。比如MRC下__block不会增加引用计数，但ARC会，ARC下必须用__weak指明不增加引用计数；ARC下block内存分配机制也与MRC不一样，所以文中的一些例子在ARC下测试结果可能与文中描述的不一样

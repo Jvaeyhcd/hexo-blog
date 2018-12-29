@@ -2,6 +2,9 @@
 title: AES/CBC/128/PKCS5Padding加密解密算法（iOS、Android、JavaScript、PHP）
 date: 2017-10-24 22:56:40
 tags:
+  - AES
+  - 算法
+categories: 技术杂谈
 ---
 
 最近项目中考虑到用户账户数据的安全性问题，需要对用户账户相关信息进行加密解密。这里我们选择使用AES加解密，至于AES相比其他对称加密算法的优缺点就不再详述，当然加解密过程中还使用了一些其他的算法，比如混合MD5。这边文章主要记录下Objective-C、Java、JavaScript、PHP四种语言的AES/CBC/128/PKCS5Padding的加解密算法，下面直接上代码。

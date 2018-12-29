@@ -2,6 +2,8 @@
 title: iOS中造成dealloc不调用的原因
 date: 2016-04-06 12:18:32
 tags:
+  - iOS
+categories: 技术杂谈
 ---
 
 ## 问题描述

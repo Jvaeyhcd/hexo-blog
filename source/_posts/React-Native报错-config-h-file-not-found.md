@@ -4,6 +4,7 @@ date: 2018-11-12 13:47:23
 tags:
   - React Native
   - iOS
+categories: 经验积累
 ---
 
 打开Xcode编译react native的iOS程序出现了如下的错误：
