@@ -8,7 +8,7 @@
 }
 
 .layout-container .layout-content {
-  min-height: calc(100vh - 109px);
+  min-height: 200px;
 }
 
 .layout-container .layout-footer {
@@ -82,4 +82,10 @@ a.text-year {
 .tags-box a {
   display: inline-block;
   margin: 10px;
+}
+
+.about-box {
+  margin-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
