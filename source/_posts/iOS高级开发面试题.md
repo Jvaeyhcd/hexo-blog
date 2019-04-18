@@ -1,6 +1,6 @@
 ---
 title: iOS高级开发面试题（上）
-date: 2018-08-06 10:37:30
+date: 2017-08-06 10:37:30
 tags:
   - iOS
 categories: 知识汇总
@@ -53,6 +53,74 @@ NSArray *arr = [NSArray arrayWithObjects:@"wang", @"zz", [NSNull null], @"foogry
 
 一句话总结Nil、nil、NSNull之间的区别就是：不管是NULL、Nil、nil，他们本质上都是一样的，都是(void *)0，只是写法不同。这样做的意义是区分不同的数据类型，比如你看到NULL就知道他是一个C指针，看到nil就知道这是一个Objective-C对象，看到Nil就知道这是一个Class类型的数据。
 
+## load和initialize
+
+### load函数调用特点如下
+
+当类被引用进项目的时候就会执行load函数（在main函数开始执行之前），与这个类是否被用到无关，每个类的load函数只会自动调用一次。由于load函数是系统自动加载的，因此不需要调用父类的load函数，否则父类load函数会执行多次。
+* 当父类和子类都实现load函数时，父类的load方法执行顺序要优于子类。
+* 当子类未实现load方法时，不会调用父类load方法。
+* 类中的load方法执行顺序要优先于类别（Category）。
+* 当有多个类别（Category）都实现了load方法，每个类load执行顺序与其在Compile Source出现的顺序一致。
+
+load调用时机比较早，当load调用时，其他类可能还没加载完成，运行环境不安全。
+
+load方法是线程安全的，它使用了锁，我们应该避免线程阻塞在load方法。
+
+### initialize函数调用特点如下
+
+initialize在类或者其子类的第一个方法被调用前调用。即使类文件被引用进项目，但是没有使用，initialize不会被调用。由于是系统自动调用，也不需要再调用`[super initialize]`，否组父类的initialize会被调用多次执行。假如这个类放到代码中，而这段代码并没有被执行，这个函数是不会被执行的。
+* 父类的initialize方法会比子类先执行。
+* 当父类未实现initialize方法时，会调用父类initialize方法，子类实现initialize方法时，会覆盖initialize方法。
+* 当多个Category都实现了initialize方法，会覆盖类中的方法，只执行一个（会执行Compile Source列表中最后一个Category的initialize方法）。
+
+在initialize方法收到调用时，运行环境基本健全。
+
+initialize内部使用了锁，所以线程是安全的。但同时要避免阻塞线程，不要再使用锁。
+
+### 分别在什么情况下使用？
+
+#### +load
+由于调用load方法时的环境很不安全，我们应该尽量减少load方法的逻辑。另一个原因是load方法是线程安全的，它内部使用了锁，所以我们应该避免线程阻塞在load方法中，load很常见的一个使用场景，交换两个方法的实现。
+
+比如MJRefresh中的一段代码：
+``` objc
++ (void)load
+{
+    [self exchangeInstanceMethod1:@selector(reloadData) method2:@selector(mj_reloadData)];
+    [self exchangeInstanceMethod1:@selector(reloadRowsAtIndexPaths:withRowAnimation:) method2:@selector(mj_reloadRowsAtIndexPaths:withRowAnimation:)];
+    [self exchangeInstanceMethod1:@selector(deleteRowsAtIndexPaths:withRowAnimation:) method2:@selector(mj_deleteRowsAtIndexPaths:withRowAnimation:)];
+    [self exchangeInstanceMethod1:@selector(insertRowsAtIndexPaths:withRowAnimation:) method2:@selector(mj_insertRowsAtIndexPaths:withRowAnimation:)];
+    [self exchangeInstanceMethod1:@selector(reloadSections:withRowAnimation:) method2:@selector(mj_reloadSections:withRowAnimation:)];
+    [self exchangeInstanceMethod1:@selector(deleteSections:withRowAnimation:) method2:@selector(mj_deleteSections:withRowAnimation:)];
+    [self exchangeInstanceMethod1:@selector(insertSections:withRowAnimation:) method2:@selector(mj_insertSections:withRowAnimation:)];
+}
+
++ (void)exchangeInstanceMethod1:(SEL)method1 method2:(SEL)method2
+{
+    method_exchangeImplementations(class_getInstanceMethod(self, method1), class_getInstanceMethod(self, method2));
+}
+```
+
+#### +initialize
+initialize方法主要用来对一些不方便在编译期初始化的对象进行赋值。比如NSMutableArray这种类型的实例化依赖于Runtime的消息发送，所以显然无法在编译器初始化：
+``` objc
+// In Person.m
+// int类型可以在编译期赋值
+static int someNumber = 0; 
+static NSMutableArray *someArray;
++ (void)initialize {
+    if (self == [Person class]) {
+        // 不方便编译期复制的对象在这里赋值
+        someArray = [[NSMutableArray alloc] init];
+    }
+}
+```
+
+### load和initialize的共同点
+* 如果父类和子类都被调用，父类的调用一定在子类之前。
+
+
 ## 线程与进程的区别和联系？
 简单概括下线程与进程之间的区别和联系：
 * 一个程序至少要有一个进程，一个进程至少要有一个线程。
@@ -66,29 +134,37 @@ NSArray *arr = [NSArray arrayWithObjects:@"wang", @"zz", [NSNull null], @"foogry
 
 首先看看第一部分assign、retain、copy的含义：
 ### assign
+
 assign一般用来修饰基本的数据类型，包括基本数据类型（NSInteger、CGFloat）和C数据类型（int、float、double、char）等。因为assign声明的属性不会增加引用计数，也就是说声明的属性释放后，就没有了，及时其他对用用到了他也无法留住他，只会crash。但是即使是释放了，指针却还在，成为了野指针，如果新的对象被分配到了这个内存地址上，也会crash。所一般只能修饰基本数据类型，因为他会被分配在栈上，而栈会由系统自动处理，不会造成野指针。
 
 ### retain
+
 与assign相对，我们要解决对象被其他对象引用后释放造成的问题，就要用retain来声明。retain声明后的对象会更改引用计数，那么每次被引用，引用计数都会+1，释放后都会-1，及时这个对象本身被释放了，只要还有对象在引用它，就会持有不会造成什么问题，只有当引用计数为0时候，就会被dealloc构析函数回收内存了。
 
 ### copy
+
 最常见的使用copy修饰应该是NSString。copy与retain的区别在于retain的引用是拷贝指针地址，copy是拷贝对象本身，也就是说retain是浅复制，copy是深复制。<b>如果是浅复制，当修改对象时，都会被修改，而深复制不会。</b>之所以在NSString这类有可变类型的对象上使用，是因为他们有可能和对应的可变类型如NSMutableString之间进行赋值操作，为了防止内容被改变，使用copy去深复制一份。copy工作由copy方法执行，此属性只对那些实现了NSCopying协议的对象有效。
 
 以上三个可以在MRC中使用，但是weak和strong就只能在ARC中使用，也就是自动引用计数，这时就不能手动去进行retain、release等操作了，ARC会帮我们完成这些工作。
 
 ### weak
+
 weak其实类似于assign，叫弱引用，也就是不增加引用计数。一般只有在防止循环引用时使用，比如父类引用了子类，子类又去引用父类。IBOutlet、Delegate一般用的就是weak，这是因为它们会在类外部被调用，防止循环引用。
 
 ### strong
+
 相对的，strong就类似retain了，叫强引用，会增加引用计数，类内部使用的属性一般都是strong修饰的，现在ARC已经基本代替了MRC，所以我们最常见的就是strong了。
 
 ### nonatomic
+
 在修饰属性时，我们往往会加上一个nonamatic，这又是什么呢？它的名字叫非原子访问。对应有atomic，是原子访问。我们知道使用多线程为了避免在写操作时同时进行写导致问题，经常会对要写的对象进行加锁，也就是同一时刻只允许一个线程去操作它。如果一个属性是由atomic修饰的，那么系统就会对线程进行保护，防止多个写操作同时进行。这有好处，也有坏处，那就是消耗系统资源，所以对于iPhone这种小型设备，如果不是进行多线程的写操作，就可以使用nonatomic，取消线程保护，提高性能。
 
 ## 定义一个NSString类类型属性时，为什么使用copy不用strong？
+
 NSString类型属性是一个指针，定义成copy，操作是拷贝一份等同的对象，这个指针指向新生成的拷贝对象。当使用copy时，这个拷贝的对象无论是拷贝自NSMutableString还是NSString结构都是不可变的NSString。而如果是用strong，则指向一个字符串对象，若指向的是一个NSMutableString，则当指向的对象改变时，属性值也会发生相应改变，导致错误，因为是一个不可变的字符串。
 
 ## 引用多线程时会出现什么问题，应如何避免问题的发生？
+
 多线程容易导致资源争抢，发生死锁现象。死锁通常是一个线程锁定一个资源A，而又想去锁定资源B；在另一个线程中，锁定了资源B，而又想去锁定资源A以完成自身的操作，两个线程都想得到对方的资源，而不愿释放自己的资源，造成两个线程都在相互等待，造成了无法执行的情况。
 
 避免死锁的一个通用的经验法则是：当几个线程都要访问共享资源A、B、C时，保证使每个线程都按照同样的顺序去访问它们，比如先访问A，在访问B和C。
@@ -96,17 +172,21 @@ NSString类型属性是一个指针，定义成copy，操作是拷贝一份等�
 采用GCD中的栅栏方法，用并行队列去装载事件并异步去执行。
 
 ## 循环引用是如何产生的，如何解决循环引用？
+
 两个类中有属性分别为彼此的实例，这样就会引发循环引用。
 
 使用block、NSTimer时也容易导致循环引用，设置一个引用为弱引用可以解决强引用循环。
 
 ## NSTimer使用中的注意事项
+
 在类中定义定时器并把目标对象设置为self时，NSTimer实例会保存此实例，但定时器是用在类中用实例变量存放的，所以此实例也保留了定时器，这就造成了循环引用。除非调用invalidate方法并把定时器设置为nil，或则系统回收实例，才能打破循环引用。如果无法确保stop一定被调用，就极易造成内存泄漏。
 
 使用block可以防止NSTimer导致的内存泄漏。
 
 在NSTimer分类中定义方法，让NSTimer的target为NSTimer实例本身，然后block从实例中copy一份，在NSTimer中定义方法去执行拷贝block。
+
 ## App的生命周期以及运行状态
+
 状态：未运行、未激活、激活、后台、挂起。
 
 未运行：程序未启动
@@ -118,16 +198,22 @@ NSString类型属性是一个指针，定义成copy，操作是拷贝一份等�
 后台：程序在后台而且能执行代码，大多程序进入这个状态后会在这个状态停留一会，时间到之后会进入挂起状态
 
 挂起：程序在后台不能执行代码。系统会自动把程序变成这个状态而且不会发出通知。当挂起时，程序还是停留在内存中，系统内存低时，系统就把挂起的程序清除掉
+
 ## 栈、堆、静态区域的区别
+
 OC中，非对象的变量都存在栈中，对象都存在堆中，静态区域的内存在程序编译的时候就已经分配好，这块内存在程序的整个运行期间都在，主要存放静态数据、全局数据和常量。
 
 栈区：在执行函数时，函数内局部变量的存储单元都可以在栈上创建，函数执行结束时这些存储单元自动被释放。栈内存效率高，内存容量有限。
 
 堆区：OC对象存储于堆中，当对象的引用计数为0时自动释放该对象。
+
 ## 子试图超出父视图部分能看到吗？超出的部分有什么影响？
+
 子视图超出父视图的部分能看到，但是超出部分不能响应事件。
 想让超出部分响应事件，就该写父视图的hitTest方法。判断触碰区是否在子视图内，如果在子视图内，则返回子视图。让子视图去响应事件。
+
 ## respond链是如何响应的，响应顺序是什么样的？
+
 在iOS系统中，能够响应并处理事件的对象称之为responder object，UIResponder是所有responder对象的基类，在UIResponder类中定义了处理各种事件，包括触摸事件、运动事件和远程控制事件的编程接口，UIApplication、UIViewController、UIVIew和所有继承自UIVIew的UIKit类（包括UIWindow继承自UIVIew）都直接或间接的继承自UIResponder，所以它们的实例都是responder object对象，都实现了上述4个方法。UIResponder中的默认实现是什么都不做，但UIKit中UIResponder的直接子类（UIView，UIVIewController...）的默认实现是将事件延着responder chain继续向上传递到下一个responder，即nextResponder。所以在定制UIView子类的上述事件处理方法时，如果需要将事件传递给next responder，可以直接调用super的对应事件处理方法，super的对应方法将事件传递给next responder，即使用`[super touchesBegan:touches withEvent:event];`，不建议直接向nextResponder发送消息，这样可能会漏掉父类对这一事件的其他处理。
 ``` objc
 [self.nextResponder touchesBegan:touches withEvent:event];
@@ -152,12 +238,14 @@ iOS系统在处理事件时，通过UIApplication对象和每个UIWindow对象�
 使用响应链，能够让一条链上的多个对象对同一个事件做出响应。每一个应用有一个响应链，我们得视图结构是一个N叉树（一个视图可以有多个子视图，一个子视图同一时刻只有一个父视图），而每一个继承自UIResponder的对象都可以在这个N叉树中成为一个节点。当叶节点成为最高响应者的时候，从这个叶节点开始往其父节点开始追溯出一条链，那么对于这一个叶节点来说，这一条链就是当前的响应者链。响应者链将系统捕获到的UIEvent与UITouch从叶节点层层向上分发，期间可以选择停止分发，也可以继续向上分发。一句话就是事件传递过程。
 
 ## GCD中栅栏机制
+
 栅栏函数只能用在调度并发队列中，不能使用在全局并发队列中。
 1. 实现高效率的数据库访问和文件访问
 2. 避免数据竞争
 dispatch_barrier_async函数会等待追加到并行队列上的并行执行的处理全部结束之后，再将制定的处理追加到该并行队列中。然后再由dispatch_barrier_async函数追加的处理执行完毕后，并行队列才恢复为一般的动作，追加到该并行队列的处理又开始执行。
 
 ## Notification响应顺序
+
 NSNOtification使用的是同步操作。即如果你在程序中的A位置post了一个NSNotification，在B注册了一个observer，通知发出后，必须等到B位置的通知回调执行完以后才能返回到A处继续往下执行。如果想让NSNotification的post处和observer处异步执行，可以通过NSNotificationQueue实现。
 
 多线程应用中，Notification在哪个线程中post，就在哪个线程中被转发，而不一定是在注册观察者的那个线程中。Notification的发送与接收处理都是在同一个线程中。
@@ -169,10 +257,13 @@ NSNOtification使用的是同步操作。即如果你在程序中的A位置post�
 当我们注册一个观察者时，通知中心会持有观察者的一个弱引用，来确保观察者是可用的。主线程调用dealloc操作会让observer对象的引用计数减为0，这时对象会释放掉。后台线程发送一个通知，如果此时observer还未被释放，则会用其转出消息，并执行回调方法。而如果在回调执行的过程中对象被释放了，就会出现上面的问题。
 
 ## Core Data、SQLite是如何使用的？
+
 Core Data是一个功能强大的层，位于SQLite数据库之上，它避免了SQL的复杂性，能让我们以更自然的方式与数据库进行交互。Core Data将数据库进行转换为OC对象（托管对象）来实现，这样无需任何SQL知识就能操作他们。
 
 Core Data能将应用程序中的对象直接保存到数据库中，无需进行复杂的查询，也无需确保对象的属性名和数据库字段名对应，这一切由Core Data完成。
+
 ## 归档是如何使用的？
+
 归档是指某种格式来保存一个或多个对象，以便以后还原这些对象的过程。
 
 只要在类中实现的每个属性都是标量（如int或float）或都是符合NSCoding协议的某个类的实例，就可以对你的对象进行完整归档。
@@ -221,6 +312,40 @@ Runloop可以理解为cocoa下的一种消息循环机制，用来处理各种�
 
 ## 绘制图形
 
+``` bash
+- (void)drawRect:(CGRect)rect{
+    // Drawing code
+    // 1.获得图形上下文
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    // 2.拼接图形(路径)
+    // 设置线段宽度
+    CGContextSetLineWidth(ctx, 10);
+    // 设置线段头尾部的样式
+    CGContextSetLineCap(ctx, kCGLineCapRound);
+    // 设置线段转折点的样式
+    CGContextSetLineJoin(ctx, kCGLineJoinRound);
+    /**  第1根线段  **/
+    // 设置颜色
+    CGContextSetRGBStrokeColor(ctx, 1, 0, 0, 1);
+    // 设置一个起点
+    CGContextMoveToPoint(ctx, 10, 10);
+    // 添加一条线段到(100, 100)
+    CGContextAddLineToPoint(ctx, 100, 100);
+    // 渲染一次
+    CGContextStrokePath(ctx);
+    /**  第2根线段  **/
+    // 设置颜色
+    CGContextSetRGBStrokeColor(ctx, 0, 0, 1, 1);
+    // 设置一个起点
+    CGContextMoveToPoint(ctx, 200, 190);
+    // 添加一条线段到(150, 40)
+    CGContextAddLineToPoint(ctx, 150, 40);
+    CGContextAddLineToPoint(ctx, 120, 60);
+    // 3.渲染显示到view上面
+    CGContextStrokePath(ctx);
+}
+```
+
 ## 构建缓存时选用NSCache而非NSDictionary
 当系统资源将要耗尽时，NSCache可以自动删减缓存。如果采用普通的字典，那么就要自己编写挂钩，在系统发出“低内存”通知时手动删减缓存，NSCache会先删减“最久未使用”的对象。
 
@@ -265,6 +390,12 @@ int main(int argc, char * argv[]) {
 参考文章：https://blog.csdn.net/potato512/article/details/51455728
 
 ## 临界区的理解，临界资源有什么特点？为什么会发生死锁？死锁怎么预防？发生死锁了怎么办？
+
+产生死锁的四个必要条件：
+1. 互斥条件：一个资源每一次只能被一个进程使用。
+2. 请求与保持条件：一个进程因请求资源阻塞时，对已获得的资源保持不放。
+3. 不剥夺条件：进程已获得的资源，在未使用完之前，不能进行强制剥夺。
+4. 循环等待条件：若干进程之间形成一种头尾相接的循环等待资源关系。
 
 ## 动画掉帧，CADisPlayLink， Core graphics
 使用[KMCGeigerCounter](https://github.com/kconner/KMCGeigerCounter)检测动画掉帧问题。

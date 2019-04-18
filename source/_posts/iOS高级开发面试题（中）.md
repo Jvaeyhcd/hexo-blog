@@ -1,6 +1,6 @@
 ---
 title: iOS高级开发面试题（中）
-date: 2018-08-06 11:44:34
+date: 2017-08-06 11:44:34
 tags:
   - iOS
 categories: 知识汇总
@@ -33,6 +33,7 @@ Method ori_Method =  class_getInstanceMethod([MYclass class], @selector(lastObje
 Method my_Method = class_getInstanceMethod([MYclass class], @selector(myLastObject));  
 method_exchangeImplementations(ori_Method, my_Method);
 ```
+方法的交换是在`+load`中进行交换的。
 
 ## 如何高性能的给UIImageView加个圆角？
 
@@ -123,7 +124,13 @@ UIView和CALayer有一下区别：
 
 写一个FIFO的存储机制，设置一定量的内存大小。每次添加新的图片后检查是否超出容量，如果超出则释放队列最前面的图片。
 
-## 用过coreData或者sqlite吗？读写是分线程的吗？遇到过死锁没？如何解决
+## 用过coreData或者sqlite吗？读写是分线程的吗？遇到过死锁没？如何解决？
+
+如果要求不是特别高，推荐在同一个线程中读写，这样比较省事，当然如果你必须要CoreData多线程，需要注意：
+1. 只用一个`NSPersistentStoreCoordinator`。
+2. 每个线程创建一个`NSManagedObjectContext`。
+3. 不要传递`NSManagedObject`，传objectID，通过fetch获得。
+4. 先存后取，利用`NSManagedObjectContext-mergeChangesFromContextDidSaveNotification:`。
 
 ## 什么是二叉搜索树？search的时间复杂度是多少?
 
@@ -164,7 +171,7 @@ UIView和CALayer有一下区别：
 建立关联引用。详情请见[【iOS】Runtime引用](https://jvaeyhcd.github.io/2018/08/08/%E3%80%90iOS%E3%80%91Runtime%E5%BA%94%E7%94%A8/)一文中 ”关联对象（Objective-C Associated Objects）给分类添加属性“。
 
 ## runtime 如何实现 weak 属性
-weakg关键字表明该属性定义了一种“非拥有关系”（nonowning relationship）。为这种属性设置新值时，设置方法既不保留新值，又不释放旧值。此特质与`assign`类似，然而在属性所指的对象遭到摧毁时，属性值也会清空(nil out)。
+weak关键字表明该属性定义了一种“非拥有关系”（nonowning relationship）。为这种属性设置新值时，设置方法既不保留新值，又不释放旧值。此特质与`assign`类似，然而在属性所指的对象遭到摧毁时，属性值也会清空(nil out)。
 
 那么runtime如何实现weak变量的自动置为nil？
 
@@ -350,17 +357,6 @@ _objc_msgForward是IMP类型，用于消息转发的：当一个对象发送一�
 
 一旦调用_objc_msgForward，将调过查找IMP的过程，直接触发“消息转发”，如果调用了_objc_msgForward，即使这个对象确实已经实现了这个方法，也会告诉objc_msgSend：“我没有在这个对象里找到这个方法的实现”。
 
-## runloop的mode作用是什么？
-runloop主要是用来指定事件在运行循环的优先级，分为：
-* `NSDefaultRunLoopMode`：默认，空闲状态
-* `UITrackingRunLoopMode`：ScrollView滑动时
-* `UIInitializationRunLoopMode`：启动时
-* `NSRunLoopCommonModes`：Mode集合
-
-苹果公开提供的Mode有两个：
-* `NSDefaultRunLoopMode`
-* `NSRunLoopCommonModes`
-
 ## 能否向编译后得到的类中增加实例变量？能否向运行时创建的类中添加实例变量？为什么？
 
 不能向编译后得到的类中增加实例变量，能向运行时创建的类中添加实例变量。
@@ -371,18 +367,13 @@ runloop主要是用来指定事件在运行循环的优先级，分为：
 
 ## runloop和线程有什么关系？
 
-## 以`scheduledTimerWithTimeInterval`的方式触发的timer，在滑动页面上的列表时，timer会暂停回调，为什么？如何解决？
-
-RunLoop只能运行在一种mode下，如果要换mode，当前的loop也需要停下重启成新的。利用这个机制，scrollView滚动过程中`NSDefaultRunLoopMode`(`kCFRunLoopDefaultMode`)的mode会切换到`UITrackingRunLoopMode`来保证scrollView的流畅滑动：只能在`UITrackingRunLoopMode`模式下处理的事件会影响scrollView的滑动。
-
-如果我们把一个NSTimer对象以`UITrackingRunLoopMode`(`kCFRunLoopDefaultMode`)添加到主运行循环中的时候，scrollView滚动过程中会因为mode的切换，而导致NSTimer将不再被调度。
-
-同时因为mode还是可以定制的，所以：
-NSTimer计时器会被scrollView的滑动影响的问题可以通过将timer添加在`NSRunLoopCommonModes`（`kCFRunLoopCommonModes`）来解决。
-
-这个模式等效于`NSDefaultRunLoopMode`和`NSEventTrackingRunLoopMode`的结合。两个模式以数组的形式组合，当只要其中任意一个模式触发，都是这个大模式的触发，都会响应。
+1. RunLoop的作用就是来管理线程的，当线程的RunLoop开启后，线程就会在执行完任务后，出于休眠状态，随时等待接收新的任务，而不是退出。
+2. 只有主线程的RunLoop是默认开启的，所以程序在开启后，会一直运行，不会退出。其他线程的RunLoop如果需要开启，就手动开启。
 
 ## runloop内部是如何实现的？
+1. 有一个判断循环的条件，满足条件，就一直循环。
+2. 线程得到唤醒事件被唤醒，事件处理完毕后，回到唤醒状态，等待下次唤醒。
+
 在while里有一个一直监听唤醒时间的东西，监听到就立马处理。之后又循环回来监听，直到满足跳出条件。
 
 ``` objc
@@ -394,3 +385,25 @@ function loop() {
     } while (message != quit);
 }
 ```
+
+## runloop的mode作用是什么？
+runloop主要是用来指定事件在运行循环的优先级，分为：
+* `NSDefaultRunLoopMode`：默认，空闲状态
+* `UITrackingRunLoopMode`：ScrollView滑动时
+* `UIInitializationRunLoopMode`：启动时
+* `NSRunLoopCommonModes`：Mode集合
+
+苹果公开提供的Mode有两个：
+* `NSDefaultRunLoopMode`
+* `NSRunLoopCommonModes`
+
+## 以`scheduledTimerWithTimeInterval`的方式触发的timer，在滑动页面上的列表时，timer会暂停回调，为什么？如何解决？
+
+RunLoop只能运行在一种mode下，如果要换mode，当前的loop也需要停下重启成新的。利用这个机制，scrollView滚动过程中`NSDefaultRunLoopMode`(`kCFRunLoopDefaultMode`)的mode会切换到`UITrackingRunLoopMode`来保证scrollView的流畅滑动：只能在`UITrackingRunLoopMode`模式下处理的事件会影响scrollView的滑动。
+
+如果我们把一个NSTimer对象以`UITrackingRunLoopMode`(`kCFRunLoopDefaultMode`)添加到主运行循环中的时候，scrollView滚动过程中会因为mode的切换，而导致NSTimer将不再被调度。
+
+同时因为mode还是可以定制的，所以：
+NSTimer计时器会被scrollView的滑动影响的问题可以通过将timer添加在`NSRunLoopCommonModes`（`kCFRunLoopCommonModes`）来解决。
+
+这个模式等效于`NSDefaultRunLoopMode`和`NSEventTrackingRunLoopMode`的结合。两个模式以数组的形式组合，当只要其中任意一个模式触发，都是这个大模式的触发，都会响应。

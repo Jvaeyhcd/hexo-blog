@@ -1,17 +1,115 @@
 ---
 title: iOS高级开发面试题（下）
-date: 2018-08-06 13:27:26
+date: 2017-08-06 13:27:26
 tags:
   - iOS
 categories: 知识汇总
 ---
 
 ## objc使用什么机制管理对象内存？
-通过retainCount的机制来决定对象是否需要释放，每次runloop的时候，都会检查对象的retainCount，如果retainCount为0，说明该对象没有地方需要继续使用了，可以释放掉了。
+1. MRC(manual retain-release)手动内存管理。
+2. ARC(automatic reference counting)自动引用计数。
+3. Garbage collection（垃圾回收机制）但是iOS不支持垃圾回收。
+ARC作为LLVM3.0编译器的一项特性，在iOS5.0（Xcode4）版本后推出的自动内存管理，节约时间，减少代码量，降低出错率。开发者不需要手动写入retain、release、autorelease三个关键字。
+
+ARC通过retainCount的机制来决定对象是否需要释放，每次runloop的时候，都会检查对象的retainCount，如果retainCount为0，说明该对象没有地方需要继续使用了，可以释放掉了。
 <!-- more -->
 
 ## 苹果为什么要废弃dispatch_get_current_queue？
+
 `dispatch_get_current_queue`容易造成死锁。
+
+说到被废弃的`dispatch_get_current_queue`不得不提一个概念：可重入。若一个程序或子程序可以“安全的被并行执行”，则称其为可重入的。
+
+若一个函数是可重入的，则该函数：
+1. 不能含有静态（全局）非常量数据。
+2. 不能返回静态（全局）非常量数据的地址。
+3. 只能处理由调用者提供的数据。
+4. 不能依赖于单实例模式资源的锁。
+5. 不能调用不可重入的函数
+
+有时候，我们希望知道当前执行的`queue`是谁，比如UI操作需要放在`mian queue`中执行。如果可以知道当前工作的`queue`是谁，就可以很方便的指定一段代码再特定的`queue`中执行。`dispatch_get_current_queue`正好能帮上忙。于是乎，在指定queue中做一些操作，就可以非常清晰的实现：
+``` objc
+
+void func(dispatch_queue_t queue, dispatch_block_t block)
+{
+    if (dispatch_get_current_queue() == queue) {
+        block();
+    } else {
+        dispatch_sync(queue, block);
+    }
+}
+```
+然后潜意识里觉得这个函数是可重入的。但当`target queue`恰好是`current queue`时，同步阻塞会导致死锁。
+``` objc
+
+- (void)deadLockFunc
+{
+    dispatch_queue_t queueA = dispatch_queue_create("com.yiyaaixuexi.queueA", NULL);
+    dispatch_queue_t queueB = dispatch_queue_create("com.yiyaaixuexi.queueB", NULL);
+    dispatch_sync(queueA, ^{
+        dispatch_sync(queueB, ^{
+            dispatch_block_t block = ^{
+                //do something
+            };
+            func(queueA, block);
+        });
+    });
+}
+```
+问题出在GCD队列本身是不可重入的，串行队列的层级关系，是出现问题的根本原因。为防止类似的误用，苹果在iOS6废弃了`dispatch_get_current_queue()`方法，强大的`dispatch_get_current_queue()`也只能当做一个调试工具了。
+
+那么应该如何保证GCD方法可重入呢？
+* `dispatch_queue_set_specific`标记队列
+* 递归锁
+以下是上面两种方法的代码片段。
+**dispatch_queue_set_specific**
+``` objc
+    dispatch_queue_t queueA = dispatch_queue_create("com.yiyaaixuexi.queueA", NULL);
+    dispatch_queue_t queueB = dispatch_queue_create("com.yiyaaixuexi.queueB", NULL);
+    dispatch_set_target_queue(queueB, queueA);
+   
+    static int specificKey;
+    CFStringRef specificValue = CFSTR("queueA");
+    dispatch_queue_set_specific(queueA,
+                                &specificKey,
+                                (void*)specificValue,
+                                (dispatch_function_t)CFRelease);
+   
+    dispatch_sync(queueB, ^{
+        dispatch_block_t block = ^{
+                //do something
+        };
+        CFStringRef retrievedValue = dispatch_get_specific(&specificKey);
+        if (retrievedValue) {
+            block();
+        } else {
+            dispatch_sync(queueA, block);
+        }
+    });
+```
+**递归锁**
+``` objc
+void dispatch_reentrant(void (^block)())
+{
+    static NSRecursiveLock *lock = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        lock = [[NSRecursiveLock alloc]init];
+    });
+    [lock lock];
+    block();
+    [lock unlock];
+}
+ 
+    dispatch_queue_t queueA = dispatch_queue_create("com.yiyaaixuexi.queueA", NULL);
+    dispatch_block_t block = ^{
+         //do something
+    };
+    dispatch_sync(queueA, ^{
+        dispatch_reentrant(block);
+    });
+```
 
 ## 苹果是如何实现autoreleasepool的？
 `autoreleasepool`以一个队列数组的形式现实，主要通过下列三个函数完成：
