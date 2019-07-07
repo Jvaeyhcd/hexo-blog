@@ -629,4 +629,8 @@ footer .social li a:hover {
   .wrap-img {
     display: none;
   }
+
+  .recent-post-item .time-box {
+    display: none !important;
+  }
 }

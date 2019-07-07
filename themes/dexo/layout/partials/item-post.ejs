@@ -1,4 +1,8 @@
 <div class="recent-post-item">
+  <div class="time-box">
+    <div class="day"><%=date(post.date, 'DD')%></div>
+    <div class="year-month"><%=date(post.date, 'YYYY/MM')%></div>
+  </div>
   <div class="left-box">
     <a class="title" href="<%=url_for(post.path)%>"><%=post.title%></a>
     <div class="post-item-excerpt">
