@@ -5,6 +5,7 @@ tags:
   - Swift
   - 闭包
 categories: Swift学习笔记
+abbrlink: 43b7e269337d814b
 ---
 
 ## 概述

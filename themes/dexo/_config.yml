@@ -36,3 +36,12 @@ github_name: Jvaeyhcd
 
 # Twritter
 twitter_name: jvaeyhcd
+
+#gitalk settings
+gitalk:
+  enable: true #用来做启用判断可以不用
+  owner: Jvaeyhcd
+  repo: jvaeyhcd.github.io #储存评论issue的github仓库名
+  admin: Jvaeyhcd
+  clientID: 29d526fe1e0f29d6b28c
+  clientSecret: 1e5c674f3cbce0ba7d19045138d69ef800d5bd21

@@ -4,6 +4,7 @@ date: 2019-07-07 21:51:35
 tags:
   - App Store
 categories: 作品
+abbrlink: 6d9355527852d1c6
 ---
 
 对于一位iOS开发者来说，上线iOS应用到App Store的流程应该是相当熟悉的，在填写App Store应用信息的时候往往需要上传几张App的截图，大多数开发者会直接使用App的截图上传上去。虽然这样是符合要求的，但是在美观度上来说可能有些欠缺。如果想要制作一些稍微你加工后漂亮点的截图，那么可能就需要麻烦UI小姐姐来给你制作几张图片。在不麻烦UI小姐姐的情况下，你想要制作几张加工后的漂亮的截图该怎么办呢？
@@ -25,6 +26,5 @@ AppShot是一款纯粹，易用的App Store应用截图制作工具。
 
 ### 截图
 
-![App Store截图](https://upload-images.jianshu.io/upload_images/905614-8ac7cd86e21116b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+{% asset_img 905614-8ac7cd86e21116b5.png Appshot展示图%}
 

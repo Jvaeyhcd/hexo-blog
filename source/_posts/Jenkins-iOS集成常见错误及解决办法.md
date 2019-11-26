@@ -6,6 +6,7 @@ tags:
  - Jenkins
  - iOS
 categories: 经验积累
+abbrlink: 0324c45dc635e1ed
 ---
 
 ### 问题一: failed to import bridging header

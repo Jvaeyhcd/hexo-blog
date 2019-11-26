@@ -5,6 +5,7 @@ tags:
   - iOS
   - 笔记
 categories: iOS学习笔记
+abbrlink: b0943f086f49644d
 ---
 
 UITableView是我从开始接触iOS编程到现在最常用的一个控件，没有之一。这篇文章就先不说UITableView的基本用法了，详细有一点iOS基础的人都应该知道，这里主要想理一理UItableView的复用机制。

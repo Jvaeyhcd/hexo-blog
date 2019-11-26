@@ -5,6 +5,7 @@ tags:
   - Jenkins
   - Android
 categories: 经验积累
+abbrlink: dffc5afb10488f2f
 ---
 
 等待更新,基本步骤与iOS配置相似。

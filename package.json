@@ -20,9 +20,18 @@
     "hexo-renderer-marked": "^0.3.0"
   },
   "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-bg-shell": "^2.3.3",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-rewrite": "^1.0.1",
+    "grunt-shell": "^3.0.1",
+    "grunt-zip": "^0.18.2",
     "hexo-browsersync": "^0.3.0",
     "hexo-renderer-jade": "^0.4.1",
     "hexo-renderer-stylus": "^0.3.3",
-    "hexo-server": "^0.2.2"
+    "hexo-server": "^0.2.2",
+    "load-grunt-tasks": "^5.1.0"
   }
 }

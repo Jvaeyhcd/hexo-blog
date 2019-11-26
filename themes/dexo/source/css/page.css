@@ -24,13 +24,13 @@
   padding-top: calc(0.375em - 1px);
   position: relative;
   vertical-align: top;
-  color: #363636;
+  color: #007fff;
 }
 
 .page-number.current {
   color: #fff;
-  background-color: #3273dc;
-  border-color: #3273dc;
+  background-color: #007fff;
+  border-color: #007fff;
   box-shadow: none;
 }
 
@@ -54,6 +54,7 @@
   padding-top: calc(0.375em - 1px);
   position: relative;
   vertical-align: top;
+  color: #007fff;
 }
 
 .paginator-box a {
@@ -64,4 +65,5 @@
   line-height: 50px;
   padding-left: 8px;
   padding-right: 8px;
+  color: #007fff;
 }

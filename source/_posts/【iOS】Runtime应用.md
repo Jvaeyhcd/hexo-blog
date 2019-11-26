@@ -5,6 +5,7 @@ tags:
   - Runtime
 author: Jvaeyhcd
 categories: iOS学习笔记
+abbrlink: 0e77c12e40f681c2
 ---
 
 `Runtime`简直就是做大型架构的利器，它的应用场景非常多，下面就介绍一些常见的应用场景。

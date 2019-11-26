@@ -4,6 +4,7 @@ date: 2016-06-30 15:13:42
 tags:
   - iOS
 categories: 常见错误
+abbrlink: 11fd5d6a13a7f99e
 ---
 
 在进行iOS网络请求的时候，报Error Domain=NSURLErrorDomain Code=-1002 “unsupported URL”的错误，请求的类型是GET，但是使用PSOTMAN和在浏览器中打开此接口可以返回正确的数据。通过google搜索最后找到了解决办法，今天记录下这个奇怪的问题。

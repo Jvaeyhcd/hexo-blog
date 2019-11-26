@@ -4,6 +4,7 @@ date: 2016-03-05 16:24:40
 tags:
   - iOS
 categories: 经验积累
+abbrlink: 55ca4aace52ac6d0
 ---
 
 >RESideMenu一个非常好用的左右侧滑菜单控件，很多IOS项目都会用到此类左右侧滑效果。然而在RESideMenu的使用过程中，发现其默认将所有界面都加入了侧滑效果。如在主界面导航的Menu放在屏幕的左右两侧，侧滑才可以显示出来，但是当我们进入主界面的某个次级View中，甚至更深一层的View中，侧滑功能仍然可用。这一点就用IOS的UINavigationController的滑动返回冲突。为了解决这个问题，通过Google在网上搜索找到了如下的解决方法。

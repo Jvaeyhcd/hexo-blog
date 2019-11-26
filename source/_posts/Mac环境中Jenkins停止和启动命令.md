@@ -4,6 +4,7 @@ date: 2016-08-02 12:02:06
 tags:
   - Jenkins
 categories: 经验积累
+abbrlink: e4250f7a7414ce80
 ---
 
 ### 启动

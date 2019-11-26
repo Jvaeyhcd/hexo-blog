@@ -5,6 +5,7 @@ tags:
   - React Native
   - iOS
 categories: 经验积累
+abbrlink: 6c8932d6101bb275
 ---
 
 打开Xcode编译react native的iOS程序出现了如下的错误：

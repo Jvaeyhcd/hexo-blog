@@ -4,6 +4,7 @@ date: 2018-03-01 17:51:16
 tags:
   - Mysql
 categories: 技术杂谈
+abbrlink: e2434ea71cfbfc1f
 ---
 
 使用sql语句修改数据库字符集的方法：

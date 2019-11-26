@@ -4,6 +4,7 @@ date: 2016-03-17 15:17:32
 tags:
   - iOS
 categories: 知识汇总
+abbrlink: f5934f826f15c52f
 ---
 
 关于iOS的传值方式我所知道的一共有一下6种方式：

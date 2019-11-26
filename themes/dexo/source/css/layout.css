@@ -5,10 +5,16 @@
 
 .layout-container .layout-header {
   min-height: 49px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .layout-container .layout-content {
   min-height: 200px;
+  margin-top: 49px;
 }
 
 .layout-container .layout-footer {
@@ -72,7 +78,7 @@ a.text-year {
   float: right;
   margin-left: 12px;
   font-size: 24px;
-  color: #222;
+  color: #71777c;
 }
 
 .tags-box {

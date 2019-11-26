@@ -4,6 +4,7 @@ date: 2016-08-02 15:01:30
 tags:
   - iOS
 categories: Swift学习笔记
+abbrlink: ee3b5e2f81886be1
 ---
 
 除了基本运算符外，Swift还提供了许多可以对数值进行复杂运算的高级运算符。这些高级运算符包含了在C和objc中已经被大家熟知的位运算符和位移运算符。

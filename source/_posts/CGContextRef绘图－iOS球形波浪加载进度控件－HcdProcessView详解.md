@@ -4,6 +4,7 @@ date: 2016-09-20 13:18:12
 tags:
    - iOS
 categories: 技术杂谈
+abbrlink: 720308c7cbe4e8d5
 ---
 
 [《iOS球形波浪加载进度控件－HcdProcessView》](http://www.jianshu.com/p/239a650bf73a)这篇文章已经展示了我在项目中编写的一个球形进度加载控件HcdProcessView，这篇文章我要简单介绍一下我的制作过程。

@@ -4,6 +4,7 @@ date: 2018-12-29 09:50:30
 tags:
   - React Native
 categories: 技术杂谈
+abbrlink: 6ddb868bf0c9539b
 ---
 
 最近项目重构，使用了React Native来进行重写，在还原之前原生实现的波浪动画。之前不知道React Native中有ART这个库，本打算使用h5中的canvas来实现波浪动画，捣鼓了半天没有搞出来。后来又重新Google如何React Native来实现动画效果，找到几篇不错的文章介绍到了React Native ART库的使用。

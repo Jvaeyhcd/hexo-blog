@@ -4,6 +4,7 @@ date: 2017-08-06 13:27:26
 tags:
   - iOS
 categories: 知识汇总
+abbrlink: 5f644c17f993a457
 ---
 
 ## objc使用什么机制管理对象内存？

@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site 站点信息
-title: Jvaeyhcd's Note
-subtitle: My Coding Note
+title: Jvaeyhcd's Zone
+subtitle: Less is more.
 description: 好记性不如烂笔头
 author: Jvaeyhcd
 language: en
@@ -14,7 +14,7 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://jvaeyhcd.github.io
 root: /
-permalink: :year/:month/:day/:title/
+permalink: posts/:abbrlink.html
 permalink_defaults:
 
 # Directory 文件目录
