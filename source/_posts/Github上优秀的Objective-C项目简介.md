@@ -134,7 +134,7 @@ github的iOS客户端，目前开源代码是V1版本，V2版本在appstore上�
 * [PureLayout](https://github.com/PureLayout/PureLayout)
 自动布局
 
-# 文本相关
+### 文本相关
 
 * [SlackTextViewController](https://github.com/slackhq/SlackTextViewController)
 你曾经用过Slack iOS应用吗？如果你在较大的软件公司工作，也许会用过。对那些没用过的人呢？—?Slack令人激动。用到Slack的应用也是这样，尤其是用作极佳、定制的文本输入控制时。这时你有了一个现成可用在应用中的代码。自适应文本区域？试一下。手势识别、自动填充、多媒体合并？试一下。快速drop-in解决方案？试一下。其他还想要什么？SlackTextViewController 可以替代 UITableViewController & UICollectionViewController。
@@ -148,7 +148,7 @@ github的iOS客户端，目前开源代码是V1版本，V2版本在appstore上�
 * [DDRichText](https://github.com/daiweilai/DDRichText)
 为图文混排提供了一个思路
 
-# 进度条
+### 进度条
 
 * [NJKWebViewProgress](https://github.com/ninjinkun/NJKWebViewProgress)
 web界面加载进度条
@@ -161,21 +161,21 @@ Navigation的扩展，强烈推荐
 
 * [Toast](https://github.com/scalessec/Toast)
 
-# 导航栏
+### 导航栏
 
 * [LTNavigationbar](https://github.com/ltebean/LTNavigationbar)
 上下滑动动态改变导航栏颜色
 
 * [JZNavigationExtension](https://github.com/JazysYu/JZNavigationExtension)
 
-# 键盘类
+### 键盘类
 
 * [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)
 
 * [TPKeyboardAvoiding](https://github.com/michaeltyson/TPKeyboardAvoiding)
 这个我用得很多，界面上如果有输入框可以界面会跟着键盘动，而不被键盘挡住。
 
-# 基础工具类以及Category
+### 基础工具类以及Category
 
 * [BFKit OC版本](https://github.com/FabrizioBrancati/BFKit)
 国外的一个大神写的很好用的分类，比较齐全
@@ -192,7 +192,7 @@ Navigation的扩展，强烈推荐
 * [BlocksKit](https://github.com/zwaldowski/BlocksKit)
 为基础类提供Block支持，很好用
 
-# 弹出框
+### 弹出框
 
 * [STPopup](https://github.com/kevin0571/STPopup)
 很方便的弹出框
@@ -209,7 +209,7 @@ Navigation的扩展，强烈推荐
 * [JKPopMenuView](https://github.com/UncleJoke/JKPopMenuView)
 一个简单的弹出菜单
 
-# 其它
+### 其它
 
 * [SWTableViewCell](https://github.com/CEWendel/SWTableViewCell)
 自定义侧滑
@@ -222,27 +222,3 @@ Navigation的扩展，强烈推荐
 
 * [PDTSimpleCalendar](https://github.com/jivesoftware/PDTSimpleCalendar)
 一款日历控件，可以看看
-
-# Xcode插件
-
-* <a href="https://github.com/kattrali/cocoapods-xcode-plugin">cocoapods-xcode-plugin</a>
-Dependency management helper for your CocoaPods, right in Xcode.
-用于在Xcode中管理CocoaPods依赖库。
-![""](http://wangzz.github.io/images/article1/plugin_cocoapods_menu.png)
-* <a href="https://github.com/qfish/XAlign">XAlign</a>
-An amazing Xcode plugin to align regular code. it can align Xnything in any way you want.
-方便实现代码对其功能，使代码风格统一。
-![""](http://wangzz.github.io/images/article1/plugin_align.gif)
-* <a href="https://github.com/supermarin/Alcatraz">Alcatraz</a>
-Alcatraz is an open-source package manager for Xcode 5+. It lets you discover and install plugins, templates and color schemes without the need for manually cloning or copying files. It installs itself as a part of Xcode and it feels like home.---Xcode插件管理工具。
-![""](https://camo.githubusercontent.com/919efe4e1e53237df51d7010c862bd5c04fd6a70/687474703a2f2f616c63617472617a2e696f2f696d616765732f73637265656e73686f744032782e706e67)
-* <a href="https://github.com/onevcat/VVDocumenter-Xcode">VVDocumenter-Xcode</a>
-提供了为代码增加注视的最快捷方式,非常好的Xcode插件。
-![""](https://camo.githubusercontent.com/ca5518c9872e15b8a95b9d8c5f44bc331977d710/68747470733a2f2f7261772e6769746875622e636f6d2f6f6e65766361742f5656446f63756d656e7465722d58636f64652f6d61737465722f53637265656e53686f742e676966)
-并且支持了Swift的注释，太棒了！
-![""](https://camo.githubusercontent.com/58e452b57245cd79c2e59ac7926609be4dffbfd8/68747470733a2f2f7261772e6769746875622e636f6d2f6f6e65766361742f5656446f63756d656e7465722d58636f64652f6d61737465722f7676646f63756d656e7465722d73776966742e676966)
-* <a href="https://github.com/ksuther/KSImageNamed-Xcode">KSImageNamed-Xcode</a>
-当输入[NSImage imageNamed: 或者[UIImage imageNamed:时，会自动补全工程中可用的图片名称，同时能提供选中图片的预览。
-![""](http://foggry.com/images/article1/plugin_image_named.gif)
-
-自己做个笔记，方便以后工作遇到问题能够得到快速的解决

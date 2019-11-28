@@ -63,7 +63,9 @@ void func(dispatch_queue_t queue, dispatch_block_t block)
 那么应该如何保证GCD方法可重入呢？
 * `dispatch_queue_set_specific`标记队列
 * 递归锁
+
 以下是上面两种方法的代码片段。
+
 **dispatch_queue_set_specific**
 ``` objc
     dispatch_queue_t queueA = dispatch_queue_create("com.yiyaaixuexi.queueA", NULL);
@@ -140,10 +142,7 @@ void dispatch_reentrant(void (^block)())
 ```
 这些情况不需要考虑“循环引用”。
 
-但如果使用了一些参数中可能含有ivar的系统API，如GCD、NSNotificationCenter就要小心一点，比如GCD内部如果引用了self，而且GCD的其他参数是ivar，则要考虑到循环引用：
-``` objc
-
-```
+但如果使用了一些参数中可能含有ivar的系统API，如GCD、NSNotificationCenter就要小心一点，比如GCD内部如果引用了self，而且GCD的其他参数是ivar，则要考虑到循环引用。
 
 ## 若一个类有实例变量NSString *_foo，调用setValue:forKey:时，可以以foo还是_foo作为key？
 都可以。

@@ -290,7 +290,7 @@ body {
 /* =Links
 -----------------------------------------------------------------------------*/
 a {
-  color: #134da5;
+  color: #007fff;
 }
 
 a:focus,
@@ -393,7 +393,7 @@ ul ul,
 ol ol,
 ul ol,
 ol ul {
-  margin: 0 0 0 3.3em;
+  margin: 0 0 0 2.3em;
 }
 
 ul li,
@@ -1257,7 +1257,7 @@ table.table-stroked th {
 }
 
 table.table-stripped tbody tr:nth-child(odd) td {
-  background: #f8f8f8;
+  background: #fafafa;
 }
 
 table.table-hovered tbody tr:hover td {
@@ -3676,7 +3676,7 @@ ul.dropdown li.divider {
   padding: 0px;
   font-size: 13px;
   color: #c5c8c6;
-  background-color: #f7f7f7;
+  background-color: #fafafa;
   line-height: 1.6;
 }
 
@@ -3713,7 +3713,7 @@ ul.dropdown li.divider {
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #f7f7f7;
+  background-color: #fafafa;
 }
 
 .gutter {

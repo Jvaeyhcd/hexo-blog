@@ -8,8 +8,10 @@
 }
 
 .post-body p {
-  margin: 0 0 25px 0;
-  margin-top: 1.65em;
+  line-height: inherit;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  color: #333333;
 }
 
 .post-body blockquote {
@@ -19,6 +21,16 @@
   border-left: 4px solid #cbcbcb;
   background-color: #f8f8f8;
   font-size: 15px;
+  font-style: normal;
+  color: #666666;
+}
+
+.post-body code {
+  background-color: #fff5f5;
+  color: #ff502c;
+  font-size: .87em;
+  padding: .065em .4em;
+  line-height: initial;
 }
 
 .recent-post-item {
