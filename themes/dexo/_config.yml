@@ -12,7 +12,6 @@ menu:
 
 # stylesheets loaded in the <head>
 stylesheets:
-- font-awesome.min.css
 - /css/dexo.css
 - /css/custom.css
 - /css/post.css
@@ -45,3 +44,7 @@ gitalk:
   admin: Jvaeyhcd
   clientID: 29d526fe1e0f29d6b28c
   clientSecret: 1e5c674f3cbce0ba7d19045138d69ef800d5bd21
+
+# 是否开启访问量统计功能(不蒜子)
+busuanzi:
+  enable: true

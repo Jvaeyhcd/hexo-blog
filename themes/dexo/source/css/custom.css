@@ -282,6 +282,29 @@ footer .social li a:hover {
   letter-spacing: 3px
 }
 
+.busuanzi-box {
+  display: initial;
+}
+
+.back-top {
+  margin: 1rem 0 0;
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 1;
+  color: #909090;
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .05);
+  cursor: pointer;
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  font-size: 1.2rem;
+  color: #007fff;
+}
+
 @-webkit-keyframes smooth-entry {
   0% {
     opacity: 0;
@@ -632,5 +655,13 @@ footer .social li a:hover {
 
   .recent-post-item .time-box {
     display: none !important;
+  }
+
+  .busuanzi-box {
+    display: none;
+  }
+
+  .back-top {
+    display: none;
   }
 }
