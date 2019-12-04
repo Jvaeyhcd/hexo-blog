@@ -32,6 +32,7 @@ abbrlink: 720308c7cbe4e8d5
 }
 ```
 在`drawRect`方法中，我们先画出了刻度尺的图形，刻度尺是由一圈短线在一个圆内围成的一个圆。
+
 ``` objc
 /**
  *  画比例尺
@@ -67,7 +68,9 @@ abbrlink: 720308c7cbe4e8d5
     CGContextTranslateCTM(context, -fullRect.size.width / 2, -fullRect.size.width / 2);
 }
 ```
+
 这里需要用到两个东西一个是`CGContextAddArc`，一个是`CGContextAddLineToPoint`。创建圆弧的方法有两种一种是`CGContextAddArc`，一种是`CGContextAddArcToPoint`，这里画的圆比较简单所以用的是`CGContextAddArc`,`CGContextAddArcToPoint`在后面也会用到（我会在用到的地方详解）。
+
 #### CGContextAddArc
 ``` objc
  void CGContextAddArc (
@@ -79,7 +82,8 @@ abbrlink: 720308c7cbe4e8d5
     CGFloat endAngle,   //结束弧度
     int clockwise          //0表示顺时针，1表示逆时针
  );
-``` objc
+```
+
 这里需要创建一个完整的圆，那么 开始弧度就是0 结束弧度是 2PI， 因为圆周长是 2*PI*radius。函数执行完后，current point就被重置为(x,y)。`CGContextTranslateCTM(context, fullRect.size.width / 2, fullRect.size.width / 2);`已经将current point移动到了`(fullRect.size.width / 2, fullRect.size.width / 2)`。
 
 #### CGContextAddLineToPoint
