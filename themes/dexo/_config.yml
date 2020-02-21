@@ -45,6 +45,8 @@ gitalk:
   clientID: 29d526fe1e0f29d6b28c
   clientSecret: 1e5c674f3cbce0ba7d19045138d69ef800d5bd21
 
+google_analytics: 
+
 # 是否开启访问量统计功能(不蒜子)
 busuanzi:
   enable: true
