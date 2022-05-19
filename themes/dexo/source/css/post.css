@@ -255,25 +255,25 @@ a.title {
   margin-bottom: 16px;
 }
 
-a.post-item-tag-link {
+a.post-item-tag-round-link {
   white-space: nowrap;
   text-decoration: none;
   margin-right: 10px;
-  padding: 3px 6px;
+  padding: 2px 4px;
   display: inline-block;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: #007fff;
   background-color: #e5f2ff;
   border-radius: 2px;
 }
 
-a.post-item-tag-link:before {
+a.post-item-tag-round-link:before {
   content: ' ';
   color: #b5b5b5;
 }
 
-a.post-item-tag-link:hover{
+a.post-item-tag-round-link:hover{
   color: #0366d6;
   text-decoration: none;
 }
